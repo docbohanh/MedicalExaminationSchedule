@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */; };
 		84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42CE1DE16FE10059B057 /* AppDelegate.swift */; };
 		84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D01DE16FE10059B057 /* ViewController.swift */; };
 		84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D21DE16FE10059B057 /* Main.storyboard */; };
@@ -15,6 +16,10 @@
 		84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */; };
 		84CB42E71DE16FE10059B057 /* MedicalExaminationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42E61DE16FE10059B057 /* MedicalExaminationScheduleTests.swift */; };
 		84CB42F21DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42F11DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift */; };
+		84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43001DE19A3C0059B057 /* SignInViewController.swift */; };
+		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
+		91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */; };
+		ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.release.xcconfig"; sourceTree = "<group>"; };
+		1F92D85D573E257A972657C5 /* Pods-MedicalExaminationScheduleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.release.xcconfig"; sourceTree = "<group>"; };
 		84CB42CB1DE16FE10059B057 /* MedicalExaminationSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalExaminationSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB42CE1DE16FE10059B057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CB42D01DE16FE10059B057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +60,11 @@
 		84CB42ED1DE16FE10059B057 /* MedicalExaminationScheduleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedicalExaminationScheduleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB42F11DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalExaminationScheduleUITests.swift; sourceTree = "<group>"; };
 		84CB42F31DE16FE10059B057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84CB43001DE19A3C0059B057 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Account/SignInViewController.swift; sourceTree = "<group>"; };
+		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
+		B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.debug.xcconfig"; sourceTree = "<group>"; };
+		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +102,8 @@
 				84CB42E51DE16FE10059B057 /* MedicalExaminationScheduleTests */,
 				84CB42F01DE16FE10059B057 /* MedicalExaminationScheduleUITests */,
 				84CB42CC1DE16FE10059B057 /* Products */,
+				B3971111236E98E8993F5BFC /* Pods */,
+				D00E98537ADEDF5A31AAFA5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				84CB42FF1DE199A10059B057 /* Account */,
 				84CB42CE1DE16FE10059B057 /* AppDelegate.swift */,
 				84CB42D01DE16FE10059B057 /* ViewController.swift */,
 				84CB42D21DE16FE10059B057 /* Main.storyboard */,
@@ -128,6 +150,38 @@
 			path = MedicalExaminationScheduleUITests;
 			sourceTree = "<group>";
 		};
+		84CB42FF1DE199A10059B057 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				84CB43001DE19A3C0059B057 /* SignInViewController.swift */,
+				84CB43021DE1B4270059B057 /* SignUpViewController.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		B3971111236E98E8993F5BFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */,
+				0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */,
+				1F92D85D573E257A972657C5 /* Pods-MedicalExaminationScheduleTests.debug.xcconfig */,
+				8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */,
+				F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */,
+				6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D00E98537ADEDF5A31AAFA5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */,
+				35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */,
+				581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +189,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84CB42F61DE16FE10059B057 /* Build configuration list for PBXNativeTarget "MedicalExaminationSchedule" */;
 			buildPhases = (
+				C6844979A5AD1DD455BB11C5 /* [CP] Check Pods Manifest.lock */,
 				84CB42C71DE16FE00059B057 /* Sources */,
 				84CB42C81DE16FE00059B057 /* Frameworks */,
 				84CB42C91DE16FE00059B057 /* Resources */,
+				6B9D21389B0D0433D0555EE2 /* [CP] Embed Pods Frameworks */,
+				EC17B60808F2E8D32BC0C4DF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84CB42F91DE16FE10059B057 /* Build configuration list for PBXNativeTarget "MedicalExaminationScheduleTests" */;
 			buildPhases = (
+				197BE27137AA0B3203A707CE /* [CP] Check Pods Manifest.lock */,
 				84CB42DE1DE16FE10059B057 /* Sources */,
 				84CB42DF1DE16FE10059B057 /* Frameworks */,
 				84CB42E01DE16FE10059B057 /* Resources */,
+				946D251A5D02E168E9123CF5 /* [CP] Embed Pods Frameworks */,
+				3BFA46A15DCC342263449F69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84CB42FC1DE16FE10059B057 /* Build configuration list for PBXNativeTarget "MedicalExaminationScheduleUITests" */;
 			buildPhases = (
+				1A0B9CBAF0186C5BF4C880E6 /* [CP] Check Pods Manifest.lock */,
 				84CB42E91DE16FE10059B057 /* Sources */,
 				84CB42EA1DE16FE10059B057 /* Frameworks */,
 				84CB42EB1DE16FE10059B057 /* Resources */,
+				372D2BBC8A9A16AF55DB02FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,14 +322,139 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		197BE27137AA0B3203A707CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1A0B9CBAF0186C5BF4C880E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		372D2BBC8A9A16AF55DB02FE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BFA46A15DCC342263449F69 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B9D21389B0D0433D0555EE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		946D251A5D02E168E9123CF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6844979A5AD1DD455BB11C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EC17B60808F2E8D32BC0C4DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84CB42C71DE16FE00059B057 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
+				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +604,7 @@
 		};
 		84CB42F71DE16FE10059B057 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
@@ -430,6 +618,7 @@
 		};
 		84CB42F81DE16FE10059B057 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
@@ -443,6 +632,7 @@
 		};
 		84CB42FA1DE16FE10059B057 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F92D85D573E257A972657C5 /* Pods-MedicalExaminationScheduleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -458,6 +648,7 @@
 		};
 		84CB42FB1DE16FE10059B057 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,6 +664,7 @@
 		};
 		84CB42FD1DE16FE10059B057 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
@@ -487,6 +679,7 @@
 		};
 		84CB42FE1DE16FE10059B057 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
@@ -518,6 +711,7 @@
 				84CB42F81DE16FE10059B057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84CB42F91DE16FE10059B057 /* Build configuration list for PBXNativeTarget "MedicalExaminationScheduleTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +720,7 @@
 				84CB42FB1DE16FE10059B057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84CB42FC1DE16FE10059B057 /* Build configuration list for PBXNativeTarget "MedicalExaminationScheduleUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +729,7 @@
 				84CB42FE1DE16FE10059B057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
