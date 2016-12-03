@@ -13,6 +13,7 @@
 		8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418C1DF2B1E500EAB5CE /* Locations.storyboard */; };
 		8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418E1DF2B24600EAB5CE /* Schedule.storyboard */; };
 		842641911DF2B25A00EAB5CE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641901DF2B25A00EAB5CE /* More.storyboard */; };
+		84A236881DF2D43C0028BDD7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A236871DF2D43C0028BDD7 /* AppTheme.swift */; };
 		84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42CE1DE16FE10059B057 /* AppDelegate.swift */; };
 		84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D01DE16FE10059B057 /* ViewController.swift */; };
 		84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D21DE16FE10059B057 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		8426418C1DF2B1E500EAB5CE /* Locations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Locations.storyboard; sourceTree = "<group>"; };
 		8426418E1DF2B24600EAB5CE /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		842641901DF2B25A00EAB5CE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		84A236871DF2D43C0028BDD7 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		84CB42CB1DE16FE10059B057 /* MedicalExaminationSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalExaminationSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB42CE1DE16FE10059B057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CB42D01DE16FE10059B057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 			path = Locations;
 			sourceTree = "<group>";
 		};
+		84A236861DF2D41D0028BDD7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84A236871DF2D43C0028BDD7 /* AppTheme.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		84CB42C21DE16FE00059B057 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
+				84A236861DF2D41D0028BDD7 /* Common */,
 				842641871DF2B08800EAB5CE /* News */,
 				842641891DF2B0A000EAB5CE /* Locations */,
 				842641881DF2B09400EAB5CE /* Schedule */,
@@ -518,6 +529,7 @@
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
+				84A236881DF2D43C0028BDD7 /* AppTheme.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */,
