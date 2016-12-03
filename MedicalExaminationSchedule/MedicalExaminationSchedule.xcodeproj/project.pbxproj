@@ -20,6 +20,9 @@
 		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
 		91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */; };
 		ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */; };
+		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
+		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
+		D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
 		B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.debug.xcconfig"; sourceTree = "<group>"; };
+		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
+		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +126,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
 				84CB42FF1DE199A10059B057 /* Account */,
 				84CB42CE1DE16FE10059B057 /* AppDelegate.swift */,
 				84CB42D01DE16FE10059B057 /* ViewController.swift */,
@@ -128,6 +135,8 @@
 				84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */,
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
+				D2DE92591DF2A84D000C9BC7 /* Define.swift */,
+				D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */,
 			);
 			path = MedicalExaminationSchedule;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */,
@@ -450,9 +460,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
+				D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);

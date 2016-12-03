@@ -22,6 +22,16 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
+        self.setupComponent()
+    }
+    
+    func setupComponent() -> Void {
+        ProjectCommon.boundView(button: registerAccountButton)
+        ProjectCommon.boundView(button: googleSignInButton)
+        ProjectCommon.boundView(button: facebookSignInButton)
+        ProjectCommon.boundView(button: signInButton)
+        ProjectCommon.boundView(button: passwordTextField)
+        ProjectCommon.boundView(button: userNameTextField)
     }
 
     @IBAction func tappedRegisterAccount(_ sender: Any) {

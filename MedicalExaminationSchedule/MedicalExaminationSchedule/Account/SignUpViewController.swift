@@ -16,7 +16,6 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var accountTypeButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
@@ -31,7 +30,21 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
 
     override func viewWillAppear(_ animated: Bool) {
         self.setupScrollView()
+        self.setupComponent()
     }
+    
+    func setupComponent() -> Void {
+        ProjectCommon.boundView(button: femaleButton)
+        ProjectCommon.boundView(button: maleButton)
+        ProjectCommon.boundView(button: signInButton)
+        ProjectCommon.boundView(button: registerButton)
+        ProjectCommon.boundView(button: passwordTextField)
+        ProjectCommon.boundView(button: phoneTextField)
+        ProjectCommon.boundView(button: addressTextField)
+        ProjectCommon.boundView(button: nameTextField)
+        ProjectCommon.boundView(button: emailTextField)
+    }
+    
     @IBAction func tappedChooseAccountType(_ sender: Any) {
         
     }
