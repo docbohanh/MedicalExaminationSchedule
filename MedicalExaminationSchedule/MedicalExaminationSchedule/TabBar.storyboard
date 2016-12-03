@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AHB-b1-9j2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AHB-b1-9j2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
         <scene sceneID="QGs-al-gX2">
             <objects>
                 <viewControllerPlaceholder storyboardName="News" id="3ki-h1-3Cg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="G9y-gm-1yX"/>
+                    <tabBarItem key="tabBarItem" title="Bảng Tin" id="G9y-gm-1yX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpp-cV-7MW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
         <scene sceneID="7Xm-6E-Ezd">
             <objects>
                 <viewControllerPlaceholder storyboardName="Locations" id="1P3-WR-fJ9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R1F-zS-jL6"/>
+                    <tabBarItem key="tabBarItem" title="Địa điểm" id="R1F-zS-jL6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHl-hQ-SZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,21 +52,21 @@
         <scene sceneID="5Js-x7-xtO">
             <objects>
                 <viewControllerPlaceholder storyboardName="Schedule" id="Lqp-MH-dNy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Wtq-cA-Vts"/>
+                    <tabBarItem key="tabBarItem" title="Đặt lịch" id="Wtq-cA-Vts"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWM-8D-XqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1469" y="-456"/>
+            <point key="canvasLocation" x="-1468" y="-422"/>
         </scene>
         <!--More-->
         <scene sceneID="1rf-QS-UIE">
             <objects>
                 <viewControllerPlaceholder storyboardName="More" id="lWF-IQ-nrB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hFO-ig-Uuw"/>
+                    <tabBarItem key="tabBarItem" title="Thêm" id="hFO-ig-Uuw"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gt7-t9-XSg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1473" y="-381"/>
+            <point key="canvasLocation" x="-1449" y="-285"/>
         </scene>
     </scenes>
 </document>
