@@ -23,6 +23,7 @@
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
 		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
 		D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */; };
+		D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
+		D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileWithFacebookViewController.swift; path = Account/UpdateProfileWithFacebookViewController.swift; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 			children = (
 				84CB43001DE19A3C0059B057 /* SignInViewController.swift */,
 				84CB43021DE1B4270059B057 /* SignUpViewController.swift */,
+				D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
+				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
