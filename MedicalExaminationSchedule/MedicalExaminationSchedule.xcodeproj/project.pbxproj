@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */; };
+		842641831DF2AEE800EAB5CE /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641821DF2AEE800EAB5CE /* TabBar.storyboard */; };
+		8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418A1DF2B16B00EAB5CE /* News.storyboard */; };
+		8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418C1DF2B1E500EAB5CE /* Locations.storyboard */; };
+		8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418E1DF2B24600EAB5CE /* Schedule.storyboard */; };
+		842641911DF2B25A00EAB5CE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641901DF2B25A00EAB5CE /* More.storyboard */; };
 		84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42CE1DE16FE10059B057 /* AppDelegate.swift */; };
 		84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D01DE16FE10059B057 /* ViewController.swift */; };
 		84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D21DE16FE10059B057 /* Main.storyboard */; };
@@ -49,6 +54,11 @@
 		581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.release.xcconfig"; sourceTree = "<group>"; };
+		842641821DF2AEE800EAB5CE /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		8426418A1DF2B16B00EAB5CE /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		8426418C1DF2B1E500EAB5CE /* Locations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Locations.storyboard; sourceTree = "<group>"; };
+		8426418E1DF2B24600EAB5CE /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
+		842641901DF2B25A00EAB5CE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		84CB42CB1DE16FE10059B057 /* MedicalExaminationSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalExaminationSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB42CE1DE16FE10059B057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CB42D01DE16FE10059B057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +111,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		842641861DF2B07E00EAB5CE /* More */ = {
+			isa = PBXGroup;
+			children = (
+				842641901DF2B25A00EAB5CE /* More.storyboard */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		842641871DF2B08800EAB5CE /* News */ = {
+			isa = PBXGroup;
+			children = (
+				8426418A1DF2B16B00EAB5CE /* News.storyboard */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		842641881DF2B09400EAB5CE /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				8426418E1DF2B24600EAB5CE /* Schedule.storyboard */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		842641891DF2B0A000EAB5CE /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				8426418C1DF2B1E500EAB5CE /* Locations.storyboard */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
 		84CB42C21DE16FE00059B057 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
+				842641871DF2B08800EAB5CE /* News */,
+				842641891DF2B0A000EAB5CE /* Locations */,
+				842641881DF2B09400EAB5CE /* Schedule */,
+				842641861DF2B07E00EAB5CE /* More */,
 				84CB42FF1DE199A10059B057 /* Account */,
 				84CB42CE1DE16FE10059B057 /* AppDelegate.swift */,
 				84CB42D01DE16FE10059B057 /* ViewController.swift */,
@@ -137,6 +183,7 @@
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
 				D2DE92591DF2A84D000C9BC7 /* Define.swift */,
 				D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */,
+				842641821DF2AEE800EAB5CE /* TabBar.storyboard */,
 			);
 			path = MedicalExaminationSchedule;
 			sourceTree = "<group>";
@@ -309,10 +356,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842641831DF2AEE800EAB5CE /* TabBar.storyboard in Resources */,
+				842641911DF2B25A00EAB5CE /* More.storyboard in Resources */,
+				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
+				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */,
+				8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -635,6 +688,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
