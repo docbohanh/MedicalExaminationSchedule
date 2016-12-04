@@ -25,6 +25,9 @@
 		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
 		91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */; };
 		ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */; };
+		D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */; };
+		D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */; };
+		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
 		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
 		D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */; };
@@ -81,6 +84,9 @@
 		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
 		B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.debug.xcconfig"; sourceTree = "<group>"; };
+		D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
+		D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTableViewCell.xib; sourceTree = "<group>"; };
+		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
@@ -122,7 +128,9 @@
 		842641861DF2B07E00EAB5CE /* More */ = {
 			isa = PBXGroup;
 			children = (
+				D212650A1DF39F5200C70F83 /* cells */,
 				842641901DF2B25A00EAB5CE /* More.storyboard */,
+				D212650F1DF3A06300C70F83 /* MoreViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -248,6 +256,15 @@
 				581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D212650A1DF39F5200C70F83 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */,
+				D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		D2DE92611DF2D92B000C9BC7 /* Cells */ = {
@@ -381,6 +398,7 @@
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
+				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */,
@@ -540,7 +558,9 @@
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */,
+				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
+				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);
