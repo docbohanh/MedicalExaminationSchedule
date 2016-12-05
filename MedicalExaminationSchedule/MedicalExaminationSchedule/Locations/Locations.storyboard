@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mea-H6-55q">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,8 +14,9 @@
         <!--Địa điểm-->
         <scene sceneID="vD3-dm-vXP">
             <objects>
-                <navigationController id="mea-H6-55q" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="mea-H6-55q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Địa điểm" image="ic_location_map" id="bbT-I2-OgY"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OP9-fB-cbi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -26,42 +28,48 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNU-AD-DxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-540" y="240"/>
+            <point key="canvasLocation" x="-1380" y="239"/>
         </scene>
-        <!--View Controller-->
+        <!--Doctor Address List View Controller-->
         <scene sceneID="ViS-Qo-eD2">
             <objects>
-                <viewController id="q6e-23-Z16" sceneMemberID="viewController">
+                <viewController id="q6e-23-Z16" customClass="DoctorAddressListViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ngV-Qe-509"/>
                         <viewControllerLayoutGuide type="bottom" id="9bd-t3-XKC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ifi-Xq-GZt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cq1-B9-wps">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tìm kiếm..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PtP-dG-2T6">
-                                        <rect key="frame" x="10" y="27" width="314" height="30"/>
+                                        <rect key="frame" x="10" y="27" width="220" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="q6e-23-Z16" id="9KF-9X-3mR"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui4-Ej-WPU">
-                                        <rect key="frame" x="374" y="27" width="30" height="30"/>
+                                        <rect key="frame" x="280" y="27" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="xM3-7g-Fyk"/>
                                         </constraints>
                                         <state key="normal" image="ic_map"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-eX-oTr">
-                                        <rect key="frame" x="334" y="27" width="30" height="30"/>
+                                        <rect key="frame" x="240" y="27" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="M7n-c9-k3S"/>
                                         </constraints>
                                         <state key="normal" image="ic_search"/>
+                                        <connections>
+                                            <action selector="tappedSearch:" destination="q6e-23-Z16" eventType="touchUpInside" id="UW9-tD-u9E"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.23529411764705882" green="0.50196078431372548" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,45 +88,71 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-el-Rme">
-                                <rect key="frame" x="0.0" y="64" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVs-1k-dQN">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Bệnh viện">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedHospitalSearch:" destination="q6e-23-Z16" eventType="touchUpInside" id="kBE-Ss-SIX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRO-Uc-KF9">
-                                        <rect key="frame" x="206.66666666666669" y="0.0" width="104.00000000000006" height="40"/>
+                                        <rect key="frame" x="160" y="0.0" width="80" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Nhà thuốc">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedDrugStoreSearch:" destination="q6e-23-Z16" eventType="touchUpInside" id="Sc0-Qv-xzT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6N-lZ-RIn">
-                                        <rect key="frame" x="310.66666666666669" y="0.0" width="103.66666666666663" height="40"/>
+                                        <rect key="frame" x="240" y="0.0" width="80" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Bác sĩ">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedDoctorSearch:" destination="q6e-23-Z16" eventType="touchUpInside" id="L3f-7h-3np"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REJ-KO-Fhn">
-                                        <rect key="frame" x="103.66666666666666" y="0.0" width="102.99999999999997" height="40"/>
+                                        <rect key="frame" x="80" y="0.0" width="80" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Phòng khám">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tappedClinicSearch:" destination="q6e-23-Z16" eventType="touchUpInside" id="x0s-Gg-XLY"/>
+                                        </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Khq-vr-FTN">
+                                        <rect key="frame" x="0.0" y="38" width="80" height="1"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="4tf-in-LKr"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="OVs-1k-dQN" secondAttribute="bottom" id="3Zf-S8-ZPU"/>
+                                    <constraint firstItem="Khq-vr-FTN" firstAttribute="leading" secondItem="4Js-el-Rme" secondAttribute="leading" id="BQS-Kl-DdQ"/>
                                     <constraint firstItem="VRO-Uc-KF9" firstAttribute="top" secondItem="OVs-1k-dQN" secondAttribute="top" id="DlP-1c-wpJ"/>
                                     <constraint firstItem="REJ-KO-Fhn" firstAttribute="leading" secondItem="OVs-1k-dQN" secondAttribute="trailing" id="Efv-0C-be4"/>
                                     <constraint firstItem="s6N-lZ-RIn" firstAttribute="width" secondItem="OVs-1k-dQN" secondAttribute="width" id="KpC-fN-LA1"/>
                                     <constraint firstItem="OVs-1k-dQN" firstAttribute="top" secondItem="4Js-el-Rme" secondAttribute="top" id="UCE-86-Mh8"/>
                                     <constraint firstItem="VRO-Uc-KF9" firstAttribute="leading" secondItem="REJ-KO-Fhn" secondAttribute="trailing" id="W6b-NY-DmM"/>
+                                    <constraint firstItem="Khq-vr-FTN" firstAttribute="width" secondItem="4Js-el-Rme" secondAttribute="width" multiplier="1:4" id="WYB-8A-e3M"/>
                                     <constraint firstAttribute="height" constant="40" id="YT3-8g-g3R"/>
                                     <constraint firstItem="s6N-lZ-RIn" firstAttribute="top" secondItem="OVs-1k-dQN" secondAttribute="top" id="aSv-Y3-Jak"/>
                                     <constraint firstItem="OVs-1k-dQN" firstAttribute="leading" secondItem="4Js-el-Rme" secondAttribute="leading" id="cz5-BC-LFZ"/>
                                     <constraint firstItem="REJ-KO-Fhn" firstAttribute="width" secondItem="OVs-1k-dQN" secondAttribute="width" id="dRV-j5-cpq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Khq-vr-FTN" secondAttribute="bottom" constant="1" id="h5F-Vf-scj"/>
                                     <constraint firstItem="VRO-Uc-KF9" firstAttribute="bottom" secondItem="OVs-1k-dQN" secondAttribute="bottom" id="jys-Ou-tdI"/>
                                     <constraint firstItem="REJ-KO-Fhn" firstAttribute="bottom" secondItem="OVs-1k-dQN" secondAttribute="bottom" id="kTp-gR-fJM"/>
                                     <constraint firstItem="REJ-KO-Fhn" firstAttribute="top" secondItem="OVs-1k-dQN" secondAttribute="top" id="nD7-Na-mrt"/>
@@ -129,33 +163,75 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nk8-q5-dw4">
-                                <rect key="frame" x="0.0" y="104" width="414" height="583"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="327"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="BVM-QT-nu4">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="110"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DoctorAddressTableViewCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DoctorAddressTableViewCell" rowHeight="110" id="BVM-QT-nu4" customClass="DoctorAddressTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BVM-QT-nu4" id="7rY-5F-zpG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="109.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="109"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zAy-UK-3KH">
-                                                    <rect key="frame" x="10" y="15" width="80" height="80"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_name" translatesAutoresizingMaskIntoConstraints="NO" id="zAy-UK-3KH">
+                                                    <rect key="frame" x="18" y="17" width="75" height="75"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="Ihb-De-LZx"/>
-                                                        <constraint firstAttribute="width" constant="80" id="RnG-qM-kfH"/>
+                                                        <constraint firstAttribute="height" constant="75" id="HSL-S7-2da"/>
+                                                        <constraint firstAttribute="width" constant="75" id="ULk-MN-1Dv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr.Nguyễn Hải Đăng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-wI-SDt">
+                                                    <rect key="frame" x="103" y="17" width="184" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Zjb-ON-crI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số 56- ngõ 5 - Trường Chinh -Phương Liệt- Thanh Xuân - Hà Nội" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiR-de-ke8">
+                                                    <rect key="frame" x="138" y="47" width="149" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="68d-5Q-EvP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.34505695104598999" green="0.34512165188789368" blue="0.34505286812782288" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_location" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-3n-Vij">
+                                                    <rect key="frame" x="103" y="57" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="VPi-9H-PaC"/>
+                                                        <constraint firstAttribute="height" constant="30" id="qCM-ra-fl0"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zAy-UK-3KH" firstAttribute="leading" secondItem="7rY-5F-zpG" secondAttribute="leading" constant="10" id="zgU-EE-z6Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wke-wI-SDt" secondAttribute="trailing" id="9i1-Ws-MVm"/>
+                                                <constraint firstItem="kiR-de-ke8" firstAttribute="centerY" secondItem="qwU-3n-Vij" secondAttribute="centerY" id="9xu-vc-vBF"/>
+                                                <constraint firstItem="zAy-UK-3KH" firstAttribute="leading" secondItem="7rY-5F-zpG" secondAttribute="leadingMargin" constant="10" id="KVG-zV-Byw"/>
+                                                <constraint firstItem="Wke-wI-SDt" firstAttribute="top" secondItem="zAy-UK-3KH" secondAttribute="top" id="LYA-2M-nE4"/>
+                                                <constraint firstItem="kiR-de-ke8" firstAttribute="top" secondItem="Wke-wI-SDt" secondAttribute="bottom" id="OZ8-60-4gf"/>
+                                                <constraint firstItem="zAy-UK-3KH" firstAttribute="centerY" secondItem="7rY-5F-zpG" secondAttribute="centerY" id="TxC-JJ-DoF"/>
+                                                <constraint firstItem="Wke-wI-SDt" firstAttribute="leading" secondItem="zAy-UK-3KH" secondAttribute="trailing" constant="10" id="iAs-1K-VaB"/>
+                                                <constraint firstItem="qwU-3n-Vij" firstAttribute="leading" secondItem="Wke-wI-SDt" secondAttribute="leading" id="iaf-4r-6p4"/>
+                                                <constraint firstItem="kiR-de-ke8" firstAttribute="leading" secondItem="qwU-3n-Vij" secondAttribute="trailing" constant="5" id="mQJ-VI-spR"/>
+                                                <constraint firstAttribute="trailing" secondItem="kiR-de-ke8" secondAttribute="trailing" id="z4D-1v-O1E"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="zAy-UK-3KH" firstAttribute="centerY" secondItem="BVM-QT-nu4" secondAttribute="centerY" id="Oae-jH-yhb"/>
-                                        </constraints>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="zAy-UK-3KH" id="Q9Z-YY-B6G"/>
+                                            <outlet property="doctorAddressLabel" destination="kiR-de-ke8" id="Tmj-lo-sYM"/>
+                                            <outlet property="doctorNameLabel" destination="Wke-wI-SDt" id="MYj-LF-3Dd"/>
+                                            <outlet property="locationIconImageView" destination="qwU-3n-Vij" id="knL-bz-CQd"/>
+                                            <segue destination="gmL-KV-m79" kind="push" id="aPh-Hf-dvf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="q6e-23-Z16" id="PEr-X9-2nH"/>
+                                    <outlet property="delegate" destination="q6e-23-Z16" id="q3h-jr-TYA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -174,15 +250,77 @@
                     </view>
                     <navigationItem key="navigationItem" id="i1v-Rl-bbk"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="clinicButton" destination="REJ-KO-Fhn" id="EjI-ZR-b1G"/>
+                        <outlet property="doctorAddressTableView" destination="Nk8-q5-dw4" id="aMF-rH-YSt"/>
+                        <outlet property="doctorButton" destination="s6N-lZ-RIn" id="gmm-9A-fYa"/>
+                        <outlet property="drugStore" destination="VRO-Uc-KF9" id="RQD-tb-eCi"/>
+                        <outlet property="hospitalButton" destination="OVs-1k-dQN" id="3b8-3L-H1E"/>
+                        <outlet property="mapButton" destination="Ui4-Ej-WPU" id="eQy-2l-MXj"/>
+                        <outlet property="searchButton" destination="Lpc-eX-oTr" id="O6c-Ij-w3b"/>
+                        <outlet property="searchTextField" destination="PtP-dG-2T6" id="nsw-PJ-4iV"/>
+                        <outlet property="searchView" destination="Cq1-B9-wps" id="BqL-dp-fPL"/>
+                        <outlet property="segmentView" destination="4Js-el-Rme" id="eiP-mB-QFp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liQ-yY-PoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="205.79710144927537" y="239.67391304347828"/>
+            <point key="canvasLocation" x="204.375" y="238.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GzN-RX-H60">
+            <objects>
+                <viewController id="gmL-KV-m79" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rz6-CJ-hfM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vf7-v0-h35"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vyz-Cm-vGb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ke6-tx-QFz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr.Nguyễn Hải Đăng" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bq-0S-6L0">
+                                        <rect key="frame" x="50" y="20" width="220" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="1yI-w9-tzr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.098894216120243073" green="0.44752633571624756" blue="0.76723611354827881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9Bq-0S-6L0" firstAttribute="top" secondItem="ke6-tx-QFz" secondAttribute="top" constant="20" id="AXz-bY-MkM"/>
+                                    <constraint firstAttribute="height" constant="108" id="IyI-b5-kxl"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Bq-0S-6L0" secondAttribute="trailing" constant="50" id="uxv-rt-xta"/>
+                                    <constraint firstItem="9Bq-0S-6L0" firstAttribute="leading" secondItem="ke6-tx-QFz" secondAttribute="leading" constant="50" id="y81-0l-d3F"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ke6-tx-QFz" firstAttribute="top" secondItem="Vyz-Cm-vGb" secondAttribute="top" id="Iio-ie-iri"/>
+                            <constraint firstItem="ke6-tx-QFz" firstAttribute="leading" secondItem="Vyz-Cm-vGb" secondAttribute="leading" id="bKi-Lm-ZxJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ke6-tx-QFz" secondAttribute="trailing" id="yQz-RL-c5k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oTv-4K-e6z"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLq-OX-yzD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="278"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_location" width="20" height="20"/>
         <image name="ic_location_map" width="25" height="25"/>
         <image name="ic_map" width="22" height="22"/>
         <image name="ic_search" width="22" height="22"/>
+        <image name="ic_user_name" width="20" height="20"/>
     </resources>
 </document>

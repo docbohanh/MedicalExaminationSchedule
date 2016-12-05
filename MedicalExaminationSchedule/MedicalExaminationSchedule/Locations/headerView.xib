@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="headerView" id="iN0-l3-epB" customClass="headerView" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đa khoa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5t-KI-JXK">
+                    <rect key="frame" x="10" y="0.0" width="355" height="30"/>
+                    <color key="backgroundColor" red="0.92931067943572998" green="0.92946994304656982" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.40685281157493591" blue="0.7598949670791626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="E5t-KI-JXK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="60h-Tu-wQn"/>
+                <constraint firstItem="E5t-KI-JXK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="BLL-jA-FKi"/>
+                <constraint firstAttribute="bottom" secondItem="E5t-KI-JXK" secondAttribute="bottom" id="GIA-Ja-EeO"/>
+                <constraint firstAttribute="trailing" secondItem="E5t-KI-JXK" secondAttribute="trailing" constant="10" id="nlF-Rb-5fz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
