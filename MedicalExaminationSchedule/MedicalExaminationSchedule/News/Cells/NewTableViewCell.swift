@@ -22,10 +22,11 @@ class NewTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func tappedLikeButton(_ sender: Any) {
+    @IBAction func tappedShareFacebookButton(_ sender: UIButton) {
     }
-    @IBAction func tappedShareButton(_ sender: Any) {
+    @IBAction func tappedLikeFaceBookButton(_ sender: UIButton) {
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 

@@ -134,7 +134,7 @@
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="tappedShareButton:" destination="RP0-1M-BXl" eventType="touchUpInside" id="smz-RC-W1k"/>
+                                                                <action selector="tappedShareFacebookButton:" destination="RP0-1M-BXl" eventType="touchUpInside" id="XJh-78-XpJ"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jct-jp-aO8">
@@ -145,7 +145,7 @@
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="tappedLikeButton:" destination="RP0-1M-BXl" eventType="touchUpInside" id="Fd3-JQ-4sF"/>
+                                                                <action selector="tappedLikeFaceBookButton:" destination="RP0-1M-BXl" eventType="touchUpInside" id="UZV-1x-aw2"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -186,10 +186,8 @@
                                         <connections>
                                             <outlet property="createTimeLabel" destination="MaV-yH-0Oc" id="iiZ-KE-cs0"/>
                                             <outlet property="detailLabel" destination="DdT-lw-d6a" id="vdr-n6-0Rq"/>
-                                            <outlet property="likeButton" destination="jct-jp-aO8" id="vYN-Lt-JSf"/>
                                             <outlet property="newImageView" destination="Y4e-pz-Y3K" id="CRy-By-y9S"/>
                                             <outlet property="newTitleLabel" destination="uZo-wk-8mC" id="OZH-7n-5rJ"/>
-                                            <outlet property="shareButton" destination="dEM-QK-Amt" id="t0o-pY-3o8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
