@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorManagementViewController: UIViewController {
+class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate {
 
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -28,7 +28,7 @@ class DoctorManagementViewController: UIViewController {
     @IBOutlet weak var makeRateImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var sendCommentButton: UIButton!
-    
+    private weak var calendar: FSCalendar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,7 @@ class DoctorManagementViewController: UIViewController {
     }
     
     @IBAction func tappedBookSchedule(_ sender: Any) {
+        self.bookSchedule()
     }
     
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
@@ -78,6 +79,27 @@ class DoctorManagementViewController: UIViewController {
         commentView.isHidden = false
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
+        
+    }
+    
+    func bookSchedule() {
+        
+        let calendar = FSCalendar(frame: CGRect(x: 0, y: rateImageView.frame.size.height + rateImageView.frame.origin.y + 20 , width: self.view.bounds.width, height: 300))
+        calendar.dataSource = self
+        calendar.delegate = self
+        calendar.backgroundColor = UIColor.white
+        calendar.scopeGesture.isEnabled = true
+        backgroundScrollView.addSubview(calendar)
+    }
+    // Update your frame
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.frame = CGRect(x: 0, y: self.navigationController!.navigationBar.frame.maxY, width: bounds.width, height: bounds.height)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
