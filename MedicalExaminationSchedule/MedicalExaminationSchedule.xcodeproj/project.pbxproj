@@ -13,6 +13,7 @@
 		8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418C1DF2B1E500EAB5CE /* Locations.storyboard */; };
 		8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418E1DF2B24600EAB5CE /* Schedule.storyboard */; };
 		842641911DF2B25A00EAB5CE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641901DF2B25A00EAB5CE /* More.storyboard */; };
+		84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
@@ -70,6 +71,7 @@
 		8426418C1DF2B1E500EAB5CE /* Locations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Locations.storyboard; sourceTree = "<group>"; };
 		8426418E1DF2B24600EAB5CE /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		842641901DF2B25A00EAB5CE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorManagementViewController.swift; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		842641891DF2B0A000EAB5CE /* Locations */ = {
 			isa = PBXGroup;
 			children = (
+				84321D521DF6C36300CCA4D4 /* DoctorManagement */,
 				8426418C1DF2B1E500EAB5CE /* Locations.storyboard */,
 				845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */,
 				845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */,
@@ -171,6 +174,14 @@
 				845D5A291DF5EDAF00BDA45C /* headerView.xib */,
 			);
 			path = Locations;
+			sourceTree = "<group>";
+		};
+		84321D521DF6C36300CCA4D4 /* DoctorManagement */ = {
+			isa = PBXGroup;
+			children = (
+				84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */,
+			);
+			path = DoctorManagement;
 			sourceTree = "<group>";
 		};
 		84CB42C21DE16FE00059B057 = {
@@ -570,6 +581,7 @@
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
 				845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */,
 				845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */,
+				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,

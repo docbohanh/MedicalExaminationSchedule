@@ -29,10 +29,12 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     @IBOutlet weak var doctorAddressTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidLayoutSubviews() {
+        
+    }
     @IBAction func tappedSearch(_ sender: UIButton) {
     }
     
@@ -78,7 +80,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

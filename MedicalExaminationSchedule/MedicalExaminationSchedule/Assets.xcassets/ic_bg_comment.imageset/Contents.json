@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "ic_bg_comment.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bg_splash@2x.png",
+      "filename" : "ic_bg_comment@2x.png",
       "scale" : "2x"
     },
     {
