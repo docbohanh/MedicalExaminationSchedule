@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SelectGenderTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chuyên ngành" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlX-gS-9QT">
+                        <rect key="frame" x="15" y="13" width="95" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="zPf-cl-gpO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccQ-Ae-SRl">
+                        <rect key="frame" x="120" y="8.5" width="87.5" height="25"/>
+                        <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="UOw-Uy-zFJ"/>
+                        </constraints>
+                        <state key="normal" title="Nam">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="tappedMaleButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S6z-hb-fIZ"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19q-gC-p3P">
+                        <rect key="frame" x="217.5" y="9.5" width="87.5" height="25"/>
+                        <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="CAN-6o-1AT"/>
+                        </constraints>
+                        <state key="normal" title="Nữ">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="tappedFemaleButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tRn-nR-tgT"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xlX-gS-9QT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6G6-Xx-OZd"/>
+                    <constraint firstItem="ccQ-Ae-SRl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PXP-Uy-LXm"/>
+                    <constraint firstItem="19q-gC-p3P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UQJ-Wn-lt6"/>
+                    <constraint firstItem="xlX-gS-9QT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Y6J-FW-wk7"/>
+                    <constraint firstItem="ccQ-Ae-SRl" firstAttribute="leading" secondItem="xlX-gS-9QT" secondAttribute="trailing" constant="10" id="ar8-s0-ZwE"/>
+                    <constraint firstItem="19q-gC-p3P" firstAttribute="width" secondItem="ccQ-Ae-SRl" secondAttribute="width" id="feB-Gn-Lqr"/>
+                    <constraint firstAttribute="trailing" secondItem="19q-gC-p3P" secondAttribute="trailing" constant="15" id="fjg-zs-NLf"/>
+                    <constraint firstItem="19q-gC-p3P" firstAttribute="leading" secondItem="ccQ-Ae-SRl" secondAttribute="trailing" constant="10" id="rWM-F1-xfc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="femaleButton" destination="19q-gC-p3P" id="T1r-E9-QJM"/>
+                <outlet property="maleButton" destination="ccQ-Ae-SRl" id="BTQ-NW-wxL"/>
+                <outlet property="titleLabel" destination="xlX-gS-9QT" id="Wpk-qy-7qL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

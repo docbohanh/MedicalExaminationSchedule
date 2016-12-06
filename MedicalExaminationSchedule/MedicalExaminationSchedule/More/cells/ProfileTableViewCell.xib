@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="KGk-i7-Jjw" customClass="ProfileTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76P-8p-k79">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qe2-FM-7S6">
+                        <rect key="frame" x="112.5" y="15" width="95" height="90"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar_map" translatesAutoresizingMaskIntoConstraints="NO" id="VOO-ME-jvd">
+                                <rect key="frame" x="7.5" y="5" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="0vZ-uV-0CW"/>
+                                    <constraint firstAttribute="height" constant="80" id="AT4-ZJ-vEp"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit_avar" translatesAutoresizingMaskIntoConstraints="NO" id="au3-Gu-Rwa">
+                                <rect key="frame" x="65" y="60" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="rsQ-3R-Rzk"/>
+                                    <constraint firstAttribute="height" constant="30" id="xYt-NO-sgF"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hz-ck-a9z">
+                                <rect key="frame" x="0.0" y="0.0" width="95" height="90"/>
+                                <connections>
+                                    <action selector="tappedEditAvatarButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MZX-8p-WYZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="au3-Gu-Rwa" secondAttribute="bottom" id="EgB-8Y-Asf"/>
+                            <constraint firstAttribute="trailing" secondItem="au3-Gu-Rwa" secondAttribute="trailing" id="G8T-yG-poR"/>
+                            <constraint firstAttribute="height" constant="90" id="IrY-ED-3cF"/>
+                            <constraint firstItem="5hz-ck-a9z" firstAttribute="top" secondItem="qe2-FM-7S6" secondAttribute="top" id="WyI-pi-xDb"/>
+                            <constraint firstAttribute="bottom" secondItem="5hz-ck-a9z" secondAttribute="bottom" id="ioy-CG-3Uj"/>
+                            <constraint firstAttribute="width" constant="95" id="qgO-0W-398"/>
+                            <constraint firstItem="VOO-ME-jvd" firstAttribute="centerY" secondItem="qe2-FM-7S6" secondAttribute="centerY" id="wHr-EC-swC"/>
+                            <constraint firstItem="5hz-ck-a9z" firstAttribute="leading" secondItem="qe2-FM-7S6" secondAttribute="leading" id="x9O-nx-aAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5hz-ck-a9z" secondAttribute="trailing" id="xir-KR-W4F"/>
+                            <constraint firstItem="VOO-ME-jvd" firstAttribute="centerX" secondItem="qe2-FM-7S6" secondAttribute="centerX" id="zfw-W8-ZyM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="76P-8p-k79" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2YQ-tT-zww"/>
+                    <constraint firstAttribute="trailing" secondItem="76P-8p-k79" secondAttribute="trailing" id="4ia-H7-lBD"/>
+                    <constraint firstItem="qe2-FM-7S6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="AD5-va-n6w"/>
+                    <constraint firstItem="76P-8p-k79" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CXY-Al-Roe"/>
+                    <constraint firstAttribute="bottom" secondItem="qe2-FM-7S6" secondAttribute="bottom" constant="15" id="KaL-jt-gTv"/>
+                    <constraint firstItem="76P-8p-k79" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:2" id="OBX-5C-BXS"/>
+                    <constraint firstItem="qe2-FM-7S6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZYc-ZO-ME4"/>
+                    <constraint firstItem="qe2-FM-7S6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="aeM-PA-kOd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="VOO-ME-jvd" id="xRj-if-dc4"/>
+            </connections>
+            <point key="canvasLocation" x="89" y="67"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_avar_map" width="36" height="36"/>
+        <image name="ic_edit_avar" width="30" height="30"/>
+    </resources>
+</document>

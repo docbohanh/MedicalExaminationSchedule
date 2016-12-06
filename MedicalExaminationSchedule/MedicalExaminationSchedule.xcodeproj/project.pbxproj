@@ -37,6 +37,8 @@
 		84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84321D811DF7469100CCA4D4 /* FSCalendarStickyHeader.m */; };
 		84321D931DF7469200CCA4D4 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84321D831DF7469100CCA4D4 /* FSCalendarWeekdayView.m */; };
 		84321D941DF7469200CCA4D4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84321D841DF7469100CCA4D4 /* Info.plist */; };
+		84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D971DF752D000CCA4D4 /* AppTheme.swift */; };
+		84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D981DF752D000CCA4D4 /* ProjectCommon.swift */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
@@ -56,9 +58,20 @@
 		D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */; };
 		D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */; };
 		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
+		D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */; };
+		D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */; };
+		D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */; };
+		D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C3A1DF7241E0000815B /* SelectGenderTableViewCell.swift */; };
+		D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C3B1DF7241E0000815B /* SelectGenderTableViewCell.xib */; };
+		D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C3E1DF7260A0000815B /* ProfileTableViewCell.swift */; };
+		D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C3F1DF7260A0000815B /* ProfileTableViewCell.xib */; };
+		D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C421DF729860000815B /* UpdateUserViewController.swift */; };
+		D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C451DF738570000815B /* ChangeAvatarView.swift */; };
+		D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C471DF738660000815B /* CreateCommentView.xib */; };
+		D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */; };
+		D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C4B1DF743430000815B /* CreateCommentView.swift */; };
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
 		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
-		D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */; };
 		D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */; };
 		D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */; };
 		D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */; };
@@ -134,6 +147,8 @@
 		84321D831DF7469100CCA4D4 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		84321D841DF7469100CCA4D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84321D951DF74A0800CCA4D4 /* Objc-Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objc-Bridge-Header.h"; sourceTree = "<group>"; };
+		84321D971DF752D000CCA4D4 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		84321D981DF752D000CCA4D4 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -159,9 +174,20 @@
 		D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTableViewCell.xib; sourceTree = "<group>"; };
 		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNewViewController.swift; sourceTree = "<group>"; };
+		D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNormalTableViewCell.swift; sourceTree = "<group>"; };
+		D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldNormalTableViewCell.xib; sourceTree = "<group>"; };
+		D29E8C3A1DF7241E0000815B /* SelectGenderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenderTableViewCell.swift; sourceTree = "<group>"; };
+		D29E8C3B1DF7241E0000815B /* SelectGenderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGenderTableViewCell.xib; sourceTree = "<group>"; };
+		D29E8C3E1DF7260A0000815B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D29E8C3F1DF7260A0000815B /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		D29E8C421DF729860000815B /* UpdateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserViewController.swift; sourceTree = "<group>"; };
+		D29E8C451DF738570000815B /* ChangeAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeAvatarView.swift; sourceTree = "<group>"; };
+		D29E8C471DF738660000815B /* CreateCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCommentView.xib; sourceTree = "<group>"; };
+		D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeAvatarView.xib; sourceTree = "<group>"; };
+		D29E8C4B1DF743430000815B /* CreateCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCommentView.swift; sourceTree = "<group>"; };
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
-		D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
 		D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileWithFacebookViewController.swift; path = Account/UpdateProfileWithFacebookViewController.swift; sourceTree = "<group>"; };
 		D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_new_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,9 +226,11 @@
 		842641861DF2B07E00EAB5CE /* More */ = {
 			isa = PBXGroup;
 			children = (
+				D29E8C441DF738300000815B /* Popup */,
 				D212650A1DF39F5200C70F83 /* cells */,
 				842641901DF2B25A00EAB5CE /* More.storyboard */,
 				D212650F1DF3A06300C70F83 /* MoreViewController.swift */,
+				D29E8C421DF729860000815B /* UpdateUserViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -213,6 +241,7 @@
 				D2DE92611DF2D92B000C9BC7 /* Cells */,
 				8426418A1DF2B16B00EAB5CE /* News.storyboard */,
 				D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */,
+				D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -308,6 +337,15 @@
 			path = FSCalendar;
 			sourceTree = "<group>";
 		};
+		84321D961DF752D000CCA4D4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84321D971DF752D000CCA4D4 /* AppTheme.swift */,
+				84321D981DF752D000CCA4D4 /* ProjectCommon.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		84CB42C21DE16FE00059B057 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +373,7 @@
 			children = (
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
 				D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */,
+				84321D961DF752D000CCA4D4 /* Common */,
 				84321D641DF7469100CCA4D4 /* Library */,
 				842641871DF2B08800EAB5CE /* News */,
 				842641891DF2B0A000EAB5CE /* Locations */,
@@ -349,7 +388,6 @@
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
 				D2DE92591DF2A84D000C9BC7 /* Define.swift */,
-				D2DE925B1DF2A87B000C9BC7 /* ProjectCommon.swift */,
 				842641821DF2AEE800EAB5CE /* TabBar.storyboard */,
 			);
 			path = MedicalExaminationSchedule;
@@ -411,8 +449,25 @@
 			children = (
 				D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */,
 				D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */,
+				D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */,
+				D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */,
+				D29E8C3A1DF7241E0000815B /* SelectGenderTableViewCell.swift */,
+				D29E8C3B1DF7241E0000815B /* SelectGenderTableViewCell.xib */,
+				D29E8C3E1DF7260A0000815B /* ProfileTableViewCell.swift */,
+				D29E8C3F1DF7260A0000815B /* ProfileTableViewCell.xib */,
 			);
 			path = cells;
+			sourceTree = "<group>";
+		};
+		D29E8C441DF738300000815B /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				D29E8C451DF738570000815B /* ChangeAvatarView.swift */,
+				D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */,
+				D29E8C4B1DF743430000815B /* CreateCommentView.swift */,
+				D29E8C471DF738660000815B /* CreateCommentView.xib */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		D2DE92611DF2D92B000C9BC7 /* Cells */ = {
@@ -545,16 +600,21 @@
 				842641911DF2B25A00EAB5CE /* More.storyboard in Resources */,
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
+				D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
+				D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */,
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				84321D941DF7469200CCA4D4 /* Info.plist in Resources */,
+				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				84321D5F1DF6DFF100CCA4D4 /* RateHeaderView.xib in Resources */,
 				D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */,
 				84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */,
 				8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */,
+				D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */,
 				845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */,
+				D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +762,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
+				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
@@ -713,6 +775,7 @@
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
+				D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */,
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
@@ -725,15 +788,20 @@
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				84321D8C1DF7469100CCA4D4 /* FSCalendarCollectionViewLayout.m in Sources */,
-				D2DE925C1DF2A87B000C9BC7 /* ProjectCommon.swift in Sources */,
 				84321D881DF7469100CCA4D4 /* FSCalendarAppearance.m in Sources */,
 				84321D871DF7469100CCA4D4 /* FSCalendarAnimator.m in Sources */,
+				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
+				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
+				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
+				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
 				84321D8B1DF7469100CCA4D4 /* FSCalendarCollectionView.m in Sources */,
 				84321D8D1DF7469100CCA4D4 /* FSCalendarConstants.m in Sources */,
 				84321D8A1DF7469100CCA4D4 /* FSCalendarCell.m in Sources */,
 				84321D8F1DF7469200CCA4D4 /* FSCalendarExtensions.m in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
+				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
+				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,

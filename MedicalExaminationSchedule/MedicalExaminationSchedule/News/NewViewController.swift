@@ -19,6 +19,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        newTableView.rowHeight = UITableViewAutomaticDimension;
+        newTableView.estimatedRowHeight = 400.0;
     }
 
     @IBAction func tappedSearchButton(_ sender: Any) {
@@ -43,7 +46,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: "pushToNewDetail", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
