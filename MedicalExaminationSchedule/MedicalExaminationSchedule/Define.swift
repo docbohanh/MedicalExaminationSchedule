@@ -7,4 +7,6 @@
 //
 
 import Foundation
+import UIKit
 
+let COLOR_COMMON = UIColor.init(colorLiteralRed: 52/255.0, green: 126/255.0, blue: 214/255.0, alpha: 1)
