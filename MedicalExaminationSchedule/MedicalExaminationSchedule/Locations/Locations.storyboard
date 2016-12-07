@@ -436,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JVQ-zI-v9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-257.97101449275362" y="958.69565217391312"/>
+            <point key="canvasLocation" x="-583" y="980"/>
         </scene>
         <!--Setup Schedule View Controller-->
         <scene sceneID="jfN-eF-eFN">
@@ -572,6 +572,7 @@
                         <outlet property="rateImageView" destination="lW2-oO-otD" id="Rkz-nQ-UYO"/>
                         <outlet property="scpecializedLabel" destination="FtX-OY-rbb" id="E8m-3s-Uio"/>
                         <segue destination="a4o-UW-M25" kind="show" identifier="setupSchedule" id="aNk-15-HM3"/>
+                        <segue destination="mXT-yv-EXM" kind="show" identifier="setupTimerSchedule" id="QNX-vq-dGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1S-Fc-aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -851,7 +852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RO-ys-FZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220.625" y="988.75"/>
+            <point key="canvasLocation" x="1123" y="959"/>
         </scene>
         <!--Doctor Management View Controller-->
         <scene sceneID="GzN-RX-H60">
@@ -1299,9 +1300,30 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-GC-uVq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="db5-fw-eTf">
+                                                            <size key="itemSize" width="50" height="50"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rUa-zD-2xD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </view>
+                                                            </collectionViewCell>
+                                                        </cells>
+                                                    </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="QBZ-GC-uVq" secondAttribute="trailing" id="1HP-yF-JiU"/>
                                                     <constraint firstItem="QTb-I4-xC2" firstAttribute="leading" secondItem="yuL-Rc-VSY" secondAttribute="leading" constant="16" id="3Ir-bo-dDo"/>
                                                     <constraint firstItem="J7r-J2-IWg" firstAttribute="leading" secondItem="QTb-I4-xC2" secondAttribute="trailing" constant="10" id="6a8-df-PG5"/>
                                                     <constraint firstItem="J7r-J2-IWg" firstAttribute="centerY" secondItem="QTb-I4-xC2" secondAttribute="centerY" id="BwK-0f-dF3"/>
@@ -1309,12 +1331,15 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                     <constraint firstItem="Uog-hx-JS8" firstAttribute="trailing" secondItem="BL2-2H-qOe" secondAttribute="trailing" id="Kau-mz-PrQ"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="width" secondItem="QTb-I4-xC2" secondAttribute="width" id="NYL-Xh-E40"/>
                                                     <constraint firstAttribute="trailing" secondItem="BL2-2H-qOe" secondAttribute="trailing" constant="16" id="XHI-yy-o7Z"/>
+                                                    <constraint firstItem="QBZ-GC-uVq" firstAttribute="top" secondItem="yuL-Rc-VSY" secondAttribute="top" id="blA-lc-ZMR"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="leading" secondItem="QTb-I4-xC2" secondAttribute="leading" id="eZe-ji-dx1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="QBZ-GC-uVq" secondAttribute="bottom" id="gGo-qZ-KYe"/>
                                                     <constraint firstItem="BL2-2H-qOe" firstAttribute="top" secondItem="lE3-tw-J5y" secondAttribute="top" id="la6-HW-ElQ"/>
                                                     <constraint firstItem="Uog-hx-JS8" firstAttribute="top" secondItem="BL2-2H-qOe" secondAttribute="bottom" constant="20" id="njP-6A-QGL"/>
                                                     <constraint firstItem="BL2-2H-qOe" firstAttribute="leading" secondItem="J7r-J2-IWg" secondAttribute="leading" id="pR5-sK-0mi"/>
                                                     <constraint firstItem="QTb-I4-xC2" firstAttribute="top" secondItem="yuL-Rc-VSY" secondAttribute="top" constant="20" id="wnC-W7-t7l"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="top" secondItem="QTb-I4-xC2" secondAttribute="bottom" constant="10" id="yN6-4q-Hne"/>
+                                                    <constraint firstItem="QBZ-GC-uVq" firstAttribute="leading" secondItem="yuL-Rc-VSY" secondAttribute="leading" id="zsf-lu-FGP"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

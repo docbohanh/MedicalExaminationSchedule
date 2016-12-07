@@ -57,7 +57,6 @@
 		8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B47A89E1DF79FF1001868EE /* BottomView.xib */; };
 		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
 		8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */; };
-		8B47A8A51DF7D98F001868EE /* CreateIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */; };
 		8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */; };
 		8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */; };
 		8BF746D01DF83CC8006C9B48 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */; };
@@ -191,7 +190,6 @@
 		8B47A89E1DF79FF1001868EE /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
 		8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDoctorViewController.swift; sourceTree = "<group>"; };
-		8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateIntroduceViewController.swift; sourceTree = "<group>"; };
 		8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPhotoViewController.swift; sourceTree = "<group>"; };
 		8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 				D29E8C421DF729860000815B /* UpdateUserViewController.swift */,
 				8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */,
 				8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */,
-				8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */,
 				8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */,
 			);
 			path = More;
@@ -894,7 +891,6 @@
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				84321D901DF7469200CCA4D4 /* FSCalendarHeaderView.m in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
-				8B47A8A51DF7D98F001868EE /* CreateIntroduceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
