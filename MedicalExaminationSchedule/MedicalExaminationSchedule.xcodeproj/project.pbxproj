@@ -86,6 +86,14 @@
 		D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */; };
 		D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */; };
 		D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */; };
+		EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */; };
+		EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */; };
+		EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */; };
+		EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED191DF81058002DD339 /* SetupTimerTableViewCell.swift */; };
+		EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED1B1DF815B2002DD339 /* SetupTimerHeaderView.swift */; };
+		EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA05ED1D1DF815C2002DD339 /* SetupTimerHeaderView.xib */; };
+		EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */; };
+		EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +220,14 @@
 		D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_new_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupScheduleViewController.swift; sourceTree = "<group>"; };
+		EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setupTimeScheduleViewController.swift; sourceTree = "<group>"; };
+		EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFreeViewController.swift; sourceTree = "<group>"; };
+		EA05ED191DF81058002DD339 /* SetupTimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupTimerTableViewCell.swift; sourceTree = "<group>"; };
+		EA05ED1B1DF815B2002DD339 /* SetupTimerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupTimerHeaderView.swift; sourceTree = "<group>"; };
+		EA05ED1D1DF815C2002DD339 /* SetupTimerHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupTimerHeaderView.xib; sourceTree = "<group>"; };
+		EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceViewController.swift; sourceTree = "<group>"; };
+		EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceTableViewCell.swift; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +262,7 @@
 		842641861DF2B07E00EAB5CE /* More */ = {
 			isa = PBXGroup;
 			children = (
+				EA05ED1F1DF81D7F002DD339 /* setupIntroduce */,
 				D29E8C441DF738300000815B /* Popup */,
 				D212650A1DF39F5200C70F83 /* cells */,
 				842641901DF2B25A00EAB5CE /* More.storyboard */,
@@ -285,6 +302,7 @@
 			children = (
 				84321D551DF6DDFC00CCA4D4 /* Information */,
 				84321D521DF6C36300CCA4D4 /* DoctorManagement */,
+				EA05ED121DF7AA0A002DD339 /* Schedule */,
 				8426418C1DF2B1E500EAB5CE /* Locations.storyboard */,
 				845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */,
 				845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */,
@@ -508,6 +526,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EA05ED121DF7AA0A002DD339 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */,
+				EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */,
+				EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */,
+				EA05ED191DF81058002DD339 /* SetupTimerTableViewCell.swift */,
+				EA05ED1B1DF815B2002DD339 /* SetupTimerHeaderView.swift */,
+				EA05ED1D1DF815C2002DD339 /* SetupTimerHeaderView.xib */,
+			);
+			name = Schedule;
+			path = DoctorManagement/Schedule;
+			sourceTree = "<group>";
+		};
+		EA05ED1F1DF81D7F002DD339 /* setupIntroduce */ = {
+			isa = PBXGroup;
+			children = (
+				EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */,
+				EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */,
+			);
+			path = setupIntroduce;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -584,7 +625,6 @@
 				TargetAttributes = {
 					84CB42CA1DE16FE00059B057 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 78F7F9Y9CK;
 						ProvisioningStyle = Automatic;
 					};
 					84CB42E11DE16FE10059B057 = {
@@ -648,6 +688,7 @@
 				8BF746D11DF83CC8006C9B48 /* PhotoCollectionViewCell.xib in Resources */,
 				845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */,
 				D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */,
+				EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +841,7 @@
 				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
+				EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
@@ -824,8 +866,10 @@
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84321D851DF7469100CCA4D4 /* FSCalendar+Deprecated.m in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
+				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				84321D8C1DF7469100CCA4D4 /* FSCalendarCollectionViewLayout.m in Sources */,
+				EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */,
 				84321D881DF7469100CCA4D4 /* FSCalendarAppearance.m in Sources */,
 				84321D871DF7469100CCA4D4 /* FSCalendarAnimator.m in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
@@ -833,14 +877,18 @@
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
+				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
 				84321D8B1DF7469100CCA4D4 /* FSCalendarCollectionView.m in Sources */,
 				84321D8D1DF7469100CCA4D4 /* FSCalendarConstants.m in Sources */,
+				EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */,
 				84321D8A1DF7469100CCA4D4 /* FSCalendarCell.m in Sources */,
 				84321D8F1DF7469200CCA4D4 /* FSCalendarExtensions.m in Sources */,
+				EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */,
 				8B47A89D1DF79FE2001868EE /* BottomView.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
 				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
 				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
+				EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */,
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
@@ -999,13 +1047,14 @@
 			baseConfigurationReference = CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExamination/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1016,13 +1065,14 @@
 			baseConfigurationReference = 0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExamination/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

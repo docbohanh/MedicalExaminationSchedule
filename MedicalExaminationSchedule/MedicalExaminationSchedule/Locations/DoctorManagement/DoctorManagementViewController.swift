@@ -8,10 +8,11 @@
 
 import UIKit
 
-class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSCalendarDelegate {
+class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
+    @IBOutlet weak var backgroundInformationView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var doctorSpecializedLabel: UILabel!
     @IBOutlet weak var rateImageView: UIImageView!
@@ -29,7 +30,10 @@ class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSC
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var sendCommentButton: UIButton!
     private weak var calendar: FSCalendar!
+    let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên nghành","Nơi làm việc"]
+    let dataTestProfileArray = ["Nguyễn Hải Đăng","Hà Nội","Nam","Đa khoa","Bệnh viện Bạch Mai"]
     
+    @IBOutlet weak var informationTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
@@ -38,6 +42,7 @@ class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSC
 
     func initUI() {
         commentView.isHidden = true
+        informationTableView.isHidden = true
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -51,10 +56,6 @@ class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSC
     @IBAction func tappedCallDoctor(_ sender: UIButton) {
     }
     
-    @IBAction func tappedBookSchedule(_ sender: Any) {
-        self.bookSchedule()
-    }
-    
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
     }
     
@@ -63,44 +64,91 @@ class DoctorManagementViewController: UIViewController,FSCalendarDataSource, FSC
         tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
         doctorHistoryLabel.isHidden = false
         commentView.isHidden = true
+        informationTableView.isHidden = true
+
     }
     
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
-        tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
+        if informationTableView.isHidden {
+            tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.contentSize.height + backgroundInformationView.frame.size.height - 64)
+            
+            backgroundScrollView.scrollRectToVisible(CGRect.init(x: informationTabButton.frame.origin.x, y: backgroundInformationView.frame.size.height - informationTabButton.frame.size.height, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
+            informationTableView.isHidden = false
+            doctorHistoryLabel.isHidden = true
+            commentView.isHidden = true
+        }
     }
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
         tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
+        doctorHistoryLabel.isHidden = true
+        informationTableView.isHidden = true
+        commentView.isHidden = true
     }
     @IBAction func tappedComment(_ sender: UIButton) {
         backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 20)
         tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
         doctorHistoryLabel.isHidden = true
+        informationTableView.isHidden = true
         commentView.isHidden = false
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
         
     }
     
-    func bookSchedule() {
-        
-        let calendar = FSCalendar(frame: CGRect(x: 0, y: rateImageView.frame.size.height + rateImageView.frame.origin.y + 20 , width: self.view.bounds.width, height: 300))
-        calendar.dataSource = self
-        calendar.delegate = self
-        calendar.backgroundColor = UIColor.white
-        calendar.scopeGesture.isEnabled = true
-        backgroundScrollView.addSubview(calendar)
-    }
-    // Update your frame
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        calendar.frame = CGRect(x: 0, y: self.navigationController!.navigationBar.frame.maxY, width: bounds.width, height: bounds.height)
-    }
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        if monthPosition == .previous || monthPosition == .next {
-            calendar.setCurrentPage(date, animated: true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "setupScheduleOfUser" {
+            let setupScheduleViewController = segue.destination as? SetupScheduleViewController
+            setupScheduleViewController?.isDoctor = false
         }
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 5
+        }
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 44
+        }
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 220
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("RateHeaderView", owner: self, options: nil)?.first as! RateHeaderView
+        return headerView
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorProfileTableViewCell", for: indexPath) as! DoctorProfileTableViewCell
+            if titleProfileArray.count > indexPath.row {
+                cell.titleProfileLabel.text = titleProfileArray[indexPath.row]
+                cell.valueProfileLabel.text = dataTestProfileArray[indexPath.row]
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+            return cell
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
