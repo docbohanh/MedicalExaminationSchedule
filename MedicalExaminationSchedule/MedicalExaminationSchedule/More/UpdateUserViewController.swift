@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ProfileTableViewCellDelegate, BottomViewDelegate,ChangeAvatarViewDelegate {
+class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, BottomViewDelegate,ChangeAvatarViewDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +22,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
 
         tableView.rowHeight = UITableViewAutomaticDimension;
@@ -77,6 +77,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         allConstraints += horizontalConstraints
         
         backgroundPopUpView.addConstraints(allConstraints)
+        backgroundPopUpView.isHidden = true
     }
     
     /* ========  TABLE VIEW =========== */
@@ -85,7 +86,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count
+        return titleArray.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,9 +95,11 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
+            cell.avatarImageView.image = imageAvatar
+
             cell.delegate = self
             return cell
-        case (titleArray.count - 1):
+        case titleArray.count:
             strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row-1]
@@ -124,7 +127,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     
     /* ========== PROFILE CELL DELEGATE =========== */
     func changeAvatar() {
-        
+        backgroundPopUpView.isHidden = false
     }
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
@@ -142,16 +145,37 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func deleteAvatar() {
-        
+        backgroundPopUpView.isHidden = true
+        imageAvatar = UIImage.init(named: "ic_avar_map")!
+        tableView.reloadData()
     }
     
     func takePhoto() {
-        
+        backgroundPopUpView.isHidden = true
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .camera
+        present(picker, animated: true, completion: nil)
     }
     
     func chooseFromLibrary() {
-        
+        backgroundPopUpView.isHidden = true
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
     }
+    /* ============= IMAGE PICKER CONTROLLER DELEGATE ========= */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageAvatar = pickedImage
+            tableView.reloadData()
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     
     /*
     // MARK: - Navigation

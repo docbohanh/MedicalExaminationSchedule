@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -17,10 +17,11 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var moreTableView: UITableView!
     
+    @IBOutlet weak var backgroundPopupView: UIView!
     @IBOutlet weak var editMyProfileButton: UIButton!
     var iconArray = [String]()
     var titleArray = [String]()
-    var isDoctor = false
+    var isDoctor = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,12 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        if iconArray.count > 0 {
+            iconArray.removeAll()
+        }
+        if titleArray.count > 0 {
+            titleArray.removeAll()
+        }
         if isDoctor {
             iconArray += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
             titleArray += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
@@ -41,8 +48,50 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
         }
         moreTableView.reloadData()
+        self.createPopup()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
+    func createPopup() -> Void {
+        let popupView = UINib(nibName: "CreateCommentView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! CreateCommentView
+        popupView.clipsToBounds = true
+        popupView.layer.cornerRadius = 5.0
+        popupView.translatesAutoresizingMaskIntoConstraints = false
+        popupView.delegate = self
+        backgroundPopupView.addSubview(popupView)
+        
+        let views = ["popupView": popupView,
+                     "backgroundPopUpView": backgroundPopupView]
+        let width = view.frame.size.width - 30
+        
+        let dictMetric = ["widthPopup" : width]
+        
+        // 2
+        var allConstraints = [NSLayoutConstraint]()
+        
+        // 3
+        let verticalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[backgroundPopUpView]-(<=1)-[popupView(270)]",
+            options: [.alignAllCenterX],
+            metrics: nil,
+            views: views)
+        allConstraints += verticalConstraints
+        // 4
+        let horizontalConstraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[backgroundPopUpView]-(<=1)-[popupView(widthPopup)]",
+            options: [.alignAllCenterY],
+            metrics: dictMetric,
+            views: views)
+        allConstraints += horizontalConstraints
+        
+        backgroundPopupView.addConstraints(allConstraints)
+        backgroundPopupView.isHidden = true
+    }
+    
     @IBAction func tappedSignOutButton(_ sender: Any) {
     }
     
@@ -81,16 +130,39 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // ý kiến
             }
         }else {
-            
+            switch indexPath.row {
+            case 0:
+                // Thiết lập lịch hẹn
+                break
+            case 1:
+                // Thiết lập giới thiệu dịch vụ
+                break
+            case 2:
+                // Thư mục ảnh
+                self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
+                break
+            case 3:
+                // Mời bác sỹ tham gia
+                break
+            case 4:
+                //Đóng góp ý kiến
+                backgroundPopupView.isHidden = false
+                break
+            default:
+                break
+            }
         }
         
      }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    /* =========== CREATE COMMENT VIEW DELEGATE =========== */
+    func closePopup() {
+        backgroundPopupView.isHidden = true
     }
     
+    func sendComment() {
+        backgroundPopupView.isHidden = true
+    }
 
 
     // MARK: - Navigation

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoCollectionViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestPhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-bQ-xq5">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eom-KO-aey">
+                        <rect key="frame" x="110" y="0.0" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="fYN-cM-OJz"/>
+                            <constraint firstAttribute="height" constant="40" id="u0N-Im-cRy"/>
+                        </constraints>
+                        <state key="normal" image="ic_checkbox_image"/>
+                        <state key="selected" image="ic_checkbox_list_active"/>
+                        <connections>
+                            <action selector="tappedCheckButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="I57-P7-Pkh"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.86274509799999999" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="eom-KO-aey" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3dU-bH-let"/>
+                <constraint firstItem="KBj-bQ-xq5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OBF-JD-xVw"/>
+                <constraint firstAttribute="trailing" secondItem="eom-KO-aey" secondAttribute="trailing" id="ZRK-Bu-3Jg"/>
+                <constraint firstAttribute="trailing" secondItem="KBj-bQ-xq5" secondAttribute="trailing" id="kU8-oq-PPq"/>
+                <constraint firstAttribute="bottom" secondItem="KBj-bQ-xq5" secondAttribute="bottom" id="pUG-r4-vDI"/>
+                <constraint firstItem="KBj-bQ-xq5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rsB-bY-Z8A"/>
+            </constraints>
+            <size key="customSize" width="159" height="161"/>
+            <connections>
+                <outlet property="checkButton" destination="eom-KO-aey" id="PC3-4l-nzq"/>
+                <outlet property="photoImageView" destination="KBj-bQ-xq5" id="CvR-p1-7H6"/>
+            </connections>
+            <point key="canvasLocation" x="69.5" y="97.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="TestPhoto.png" width="112" height="112"/>
+        <image name="ic_checkbox_image" width="16" height="16"/>
+        <image name="ic_checkbox_list_active" width="15" height="15"/>
+    </resources>
+</document>
