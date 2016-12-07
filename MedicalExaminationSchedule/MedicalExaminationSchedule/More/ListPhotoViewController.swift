@@ -19,6 +19,11 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         // Do any additional setup after loading the view.
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,7 +52,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow - 8
+        let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -56,7 +61,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     
     // 4
