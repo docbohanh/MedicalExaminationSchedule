@@ -47,7 +47,7 @@ class SetupScheduleViewController: UIViewController,FSCalendarDataSource, FSCale
         if !isDoctor {
             self.performSegue(withIdentifier: "setupSchedule", sender: nil)
         } else {
-        
+            self.performSegue(withIdentifier: "setupTimerSchedule", sender: nil)
         }
     }
     
