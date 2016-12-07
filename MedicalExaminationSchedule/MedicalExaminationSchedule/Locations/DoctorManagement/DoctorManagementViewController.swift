@@ -12,6 +12,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
 
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
+    @IBOutlet weak var backgroundInformationView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var doctorSpecializedLabel: UILabel!
     @IBOutlet weak var rateImageView: UIImageView!
@@ -68,15 +69,22 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
-        tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
-        backgroundScrollView.scrollRectToVisible(CGRect.init(x: 0, y: informationTabButton.frame.origin.y, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
-        informationTableView.isHidden = false
-        doctorHistoryLabel.isHidden = true
-        commentView.isHidden = true
+        if informationTableView.isHidden {
+            tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.contentSize.height + backgroundInformationView.frame.size.height - 64)
+            
+            backgroundScrollView.scrollRectToVisible(CGRect.init(x: informationTabButton.frame.origin.x, y: backgroundInformationView.frame.size.height - informationTabButton.frame.size.height, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
+            informationTableView.isHidden = false
+            doctorHistoryLabel.isHidden = true
+            commentView.isHidden = true
+        }
     }
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
         tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
+        doctorHistoryLabel.isHidden = true
+        informationTableView.isHidden = true
+        commentView.isHidden = true
     }
     @IBAction func tappedComment(_ sender: UIButton) {
         backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 20)
