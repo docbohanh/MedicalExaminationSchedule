@@ -11,13 +11,21 @@ import UIKit
 class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var isntroduceListTableView: UITableView!
+    @IBOutlet weak var updateButton: UIButton!
         var scheduleListArray: [[String : String]] = [["one":"gala"],["dinner":"dinner"]]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        ProjectCommon.boundViewWithColor(button: updateButton, color: UIColor.clear)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -38,15 +46,11 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 88
+        return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SetupTimerTableViewCell", for: indexPath) as! SetupTimerTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SetupIntroduceTableViewCell", for: indexPath) as! SetupIntroduceTableViewCell
         
         return cell
     }

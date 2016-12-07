@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate {
+class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate, FirstRegisterDoctorVCDelegate {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -34,6 +34,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = false
         if iconArray.count > 0 {
             iconArray.removeAll()
         }
@@ -133,9 +134,13 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.row {
             case 0:
                 // Thiết lập lịch hẹn
+                let storyboard = UIStoryboard.init(name: "Locations", bundle: Bundle.main)
+                let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SetupScheduleViewController")
+                self.navigationController?.pushViewController(scheduleVC, animated: true)
                 break
             case 1:
                 // Thiết lập giới thiệu dịch vụ
+                self.performSegue(withIdentifier: "PushToSetupIntroduce", sender: self)
                 break
             case 2:
                 // Thư mục ảnh
@@ -143,6 +148,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             case 3:
                 // Mời bác sỹ tham gia
+                self.performSegue(withIdentifier: "PushToInviteDoctor", sender: self)
                 break
             case 4:
                 //Đóng góp ý kiến
@@ -164,6 +170,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundPopupView.isHidden = true
     }
 
+    /* =========== REGISTER SUCCESS ============== */
+    func registerDoctorSuccess() {
+        isDoctor = true
+    }
 
     // MARK: - Navigation
 
@@ -175,6 +185,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
 //            let updateVC = segue.destination as! UpdateUserViewController
 //            updateVC.isDoctor = isDoctor
             
+        }else if (segue.identifier == "PushToFirstRegisterDoctor") {
+            let registerVC = segue.destination as! FirstRegisterDoctorViewController
+            registerVC.delegate = self
         }
     }
 

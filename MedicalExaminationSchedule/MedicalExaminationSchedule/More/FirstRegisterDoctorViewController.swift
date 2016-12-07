@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol FirstRegisterDoctorVCDelegate {
+    func registerDoctorSuccess() -> Void
+}
+
 class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, BottomViewDelegate, ChangeAvatarViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    var delegate : FirstRegisterDoctorVCDelegate?
     @IBOutlet weak var backgroundPopUpView: UIView!
     var titleArray = [String]()
     var imageAvatar = UIImage()
@@ -133,7 +137,8 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
     func updateProfile() {
-        
+        self.delegate?.registerDoctorSuccess()
+        self.navigationController?.popViewController(animated: true)
     }
     
     func cancel() {

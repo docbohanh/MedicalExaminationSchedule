@@ -30,7 +30,12 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tappedBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
+    @IBAction func tappedAddButton(_ sender: Any) {
+    }
     /* ========== COLLECTION VIEW DELEGATE, DATA SOURCE ============ */
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -52,7 +57,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
+        let widthPerItem = availableWidth / itemsPerRow - 6
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }

@@ -16,6 +16,10 @@ class SetupIntroduceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        descriptionTextView.clipsToBounds = true
+        descriptionTextView.layer.cornerRadius = 3.0
+        descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        descriptionTextView.layer.borderWidth = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

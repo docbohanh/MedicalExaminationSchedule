@@ -62,6 +62,8 @@
 		8BF746D01DF83CC8006C9B48 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */; };
 		8BF746D11DF83CC8006C9B48 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF746CF1DF83CC8006C9B48 /* PhotoCollectionViewCell.xib */; };
 		8BF746D31DF84352006C9B48 /* TestPhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF746D21DF84352006C9B48 /* TestPhoto@2x.png */; };
+		8BF746D61DF85644006C9B48 /* InviteDoctorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746D41DF85644006C9B48 /* InviteDoctorTableViewCell.swift */; };
+		8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746D51DF85644006C9B48 /* InviteDoctorViewController.swift */; };
 		91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */; };
 		ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */; };
 		D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */; };
@@ -195,6 +197,8 @@
 		8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BF746CF1DF83CC8006C9B48 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		8BF746D21DF84352006C9B48 /* TestPhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TestPhoto@2x.png"; sourceTree = "<group>"; };
+		8BF746D41DF85644006C9B48 /* InviteDoctorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDoctorTableViewCell.swift; sourceTree = "<group>"; };
+		8BF746D51DF85644006C9B48 /* InviteDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteDoctorViewController.swift; sourceTree = "<group>"; };
 		B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.debug.xcconfig"; sourceTree = "<group>"; };
 		D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
@@ -264,6 +268,8 @@
 				D29E8C441DF738300000815B /* Popup */,
 				D212650A1DF39F5200C70F83 /* cells */,
 				842641901DF2B25A00EAB5CE /* More.storyboard */,
+				8BF746D41DF85644006C9B48 /* InviteDoctorTableViewCell.swift */,
+				8BF746D51DF85644006C9B48 /* InviteDoctorViewController.swift */,
 				D212650F1DF3A06300C70F83 /* MoreViewController.swift */,
 				D29E8C421DF729860000815B /* UpdateUserViewController.swift */,
 				8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */,
@@ -849,6 +855,7 @@
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
+				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
@@ -857,6 +864,7 @@
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
 				845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */,
+				8BF746D61DF85644006C9B48 /* InviteDoctorTableViewCell.swift in Sources */,
 				84321D931DF7469200CCA4D4 /* FSCalendarWeekdayView.m in Sources */,
 				845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */,
 				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
@@ -1050,7 +1058,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExamination/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1068,7 +1076,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Beacon.MedicalExaminationSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExamination/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
