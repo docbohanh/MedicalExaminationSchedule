@@ -23,6 +23,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
     @IBAction func tappedSearchButton(_ sender: Any) {
     }

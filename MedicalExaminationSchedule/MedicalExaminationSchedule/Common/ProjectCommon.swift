@@ -15,7 +15,7 @@ class ProjectCommon: NSObject {
         button.layer.borderWidth = 1.0
         button.layer.borderColor = COLOR_COMMON.cgColor
     }
-    static func boundWiewWithColor(button:UIView, color: UIColor) {
+    static func boundViewWithColor(button:UIView, color: UIColor) {
         button.clipsToBounds = true
         button.layer.cornerRadius = button.frame.size.height/2;
         button.layer.borderWidth = 1.0

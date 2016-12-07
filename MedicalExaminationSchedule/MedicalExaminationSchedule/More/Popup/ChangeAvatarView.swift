@@ -8,21 +8,28 @@
 
 import UIKit
 
+protocol ChangeAvatarViewDelegate {
+    func closePopup() -> Void
+    func takePhoto() -> Void
+    func chooseFromLibrary() -> Void
+    func deleteAvatar() -> Void
+}
+
 class ChangeAvatarView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+    var delegate : ChangeAvatarViewDelegate?
+    
     @IBAction func tappedDeleteAvatar(_ sender: Any) {
+        self.delegate?.deleteAvatar()
     }
     @IBAction func tappedCameraButton(_ sender: Any) {
+        self.delegate?.takePhoto()
     }
     @IBAction func tappedChooseImageButton(_ sender: Any) {
+        self.delegate?.chooseFromLibrary()
+    }
+    @IBAction func tappedClosePopupButton(_ sender: Any) {
+        self.delegate?.closePopup()
     }
     
 }
