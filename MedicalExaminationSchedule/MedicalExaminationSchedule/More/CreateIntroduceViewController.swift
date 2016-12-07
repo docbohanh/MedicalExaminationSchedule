@@ -1,24 +1,19 @@
 //
-//  DetailNewViewController.swift
+//  CreateIntroduceViewController.swift
 //  MedicalExaminationSchedule
 //
-//  Created by Thuy Phan on 12/6/16.
+//  Created by ThuyPH on 12/7/16.
 //  Copyright © 2016 Nguyen Hai Dang. All rights reserved.
 //
 
 import UIKit
 
-class DetailNewViewController: UIViewController {
+class CreateIntroduceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,9 +21,6 @@ class DetailNewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tappedBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
 
     /*
     // MARK: - Navigation

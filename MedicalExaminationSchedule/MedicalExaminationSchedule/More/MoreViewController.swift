@@ -25,8 +25,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        iconArray += ["ic_imadoctor","ic_imadoctor"]
-        titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
         moreTableView.register(UINib.init(nibName: "NormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "NormalTableViewCell")
         moreTableView.rowHeight = UITableViewAutomaticDimension;
         moreTableView.estimatedRowHeight = 70.0;
@@ -35,14 +33,25 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        if isDoctor {
+            iconArray += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
+            titleArray += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
+        }else {
+            iconArray += ["ic_imadoctor","ic_comment"]
+            titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
+        }
+        moreTableView.reloadData()
     }
 
     @IBAction func tappedSignOutButton(_ sender: Any) {
     }
     
     @IBAction func tappedMyProfileButton(_ sender: Any) {
-        isDoctor = false
-        self.performSegue(withIdentifier: "pushToUpdateUserProfile", sender: self)
+        if !isDoctor {
+            self.performSegue(withIdentifier: "pushToUpdateUserProfile", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "PushToUpdateProfileDoctor", sender: self)
+        }
     }
     
     /* ============= TABLEVIEW DELEGATE, DATASOURCE ============== */
@@ -64,13 +73,17 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            // tôi là bác sỹ
-            isDoctor = true
-            self.performSegue(withIdentifier: "pushToUpdateUserProfile", sender: self)
-        } else if indexPath.row == 1 {
-            // ý kiến
+        if !isDoctor {
+            if indexPath.row == 0 {
+                // tôi là bác sỹ
+                self.performSegue(withIdentifier: "PushToFirstRegisterDoctor", sender: self)
+            } else if indexPath.row == 1 {
+                // ý kiến
+            }
+        }else {
+            
         }
+        
      }
     
     override func didReceiveMemoryWarning() {
@@ -87,8 +100,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "pushToUpdateUserProfile" {
-            let updateVC = segue.destination as! UpdateUserViewController
-            updateVC.isDoctor = isDoctor
+//            let updateVC = segue.destination as! UpdateUserViewController
+//            updateVC.isDoctor = isDoctor
             
         }
     }

@@ -53,6 +53,11 @@
 		84CB42F21DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42F11DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift */; };
 		84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43001DE19A3C0059B057 /* SignInViewController.swift */; };
 		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
+		8B47A89D1DF79FE2001868EE /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A89C1DF79FE2001868EE /* BottomView.swift */; };
+		8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B47A89E1DF79FF1001868EE /* BottomView.xib */; };
+		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
+		8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */; };
+		8B47A8A51DF7D98F001868EE /* CreateIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */; };
 		91D889F7C608E0DC0693894D /* Pods_MedicalExaminationScheduleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */; };
 		ABE8825029E2839979699CE5 /* Pods_MedicalExaminationScheduleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */; };
 		D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */; };
@@ -177,6 +182,11 @@
 		84CB42F31DE16FE10059B057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CB43001DE19A3C0059B057 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Account/SignInViewController.swift; sourceTree = "<group>"; };
 		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
+		8B47A89C1DF79FE2001868EE /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		8B47A89E1DF79FF1001868EE /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
+		8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDoctorViewController.swift; sourceTree = "<group>"; };
+		8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateIntroduceViewController.swift; sourceTree = "<group>"; };
 		B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.debug.xcconfig"; sourceTree = "<group>"; };
 		D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,6 +258,9 @@
 				842641901DF2B25A00EAB5CE /* More.storyboard */,
 				D212650F1DF3A06300C70F83 /* MoreViewController.swift */,
 				D29E8C421DF729860000815B /* UpdateUserViewController.swift */,
+				8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */,
+				8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */,
+				8B47A8A41DF7D98F001868EE /* CreateIntroduceViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -473,6 +486,8 @@
 				D29E8C3B1DF7241E0000815B /* SelectGenderTableViewCell.xib */,
 				D29E8C3E1DF7260A0000815B /* ProfileTableViewCell.swift */,
 				D29E8C3F1DF7260A0000815B /* ProfileTableViewCell.xib */,
+				8B47A89C1DF79FE2001868EE /* BottomView.swift */,
+				8B47A89E1DF79FF1001868EE /* BottomView.xib */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -643,6 +658,7 @@
 				D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
 				D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */,
+				8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */,
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				84321D941DF7469200CCA4D4 /* Info.plist in Resources */,
 				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
@@ -803,11 +819,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */,
 				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
+				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
 				84321D861DF7469100CCA4D4 /* FSCalendar.m in Sources */,
@@ -846,6 +864,7 @@
 				84321D8A1DF7469100CCA4D4 /* FSCalendarCell.m in Sources */,
 				84321D8F1DF7469200CCA4D4 /* FSCalendarExtensions.m in Sources */,
 				EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */,
+				8B47A89D1DF79FE2001868EE /* BottomView.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
 				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
 				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
@@ -855,6 +874,7 @@
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				84321D901DF7469200CCA4D4 /* FSCalendarHeaderView.m in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
+				8B47A8A51DF7D98F001868EE /* CreateIntroduceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

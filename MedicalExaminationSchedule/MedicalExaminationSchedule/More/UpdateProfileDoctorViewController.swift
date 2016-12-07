@@ -1,30 +1,30 @@
 //
-//  UpdateUserViewController.swift
+//  UpdateProfileDoctorViewController.swift
 //  MedicalExaminationSchedule
 //
-//  Created by Thuy Phan on 12/7/16.
+//  Created by ThuyPH on 12/7/16.
 //  Copyright © 2016 Nguyen Hai Dang. All rights reserved.
 //
 
 import UIKit
 
-class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ProfileTableViewCellDelegate, BottomViewDelegate,ChangeAvatarViewDelegate {
-
+class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ProfileTableViewCellDelegate, BottomViewDelegate {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backgroundPopUpView: UIView!
     
     var titleArray = [String]()
-    var imageAvatar = UIImage()
     
+    var isDoctor = false
+    var isFirstRegisterDoctor = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-
-        titleArray += ["Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
-
+        
+        titleArray += ["","Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Email","Chuyên ngành","Nơi làm việc", "Giới tính"]
+        
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
         
@@ -32,51 +32,16 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         bottomButtonView.delegate = self
         bottomButtonView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 170)
         tableView.tableFooterView = bottomButtonView
+
         // register cell
         tableView.register(UINib.init(nibName: "ProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.register(UINib.init(nibName: "SelectGenderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SelectGenderTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
-        self.createPopup()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func createPopup() -> Void {
-        let popupView = UINib(nibName: "ChangeAvatarView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! ChangeAvatarView
-        popupView.clipsToBounds = true
-        popupView.layer.cornerRadius = 5.0
-        popupView.translatesAutoresizingMaskIntoConstraints = false
-        popupView.delegate = self
-        backgroundPopUpView.addSubview(popupView)
-        
-        let views = ["popupView": popupView,
-                     "backgroundPopUpView": backgroundPopUpView]
-        let width = view.frame.size.width - 30
-        
-        let dictMetric = ["widthPopup" : width]
-
-        // 2
-        var allConstraints = [NSLayoutConstraint]()
-        
-        // 3
-        let verticalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:[backgroundPopUpView]-(<=1)-[popupView(220)]",
-            options: [.alignAllCenterX],
-            metrics: nil,
-            views: views)
-        allConstraints += verticalConstraints
-        // 4
-        let horizontalConstraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:[backgroundPopUpView]-(<=1)-[popupView(widthPopup)]",
-            options: [.alignAllCenterY],
-            metrics: dictMetric,
-            views: views)
-        allConstraints += horizontalConstraints
-        
-        backgroundPopUpView.addConstraints(allConstraints)
     }
     
     /* ========  TABLE VIEW =========== */
@@ -99,17 +64,16 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         case (titleArray.count - 1):
             strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
-            cell.titleLabel.text = titleArray[indexPath.row-1]
+            cell.titleLabel.text = titleArray[indexPath.row - 1]
             return cell
         default:
             strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
-            cell.titleLabel.text = titleArray[indexPath.row-1]
+            cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
             return cell
         }
     }
-    
     
     @IBAction func tappedBackButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -131,36 +95,18 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     func updateProfile() {
         
     }
-
+    
     func cancel() {
         
     }
-    /* ============= CHANGE AVATAR VIEW DELEGATE ============= */
-    
-    func closePopup() {
-        backgroundPopUpView.isHidden = true
-    }
-    
-    func deleteAvatar() {
-        
-    }
-    
-    func takePhoto() {
-        
-    }
-    
-    func chooseFromLibrary() {
-        
-    }
-    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }
