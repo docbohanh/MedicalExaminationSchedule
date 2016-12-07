@@ -47,6 +47,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func initUI() {
         commentView.isHidden = true
         informationTableView.isHidden = true
@@ -69,7 +73,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     
     @IBAction func tappedDoctorProfile(_ sender: Any) {
         if doctorHistoryLabel.isHidden {
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y + 20)
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: doctorHistoryLabel.frame.size.height + backgroundInformationView.frame.size.height)
             tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
             doctorHistoryLabel.isHidden = false
             commentView.isHidden = true
@@ -81,7 +85,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
         if informationTableView.isHidden {
             tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.contentSize.height + backgroundInformationView.frame.size.height - 64)
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundInformationView.frame.size.height + informationTableView.frame.size.height)
             
             backgroundScrollView.scrollRectToVisible(CGRect.init(x: informationTabButton.frame.origin.x, y: backgroundInformationView.frame.size.height - informationTabButton.frame.size.height, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
             informationTableView.isHidden = false
@@ -102,7 +106,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     @IBAction func tappedComment(_ sender: UIButton) {
         if commentView.isHidden {
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 20)
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + backgroundInformationView.frame.size.height)
             tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
             doctorHistoryLabel.isHidden = true
             informationTableView.isHidden = true

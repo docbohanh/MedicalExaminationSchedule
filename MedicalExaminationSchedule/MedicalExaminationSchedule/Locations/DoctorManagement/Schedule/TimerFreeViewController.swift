@@ -19,6 +19,10 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func tappedSetupTimer(_ sender: UIButton) {
         
     }

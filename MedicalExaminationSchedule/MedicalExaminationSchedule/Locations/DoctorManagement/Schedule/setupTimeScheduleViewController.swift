@@ -18,6 +18,10 @@ class setupTimeScheduleViewController: UIViewController,UITableViewDelegate,UITa
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

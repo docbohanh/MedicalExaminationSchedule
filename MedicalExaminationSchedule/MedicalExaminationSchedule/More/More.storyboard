@@ -13,9 +13,9 @@
         <scene sceneID="bDg-D3-pfO">
             <objects>
                 <navigationController id="2AM-kO-KNE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Thêm" id="s5S-HR-MgM"/>
+                    <tabBarItem key="tabBarItem" title="Thêm" image="ic_more" id="s5S-HR-MgM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ipz-uv-okF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ipz-uv-okF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -863,6 +863,7 @@
         <image name="ic_checkbox_list_active" width="15" height="15"/>
         <image name="ic_delete_avar" width="17" height="17"/>
         <image name="ic_logout" width="40" height="40"/>
+        <image name="ic_more" width="25" height="25"/>
         <image name="ic_search" width="22" height="22"/>
     </resources>
 </document>

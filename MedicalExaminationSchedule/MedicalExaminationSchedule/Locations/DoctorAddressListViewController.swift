@@ -45,6 +45,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         searchMapView.isHidden = true
         self.view.addSubview(searchMapView)
         self.getCurrentLocation()
+        self.tabBarController?.tabBar.isHidden = false
+
     }
     override func viewDidLayoutSubviews() {
         

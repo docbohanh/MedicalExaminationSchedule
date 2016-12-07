@@ -19,6 +19,9 @@ class InformationDoctorViewController: UIViewController,UITableViewDelegate,UITa
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
     @IBAction func tappedBack(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }

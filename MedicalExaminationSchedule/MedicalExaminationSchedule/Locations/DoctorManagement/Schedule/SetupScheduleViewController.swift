@@ -22,6 +22,10 @@ class SetupScheduleViewController: UIViewController,FSCalendarDataSource, FSCale
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

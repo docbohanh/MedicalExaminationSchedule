@@ -428,6 +428,7 @@
                             <constraint firstItem="Uvk-E6-vUc" firstAttribute="leading" secondItem="gbS-qj-mXS" secondAttribute="leading" id="xIE-fK-fJ4"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="JRb-6Q-tVM" id="mo7-de-Qwa"/>
                         <outlet property="setupTimerButton" destination="j4C-aU-lOe" id="uc4-3F-VSi"/>
@@ -537,30 +538,48 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bab-hH-1So">
-                                <rect key="frame" x="378" y="460" width="20" height="20"/>
+                                <rect key="frame" x="335" y="500" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="0ph-jk-QIA"/>
                                     <constraint firstAttribute="height" constant="20" id="8wz-it-Iqv"/>
                                 </constraints>
-                                <state key="normal" title="Button" backgroundImage="ic_empty"/>
+                                <state key="normal" backgroundImage="ic_empty"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trống" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olg-em-psZ">
+                                <rect key="frame" x="365" y="500" width="33" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đầy lịch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwC-GX-awf">
+                                <rect key="frame" x="257" y="500" width="48" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y32-D5-Yv3">
-                                <rect key="frame" x="294" y="460" width="20" height="20"/>
-                                <state key="normal" title="Button" backgroundImage="ic_full"/>
+                                <rect key="frame" x="227" y="500" width="20" height="20"/>
+                                <state key="normal" backgroundImage="ic_full"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="width" secondItem="y32-D5-Yv3" secondAttribute="width" id="1Nk-yG-HQg"/>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="height" secondItem="y32-D5-Yv3" secondAttribute="height" id="1c3-Cs-VdC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y32-D5-Yv3" secondAttribute="trailing" constant="80" id="Dwk-B8-wPU"/>
+                            <constraint firstItem="dwC-GX-awf" firstAttribute="leading" secondItem="y32-D5-Yv3" secondAttribute="trailing" constant="10" id="Jxt-1m-HZ1"/>
+                            <constraint firstAttribute="trailing" secondItem="olg-em-psZ" secondAttribute="trailing" constant="16" id="K4K-yD-iiI"/>
+                            <constraint firstItem="olg-em-psZ" firstAttribute="top" secondItem="Bab-hH-1So" secondAttribute="top" id="Nr3-al-9vv"/>
                             <constraint firstAttribute="trailing" secondItem="ULU-Wm-20Y" secondAttribute="trailing" id="QEa-Be-UOs"/>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="top" secondItem="y32-D5-Yv3" secondAttribute="top" id="Sel-jm-NjT"/>
+                            <constraint firstItem="Bab-hH-1So" firstAttribute="leading" secondItem="dwC-GX-awf" secondAttribute="trailing" constant="30" id="V8U-4F-RuL"/>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="height" secondItem="y32-D5-Yv3" secondAttribute="height" id="ZUs-Wm-J61"/>
-                            <constraint firstItem="Bab-hH-1So" firstAttribute="top" secondItem="ULU-Wm-20Y" secondAttribute="bottom" constant="240" id="dlm-IV-Re1"/>
+                            <constraint firstItem="olg-em-psZ" firstAttribute="leading" secondItem="Bab-hH-1So" secondAttribute="trailing" constant="10" id="ZhY-t0-lHC"/>
+                            <constraint firstItem="Bab-hH-1So" firstAttribute="top" secondItem="ULU-Wm-20Y" secondAttribute="bottom" constant="280" id="dlm-IV-Re1"/>
+                            <constraint firstItem="dwC-GX-awf" firstAttribute="height" secondItem="y32-D5-Yv3" secondAttribute="height" id="fDM-Zn-jct"/>
+                            <constraint firstItem="dwC-GX-awf" firstAttribute="top" secondItem="y32-D5-Yv3" secondAttribute="top" id="ghg-DH-eDU"/>
+                            <constraint firstItem="olg-em-psZ" firstAttribute="height" secondItem="Bab-hH-1So" secondAttribute="height" id="iDt-0y-REr"/>
                             <constraint firstItem="ULU-Wm-20Y" firstAttribute="top" secondItem="OrL-bz-b5t" secondAttribute="top" id="jEY-UN-dbA"/>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="width" secondItem="y32-D5-Yv3" secondAttribute="width" id="qf4-e9-o62"/>
-                            <constraint firstAttribute="trailing" secondItem="Bab-hH-1So" secondAttribute="trailing" constant="16" id="sf5-XE-xAW"/>
                             <constraint firstItem="Bab-hH-1So" firstAttribute="top" secondItem="y32-D5-Yv3" secondAttribute="top" id="sq4-xj-iVm"/>
                             <constraint firstItem="ULU-Wm-20Y" firstAttribute="leading" secondItem="OrL-bz-b5t" secondAttribute="leading" id="tJY-EG-dkm"/>
                         </constraints>
@@ -577,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1S-Fc-aad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="959"/>
+            <point key="canvasLocation" x="389.85507246376812" y="958.69565217391312"/>
         </scene>
         <!--Setup Time Schedule View Controller-->
         <scene sceneID="4dr-o8-5Ph">
@@ -846,6 +865,7 @@
                             <constraint firstItem="mKa-1V-uxp" firstAttribute="top" secondItem="N3j-wT-IJg" secondAttribute="bottom" id="zTn-5Z-0Pp"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scheduleListTableView" destination="GGP-37-2h7" id="PYW-Rg-SDn"/>
                     </connections>
@@ -901,10 +921,10 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyz-Cz-RRG">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iev-hq-BTx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98B-dl-E8R">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
@@ -1105,7 +1125,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYw-WC-bhz">
-                                                <rect key="frame" x="16" y="295" width="382" height="328"/>
+                                                <rect key="frame" x="16" y="295" width="382" height="377"/>
                                                 <string key="text">Màn hình chủ hiển thị dạng thẻ như Zalo/Facebook cho điện thoại.
 Giao diện bố trí đơn giản và gọn như Zalo, chỉ khác tông màu, phía trên có luôn ô tìm kiếm như facebook cho tiện người dùng tìm kiếm. Lịch sử tìm kiếm được lưu lại trên máy để gợi ý cho người dùng luôn. Chức năng search hoạt động tương tự facebook. Tùy vào thẻ nào đang được chọn (cả thẻ chính &amp; thẻ con) sẽ quyết định tìm kiếm cái gì và trả về dữ liệu theo định dạng tương ứng. Hiện tại có thể có các thẻ sau:
 a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng dụng iCheck), mỗi tin gồm có ảnh minh họa nhỏ, tiêu đề, mô tả ngắn và chữ đọc thêm (như đọc bài dài trên facebook ấy). Khi người dùng chọn đọc thêm -&gt; chuyển sang đọc tin đó (webview như facebook), nội dung tin lấy từ server qua REST API. Ở màn hình đọc tin, có nút back để quay lại như facebook.</string>
@@ -1114,7 +1134,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mbM-k2-Owh">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="628"/>
+                                                <rect key="frame" x="0.0" y="295" width="414" height="677"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DoctorProfileTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoctorProfileTableViewCell" id="lGW-7r-C7u" customClass="DoctorProfileTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
@@ -1253,7 +1273,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                 </connections>
                                             </tableView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-GC-uVq">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="328"/>
+                                                <rect key="frame" x="0.0" y="295" width="414" height="377"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="db5-fw-eTf">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -1277,7 +1297,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                 </connections>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuL-Rc-VSY">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="328"/>
+                                                <rect key="frame" x="0.0" y="295" width="414" height="377"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đánh giá:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTb-I4-xC2">
                                                         <rect key="frame" x="16" y="20" width="70" height="30"/>
@@ -1391,6 +1411,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                     </view>
                     <navigationItem key="navigationItem" id="oTv-4K-e6z"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avatarImageView" destination="M14-iN-46Z" id="m2N-yT-K3r"/>
                         <outlet property="backgroundInformationView" destination="98B-dl-E8R" id="vGZ-xS-YsC"/>
@@ -1705,6 +1726,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                             <constraint firstItem="agd-cY-J1Y" firstAttribute="top" secondItem="ANF-jm-ljZ" secondAttribute="bottom" id="yn3-Lf-jEO"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi9-Y0-0uG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

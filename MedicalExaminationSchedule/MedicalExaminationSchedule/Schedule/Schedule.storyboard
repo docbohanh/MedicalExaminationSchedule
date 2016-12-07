@@ -14,7 +14,7 @@
         <scene sceneID="9A3-ZW-QnW">
             <objects>
                 <navigationController navigationBarHidden="YES" id="u4K-iA-fR9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lịch hẹn" id="mPC-1f-8y5"/>
+                    <tabBarItem key="tabBarItem" title="Lịch hẹn" image="ic_time" id="mPC-1f-8y5"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AAG-gw-5Fd">
@@ -213,6 +213,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PgZ-gI-Vdb"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKG-cf-pmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,5 +224,6 @@
         <image name="ic_avar" width="75" height="75"/>
         <image name="ic_clock" width="15" height="15"/>
         <image name="ic_search" width="22" height="22"/>
+        <image name="ic_time" width="25" height="25"/>
     </resources>
 </document>

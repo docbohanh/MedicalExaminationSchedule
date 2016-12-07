@@ -121,6 +121,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedSignInWithGoogle:" destination="Trf-25-esx" eventType="touchUpInside" id="geH-VW-DVN"/>
+                                    <segue destination="3Qx-Fk-DSi" kind="show" id="KDV-C2-Ij4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CR-J0-tOx">
@@ -143,7 +144,7 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedSignInWithFacebook:" destination="Trf-25-esx" eventType="touchUpInside" id="bMz-XB-YLe"/>
-                                    <segue destination="3Qx-Fk-DSi" kind="push" id="PVQ-Vj-31A"/>
+                                    <segue destination="3Qx-Fk-DSi" kind="show" id="Rma-cH-kEa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -337,6 +338,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="tappedRegisterNewAccount:" destination="BGM-Og-W8G" eventType="touchUpInside" id="ShW-hw-BOy"/>
+                                                    <segue destination="r3Z-6z-JrD" kind="show" id="5CZ-Fq-o1A"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiG-yw-PnK">
@@ -460,8 +462,8 @@
         <!--TabBar-->
         <scene sceneID="5bF-UI-eeD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zzY-OU-J7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="TabBar" id="r3Z-6z-JrD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzY-OU-J7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="297"/>
         </scene>
@@ -558,6 +560,9 @@
                                 <state key="normal" title="Cập nhật">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="tappedProfileFromFaceBook:" destination="3Qx-Fk-DSi" eventType="touchUpInside" id="ECb-yC-qKx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -611,4 +616,8 @@
         <image name="bg_login" width="375" height="667"/>
         <image name="logo_test.png" width="142" height="142"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rma-cH-kEa"/>
+        <segue reference="5CZ-Fq-o1A"/>
+    </inferredMetricsTieBreakers>
 </document>
