@@ -1252,6 +1252,30 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                     <outlet property="delegate" destination="gmL-KV-m79" id="k7r-jX-lsG"/>
                                                 </connections>
                                             </tableView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-GC-uVq">
+                                                <rect key="frame" x="0.0" y="295" width="414" height="328"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="db5-fw-eTf">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rUa-zD-2xD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </view>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="gmL-KV-m79" id="esy-hG-c6N"/>
+                                                    <outlet property="delegate" destination="gmL-KV-m79" id="Gd0-oh-RtN"/>
+                                                </connections>
+                                            </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuL-Rc-VSY">
                                                 <rect key="frame" x="0.0" y="295" width="414" height="328"/>
                                                 <subviews>
@@ -1300,30 +1324,9 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-GC-uVq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="db5-fw-eTf">
-                                                            <size key="itemSize" width="50" height="50"/>
-                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        </collectionViewFlowLayout>
-                                                        <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rUa-zD-2xD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </view>
-                                                            </collectionViewCell>
-                                                        </cells>
-                                                    </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="QBZ-GC-uVq" secondAttribute="trailing" id="1HP-yF-JiU"/>
                                                     <constraint firstItem="QTb-I4-xC2" firstAttribute="leading" secondItem="yuL-Rc-VSY" secondAttribute="leading" constant="16" id="3Ir-bo-dDo"/>
                                                     <constraint firstItem="J7r-J2-IWg" firstAttribute="leading" secondItem="QTb-I4-xC2" secondAttribute="trailing" constant="10" id="6a8-df-PG5"/>
                                                     <constraint firstItem="J7r-J2-IWg" firstAttribute="centerY" secondItem="QTb-I4-xC2" secondAttribute="centerY" id="BwK-0f-dF3"/>
@@ -1331,24 +1334,25 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                                                     <constraint firstItem="Uog-hx-JS8" firstAttribute="trailing" secondItem="BL2-2H-qOe" secondAttribute="trailing" id="Kau-mz-PrQ"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="width" secondItem="QTb-I4-xC2" secondAttribute="width" id="NYL-Xh-E40"/>
                                                     <constraint firstAttribute="trailing" secondItem="BL2-2H-qOe" secondAttribute="trailing" constant="16" id="XHI-yy-o7Z"/>
-                                                    <constraint firstItem="QBZ-GC-uVq" firstAttribute="top" secondItem="yuL-Rc-VSY" secondAttribute="top" id="blA-lc-ZMR"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="leading" secondItem="QTb-I4-xC2" secondAttribute="leading" id="eZe-ji-dx1"/>
-                                                    <constraint firstAttribute="bottom" secondItem="QBZ-GC-uVq" secondAttribute="bottom" id="gGo-qZ-KYe"/>
                                                     <constraint firstItem="BL2-2H-qOe" firstAttribute="top" secondItem="lE3-tw-J5y" secondAttribute="top" id="la6-HW-ElQ"/>
                                                     <constraint firstItem="Uog-hx-JS8" firstAttribute="top" secondItem="BL2-2H-qOe" secondAttribute="bottom" constant="20" id="njP-6A-QGL"/>
                                                     <constraint firstItem="BL2-2H-qOe" firstAttribute="leading" secondItem="J7r-J2-IWg" secondAttribute="leading" id="pR5-sK-0mi"/>
                                                     <constraint firstItem="QTb-I4-xC2" firstAttribute="top" secondItem="yuL-Rc-VSY" secondAttribute="top" constant="20" id="wnC-W7-t7l"/>
                                                     <constraint firstItem="lE3-tw-J5y" firstAttribute="top" secondItem="QTb-I4-xC2" secondAttribute="bottom" constant="10" id="yN6-4q-Hne"/>
-                                                    <constraint firstItem="QBZ-GC-uVq" firstAttribute="leading" secondItem="yuL-Rc-VSY" secondAttribute="leading" id="zsf-lu-FGP"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="HYw-WC-bhz" firstAttribute="top" secondItem="QBZ-GC-uVq" secondAttribute="top" id="55O-JW-oJn"/>
                                             <constraint firstAttribute="bottom" secondItem="yuL-Rc-VSY" secondAttribute="bottom" id="8BC-7i-HKH"/>
                                             <constraint firstItem="yuL-Rc-VSY" firstAttribute="leading" secondItem="iev-hq-BTx" secondAttribute="leading" id="Bh3-TR-ddf"/>
+                                            <constraint firstAttribute="bottom" secondItem="QBZ-GC-uVq" secondAttribute="bottom" id="EXN-fj-73F"/>
+                                            <constraint firstItem="QBZ-GC-uVq" firstAttribute="leading" secondItem="iev-hq-BTx" secondAttribute="leading" id="G3h-d6-X0p"/>
                                             <constraint firstItem="HYw-WC-bhz" firstAttribute="top" secondItem="mbM-k2-Owh" secondAttribute="top" id="GCG-Mj-8hL"/>
                                             <constraint firstAttribute="bottom" secondItem="HYw-WC-bhz" secondAttribute="bottom" id="Gdk-Yl-pTb"/>
+                                            <constraint firstAttribute="trailing" secondItem="QBZ-GC-uVq" secondAttribute="trailing" id="MEG-pG-clM"/>
                                             <constraint firstAttribute="trailing" secondItem="HYw-WC-bhz" secondAttribute="trailing" constant="16" id="RPf-Bi-fBc"/>
                                             <constraint firstItem="98B-dl-E8R" firstAttribute="top" secondItem="iev-hq-BTx" secondAttribute="top" id="Vaw-d6-qDa"/>
                                             <constraint firstAttribute="trailing" secondItem="yuL-Rc-VSY" secondAttribute="trailing" id="Xi4-oC-4wr"/>
@@ -1398,6 +1402,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                         <outlet property="commentView" destination="yuL-Rc-VSY" id="toT-RA-cXa"/>
                         <outlet property="doctorHistoryLabel" destination="HYw-WC-bhz" id="ddp-FW-xEb"/>
                         <outlet property="doctorSpecializedLabel" destination="DsG-tU-vVl" id="mXe-u5-sdO"/>
+                        <outlet property="imageCollectionView" destination="QBZ-GC-uVq" id="b7U-kn-WU2"/>
                         <outlet property="imageTabButton" destination="bMf-Rg-aKL" id="dak-DE-4at"/>
                         <outlet property="informationTabButton" destination="cVH-eL-Tat" id="Oeb-Kj-bod"/>
                         <outlet property="informationTableView" destination="mbM-k2-Owh" id="NEq-Fa-MOD"/>

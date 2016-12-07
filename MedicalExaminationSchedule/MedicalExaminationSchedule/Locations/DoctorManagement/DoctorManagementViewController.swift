@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UITextViewDelegate{
 
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -29,20 +29,28 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var makeRateImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var sendCommentButton: UIButton!
+    
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     private weak var calendar: FSCalendar!
     let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên nghành","Nơi làm việc"]
     let dataTestProfileArray = ["Nguyễn Hải Đăng","Hà Nội","Nam","Đa khoa","Bệnh viện Bạch Mai"]
+    fileprivate let itemsPerRow: CGFloat = 3
+    fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
+
     
     @IBOutlet weak var informationTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
+        imageCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
+
         // Do any additional setup after loading the view.
     }
 
     func initUI() {
         commentView.isHidden = true
         informationTableView.isHidden = true
+        imageCollectionView.isHidden = true
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -60,12 +68,14 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     @IBAction func tappedDoctorProfile(_ sender: Any) {
-        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y + 20)
-        tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
-        doctorHistoryLabel.isHidden = false
-        commentView.isHidden = true
-        informationTableView.isHidden = true
-
+        if doctorHistoryLabel.isHidden {
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y + 20)
+            tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
+            doctorHistoryLabel.isHidden = false
+            commentView.isHidden = true
+            informationTableView.isHidden = true
+            imageCollectionView.isHidden = true
+        }
     }
     
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
@@ -77,24 +87,44 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             informationTableView.isHidden = false
             doctorHistoryLabel.isHidden = true
             commentView.isHidden = true
+            imageCollectionView.isHidden = true
         }
     }
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
-        tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
-        doctorHistoryLabel.isHidden = true
-        informationTableView.isHidden = true
-        commentView.isHidden = true
+        if imageCollectionView.isHidden {
+            tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
+            doctorHistoryLabel.isHidden = true
+            informationTableView.isHidden = true
+            commentView.isHidden = true
+            imageCollectionView.isHidden = false
+        }
     }
     @IBAction func tappedComment(_ sender: UIButton) {
-        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 20)
-        tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
-        doctorHistoryLabel.isHidden = true
-        informationTableView.isHidden = true
-        commentView.isHidden = false
+        if commentView.isHidden {
+            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 20)
+            tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
+            doctorHistoryLabel.isHidden = true
+            informationTableView.isHidden = true
+            commentView.isHidden = false
+            imageCollectionView.isHidden = true
+        }
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -149,6 +179,47 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         }
     }
     
+    
+    /* ========== COLLECTION VIEW DELEGATE, DATA SOURCE ============ */
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        return item
+    }
+    
+    /*============== COLLECTION VIEW FLOW LAYOUT ============ */
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        //2
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow - 8
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    //3
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
