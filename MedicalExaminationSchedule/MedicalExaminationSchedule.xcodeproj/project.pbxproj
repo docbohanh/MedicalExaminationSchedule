@@ -95,6 +95,8 @@
 		EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA05ED1D1DF815C2002DD339 /* SetupTimerHeaderView.xib */; };
 		EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */; };
 		EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */; };
+		EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED2D1DFACE29002DD339 /* StringExtension.swift */; };
+		EA05ED301DFACE81002DD339 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED2F1DFACE81002DD339 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +232,8 @@
 		EA05ED1D1DF815C2002DD339 /* SetupTimerHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupTimerHeaderView.xib; sourceTree = "<group>"; };
 		EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceViewController.swift; sourceTree = "<group>"; };
 		EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceTableViewCell.swift; sourceTree = "<group>"; };
+		EA05ED2D1DFACE29002DD339 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		EA05ED2F1DFACE81002DD339 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,9 +389,11 @@
 		84321D961DF752D000CCA4D4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EA05ED2D1DFACE29002DD339 /* StringExtension.swift */,
 				8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */,
 				84321D971DF752D000CCA4D4 /* AppTheme.swift */,
 				84321D981DF752D000CCA4D4 /* ProjectCommon.swift */,
+				EA05ED2F1DFACE81002DD339 /* Network.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
+				EA05ED301DFACE81002DD339 /* Network.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
@@ -860,6 +867,7 @@
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
+				EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */,
 				D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */,
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
@@ -1082,6 +1090,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+xaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
