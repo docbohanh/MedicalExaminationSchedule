@@ -23,10 +23,10 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         
         // To Create the TabBar icons as NSArray
         
-        let imagesArray : NSArray = ["home.png","maps.png","myplan.png","settings.png","maps.png"]
+        let imagesArray : NSArray = ["ic_news","ic_location_map","ic_time","ic_more",]
         // To Create the TabBar icons as NSArray for selection time
 
-        let  selecteimgArray:NSArray = ["home_selected.png","maps_selected.png","myplan_selected.png","settings_selected.png","maps_selected.png"]
+//        let  selecteimgArray:NSArray = ["home_selected.png","maps_selected.png","myplan_selected.png","settings_selected.png","maps_selected.png"]
         // Customize the tabBar images
 
         //*****//*****//*****//*****//*****//*****//*****//*****//
@@ -34,7 +34,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         //****// TabBar Title Customization //*****//
         
         // To Create the attribute dictionary for title for color and font
-        NSVBarController.setTabbar(self.tabBar, images:imagesArray, selectedImages: selecteimgArray)
+        NSVBarController.setTabbar(self.tabBar, images:imagesArray, selectedImages: imagesArray)
         
         // Customize the tabBar title
                 let attributes = [NSForegroundColorAttributeName:UIColor.white]

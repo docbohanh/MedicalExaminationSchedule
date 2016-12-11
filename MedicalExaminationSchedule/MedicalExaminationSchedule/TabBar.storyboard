@@ -11,12 +11,14 @@
         <!--Tab Bar Controller-->
         <scene sceneID="aHY-bE-g4X">
             <objects>
-                <tabBarController id="AHB-b1-9j2" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Egx-vJ-ZnD">
+                <tabBarController id="AHB-b1-9j2" customClass="NSVTabBarController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tab_bar_background" selectionIndicatorImage="tab_bar_selected" id="Egx-vJ-ZnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="3ki-h1-3Cg" kind="relationship" relationship="viewControllers" id="bEW-fF-QTs"/>
@@ -70,4 +72,8 @@
             <point key="canvasLocation" x="-1449" y="-285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_bar_background" width="375" height="49"/>
+        <image name="tab_bar_selected" width="93" height="49"/>
+    </resources>
 </document>
