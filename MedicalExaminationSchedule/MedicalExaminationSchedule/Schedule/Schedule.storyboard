@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u4K-iA-fR9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u4K-iA-fR9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,10 +14,10 @@
         <scene sceneID="9A3-ZW-QnW">
             <objects>
                 <navigationController navigationBarHidden="YES" id="u4K-iA-fR9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lịch hẹn" image="ic_time" id="mPC-1f-8y5"/>
+                    <tabBarItem key="tabBarItem" title="Lịch hẹn" selectedImage="tab_bar_selected" id="mPC-1f-8y5"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AAG-gw-5Fd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AAG-gw-5Fd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -224,6 +224,6 @@
         <image name="ic_avar" width="75" height="75"/>
         <image name="ic_clock" width="15" height="15"/>
         <image name="ic_search" width="22" height="22"/>
-        <image name="ic_time" width="25" height="25"/>
+        <image name="tab_bar_selected" width="93" height="49"/>
     </resources>
 </document>
