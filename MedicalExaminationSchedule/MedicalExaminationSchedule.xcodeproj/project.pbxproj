@@ -1066,10 +1066,9 @@
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1086,11 +1085,9 @@
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
-xaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/Project/outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

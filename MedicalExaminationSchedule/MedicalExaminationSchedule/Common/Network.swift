@@ -19,17 +19,4 @@ class Network: NSObject {
     }
     }).resume()
 }
-
-func sendRequest(url: String, parameters: [String: AnyObject], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTask {
-    let parameterString = parameters.stringFromHttpParameters()
-    let requestURL = URL(string:"\(url)?\(parameterString)")!
-    
-    var request = URLRequest(url: requestURL)
-    request.httpMethod = "GET"
-    
-    let task = URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
-    task.resume()
-    
-    return task
-}
 }
