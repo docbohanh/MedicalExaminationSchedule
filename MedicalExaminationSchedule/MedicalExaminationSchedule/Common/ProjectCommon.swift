@@ -15,10 +15,26 @@ class ProjectCommon: NSObject {
         button.layer.borderWidth = 1.0
         button.layer.borderColor = COLOR_COMMON.cgColor
     }
+    
     static func boundViewWithColor(button:UIView, color: UIColor) {
         button.clipsToBounds = true
         button.layer.cornerRadius = button.frame.size.height/2;
         button.layer.borderWidth = 1.0
         button.layer.borderColor = color.cgColor
+    }
+    
+    static func boundView(button: UIView,cornerRadius: CGFloat, color: UIColor, borderWith: CGFloat) -> Void {
+        button.clipsToBounds = true
+        button.layer.cornerRadius = cornerRadius;
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = color.cgColor
+        button.layer.borderWidth = borderWith
+    }
+
+    
+    static func convertDateToString(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
 }

@@ -22,6 +22,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var chooseBirthdayView: UIView!
+    @IBOutlet weak var datePickerView: UIDatePicker!
+    @IBOutlet weak var choosePickerView: UIView!
+    @IBOutlet weak var okBirthdayButton: UIButton!
+    @IBOutlet weak var chooseBirthdayButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -31,6 +37,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     override func viewWillAppear(_ animated: Bool) {
         self.setupScrollView()
         self.setupComponent()
+        self.tappedChooseMale(maleButton)
     }
     
     func setupComponent() -> Void {
@@ -43,14 +50,41 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         ProjectCommon.boundView(button: addressTextField)
         ProjectCommon.boundView(button: nameTextField)
         ProjectCommon.boundView(button: emailTextField)
-    }
-    
-    @IBAction func tappedChooseAccountType(_ sender: Any) {
-        
+        ProjectCommon.boundView(button: chooseBirthdayButton)
+        ProjectCommon.boundView(button: okBirthdayButton)
+        ProjectCommon.boundView(button: choosePickerView, cornerRadius: 5.0, color: UIColor.clear, borderWith: 0)
     }
     
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
-        
+        var dictParam = [String : AnyObject]()
+        dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
+        dictParam["email"] = emailTextField.text as AnyObject?
+        dictParam["password"] = passwordTextField.text as AnyObject?
+        dictParam["user_display_name"] = nameTextField.text as AnyObject?
+        dictParam["phone"] = phoneTextField.text as AnyObject?
+        if maleButton.isSelected {
+            dictParam["sex"] = USER_SEX.userSexMale.rawValue as AnyObject?
+        }else {
+            dictParam["sex"] = USER_SEX.userSexFemale.rawValue as AnyObject?
+        }
+        dictParam["home_address"] = addressTextField.text as AnyObject?
+        dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
+        APIManager.sharedInstance.makeHTTPPostRequest(path: REST_API_URL + USER_POST_REGISTER, body: dictParam, onCompletion: {(json,error) in
+             print("json:", json)
+            if (json["status"] as! NSNumber) == 1 {
+                // success
+                let alert = UIAlertController(title: "Đăng kí thành công", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }else {
+                // success
+                let alert = UIAlertController(title: "Lỗi", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     @IBAction func tappedSignIn(_ sender: Any) {
@@ -58,13 +92,27 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     @IBAction func tappedChooseMale(_ sender: Any) {
-        
+        maleButton.isSelected = true
+        femaleButton.isSelected = false
     }
     
     @IBAction func tappedChooseFemale(_ sender: Any) {
-        
+        maleButton.isSelected = false
+        femaleButton.isSelected = true
     }
     
+    @IBAction func chooseBirthdayButton(_ sender: Any) {
+        chooseBirthdayView.isHidden = false
+    }
+    
+    @IBAction func closePickerView(_ sender: Any) {
+        chooseBirthdayView.isHidden = true
+    }
+    
+    @IBAction func tappedOKBirthdayButton(_ sender: Any) {
+        chooseBirthdayView.isHidden = true
+        chooseBirthdayButton.setTitle(ProjectCommon.convertDateToString(date: datePickerView.date), for: UIControlState.normal)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
