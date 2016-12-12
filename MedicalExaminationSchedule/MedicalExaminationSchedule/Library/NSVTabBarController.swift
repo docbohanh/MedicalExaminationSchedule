@@ -41,6 +41,21 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
          NSVBarController.setTabBarTitleColor(attributes as AnyObject)
          //*****//*****//*****//*****//*****//*****//*****//*****//
     }
+    
+    override func viewDidLayoutSubviews() {
+        let imagesArray : NSArray = ["ic_news","ic_location_map","ic_time","ic_more",]
+        // To Create the TabBar icons as NSArray for selection time
+        
+        //        let  selecteimgArray:NSArray = ["home_selected.png","maps_selected.png","myplan_selected.png","settings_selected.png","maps_selected.png"]
+        // Customize the tabBar images
+        
+        //*****//*****//*****//*****//*****//*****//*****//*****//
+        
+        //****// TabBar Title Customization //*****//
+        
+        // To Create the attribute dictionary for title for color and font
+        NSVBarController.setTabbar(self.tabBar, images:imagesArray, selectedImages: imagesArray)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
