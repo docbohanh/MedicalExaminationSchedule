@@ -9,10 +9,11 @@
 import UIKit
 
 class UpdateProfileWithFacebookViewController: UIViewController {
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
+    
+    @IBOutlet weak var usernameTextField: CustomUITextField!
+    @IBOutlet weak var emailTextField: CustomUITextField!
+    @IBOutlet weak var addressTextField: CustomUITextField!
+    @IBOutlet weak var phoneTextField: CustomUITextField!
     @IBOutlet weak var updateButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,10 @@ class UpdateProfileWithFacebookViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func viewDidLayoutSubviews() {
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,14 +43,5 @@ class UpdateProfileWithFacebookViewController: UIViewController {
         ProjectCommon.boundView(button: updateButton)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

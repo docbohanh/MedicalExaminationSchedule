@@ -15,7 +15,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var facebookSignInButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var rememberButton: UIButton!
+    @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userNameView: UIView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
     
@@ -30,8 +32,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         ProjectCommon.boundView(button: googleSignInButton)
         ProjectCommon.boundView(button: facebookSignInButton)
         ProjectCommon.boundView(button: signInButton)
-        ProjectCommon.boundView(button: passwordTextField)
-        ProjectCommon.boundView(button: userNameTextField)
+        ProjectCommon.boundView(button: passwordView)
+        ProjectCommon.boundView(button: userNameView)
     }
 
     @IBAction func tappedRegisterAccount(_ sender: Any) {

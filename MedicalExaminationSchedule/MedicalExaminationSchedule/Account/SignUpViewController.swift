@@ -16,12 +16,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: CustomUITextField!
+    @IBOutlet weak var phoneTextField: CustomUITextField!
+    @IBOutlet weak var addressTextField: CustomUITextField!
+    @IBOutlet weak var nameTextField: CustomUITextField!
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: CustomUITextField!
     @IBOutlet weak var chooseBirthdayView: UIView!
     @IBOutlet weak var datePickerView: UIDatePicker!
     @IBOutlet weak var choosePickerView: UIView!
@@ -40,6 +40,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         self.tappedChooseMale(maleButton)
     }
     
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y + 10)
+    }
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: femaleButton)
         ProjectCommon.boundView(button: maleButton)
