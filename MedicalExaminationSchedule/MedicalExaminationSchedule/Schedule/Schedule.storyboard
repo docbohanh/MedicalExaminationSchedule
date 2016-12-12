@@ -14,13 +14,17 @@
         <scene sceneID="9A3-ZW-QnW">
             <objects>
                 <navigationController navigationBarHidden="YES" id="u4K-iA-fR9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lịch hẹn" selectedImage="tab_bar_selected" id="mPC-1f-8y5"/>
+                    <tabBarItem key="tabBarItem" title="Lịch hẹn" image="ic_time" id="mPC-1f-8y5"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AAG-gw-5Fd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6ga-j7-9q0">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="4hz-IE-ye2" kind="relationship" relationship="rootViewController" id="cnJ-PP-wx0"/>
                     </connections>
@@ -224,6 +228,6 @@
         <image name="ic_avar" width="75" height="75"/>
         <image name="ic_clock" width="15" height="15"/>
         <image name="ic_search" width="22" height="22"/>
-        <image name="tab_bar_selected" width="93" height="49"/>
+        <image name="ic_time" width="25" height="25"/>
     </resources>
 </document>
