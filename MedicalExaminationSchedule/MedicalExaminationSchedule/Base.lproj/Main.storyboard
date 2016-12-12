@@ -271,6 +271,7 @@
                             <constraint firstItem="ksv-39-Pce" firstAttribute="trailing" secondItem="hmd-uQ-e5h" secondAttribute="trailing" id="y59-Ky-6b4"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="facebookSignInButton" destination="Rvo-ct-ich" id="k7N-ae-8nj"/>
                         <outlet property="googleSignInButton" destination="KF9-TB-3Hw" id="Wg7-FM-bw4"/>
@@ -466,7 +467,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày sinh:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfl-Z0-tha">
-                                                <rect key="frame" x="15" y="414" width="70" height="36"/>
+                                                <rect key="frame" x="31" y="414" width="70" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="FUz-mi-Yfm"/>
                                                 </constraints>
@@ -475,7 +476,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNb-c6-FMs">
-                                                <rect key="frame" x="116" y="414" width="283" height="36"/>
+                                                <rect key="frame" x="132" y="414" width="267" height="36"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -520,7 +521,7 @@
                                             <constraint firstAttribute="trailing" secondItem="DUi-0K-e0t" secondAttribute="trailing" id="Qs3-Ym-EtV"/>
                                             <constraint firstItem="VNb-c6-FMs" firstAttribute="trailing" secondItem="gVS-iF-AS6" secondAttribute="trailing" id="RD6-J0-k7P"/>
                                             <constraint firstItem="rbs-yC-QpE" firstAttribute="trailing" secondItem="0AI-Gi-oY6" secondAttribute="trailing" id="Rg8-xk-mGI"/>
-                                            <constraint firstItem="yfl-Z0-tha" firstAttribute="leading" secondItem="gVS-iF-AS6" secondAttribute="leading" id="RxG-PW-ioS"/>
+                                            <constraint firstItem="yfl-Z0-tha" firstAttribute="leading" secondItem="gVS-iF-AS6" secondAttribute="leading" constant="16" id="RxG-PW-ioS"/>
                                             <constraint firstItem="YAc-S7-Lmg" firstAttribute="top" secondItem="tLP-2a-y83" secondAttribute="bottom" constant="30" id="TO3-2K-ajU"/>
                                             <constraint firstItem="7t4-WO-BC4" firstAttribute="top" secondItem="Mvl-nz-Cws" secondAttribute="bottom" constant="16" id="TkQ-Yv-hEQ"/>
                                             <constraint firstAttribute="bottom" secondItem="DUi-0K-e0t" secondAttribute="bottom" id="V6H-2r-a69"/>
@@ -634,6 +635,7 @@
                     <navigationItem key="navigationItem" id="y3t-oP-Prw"/>
                     <connections>
                         <outlet property="addressTextField" destination="SQ4-WM-jLZ" id="iKn-qN-c9X"/>
+                        <outlet property="backgroundImageView" destination="DUi-0K-e0t" id="nZH-9Z-z3f"/>
                         <outlet property="chooseBirthdayButton" destination="VNb-c6-FMs" id="Grd-2z-0nf"/>
                         <outlet property="chooseBirthdayView" destination="qqZ-WE-DDU" id="vRl-mO-bi5"/>
                         <outlet property="choosePickerView" destination="bya-UX-jqQ" id="sSK-sC-Hoz"/>
@@ -799,6 +801,7 @@
                     <navigationItem key="navigationItem" id="e75-OJ-e3r"/>
                     <connections>
                         <outlet property="addressTextField" destination="DZu-iZ-otf" id="w6D-Tm-qXu"/>
+                        <outlet property="backgroundImageView" destination="5Ib-cb-R6C" id="aYh-Cf-mbv"/>
                         <outlet property="emailTextField" destination="ED4-Le-Itd" id="xHR-g3-Zjs"/>
                         <outlet property="phoneTextField" destination="9tg-CR-LOW" id="t9T-0Q-Oby"/>
                         <outlet property="updateButton" destination="icb-l6-r6H" id="rlK-eE-wWL"/>

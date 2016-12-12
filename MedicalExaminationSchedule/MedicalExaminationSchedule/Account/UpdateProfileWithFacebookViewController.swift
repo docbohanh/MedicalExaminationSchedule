@@ -10,6 +10,7 @@ import UIKit
 
 class UpdateProfileWithFacebookViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var usernameTextField: CustomUITextField!
     @IBOutlet weak var emailTextField: CustomUITextField!
     @IBOutlet weak var addressTextField: CustomUITextField!
@@ -28,6 +29,7 @@ class UpdateProfileWithFacebookViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        
     }
     
     override func didReceiveMemoryWarning() {

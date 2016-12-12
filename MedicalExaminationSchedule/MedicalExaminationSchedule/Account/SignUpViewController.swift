@@ -10,6 +10,7 @@ import UIKit
 
 class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDelegate {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var contentScrollview: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var femaleButton: UIButton!
@@ -42,6 +43,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y + 10)
+        scrollView.bounces = false
+        backgroundImageView.frame.size.height = scrollView.contentSize.height
     }
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: femaleButton)
