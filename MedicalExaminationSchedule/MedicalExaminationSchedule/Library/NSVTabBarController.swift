@@ -16,6 +16,13 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if self.navigationController?.viewControllers.count == 1 {
+            var navigationViewControllers = self.navigationController?.viewControllers
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            navigationViewControllers?.insert(loginViewController, at: 0)
+            self.navigationController?.viewControllers = navigationViewControllers!
+        }
         // Do any additional setup after loading the view.
         self.delegate = self
         

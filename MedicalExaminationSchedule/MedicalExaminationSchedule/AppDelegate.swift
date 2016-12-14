@@ -24,11 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (UserDefaults.standard.object(forKey:"token_id") == nil) {
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-            window!.rootViewController = loginViewController
+            let rootNavigation = UINavigationController.init(rootViewController: loginViewController)
+            loginViewController.navigationController?.navigationBar.isHidden = true
+            window!.rootViewController = rootNavigation
         } else {
-            let mainStoryBoard = UIStoryboard(name: "TabBar", bundle: nil)
-            let tabbarViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
-            window!.rootViewController = tabbarViewController
+            let tabBarStoryBoard = UIStoryboard(name: "TabBar", bundle: nil)
+            let tabbarViewController = tabBarStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
+            let rootNavigation = UINavigationController.init(rootViewController:tabbarViewController)
+            tabbarViewController.navigationController?.navigationBar.isHidden = true
+            window!.rootViewController = rootNavigation
         }
         // Override point for customization after application launch.
         return true
