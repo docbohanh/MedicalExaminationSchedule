@@ -51,6 +51,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBAction func tappedSignIn(_ sender: Any) {
         
         view.endEditing(true)
+        self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+        return
+        
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
             self.dismiss(animated: true, completion: nil)

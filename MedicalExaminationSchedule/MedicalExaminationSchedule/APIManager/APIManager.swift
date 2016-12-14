@@ -12,16 +12,23 @@ typealias ServiceResponse = (AnyObject, NSError?) -> Void
 class APIManager: NSObject {
     static let sharedInstance = APIManager()
     
-    func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {
-        var request = URLRequest(url: NSURL(string: path) as! URL)
+    func makeHTTPGetRequest(path: String, param:[String:AnyObject], onCompletion: @escaping ServiceResponse) {
+        let parameterString = param.stringFromHttpParameters()
+        let requestURL = URL(string:"\(path)?\(parameterString)")!
+        
+        var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
         let session = URLSession.shared
         
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
 //            let json:JSON = JSON(data: data)
-            guard let json = try! JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] else { return }
-            print("json:", json)
-            onCompletion(json as AnyObject, error as NSError?)
+            if (data != nil) {
+                guard let json = try! JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] else { return }
+                print("json:", json)
+                onCompletion(json as AnyObject, error as NSError?)
+            }else{
+                print("Error !!! %@",(error as! NSError).description)
+            }
         })
         task.resume()
     }
@@ -40,6 +47,8 @@ class APIManager: NSObject {
             if (data != nil) {
                  guard let json = try! JSONSerialization.jsonObject(with: data!, options:[]) as? [String: AnyObject] else { return }
                 onCompletion(json as AnyObject, error as NSError?)
+            } else {
+                print("Error !!! %@",(error as! NSError).description)
             }
         })
         task.resume()
