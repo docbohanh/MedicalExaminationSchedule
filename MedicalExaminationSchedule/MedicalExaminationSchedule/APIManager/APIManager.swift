@@ -37,8 +37,11 @@ class APIManager: NSObject {
         
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
             if (data != nil) {
+                print("data != nil")
                  guard let json = try! JSONSerialization.jsonObject(with: data!, options:[]) as? [String: AnyObject] else { return }
                 onCompletion(json as AnyObject, error as NSError?)
+            } else {
+                print("data == nil")
             }
         })
         task.resume()

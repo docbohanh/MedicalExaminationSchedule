@@ -96,29 +96,15 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
         print(UserDefaults.standard.object(forKey: "token_id") as! String)
-        self.dismiss(animated: true, completion: nil)
-        return
-        
+        UserDefaults.standard.removeObject(forKey: "token_id")
+        self.navigationController?.popViewController(animated: true)
+
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        var dictParam = [String : AnyObject]()
-        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGOUT, body: dictParam, onCompletion: {(json, error) in
-            print("json:", json)
-            if (json["status"] as! NSNumber) == 1 {
-                // success
-                // pop to signin
-                
-            }else {
-                // success
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
             }
-        })
-
+        }))
     }
     
     @IBAction func tappedMyProfileButton(_ sender: Any) {

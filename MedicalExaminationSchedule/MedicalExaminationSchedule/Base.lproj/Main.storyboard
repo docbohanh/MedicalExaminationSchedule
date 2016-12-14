@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -132,13 +132,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQg-Ci-mxY">
-                                <rect key="frame" x="171" y="348" width="74" height="36"/>
+                                <rect key="frame" x="170" y="348" width="74" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_facebook" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-nv-zUH">
-                                <rect key="frame" x="131" y="351" width="30" height="30"/>
+                                <rect key="frame" x="130" y="351" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UyP-4u-gU5"/>
                                     <constraint firstAttribute="width" constant="30" id="kd5-Tj-SbP"/>
@@ -282,7 +282,7 @@
                         <outlet property="signInButton" destination="6Tj-Rg-SBW" id="LKd-2N-jDy"/>
                         <outlet property="userNameTextField" destination="913-dd-lPz" id="tdN-JY-apz"/>
                         <outlet property="userNameView" destination="9uq-7x-1Pv" id="a9V-MB-tZD"/>
-                        <segue destination="r3Z-6z-JrD" kind="show" identifier="ShowTabBar" id="M7S-sj-yZe"/>
+                        <segue destination="r3Z-6z-JrD" kind="push" identifier="ShowTabBar" id="48L-4f-hpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-jo-XjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -311,7 +311,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="tLP-2a-y83">
-                                                <rect key="frame" x="168" y="50" width="80" height="80"/>
+                                                <rect key="frame" x="167" y="50" width="80" height="80"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="G7q-PB-81B"/>
@@ -402,7 +402,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AI-Gi-oY6">
-                                                <rect key="frame" x="218" y="466" width="181" height="36"/>
+                                                <rect key="frame" x="217" y="466" width="182" height="36"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -417,7 +417,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4io-JK-aX5">
-                                                <rect key="frame" x="15" y="466" width="183" height="36"/>
+                                                <rect key="frame" x="15" y="466" width="182" height="36"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -661,7 +661,9 @@
         <!--TabBar-->
         <scene sceneID="5bF-UI-eeD">
             <objects>
-                <viewControllerPlaceholder storyboardName="TabBar" id="r3Z-6z-JrD" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TabBar" id="r3Z-6z-JrD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZzM-a9-nCn"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzY-OU-J7y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="297"/>
@@ -708,7 +710,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EmailTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-Le-Itd" customClass="CustomUITextField" customModule="MedicalExaminationSchedule" customModuleProvider="target">
-                                <rect key="frame" x="16" y="243" width="382" height="37"/>
+                                <rect key="frame" x="16" y="243" width="382" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -723,7 +725,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AddressTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Địa chỉ" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DZu-iZ-otf" customClass="CustomUITextField" customModule="MedicalExaminationSchedule" customModuleProvider="target">
-                                <rect key="frame" x="16" y="295" width="382" height="36"/>
+                                <rect key="frame" x="16" y="294" width="382" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -738,7 +740,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PhoneTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Điện thoại" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9tg-CR-LOW" customClass="CustomUITextField" customModule="MedicalExaminationSchedule" customModuleProvider="target">
-                                <rect key="frame" x="16" y="346" width="382" height="36"/>
+                                <rect key="frame" x="16" y="345" width="382" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -754,7 +756,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icb-l6-r6H">
-                                <rect key="frame" x="16" y="432" width="382" height="36"/>
+                                <rect key="frame" x="16" y="431" width="382" height="36"/>
                                 <color key="backgroundColor" red="0.093473188580000005" green="0.88820451499999997" blue="0.87031525369999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Cập nhật">
