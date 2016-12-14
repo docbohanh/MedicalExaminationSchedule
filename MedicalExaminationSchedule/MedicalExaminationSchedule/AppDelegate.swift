@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
         GMSPlacesClient.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
+        
+        if (UserDefaults.standard.object(forKey:"token_id") == nil) {
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            window!.rootViewController = loginViewController
+        } else {
+            let mainStoryBoard = UIStoryboard(name: "TabBar", bundle: nil)
+            let tabbarViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
+            window!.rootViewController = tabbarViewController
+        }
         // Override point for customization after application launch.
         return true
     }

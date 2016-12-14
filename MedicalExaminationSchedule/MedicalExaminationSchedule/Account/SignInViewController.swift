@@ -27,6 +27,10 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         self.setupComponent()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+    
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: registerAccountButton)
         ProjectCommon.boundView(button: googleSignInButton)
