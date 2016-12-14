@@ -70,8 +70,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
             print("json:", json)
             if (json["status"] as! NSNumber) == 1 {
                 // success
-//                let dictResult = json["result"] as! Dictionary
-//                UserDefaults.standard.set(dictResult["token"], forKey: "token")
+                let dictResult = json["result"] as! [String:AnyObject]
+                UserDefaults.standard.set(dictResult["token"], forKey: "token")
                 self.performSegue(withIdentifier: "ShowTabBar", sender: self)
             }else {
                 // success
