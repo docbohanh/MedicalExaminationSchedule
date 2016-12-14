@@ -106,8 +106,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("json:", json)
             if (json["status"] as! NSNumber) == 1 {
                 // success
-                let dictResult = json["result"] as! [String:AnyObject]
-                self.userModel = UserModel.init(dict: dictResult as! [String : String])
+                let dictResult = json["result"] as! [String:String]
+                self.userModel = UserModel.init(dict: dictResult)
                 self.usernameLabel.text = self.userModel?.user_display_name
             }else {
                 // success
@@ -120,7 +120,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
-        print(UserDefaults.standard.object(forKey: "token_id") as! String)
         UserDefaults.standard.removeObject(forKey: "token_id")
         self.navigationController?.popViewController(animated: true)
 

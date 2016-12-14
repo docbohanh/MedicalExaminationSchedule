@@ -26,13 +26,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MedicalExaminationSchedule/Account/SignInViewController.swift"
-            timestampString = "503431893.594487"
+            timestampString = "503432523.808708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "tappedSignIn(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/Account/SignInViewController.swift"
+            timestampString = "503432523.808708"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "tappedSignIn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/Account/SignInViewController.swift"
+            timestampString = "503432554.150693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "tappedSignIn(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedicalExaminationSchedule.SignInViewController.tappedSignIn (Any) -&gt; ()"
+                  moduleName = "MedicalExaminationSchedule"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/NguyenHaiDang/Desktop/My%20Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Account/SignInViewController.swift"
+                  timestampString = "503432554.366278"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "3617">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedicalExaminationSchedule.SignInViewController.(tappedSignIn (Any) -&gt; ()).(closure #2)"
+                  moduleName = "MedicalExaminationSchedule"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/NguyenHaiDang/Desktop/My%20Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Account/SignInViewController.swift"
+                  timestampString = "503432554.367883"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
