@@ -27,6 +27,10 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         self.setupComponent()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
+    
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: registerAccountButton)
         ProjectCommon.boundView(button: googleSignInButton)
@@ -65,11 +69,11 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        var dictParam = [String : AnyObject]()
-        dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
-        dictParam["email"] = userNameTextField.text as AnyObject?
-        dictParam["password"] = passwordTextField.text as AnyObject?
-        APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam, onCompletion: {(json, error) in
+        var dictParam = [String : String]()
+        dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
+        dictParam["email"] = userNameTextField.text
+        dictParam["password"] = passwordTextField.text
+        APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam as [String:AnyObject], onCompletion: {(json, error) in
             print("json:", json)
             if (json["status"] as! NSNumber) == 1 {
                 // success
