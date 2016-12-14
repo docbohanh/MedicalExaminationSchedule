@@ -22,6 +22,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     var iconArray = [String]()
     var titleArray = [String]()
     var isDoctor = true
+    var userModel : UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         moreTableView.reloadData()
         self.createPopup()
+        self.getProfile()
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,6 +93,29 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         backgroundPopupView.addConstraints(allConstraints)
         backgroundPopupView.isHidden = true
+    }
+    
+    func getProfile() -> Void {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        var dictParam = [String : AnyObject]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + USER_GET_INFO, param: dictParam, onCompletion: {(json, error) in
+            print("json:", json)
+            if (json["status"] as! NSNumber) == 1 {
+                // success
+                let dictResult = json["result"] as! [String:AnyObject]
+                self.userModel = UserModel.init(dict: dictResult as! [String : String])
+                self.usernameLabel.text = self.userModel?.user_display_name
+            }else {
+                // success
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     @IBAction func tappedSignOutButton(_ sender: Any) {

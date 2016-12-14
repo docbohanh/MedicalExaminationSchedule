@@ -23,6 +23,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
+        self.getListNew()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +31,28 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    func getListNew() -> Void {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        var dictParam = [String : AnyObject]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        dictParam["page_index"] = "1" as AnyObject?
+        dictParam["query"] = "" as AnyObject?
+        APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + NEWS_GET, param: dictParam, onCompletion: {(json, error) in
+            print("json:", json)
+            if (json["status"] as! NSNumber) == 1 {
+                // success
+            }else {
+                // success
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
+    }
+    
     @IBAction func tappedSearchButton(_ sender: Any) {
     }
     
@@ -54,11 +77,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         self.performSegue(withIdentifier: "pushToNewDetail", sender: self)
     }
     
-    func getNews() {
-        APIManager.sharedInstance.makeHTTPGetRequest(path: "", onCompletion: {(result,error) in
-        
-        })
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

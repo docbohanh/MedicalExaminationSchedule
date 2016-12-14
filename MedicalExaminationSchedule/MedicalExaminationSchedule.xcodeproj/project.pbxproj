@@ -91,6 +91,7 @@
 		D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30511DFD52BC00287924 /* APIManager.swift */; };
 		D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30531DFD96DF00287924 /* NSVBarController.swift */; };
 		D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */; };
+		D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F778E51E01AE80007D63E4 /* UserModel.swift */; };
 		EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */; };
 		EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */; };
 		EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */; };
@@ -232,6 +233,7 @@
 		D2EF30511DFD52BC00287924 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D2EF30531DFD96DF00287924 /* NSVBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVBarController.swift; sourceTree = "<group>"; };
 		D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVTabBarController.swift; sourceTree = "<group>"; };
+		D2F778E51E01AE80007D63E4 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupScheduleViewController.swift; sourceTree = "<group>"; };
 		EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setupTimeScheduleViewController.swift; sourceTree = "<group>"; };
 		EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFreeViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				D2F778E41E01AE6E007D63E4 /* Models */,
 				D2EF30501DFD52AF00287924 /* APIManager */,
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
 				D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */,
@@ -553,6 +556,14 @@
 				D2EF30511DFD52BC00287924 /* APIManager.swift */,
 			);
 			path = APIManager;
+			sourceTree = "<group>";
+		};
+		D2F778E41E01AE6E007D63E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2F778E51E01AE80007D63E4 /* UserModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EA05ED121DF7AA0A002DD339 /* Schedule */ = {
@@ -888,6 +899,7 @@
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
 				EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */,
+				D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */,
 				D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */,
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
@@ -1092,7 +1104,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1111,7 +1123,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
