@@ -50,6 +50,36 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
 
     @IBAction func tappedSignIn(_ sender: Any) {
         
+        view.endEditing(true)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
+            alert.title = "Lỗi"
+            alert.message = "Email không đúng định dạng"
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        var dictParam = [String : AnyObject]()
+        dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
+        dictParam["email"] = userNameTextField.text as AnyObject?
+        dictParam["password"] = passwordTextField.text as AnyObject?
+        APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam, onCompletion: {(json, error) in
+            print("json:", json)
+            if (json["status"] as! NSNumber) == 1 {
+                // success
+//                let dictResult = json["result"] as! Dictionary
+//                UserDefaults.standard.set(dictResult["token"], forKey: "token")
+                self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+            }else {
+                // success
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     @IBAction func tappedRemember(_ sender: Any) {

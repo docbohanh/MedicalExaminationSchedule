@@ -62,6 +62,19 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
+            alert.title = "Lỗi"
+            alert.message = "Email không đúng định dạng"
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         var dictParam = [String : AnyObject]()
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
         dictParam["email"] = emailTextField.text as AnyObject?
@@ -79,15 +92,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
              print("json:", json)
             if (json["status"] as! NSNumber) == 1 {
                 // success
-                let alert = UIAlertController(title: "Đăng kí thành công", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-                    self.dismiss(animated: true, completion: nil)
-                }))
+                alert.title = "Đăng kí thành công"
                 self.present(alert, animated: true, completion: nil)
             }else {
                 // success
-                let alert = UIAlertController(title: "Lỗi", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                alert.title = "Lỗi"
+                alert.message = error?.description
                 self.present(alert, animated: true, completion: nil)
             }
         })
