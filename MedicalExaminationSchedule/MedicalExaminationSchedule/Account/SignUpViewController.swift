@@ -33,12 +33,18 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         super.viewDidLoad()
         self.setupNavigationBar()
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.setupScrollView()
         self.setupComponent()
         self.tappedChooseMale(maleButton)
+    }
+    
+    func dismissKeyboard() -> Void {
+        view.endEditing(true)
     }
     
     override func viewDidLayoutSubviews() {
