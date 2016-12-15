@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MedicalExaminationSchedule/Account/SignUpViewController.swift"
-            timestampString = "503502039.267723"
+            timestampString = "503503380.568403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "tappedRegisterNewAccount(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/Account/SignUpViewController.swift"
+            timestampString = "503503432.79378"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "tappedRegisterNewAccount(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -82,13 +82,15 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         dictParam["password"] = passwordTextField.text
         APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam as [String:AnyObject], onCompletion: {(json, error) in
             print("json:", json)
+            DispatchQueue.main.async {
+                self.waitingView.isHidden = true
+            }
             if (error != nil)
             {
                 // error
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 DispatchQueue.main.async {
-                    self.waitingView.isHidden = true
                     self.present(alert, animated: true, completion: nil)
                 }
                 return
@@ -98,14 +100,12 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
                 let dictResult = json["result"] as! [String:AnyObject]
                 UserDefaults.standard.set(dictResult["token_id"], forKey: "token_id")
                 DispatchQueue.main.async {
-                    self.waitingView.isHidden = true
                     self.performSegue(withIdentifier: "ShowTabBar", sender: self)
                 }
             }else {
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 DispatchQueue.main.async {
-                    self.waitingView.isHidden = true
                     self.present(alert, animated: true, completion: nil)
                 }
             }

@@ -107,20 +107,34 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                 // error
                 alert.title = "Lỗi"
                 alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
                 return
             }
-            if (json["status"] != nil) {
-                if (json["status"] as! NSNumber) == 1 {
-                    // success
-                    alert.title = "Đăng kí thành công"
-                    self.present(alert, animated: true, completion: nil)
-                    return
+            if let result = json["status"] {
+                if result != nil {
+                    if (result as! NSNumber) == 1 {
+                        // success
+                        alert.title = "Đăng kí thành công"
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        return
+                    }
+                } else {
+                    alert.title = "Lỗi"
+                    alert.message = error?.description
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
             alert.title = "Lỗi"
             alert.message = error?.description
-            self.present(alert, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
         })
     }
     
