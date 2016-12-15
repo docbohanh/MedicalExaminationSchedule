@@ -25,6 +25,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupComponent()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +41,11 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         ProjectCommon.boundView(button: passwordView)
         ProjectCommon.boundView(button: userNameView)
     }
+    
+    func dismissKeyboard() -> Void {
+        view.endEditing(true)
+    }
+    
 
     @IBAction func tappedRegisterAccount(_ sender: Any) {
         

@@ -33,6 +33,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         super.viewDidLoad()
         self.setupNavigationBar()
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +48,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         scrollView.bounces = false
         backgroundImageView.frame.size.height = scrollView.contentSize.height
     }
+    
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: femaleButton)
         ProjectCommon.boundView(button: maleButton)
@@ -59,6 +62,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         ProjectCommon.boundView(button: chooseBirthdayButton)
         ProjectCommon.boundView(button: okBirthdayButton)
         ProjectCommon.boundView(button: choosePickerView, cornerRadius: 5.0, color: UIColor.clear, borderWith: 0)
+    }
+    
+    func dismissKeyboard() -> Void {
+        view.endEditing(true)
     }
     
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
