@@ -21,6 +21,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
     
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
+    @IBOutlet weak var waitingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -60,7 +62,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func tappedSignIn(_ sender: Any) {
-        
+        waitingView.isHidden = false
         view.endEditing(true)
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
@@ -80,16 +82,23 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         dictParam["password"] = passwordTextField.text
         APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam as [String:AnyObject], onCompletion: {(json, error) in
             print("json:", json)
+            
             if (json["status"] as! NSNumber) == 1 {
                 // success
                 let dictResult = json["result"] as! [String:AnyObject]
                 UserDefaults.standard.set(dictResult["token_id"], forKey: "token_id")
-                self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                DispatchQueue.main.async {
+                    self.waitingView.isHidden = true
+                    self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                }
             }else {
                 // success
                 alert.title = "Lỗi"
                 alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.waitingView.isHidden = true
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         })
     }

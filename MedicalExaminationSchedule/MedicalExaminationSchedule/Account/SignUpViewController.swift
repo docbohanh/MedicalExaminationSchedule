@@ -67,11 +67,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         ProjectCommon.boundView(button: okBirthdayButton)
         ProjectCommon.boundView(button: choosePickerView, cornerRadius: 5.0, color: UIColor.clear, borderWith: 0)
     }
-    
-    func dismissKeyboard() -> Void {
-        view.endEditing(true)
-    }
-    
+
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)

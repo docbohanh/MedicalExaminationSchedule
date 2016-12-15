@@ -21,15 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
         GMSPlacesClient.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
         
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         if (UserDefaults.standard.object(forKey:"token_id") == nil) {
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
             let rootNavigation = UINavigationController.init(rootViewController: loginViewController)
             loginViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
         } else {
-            let tabBarStoryBoard = UIStoryboard(name: "TabBar", bundle: nil)
-            let tabbarViewController = tabBarStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
+            let tabbarViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
             let rootNavigation = UINavigationController.init(rootViewController:tabbarViewController)
             tabbarViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
