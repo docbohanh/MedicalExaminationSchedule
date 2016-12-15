@@ -68,12 +68,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         ProjectCommon.boundView(button: choosePickerView, cornerRadius: 5.0, color: UIColor.clear, borderWith: 0)
     }
     
-    func dismissKeyboard() -> Void {
-        view.endEditing(true)
-    }
-    
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
-        
+        view.endEditing(true)
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
             self.dismiss(animated: true, completion: nil)
@@ -101,16 +97,25 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
         APIManager.sharedInstance.makeHTTPPostRequest(path: REST_API_URL + USER_POST_REGISTER, body: dictParam, onCompletion: {(json,error) in
              print("json:", json)
-            if (json["status"] as! NSNumber) == 1 {
-                // success
-                alert.title = "Đăng kí thành công"
-                self.present(alert, animated: true, completion: nil)
-            }else {
-                // success
+            if (error != nil)
+            {
+                // error
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 self.present(alert, animated: true, completion: nil)
+                return
             }
+            if (json["status"] != nil) {
+                if (json["status"] as! NSNumber) == 1 {
+                    // success
+                    alert.title = "Đăng kí thành công"
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            }
+            alert.title = "Lỗi"
+            alert.message = error?.description
+            self.present(alert, animated: true, completion: nil)
         })
     }
     

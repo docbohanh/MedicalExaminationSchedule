@@ -42,10 +42,17 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         dictParam["query"] = "" as AnyObject?
         APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + NEWS_GET, param: dictParam, onCompletion: {(json, error) in
             print("json:", json)
+            if (error != nil)
+            {
+                // error
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             if (json["status"] as! NSNumber) == 1 {
                 // success
             }else {
-                // success
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 self.present(alert, animated: true, completion: nil)

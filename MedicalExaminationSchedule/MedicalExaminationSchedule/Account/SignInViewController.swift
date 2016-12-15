@@ -80,13 +80,20 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         dictParam["password"] = passwordTextField.text
         APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam as [String:AnyObject], onCompletion: {(json, error) in
             print("json:", json)
+            if (error != nil)
+            {
+                // error
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             if (json["status"] as! NSNumber) == 1 {
                 // success
                 let dictResult = json["result"] as! [String:AnyObject]
                 UserDefaults.standard.set(dictResult["token_id"], forKey: "token_id")
                 self.performSegue(withIdentifier: "ShowTabBar", sender: self)
             }else {
-                // success
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 self.present(alert, animated: true, completion: nil)

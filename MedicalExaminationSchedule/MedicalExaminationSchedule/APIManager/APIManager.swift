@@ -28,6 +28,7 @@ class APIManager: NSObject {
                 onCompletion(json as AnyObject, error as NSError?)
             }else{
                 print("Error !!! %@",(error as! NSError).description)
+                onCompletion("" as AnyObject, error as NSError?)
             }
         })
         task.resume()
@@ -50,6 +51,7 @@ class APIManager: NSObject {
             } else {
                 print("data == nil")
                 print("Error !!! %@",(error as! NSError).description)
+                onCompletion("" as AnyObject, error as NSError?)
             }
         })
         task.resume()
