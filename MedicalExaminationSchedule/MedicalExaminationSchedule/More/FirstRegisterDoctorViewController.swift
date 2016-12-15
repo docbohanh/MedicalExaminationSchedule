@@ -19,9 +19,12 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     var delegate : FirstRegisterDoctorVCDelegate?
     @IBOutlet weak var backgroundPopUpView: UIView!
     var titleArray = [String]()
+    var dataArray = [String]()
+    
     var imageAvatar = UIImage()
     var isDoctor = false
     var isFirstRegisterDoctor = false
+    var userProfile : UserModel?
     
     
     override func viewDidLoad() {
@@ -30,6 +33,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         // Do any additional setup after loading the view.
         imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
+        dataArray += [(self.userProfile?.user_display_name)!, "",(self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
         
@@ -114,6 +118,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
+            cell.cellTextField.text = dataArray[indexPath.row - 1]
             return cell
         }
     }

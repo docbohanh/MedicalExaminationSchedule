@@ -106,9 +106,11 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("json:", json)
             if (json["status"] as! NSNumber) == 1 {
                 // success
-                let dictResult = json["result"] as! [String:String]
+                let dictResult = json["result"] as! [String:AnyObject]
                 self.userModel = UserModel.init(dict: dictResult)
-                self.usernameLabel.text = self.userModel?.user_display_name
+                DispatchQueue.main.async {
+                    self.usernameLabel.text = self.userModel?.user_display_name
+                }
             }else {
                 // success
                 alert.title = "Lỗi"
@@ -217,12 +219,13 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "pushToUpdateUserProfile" {
-//            let updateVC = segue.destination as! UpdateUserViewController
-//            updateVC.isDoctor = isDoctor
+            let updateVC = segue.destination as! UpdateUserViewController
+            updateVC.userProfile = self.userModel
             
         }else if (segue.identifier == "PushToFirstRegisterDoctor") {
             let registerVC = segue.destination as! FirstRegisterDoctorViewController
             registerVC.delegate = self
+            registerVC.userProfile = self.userModel
         }
     }
 
