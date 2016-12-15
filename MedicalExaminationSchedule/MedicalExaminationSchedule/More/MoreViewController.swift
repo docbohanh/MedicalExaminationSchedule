@@ -35,7 +35,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
         if iconArray.count > 0 {
             iconArray.removeAll()
         }
@@ -104,6 +104,14 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
         APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + USER_GET_INFO, param: dictParam, onCompletion: {(json, error) in
             print("json:", json)
+            if (error != nil)
+            {
+                // error
+                alert.title = "Lỗi"
+                alert.message = error?.description
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             if (json["status"] as! NSNumber) == 1 {
                 // success
                 let dictResult = json["result"] as! [String:AnyObject]
@@ -112,7 +120,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.usernameLabel.text = self.userModel?.user_display_name
                 }
             }else {
-                // success
                 alert.title = "Lỗi"
                 alert.message = error?.description
                 self.present(alert, animated: true, completion: nil)
