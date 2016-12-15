@@ -125,7 +125,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     @IBAction func tappedSignIn(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedChooseMale(_ sender: Any) {
