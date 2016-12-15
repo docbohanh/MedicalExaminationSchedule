@@ -41,7 +41,6 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         self.setupScrollView()
         self.setupComponent()
         self.tappedChooseMale(maleButton)
-        
     }
     
     func dismissKeyboard() -> Void {
