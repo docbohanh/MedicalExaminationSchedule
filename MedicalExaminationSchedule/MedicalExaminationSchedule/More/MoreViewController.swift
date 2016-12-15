@@ -108,12 +108,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // success
                 let dictResult = json["result"] as! [String:AnyObject]
                 self.userModel = UserModel.init(dict: dictResult)
-                let qosClass = QOS_CLASS_BACKGROUND
-                let backgroundQueue = dispatch_get_global_queue(qosClass, 0)
-                dispatch_async(backgroundQueue, {
-                    print("Work on background queue")
-                })
-                self.usernameLabel.text = self.userModel?.user_display_name
+                DispatchQueue.main.async {
+                    self.usernameLabel.text = self.userModel?.user_display_name
+                }
             }else {
                 // success
                 alert.title = "Lỗi"
