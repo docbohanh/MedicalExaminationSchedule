@@ -75,9 +75,15 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
         view.endEditing(true)
+        var isSuccess = false
+        
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
             self.dismiss(animated: true, completion: nil)
+            if (isSuccess == true)
+            {
+                 self.navigationController?.popViewController(animated: true)
+            }
         }))
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
@@ -121,12 +127,6 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                             self.present(alert, animated: true, completion: nil)
                         }
                         return
-                    }
-                } else {
-                    alert.title = "Lỗi"
-                    alert.message = error?.description
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: nil)
                     }
                 }
             }

@@ -117,7 +117,11 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let dictResult = json["result"] as! [String:AnyObject]
                 self.userModel = UserModel.init(dict: dictResult)
                 DispatchQueue.main.async {
-                    self.usernameLabel.text = self.userModel?.user_display_name
+                    if (self.userModel?.user_display_name == ""){
+                        self.usernameLabel.text = "No name"
+                    }else {
+                        self.usernameLabel.text = self.userModel?.user_display_name
+                    }
                 }
             }else {
                 alert.title = "Lỗi"
