@@ -15,7 +15,10 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var backgroundPopUpView: UIView!
     
     var titleArray = [String]()
+    var dataArray = [String]()
+    
     var imageAvatar = UIImage()
+    var userProfile : UserModel?
     
     
     override func viewDidLoad() {
@@ -24,6 +27,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
+        dataArray += [(self.userProfile?.user_display_name)!, "",(self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!]
 
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
@@ -101,19 +105,24 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.avatarImageView.image = imageAvatar
-
             cell.delegate = self
             return cell
         case titleArray.count:
             strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row-1]
+            if self.userProfile?.sex == USER_SEX.userSexFemale.rawValue {
+                cell.tappedMaleButton(cell.maleButton)
+            }else {
+                 cell.tappedFemaleButton(cell.femaleButton)
+            }
             return cell
         default:
             strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
-            cell.titleLabel.text = titleArray[indexPath.row-1]
+            cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
+            cell.cellTextField.text = dataArray[indexPath.row - 1]
             return cell
         }
     }

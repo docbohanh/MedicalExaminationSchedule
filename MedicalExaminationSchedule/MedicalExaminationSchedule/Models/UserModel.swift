@@ -23,45 +23,47 @@ class UserModel: NSObject {
     var user_type_id : String?
     var work_address : String?
     
-    init(dict:[String:String]) {
+    init(dict:[String:AnyObject]) {
         if (dict["birthday"] != nil) {
-            self.birthday = dict["birthday"]
+            self.birthday = dict["birthday"] as? String ?? ""
+        }else {
+            self.birthday = ""
         }
         if (dict["email"] != nil) {
-            self.email = dict["email"]
+            self.email = dict["email"] as? String
         }
         if (dict["home_address"] != nil) {
-            self.home_address = dict["home_address"]
+            self.home_address = dict["home_address"] as? String
         }
         if (dict["job"] != nil) {
-            self.job = dict["job"]
+            self.job = dict["job"] as? String
         }
         if (dict["phone"] != nil) {
-            self.phone = dict["phone"]
+            self.phone = dict["phone"] as? String
         }
         if (dict["sex"] != nil) {
-            self.sex = dict["sex"]
+            self.sex = dict["sex"] as? String
         }
         if (dict["social_id"] != nil) {
-            self.social_id = dict["social_id"]
+            self.social_id = dict["social_id"] as? String
         }
         if (dict["social_type"] != nil) {
-            self.social_type = dict["social_type"]
+            self.social_type = dict["social_type"] as? String
         }
         if (dict["status"] != nil) {
-            self.status = dict["status"]
+            self.status = dict["status"] as? String
         }
         if (dict["user_display_name"] != nil) {
-            self.user_display_name = dict["user_display_name"]
+            self.user_display_name = dict["user_display_name"] as? String
         }
         if (dict["user_id"] != nil) {
-            self.user_id = dict["user_id"]
+            self.user_id = dict["user_id"] as? String
         }
         if (dict["user_type_id"] != nil) {
-            self.user_type_id = dict["user_type_id"]
+            self.user_type_id = dict["user_type_id"] as? String
         }
         if (dict["work_address"] != nil) {
-            self.work_address = dict["work_address"]
+            self.work_address = dict["work_address"] as? String
         }
     }
     
