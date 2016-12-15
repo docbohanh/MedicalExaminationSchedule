@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         self.setupScrollView()
         self.setupComponent()
         self.tappedChooseMale(maleButton)
+        
     }
     
     func dismissKeyboard() -> Void {
@@ -48,7 +49,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y + 10)
+        if (signInButton.frame.size.height + signInButton.frame.origin.y) < scrollView.frame.size.height {
+            scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+        } else {
+            scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y + 10)
+        }
         scrollView.bounces = false
         backgroundImageView.frame.size.height = scrollView.contentSize.height
     }

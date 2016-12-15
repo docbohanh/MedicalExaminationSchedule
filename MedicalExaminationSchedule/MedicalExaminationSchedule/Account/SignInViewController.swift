@@ -32,7 +32,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        waitingView.isHidden = true
     }
     
     func setupComponent() -> Void {
