@@ -117,8 +117,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.usernameLabel.text = self.userModel?.user_display_name
                     }
                     print((self.userModel?.user_type_id)!)
-                    self.isDoctor = (self.userModel?.user_type_id)!
-                    self.moreTableView.reloadData()
+//                    self.isDoctor = (self.userModel?.user_type_id)!
+//                    self.moreTableView.reloadData()
                 }
             }else {
                 alert.title = "Lỗi"
@@ -241,6 +241,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             let registerVC = segue.destination as! FirstRegisterDoctorViewController
             registerVC.delegate = self
             registerVC.userProfile = self.userModel
+        }else if (segue.identifier == "PushToUpdateProfileDoctor") {
+            let updateVC = segue.destination as! UpdateProfileDoctorViewController
+            updateVC.userProfile = self.userModel
         }
     }
 

@@ -20,11 +20,13 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var backgroundPopUpView: UIView!
     var titleArray = [String]()
     var dataArray = [String]()
+    var keyArray = [String]()
     
     var imageAvatar = UIImage()
     var isDoctor = false
     var isFirstRegisterDoctor = false
     var userProfile : UserModel?
+    var changeBirthdayView :ChooseBirthdayView?
     
     
     override func viewDidLoad() {
@@ -32,8 +34,9 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         
         // Do any additional setup after loading the view.
         imageAvatar = UIImage.init(named: "ic_avar_map")!
-        titleArray += ["Họ Tên","Mật khẩu","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
-        dataArray += [(self.userProfile?.user_display_name)!, "",(self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
+        titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
+        keyArray += ["user_display_name","home_address","birthday","phone","work_address","job","activate_code"]
+        dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
         
@@ -92,6 +95,22 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         
         backgroundPopUpView.addConstraints(allConstraints)
         backgroundPopUpView.isHidden = true
+        
+        changeBirthdayView = UINib(nibName: "ChooseBirthdayView", bundle: Bundle.main).instantiate(withOwner: self, options: nil)[0] as? ChooseBirthdayView
+        changeBirthdayView?.frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        changeBirthdayView?.setupView(clickButton: { (button) in
+            if (button.tag == 0) {
+                // hidden view
+                self.changeBirthdayView?.isHidden = true
+            }else {
+                // save birthday
+                self.changeBirthdayView?.isHidden = true
+                self.dataArray[2] = ProjectCommon.convertDateToString(date: (self.changeBirthdayView?.birthdayDatePicker.date)!)
+                self.tableView.reloadRows(at: [IndexPath.init(row: 3, section: 0)], with: UITableViewRowAnimation.none)
+            }
+        })
+        view .addSubview(changeBirthdayView!)
+        changeBirthdayView?.isHidden = true
     }
 
     
@@ -119,10 +138,29 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
             cell.cellTextField.text = dataArray[indexPath.row - 1]
+            cell.cellTextField.tag = indexPath.row - 1
+            let key = keyArray[indexPath.row - 1]
+            if (key == "birthday") {
+                cell.cellTextField.isEnabled = false
+            } else {
+                cell.cellTextField.isEnabled = true
+                if (key == "phone" || key == "activate_code") {
+                    cell.cellTextField.keyboardType = UIKeyboardType.numberPad
+                } else {
+                    cell.cellTextField.keyboardType = UIKeyboardType.default
+                }
+            }
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let key = keyArray[indexPath.row - 1]
+        if (key == "birthday") {
+            changeBirthdayView?.isHidden = false
+            changeBirthdayView?.birthdayDatePicker.date = ProjectCommon.convertStringDate(string: dataArray[indexPath.row - 1])
+        }
+    }
     
     @IBAction func tappedBackButton(_ sender: Any) {
          self.navigationController?.popViewController(animated: true)
@@ -134,19 +172,33 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         return true
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        dataArray[textField.tag] = textField.text!
+    }
     
     /* ========== PROFILE CELL DELEGATE =========== */
     func changeAvatar() {
+        view.endEditing(true)
         backgroundPopUpView.isHidden = false
     }
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
     func updateProfile() {
-        self.delegate?.registerDoctorSuccess()
-        self.navigationController?.popViewController(animated: true)
+//        self.delegate?.registerDoctorSuccess()
+//        self.navigationController?.popViewController(animated: true)
+        view.endEditing(true)
+        var dictParam = [String : AnyObject]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        for i in 0..<dataArray.count {
+            let key = keyArray[i]
+            if key != "email" {
+                dictParam[keyArray[i]] = dataArray[i] as AnyObject?
+            }
+        }
     }
     
     func cancel() {
+        view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
     /* ============= CHANGE AVATAR VIEW DELEGATE ============= */

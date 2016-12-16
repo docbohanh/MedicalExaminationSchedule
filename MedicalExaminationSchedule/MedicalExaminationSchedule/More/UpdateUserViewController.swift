@@ -29,7 +29,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
-        dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!]
+        dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!,(self.userProfile?.sex)!]
         keyArray += ["user_display_name","home_address","birthday","phone","email","sex"]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
@@ -131,7 +131,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row-1]
             cell.delegate = self
-            if self.userProfile?.sex == USER_SEX.userSexMale.rawValue {
+            if dataArray[indexPath.row - 1] == USER_SEX.userSexMale.rawValue {
                 cell.tappedMaleButton(cell.maleButton)
             }else {
                  cell.tappedFemaleButton(cell.femaleButton)
@@ -188,28 +188,34 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
     func updateProfile() {
+        view.endEditing(true)
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        dictParam["user_display_name"] = dataArray[0] as AnyObject?
-        dictParam["home_address"] = dataArray[1] as AnyObject?
-        dictParam["birthday"] = dataArray[2] as AnyObject?
-        dictParam["phone"] = dataArray[3] as AnyObject?
-        dictParam["sex"] = userProfile?.sex as AnyObject?
+        for i in 0..<dataArray.count {
+            let key = keyArray[i]
+            if key != "email" {
+                dictParam[keyArray[i]] = dataArray[i] as AnyObject?
+            }
+        }
+    }
+    
+    func cancel() {
+        view.endEditing(true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     /* ============= SELECT GENDER DELEGATE ============ */
     func tappGenderButton(button: UIButton) {
+        view.endEditing(true)
         if (button.tag == 0) {
             //male
-            userProfile?.sex = USER_SEX.userSexMale.rawValue
+            dataArray[dataArray.count-1] = USER_SEX.userSexMale.rawValue
         }else {
             // female
-            userProfile?.sex = USER_SEX.userSexMale.rawValue
+            dataArray[dataArray.count-1] = USER_SEX.userSexMale.rawValue
         }
     }
-    func cancel() {
-        self.navigationController?.popViewController(animated: true)
-    }
+    
     /* ============= CHANGE AVATAR VIEW DELEGATE ============= */
     
     func closePopup() {
