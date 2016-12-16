@@ -66,16 +66,18 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         waitingView.isHidden = false
         view.endEditing(true)
         
-        Alamofire.request("https://httpbin.org/get").responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // HTTP URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
-            }
-        }
+//        Alamofire.request("https://httpbin.org/get").responseJSON { response in
+//            print(response.request)  // original URL request
+//            print(response.response) // HTTP URL response
+//            print(response.data)     // server data
+//            print(response.result)   // result of response serialization
+//            
+//            if let JSON = response.result.value {
+//                print("JSON: \(JSON)")
+//            }
+//        }
+        
+        
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
@@ -92,33 +94,33 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
         dictParam["email"] = userNameTextField.text
         dictParam["password"] = passwordTextField.text
-        APIManager.sharedInstance.makeHTTPPostRequest(path:REST_API_URL + USER_POST_LOGIN, body: dictParam as [String:AnyObject], onCompletion: {(json, error) in
-            print("json:", json)
-            DispatchQueue.main.async {
+
+        APIManager.sharedInstance.postDataToURL(url: USER_POST_LOGIN, parameters: dictParam, onCompletion: { (response) in
+            print(response)
+            if !Thread.isMainThread {
+                DispatchQueue.main.sync {
+                    self.waitingView.isHidden = true
+                    if response.result.error != nil {
+                        alert.title = "Lỗi"
+                        alert.message = response.result.error?.localizedDescription
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let value = response.result.value as? [String:AnyObject]
+                        UserDefaults.standard.set(value?["token_id"], forKey: "token_id")
+                        self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                    }
+                }
+            } else {
+                
                 self.waitingView.isHidden = true
-            }
-            if (error != nil)
-            {
-                // error
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                DispatchQueue.main.async {
+                if response.result.error != nil {
+                    alert.title = "Error"
+                    alert.message = response.result.error?.localizedDescription
                     self.present(alert, animated: true, completion: nil)
-                }
-                return
-            }
-            if (json["status"] as! NSNumber) == 1 {
-                // success
-                let dictResult = json["result"] as! [String:AnyObject]
-                UserDefaults.standard.set(dictResult["token_id"], forKey: "token_id")
-                DispatchQueue.main.async {
+                } else {
+                    let value = response.result.value as? [String:AnyObject]
+                    UserDefaults.standard.set(value?["token_id"], forKey: "token_id")
                     self.performSegue(withIdentifier: "ShowTabBar", sender: self)
-                }
-            }else {
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
                 }
             }
         })

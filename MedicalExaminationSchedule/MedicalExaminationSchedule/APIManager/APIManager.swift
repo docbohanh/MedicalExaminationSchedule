@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+
 typealias ServiceResponse = (AnyObject, NSError?) -> Void
+typealias AlamofireResponse = (DataResponse<Any>) -> Void
+
 public var acceptSelfSignedCertificate = true
 public var url : URL?
 class APIManager: NSObject,URLSessionDelegate {
@@ -58,13 +62,13 @@ class APIManager: NSObject,URLSessionDelegate {
         task.resume()
     }
     
-    @objc public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        if(acceptSelfSignedCertificate && challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust && challenge.protectionSpace.host == url.host) {
-            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
-            completionHandler(.useCredential, credential);
-        } else {
-            completionHandler(.performDefaultHandling, nil)
+    func postDataToURL(url : String,parameters : [String:String],onCompletion: @escaping AlamofireResponse) {
+        let urlString = REST_API_URL + url
+        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                
+                onCompletion(response)
+                print(response)
         }
     }
-
 }

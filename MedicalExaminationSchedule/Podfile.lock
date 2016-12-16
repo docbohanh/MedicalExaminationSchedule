@@ -12,7 +12,7 @@ PODS:
   - MagicalRecord/Core (2.3.2)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 4.0)
   - GoogleMaps
   - GooglePlaces
   - MagicalRecord
@@ -23,6 +23,6 @@ SPEC CHECKSUMS:
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: 0f06a28a1db8351da5b1a1e0175c309e449e92a4
+PODFILE CHECKSUM: 476633f26e4e54d9ab2545155e8c0e997f726b36
 
 COCOAPODS: 1.1.1
