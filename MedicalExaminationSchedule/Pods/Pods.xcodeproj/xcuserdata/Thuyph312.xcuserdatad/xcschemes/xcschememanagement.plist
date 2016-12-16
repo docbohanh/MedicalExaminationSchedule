@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>MagicalRecord.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>MagicalRecord.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-MedicalExaminationSchedule.xcscheme</key>
 		<dict>
@@ -37,7 +47,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3A8B82DC13FB1F2D6095458EE0BD5A0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>44F7110BB638736EF9ABCFD8B050283B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45F9F0F9BE689281DB7A66B6796103E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4DCE90AB7CEE83C8B1BE438380D507FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>96D028D8410E9A401CDCEFD40406EEC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

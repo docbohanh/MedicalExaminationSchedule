@@ -21,7 +21,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var editMyProfileButton: UIButton!
     var iconArray = [String]()
     var titleArray = [String]()
-    var isDoctor = true
+    var iconArrayDoctor = [String]()
+    var titleArrayDoctor = [String]()
+    var isDoctor = false
     var userModel : UserModel?
     
     override func viewDidLoad() {
@@ -31,26 +33,18 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         moreTableView.rowHeight = UITableViewAutomaticDimension;
         moreTableView.estimatedRowHeight = 70.0;
         moreTableView.tableFooterView = UIView.init(frame: CGRect.zero)
+        
+        iconArray += ["ic_imadoctor","ic_comment"]
+        titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
+        iconArrayDoctor += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
+        titleArrayDoctor += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
+        self.createPopup()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
-        if iconArray.count > 0 {
-            iconArray.removeAll()
-        }
-        if titleArray.count > 0 {
-            titleArray.removeAll()
-        }
-        if isDoctor {
-            iconArray += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
-            titleArray += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
-        }else {
-            iconArray += ["ic_imadoctor","ic_comment"]
-            titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
-        }
-        moreTableView.reloadData()
-        self.createPopup()
         self.getProfile()
     }
     
@@ -122,6 +116,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }else {
                         self.usernameLabel.text = self.userModel?.user_display_name
                     }
+                    print((self.userModel?.user_type_id)!)
+                    self.isDoctor = (self.userModel?.user_type_id)!
+                    self.moreTableView.reloadData()
                 }
             }else {
                 alert.title = "Lỗi"
@@ -158,16 +155,23 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return iconArray.count
+        if (!isDoctor) {
+            return iconArray.count
+        } else {
+            return iconArrayDoctor.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifierString = "NormalTableViewCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifierString, for: indexPath) as! NormalTableViewCell
-        cell.setupCell(icon: iconArray[indexPath.row], title: titleArray[indexPath.row])
+        if (!isDoctor) {
+            cell.setupCell(icon: iconArray[indexPath.row], title: titleArray[indexPath.row])
+        } else {
+            cell.setupCell(icon: iconArrayDoctor[indexPath.row], title: titleArrayDoctor[indexPath.row])
+        }
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

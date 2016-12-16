@@ -38,6 +38,12 @@ class ProjectCommon: NSObject {
         return dateFormatter.string(from: date)
     }
     
+    static func convertStringDate(string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: string)!
+    }
+    
     static func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

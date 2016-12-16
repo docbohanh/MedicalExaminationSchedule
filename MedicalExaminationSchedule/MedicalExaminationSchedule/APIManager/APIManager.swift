@@ -20,7 +20,6 @@ class APIManager: NSObject,URLSessionDelegate {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
         let session = URLSession.shared
-        
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
 //            let json:JSON = JSON(data: data)
             if (data != nil) {
@@ -59,7 +58,7 @@ class APIManager: NSObject,URLSessionDelegate {
     }
     
     @objc public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        if(acceptSelfSignedCertificate && challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust && challenge.protectionSpace.host == url.host) {
+        if(acceptSelfSignedCertificate && challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust && challenge.protectionSpace.host == url?.host) {
             let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
             completionHandler(.useCredential, credential);
         } else {

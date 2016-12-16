@@ -147,7 +147,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func cancel() {
-        
+        self.navigationController?.popViewController(animated: true)
     }
     /* ============= CHANGE AVATAR VIEW DELEGATE ============= */
     

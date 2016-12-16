@@ -20,50 +20,75 @@ class UserModel: NSObject {
     var status : String?
     var user_display_name : String?
     var user_id : String?
-    var user_type_id : String?
+    var user_type_id : Bool?
     var work_address : String?
     
+    
     init(dict:[String:AnyObject]) {
-        if (dict["birthday"] != nil) {
-            self.birthday = dict["birthday"] as? String ?? ""
+        if let v = dict["birthday"] {
+            self.birthday = "\(v)"
         }else {
             self.birthday = ""
         }
-        if (dict["email"] != nil) {
-            self.email = dict["email"] as? String
+        if let v = dict["email"] {
+            self.email = "\(v)"
+        } else {
+            self.email = ""
         }
-        if (dict["home_address"] != nil) {
-            self.home_address = dict["home_address"] as? String
+        if let v = dict["home_address"] {
+            self.home_address = "\(v)"
+        } else {
+            self.home_address = ""
         }
-        if (dict["job"] != nil) {
-            self.job = dict["job"] as? String
+        if let v = dict["job"] {
+            self.job = "\(v)"
+        } else {
+            self.job = ""
         }
-        if (dict["phone"] != nil) {
-            self.phone = dict["phone"] as? String
+        if let v = dict["phone"] {
+            self.phone = "\(v)"
+        } else {
+            self.phone = ""
         }
-        if (dict["sex"] != nil) {
-            self.sex = dict["sex"] as? String
+        if let v = dict["sex"] {
+            self.sex = "\(v)"
+        } else {
+            self.sex = ""
         }
-        if (dict["social_id"] != nil) {
-            self.social_id = dict["social_id"] as? String
+        if let v = dict["social_id"] {
+            self.social_id = "\(v)"
+        } else {
+            self.social_id = ""
         }
-        if (dict["social_type"] != nil) {
-            self.social_type = dict["social_type"] as? String
+        if let v = dict["social_type"] {
+            self.social_type = "\(v)"
+        } else {
+            self.social_type = ""
         }
-        if (dict["status"] != nil) {
-            self.status = dict["status"] as? String
+        if let v = dict["status"] {
+            self.status = "\(v)"
+        } else {
+            self.status = ""
         }
-        if (dict["user_display_name"] != nil) {
-            self.user_display_name = dict["user_display_name"] as? String
+        if let v = dict["user_display_name"] {
+            self.user_display_name = "\(v)"
+        } else {
+            self.user_display_name = ""
         }
-        if (dict["user_id"] != nil) {
-            self.user_id = dict["user_id"] as? String
+        if let v = dict["user_id"] {
+            self.user_id = "\(v)"
+        } else {
+            self.user_id = ""
         }
-        if (dict["user_type_id"] != nil) {
-            self.user_type_id = dict["user_type_id"] as? String
+        if let v = dict["user_type_id"] {
+            self.user_type_id = v as? Bool
+        } else {
+            self.user_type_id = false
         }
-        if (dict["work_address"] != nil) {
-            self.work_address = dict["work_address"] as? String
+        if let v = dict["email"] {
+            self.work_address = "\(v)"
+        } else {
+            self.work_address = ""
         }
     }
     
