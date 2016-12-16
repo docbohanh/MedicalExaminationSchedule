@@ -8,8 +8,9 @@
 
 import UIKit
 typealias ServiceResponse = (AnyObject, NSError?) -> Void
-
-class APIManager: NSObject {
+public var acceptSelfSignedCertificate = true
+public var url : URL?
+class APIManager: NSObject,URLSessionDelegate {
     static let sharedInstance = APIManager()
     
     func makeHTTPGetRequest(path: String, param:[String:AnyObject], onCompletion: @escaping ServiceResponse) {
@@ -56,4 +57,14 @@ class APIManager: NSObject {
         })
         task.resume()
     }
+    
+    @objc public func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if(acceptSelfSignedCertificate && challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust && challenge.protectionSpace.host == url.host) {
+            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            completionHandler(.useCredential, credential);
+        } else {
+            completionHandler(.performDefaultHandling, nil)
+        }
+    }
+
 }

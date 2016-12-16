@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignInViewController: UIViewController,UITextFieldDelegate {
 
@@ -64,6 +65,17 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBAction func tappedSignIn(_ sender: Any) {
         waitingView.isHidden = false
         view.endEditing(true)
+        
+        Alamofire.request("https://httpbin.org/get").responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // HTTP URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in

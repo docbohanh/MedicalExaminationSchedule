@@ -4,45 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MagicalRecord.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MedicalExaminationSchedule.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MedicalExaminationScheduleTests.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MedicalExaminationScheduleUITests.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A146EFE847A3D6AEAEC4BDD4EECCD97</key>
+		<key>3A8B82DC13FB1F2D6095458EE0BD5A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E102CDCAB47C39397C626F8B3393D0B</key>
+		<key>45F9F0F9BE689281DB7A66B6796103E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44F7110BB638736EF9ABCFD8B050283B</key>
+		<key>4DCE90AB7CEE83C8B1BE438380D507FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D58D76EC529B4A92F3E5EDADE0A96661</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>96D028D8410E9A401CDCEFD40406EEC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
