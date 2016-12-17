@@ -111,7 +111,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
                     }
                 }
             } else {
-                
                 self.waitingView.isHidden = true
                 if response.result.error != nil {
                     alert.title = "Error"

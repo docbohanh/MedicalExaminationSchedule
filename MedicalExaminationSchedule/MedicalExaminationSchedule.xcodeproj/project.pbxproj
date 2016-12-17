@@ -84,6 +84,7 @@
 		D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C471DF738660000815B /* CreateCommentView.xib */; };
 		D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */; };
 		D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C4B1DF743430000815B /* CreateCommentView.swift */; };
+		D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */; };
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
 		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
 		D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */; };
@@ -227,6 +228,7 @@
 		D29E8C471DF738660000815B /* CreateCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCommentView.xib; sourceTree = "<group>"; };
 		D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeAvatarView.xib; sourceTree = "<group>"; };
 		D29E8C4B1DF743430000815B /* CreateCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCommentView.swift; sourceTree = "<group>"; };
+		D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileWithFacebookViewController.swift; path = Account/UpdateProfileWithFacebookViewController.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				84321D971DF752D000CCA4D4 /* AppTheme.swift */,
 				84321D981DF752D000CCA4D4 /* ProjectCommon.swift */,
 				843292CA1DFF3778004C44A3 /* CustomUITextField.swift */,
+				D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */,
 				84321D881DF7469100CCA4D4 /* FSCalendarAppearance.m in Sources */,
 				84321D871DF7469100CCA4D4 /* FSCalendarAnimator.m in Sources */,
+				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
@@ -1124,7 +1128,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1143,7 +1147,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

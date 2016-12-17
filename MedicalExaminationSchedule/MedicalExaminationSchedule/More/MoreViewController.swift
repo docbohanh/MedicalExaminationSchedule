@@ -90,6 +90,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getProfile() -> Void {
+        LoadingOverlay.shared.showOverlay(view: self.view)
         let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
             self.dismiss(animated: true, completion: nil)
@@ -98,32 +99,35 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
         APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + USER_GET_INFO, param: dictParam, onCompletion: {(json, error) in
             print("json:", json)
-            if (error != nil)
-            {
-                // error
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            if (json["status"] as! NSNumber) == 1 {
-                // success
-                let dictResult = json["result"] as! [String:AnyObject]
-                self.userModel = UserModel.init(dict: dictResult)
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                LoadingOverlay.shared.hideOverlayView()
+                if (error != nil)
+                {
+                    // error
+                    alert.title = "Lỗi"
+                    alert.message = error?.description
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                if (json["status"] as! NSNumber) == 1 {
+                    // success
+                    let dictResult = json["result"] as! [String:AnyObject]
+                    self.userModel = UserModel.init(dict: dictResult)
+                    
                     if (self.userModel?.user_display_name == ""){
                         self.usernameLabel.text = "No name"
                     }else {
                         self.usernameLabel.text = self.userModel?.user_display_name
                     }
                     print((self.userModel?.user_type_id)!)
-//                    self.isDoctor = (self.userModel?.user_type_id)!
-//                    self.moreTableView.reloadData()
+                    self.isDoctor = (self.userModel?.user_type_id)!
+                    self.moreTableView.reloadData()
+                    
+                }else {
+                    alert.title = "Lỗi"
+                    alert.message = error?.description
+                    self.present(alert, animated: true, completion: nil)
                 }
-            }else {
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
             }
         })
     }
