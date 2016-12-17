@@ -75,23 +75,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
         view.endEditing(true)
         var isSuccess = false
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-            if (isSuccess == true)
-            {
-                 self.navigationController?.popViewController(animated: true)
-            }
-        }))
+        LoadingOverlay.shared.showOverlay(view: view)
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
-            alert.title = "Lỗi"
-            alert.message = "Email không đúng định dạng"
-            self.present(alert, animated: true, completion: nil)
+            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
+                
+            })
             return
         }
-        
         var dictParam = [String : AnyObject]()
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
         dictParam["email"] = emailTextField.text as AnyObject?
@@ -105,34 +96,35 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         }
         dictParam["home_address"] = addressTextField.text as AnyObject?
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
-        APIManager.sharedInstance.makeHTTPPostRequest(path: REST_API_URL + USER_POST_REGISTER, body: dictParam, onCompletion: {(json,error) in
-             print("json:", json)
-            if (error != nil)
-            {
-                // error
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
-                }
-                return
-            }
-            if let result = json["status"] {
-                if result != nil {
-                    if (result as! NSNumber) == 1 {
-                        // success
-                        alert.title = "Đăng kí thành công"
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: nil)
-                        }
+        
+        APIManager.sharedInstance.postDataToURL(url: USER_POST_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if let status = resultDictionary["status"] {
+                    if (status as! NSNumber) == 1 {
+                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                            self.navigationController?.popViewController(animated: true)
+                        })
                         return
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }
+                } else {
+                    if resultDictionary["message"] != nil {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        })
                     }
                 }
-            }
-            alert.title = "Lỗi"
-            alert.message = error?.description
-            DispatchQueue.main.async {
-                self.present(alert, animated: true, completion: nil)
+
             }
         })
     }

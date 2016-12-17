@@ -66,18 +66,18 @@ class APIManager: NSObject,URLSessionDelegate {
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
-                print(response)
+//                print(response)
         }
     }
     
     func getDataToURL(url : String,parameters : [String:String],onCompletion: @escaping AlamofireResponse) {
         let parameterString = parameters.stringFromHttpParameters()
-        let requestURL = REST_API_URL + "/" + parameterString
+        let requestURL = REST_API_URL + url + "?" + parameterString
         
-        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
-                print(response)
+//                print(response)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+typealias AlertHandler = (Int) -> Void
 class ProjectCommon: NSObject {
     static func boundView(button:UIView) -> Void {
         button.clipsToBounds = true
@@ -51,4 +52,15 @@ class ProjectCommon: NSObject {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+    
+    static func initAlertView(viewController: UIViewController,title:String, message:String, buttonArray:[String],onCompletion : @escaping AlertHandler) {
+        let alertCustomView = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        for i in 0..<buttonArray.count {
+            alertCustomView.addAction(UIAlertAction(title: buttonArray[i], style: UIAlertActionStyle.default, handler: {(alert:UIAlertAction) in
+                onCompletion(i)
+            }))
+        }
+        viewController.present(alertCustomView, animated: true, completion: nil)
+    }
+
 }

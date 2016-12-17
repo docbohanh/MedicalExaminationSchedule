@@ -23,7 +23,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var logoImageView: UIImageView!
     
     @IBOutlet weak var activityView: UIActivityIndicatorView!
-    @IBOutlet weak var waitingView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -33,7 +32,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        waitingView.isHidden = true
     }
     
     func setupComponent() -> Void {
@@ -63,31 +61,13 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     }
 
     @IBAction func tappedSignIn(_ sender: Any) {
-        waitingView.isHidden = false
+        
         view.endEditing(true)
-        
-//        Alamofire.request("https://httpbin.org/get").responseJSON { response in
-//            print(response.request)  // original URL request
-//            print(response.response) // HTTP URL response
-//            print(response.data)     // server data
-//            print(response.result)   // result of response serialization
-//            
-//            if let JSON = response.result.value {
-//                print("JSON: \(JSON)")
-//            }
-//        }
-        
-        
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        
+        LoadingOverlay.shared.showOverlay(view: self.view)
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
-            alert.title = "Lỗi"
-            alert.message = "Email không đúng định dạng"
-            self.present(alert, animated: true, completion: nil)
+            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
+                
+            })
             return
         }
         var dictParam = [String : String]()
@@ -97,29 +77,21 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
 
         APIManager.sharedInstance.postDataToURL(url: USER_POST_LOGIN, parameters: dictParam, onCompletion: { (response) in
             print(response)
-            if !Thread.isMainThread {
-                DispatchQueue.main.sync {
-                    self.waitingView.isHidden = true
-                    if response.result.error != nil {
-                        alert.title = "Lỗi"
-                        alert.message = response.result.error?.localizedDescription
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
-                        let value = response.result.value as? [String:AnyObject]
-                        UserDefaults.standard.set(value?["token_id"], forKey: "token_id")
-                        self.performSegue(withIdentifier: "ShowTabBar", sender: self)
-                    }
-                }
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
             } else {
-                self.waitingView.isHidden = true
-                if response.result.error != nil {
-                    alert.title = "Error"
-                    alert.message = response.result.error?.localizedDescription
-                    self.present(alert, animated: true, completion: nil)
-                } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
                     let value = response.result.value as? [String:AnyObject]
                     UserDefaults.standard.set(value?["token_id"], forKey: "token_id")
                     self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
                 }
             }
         })

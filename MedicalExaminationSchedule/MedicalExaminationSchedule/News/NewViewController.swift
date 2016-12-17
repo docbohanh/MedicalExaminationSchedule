@@ -32,30 +32,26 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     func getListNew() -> Void {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        }))
+        LoadingOverlay.shared.showOverlay(view: self.view)
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
         dictParam["page_index"] = "1" as AnyObject?
         dictParam["query"] = "" as AnyObject?
-        APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + NEWS_GET, param: dictParam, onCompletion: {(json, error) in
-            print("json:", json)
-            if (error != nil)
-            {
-                // error
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            if (json["status"] as! NSNumber) == 1 {
-                // success
+        
+        APIManager.sharedInstance.getDataToURL(url: NEWS_GET, parameters: dictParam as! [String : String], onCompletion: {(response) in
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
             }else {
-                alert.title = "Lỗi"
-                alert.message = error?.description
-                self.present(alert, animated: true, completion: nil)
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
             }
         })
     }

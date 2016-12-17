@@ -91,27 +91,25 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getProfile() -> Void {
         LoadingOverlay.shared.showOverlay(view: self.view)
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            self.dismiss(animated: true, completion: nil)
-        }))
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        APIManager.sharedInstance.makeHTTPGetRequest(path:REST_API_URL + USER_GET_INFO, param: dictParam, onCompletion: {(json, error) in
-            print("json:", json)
-            DispatchQueue.main.async {
+        APIManager.sharedInstance.getDataToURL(url: USER_GET_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
+            print(response)
+//            DispatchQueue.main.async {
                 LoadingOverlay.shared.hideOverlayView()
-                if (error != nil)
+                if (response.result.error != nil)
                 {
                     // error
-                    alert.title = "Lỗi"
-                    alert.message = error?.description
-                    self.present(alert, animated: true, completion: nil)
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                        // dismiss
+                    })
                     return
                 }
-                if (json["status"] as! NSNumber) == 1 {
+                let value = response.result.value as! [String:AnyObject]
+                
+                if (value["status"] as! NSNumber) == 1 {
                     // success
-                    let dictResult = json["result"] as! [String:AnyObject]
+                    let dictResult = value["result"] as! [String:AnyObject]
                     self.userModel = UserModel.init(dict: dictResult)
                     
                     if (self.userModel?.user_display_name == ""){
@@ -122,13 +120,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print((self.userModel?.user_type_id)!)
                     self.isDoctor = (self.userModel?.user_type_id)!
                     self.moreTableView.reloadData()
-                    
-                }else {
-                    alert.title = "Lỗi"
-                    alert.message = error?.description
-                    self.present(alert, animated: true, completion: nil)
                 }
-            }
+//            }
         })
     }
     
@@ -136,13 +129,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Sign out
         UserDefaults.standard.removeObject(forKey: "token_id")
         self.navigationController?.popViewController(animated: true)
-
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction) in
-            DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }))
     }
     
     @IBAction func tappedMyProfileButton(_ sender: Any) {
