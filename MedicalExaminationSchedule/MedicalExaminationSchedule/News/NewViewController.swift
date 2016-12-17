@@ -32,13 +32,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     func getListNew() -> Void {
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
         dictParam["page_index"] = "1" as AnyObject?
         dictParam["query"] = "" as AnyObject?
-        
+        LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.getDataToURL(url: NEWS_GET, parameters: dictParam as! [String : String], onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     

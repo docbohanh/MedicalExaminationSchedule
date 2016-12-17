@@ -74,8 +74,6 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     @IBAction func tappedRegisterNewAccount(_ sender: Any) {
         view.endEditing(true)
-        var isSuccess = false
-        LoadingOverlay.shared.showOverlay(view: view)
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
@@ -97,6 +95,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         dictParam["home_address"] = addressTextField.text as AnyObject?
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
         
+        LoadingOverlay.shared.showOverlay(view: view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {

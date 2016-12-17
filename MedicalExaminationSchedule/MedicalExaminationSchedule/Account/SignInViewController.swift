@@ -63,7 +63,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBAction func tappedSignIn(_ sender: Any) {
         
         view.endEditing(true)
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
                 
@@ -74,7 +74,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
         dictParam["email"] = userNameTextField.text
         dictParam["password"] = passwordTextField.text
-
+        LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_LOGIN, parameters: dictParam, onCompletion: { (response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
@@ -85,8 +85,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
-                    let value = response.result.value as? [String:AnyObject]
-                    UserDefaults.standard.set(value?["token_id"], forKey: "token_id")
+                    let value = resultDictionary["result"] as! [String:AnyObject]
+                    UserDefaults.standard.set(value["token_id"], forKey: "token_id")
                     self.performSegue(withIdentifier: "ShowTabBar", sender: self)
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in

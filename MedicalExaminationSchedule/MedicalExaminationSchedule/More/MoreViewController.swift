@@ -90,9 +90,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getProfile() -> Void {
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.getDataToURL(url: USER_GET_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
             print(response)
 //            DispatchQueue.main.async {
