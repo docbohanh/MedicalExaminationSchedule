@@ -9,14 +9,15 @@
 import UIKit
 
 protocol SelectGengerTableViewCellDelegate {
-    
+    func tappGenderButton(button:UIButton) -> Void
 }
 
 class SelectGenderTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
+    var delegate : SelectGengerTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +32,7 @@ class SelectGenderTableViewCell: UITableViewCell {
         femaleButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         maleButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         maleButton.backgroundColor = COLOR_COMMON
+        self.delegate?.tappGenderButton(button: sender as! UIButton)
     }
 
     @IBAction func tappedFemaleButton(_ sender: Any) {
@@ -38,6 +40,7 @@ class SelectGenderTableViewCell: UITableViewCell {
         femaleButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         maleButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
         maleButton.backgroundColor = UIColor.white
+        self.delegate?.tappGenderButton(button: sender as! UIButton)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)

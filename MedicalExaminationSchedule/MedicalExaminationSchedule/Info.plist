@@ -4,6 +4,10 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<string>YES</string>
+		<key>NSTemporaryExceptionRequiresForwardSecrecy</key>
+		<false/>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>

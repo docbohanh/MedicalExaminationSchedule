@@ -10,17 +10,18 @@ import UIKit
 import CoreData
 import GooglePlaces
 import GoogleMaps
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
         GMSPlacesClient.provideAPIKey("AIzaSyC5XSeP7MCiM5N9zlT9zM68folx1GD5dXw")
-        
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         if (UserDefaults.standard.object(forKey:"token_id") == nil) {
             let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
@@ -58,5 +59,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
 
     }
+    
+    private func trustIsValid(_ trust: SecTrust) -> Bool {
+        var isValid = false
+        var result = SecTrustResultType.invalid
+        let status = SecTrustEvaluate(trust, &result)
+    
+        if status == errSecSuccess {
+            let unspecified = SecTrustResultType.unspecified
+            let proceed = SecTrustResultType.proceed
+    
+    
+            isValid = result == unspecified || result == proceed
+        }
+    
+        return isValid
+    }
+    
+    
+    
 }
 

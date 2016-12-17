@@ -24,7 +24,6 @@ class APIManager: NSObject,URLSessionDelegate {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "GET"
         let session = URLSession.shared
-        
         let task = session.dataTask(with: request, completionHandler: {data, response, error -> Void in
 //            let json:JSON = JSON(data: data)
             if (data != nil) {
@@ -66,7 +65,17 @@ class APIManager: NSObject,URLSessionDelegate {
         let urlString = REST_API_URL + url
         Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
-                
+                onCompletion(response)
+                print(response)
+        }
+    }
+    
+    func getDataToURL(url : String,parameters : [String:String],onCompletion: @escaping AlamofireResponse) {
+        let parameterString = parameters.stringFromHttpParameters()
+        let requestURL = REST_API_URL + "/" + parameterString
+        
+        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
                 onCompletion(response)
                 print(response)
         }

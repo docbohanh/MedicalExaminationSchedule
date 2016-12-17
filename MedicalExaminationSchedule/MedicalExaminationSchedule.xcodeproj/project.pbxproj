@@ -70,6 +70,8 @@
 		D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */; };
 		D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */; };
 		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
+		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
+		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
 		D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */; };
 		D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */; };
 		D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */; };
@@ -211,6 +213,8 @@
 		D212650B1DF39F7B00C70F83 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTableViewCell.xib; sourceTree = "<group>"; };
 		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
+		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
 		D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNewViewController.swift; sourceTree = "<group>"; };
 		D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNormalTableViewCell.swift; sourceTree = "<group>"; };
 		D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldNormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -535,6 +539,8 @@
 				D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */,
 				D29E8C4B1DF743430000815B /* CreateCommentView.swift */,
 				D29E8C471DF738660000815B /* CreateCommentView.xib */,
+				D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */,
+				D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */,
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				84321D941DF7469200CCA4D4 /* Info.plist in Resources */,
+				D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */,
 				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
@@ -894,6 +901,7 @@
 				8BF746D01DF83CC8006C9B48 /* PhotoCollectionViewCell.swift in Sources */,
 				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
+				D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
