@@ -29,6 +29,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        view.backgroundColor = UIColor.blue
     }
 
     func getListNew() -> Void {

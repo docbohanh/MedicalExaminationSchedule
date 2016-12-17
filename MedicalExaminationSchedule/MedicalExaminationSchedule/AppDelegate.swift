@@ -29,9 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             loginViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
         } else {
-            let tabbarViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
-            let rootNavigation = UINavigationController.init(rootViewController:tabbarViewController)
-            tabbarViewController.navigationController?.navigationBar.isHidden = true
+//            let tabBarViewController = NSVTabBarController()
+            let tabBarViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NSVTabBarController") as! NSVTabBarController
+            let rootNavigation = UINavigationController.init(rootViewController:tabBarViewController)
+            tabBarViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
         }
         // Override point for customization after application launch.

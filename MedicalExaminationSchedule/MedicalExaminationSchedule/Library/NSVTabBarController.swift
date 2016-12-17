@@ -15,7 +15,6 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if self.navigationController?.viewControllers.count == 1 {
             var navigationViewControllers = self.navigationController?.viewControllers
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -25,41 +24,39 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         }
         // Do any additional setup after loading the view.
         self.delegate = self
+        let newsStoryboard = UIStoryboard.init(name: "News", bundle: nil)
+        let newsVC = newsStoryboard.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController
+        newsVC.tabBarItem = UITabBarItem.init(title: "Bảng tin", image: UIImage.init(named: ""), tag: 0)
         
-        //*****// TabBar Icons Customization //*****//
+        //location
+        let locationStoryboard = UIStoryboard.init(name: "Locations", bundle: nil)
+        let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "DoctorAddressListViewController") as! DoctorAddressListViewController
+        doctorAdrressVC.tabBarItem = UITabBarItem.init(title: "Địa điểm", image: UIImage.init(named: ""), tag: 2)
         
-        // To Create the TabBar icons as NSArray
         
-        let imagesArray : NSArray = ["ic_news","ic_location_map","ic_time","ic_more",]
-        // To Create the TabBar icons as NSArray for selection time
-
-//        let  selecteimgArray:NSArray = ["home_selected.png","maps_selected.png","myplan_selected.png","settings_selected.png","maps_selected.png"]
-        // Customize the tabBar images
-
-        //*****//*****//*****//*****//*****//*****//*****//*****//
+        //Schedule
+        let scheduleStoryBoard = UIStoryboard.init(name: "Schedule", bundle: nil)
+        let doctorHistoryVC = scheduleStoryBoard.instantiateViewController(withIdentifier: "DoctorHistoryViewController") as! DoctorHistoryViewController
+        doctorHistoryVC.tabBarItem = UITabBarItem.init(title: "Lịch hẹn", image: UIImage.init(named: ""), tag: 3)
         
-        //****// TabBar Title Customization //*****//
-        
-        // To Create the attribute dictionary for title for color and font
-        NSVBarController.setTabbar(self.tabBar, images:imagesArray, selectedImages: imagesArray)
-        
-        // Customize the tabBar title
-                let attributes = [NSForegroundColorAttributeName:UIColor.white]
-         NSVBarController.setTabBarTitleColor(attributes as AnyObject)
-         //*****//*****//*****//*****//*****//*****//*****//*****//
+        // More
+        let moreStoryboard = UIStoryboard.init(name: "More", bundle: nil)
+        let moreVC = moreStoryboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
+        moreVC.tabBarItem = UITabBarItem.init(title: "Thêm", image: UIImage.init(named: ""), tag: 4)
+        self.tabBar.backgroundImage = UIImage(named: "tab_bar_background")
+        self.viewControllers = [newsVC,doctorAdrressVC, doctorHistoryVC, moreVC]
     }
     
     override func viewDidLayoutSubviews() {
+
+        
+        //News
+        
+        
+        // Customize the tabBar title
+        let attributes = [NSForegroundColorAttributeName:UIColor.white]
+        NSVBarController.setTabBarTitleColor(attributes as AnyObject)
         let imagesArray : NSArray = ["ic_news","ic_location_map","ic_time","ic_more",]
-        // To Create the TabBar icons as NSArray for selection time
-        
-        //        let  selecteimgArray:NSArray = ["home_selected.png","maps_selected.png","myplan_selected.png","settings_selected.png","maps_selected.png"]
-        // Customize the tabBar images
-        
-        //*****//*****//*****//*****//*****//*****//*****//*****//
-        
-        //****// TabBar Title Customization //*****//
-        
         // To Create the attribute dictionary for title for color and font
         NSVBarController.setTabbar(self.tabBar, images:imagesArray, selectedImages: imagesArray)
     }
@@ -70,10 +67,18 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
     }
     
      func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-         //****// TabBar Images Animations //*****//
-//         NSVBarController.setAnimation(tabBarController, animationtype:selectedAnimation)
-        //*****//*****//*****//*****//*****//*****//*****//*****//
 
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 0:
+            break;
+        case 1:
+            break
+        default:
+            break
+        }
     }
     
     /*

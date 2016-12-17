@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */; };
-		842641831DF2AEE800EAB5CE /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641821DF2AEE800EAB5CE /* TabBar.storyboard */; };
 		8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418A1DF2B16B00EAB5CE /* News.storyboard */; };
 		8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418C1DF2B1E500EAB5CE /* Locations.storyboard */; };
 		8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418E1DF2B24600EAB5CE /* Schedule.storyboard */; };
@@ -130,7 +129,6 @@
 		581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.release.xcconfig"; sourceTree = "<group>"; };
-		842641821DF2AEE800EAB5CE /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		8426418A1DF2B16B00EAB5CE /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		8426418C1DF2B1E500EAB5CE /* Locations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Locations.storyboard; sourceTree = "<group>"; };
 		8426418E1DF2B24600EAB5CE /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
@@ -460,7 +458,6 @@
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
 				D2DE92591DF2A84D000C9BC7 /* Define.swift */,
-				842641821DF2AEE800EAB5CE /* TabBar.storyboard */,
 			);
 			path = MedicalExaminationSchedule;
 			sourceTree = "<group>";
@@ -714,7 +711,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842641831DF2AEE800EAB5CE /* TabBar.storyboard in Resources */,
 				842641911DF2B25A00EAB5CE /* More.storyboard in Resources */,
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,

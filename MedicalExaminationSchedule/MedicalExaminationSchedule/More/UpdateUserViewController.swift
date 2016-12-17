@@ -199,6 +199,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         LoadingOverlay.shared.showOverlay(view: view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -228,7 +229,6 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         
         })
-        
     }
     
     func cancel() {
