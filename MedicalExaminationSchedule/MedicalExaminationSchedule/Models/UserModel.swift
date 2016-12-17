@@ -85,7 +85,7 @@ class UserModel: NSObject {
         } else {
             self.user_type_id = false
         }
-        if let v = dict["email"] {
+        if let v = dict["work_address"] {
             self.work_address = "\(v)"
         } else {
             self.work_address = ""
