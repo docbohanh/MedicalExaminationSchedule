@@ -664,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qr-Rc-71v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="-845"/>
+            <point key="canvasLocation" x="-346" y="-156"/>
         </scene>
         <!--Update Profile With Facebook View Controller-->
         <scene sceneID="kJ8-Sk-0ja">

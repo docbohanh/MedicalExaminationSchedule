@@ -71,6 +71,10 @@
 		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
 		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
+		D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */; };
+		D23A182B1E067C8000E3DA8F /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */; };
+		D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */; };
+		D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */; };
 		D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */; };
 		D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */; };
 		D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */; };
@@ -84,6 +88,7 @@
 		D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */; };
 		D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C4B1DF743430000815B /* CreateCommentView.swift */; };
 		D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */; };
+		D2C1F6E81E06C838004FCD9A /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */; };
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
 		D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92591DF2A84D000C9BC7 /* Define.swift */; };
 		D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */; };
@@ -214,6 +219,10 @@
 		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
 		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
+		D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewController.swift; sourceTree = "<group>"; };
+		D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
+		D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
+		D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllPhoto.swift; sourceTree = "<group>"; };
 		D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNewViewController.swift; sourceTree = "<group>"; };
 		D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNormalTableViewCell.swift; sourceTree = "<group>"; };
 		D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldNormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -227,6 +236,7 @@
 		D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeAvatarView.xib; sourceTree = "<group>"; };
 		D29E8C4B1DF743430000815B /* CreateCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCommentView.swift; sourceTree = "<group>"; };
 		D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92591DF2A84D000C9BC7 /* Define.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdateProfileWithFacebookViewController.swift; path = Account/UpdateProfileWithFacebookViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +301,9 @@
 				8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */,
 				8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */,
 				8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */,
+				D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */,
+				D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */,
+				D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -358,6 +371,8 @@
 				D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */,
 				84321D951DF74A0800CCA4D4 /* Objc-Bridge-Header.h */,
 				84321D651DF7469100CCA4D4 /* FSCalendar */,
+				D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */,
+				D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -909,12 +924,15 @@
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
 				84321D861DF7469100CCA4D4 /* FSCalendar.m in Sources */,
+				D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */,
+				D2C1F6E81E06C838004FCD9A /* AlbumModel.swift in Sources */,
 				84321D8E1DF7469200CCA4D4 /* FSCalendarDelegateProxy.m in Sources */,
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
 				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
+				D23A182B1E067C8000E3DA8F /* AssetGridViewController.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
 				EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */,
@@ -931,6 +949,7 @@
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84321D851DF7469100CCA4D4 /* FSCalendar+Deprecated.m in Sources */,
+				D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */,
 				D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,
@@ -941,6 +960,7 @@
 				84321D871DF7469100CCA4D4 /* FSCalendarAnimator.m in Sources */,
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
+				D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,

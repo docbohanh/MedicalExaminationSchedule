@@ -12,7 +12,7 @@
         <!--Bảng tin-->
         <scene sceneID="qvI-PA-A6E">
             <objects>
-                <viewController id="vjA-MS-1k9" customClass="NewViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewViewController" id="vjA-MS-1k9" customClass="NewViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RNC-pf-GpH"/>
                         <viewControllerLayoutGuide type="bottom" id="qvB-Rf-c8o"/>
@@ -85,7 +85,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="25 tháng 10 lúc 11h20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBa-6s-VTU">
-                                                            <rect key="frame" x="10" y="200.33333333333337" width="124" height="14.666666666666657"/>
+                                                            <rect key="frame" x="10" y="200" width="124" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

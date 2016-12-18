@@ -15,7 +15,7 @@
         <!--Địa điểm-->
         <scene sceneID="Uso-wc-BIa">
             <objects>
-                <viewController id="XNy-0N-Ea6" customClass="DoctorAddressListViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DoctorAddressListViewController" id="XNy-0N-Ea6" customClass="DoctorAddressListViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CkC-wL-fie"/>
                         <viewControllerLayoutGuide type="bottom" id="mBv-c2-fdT"/>
