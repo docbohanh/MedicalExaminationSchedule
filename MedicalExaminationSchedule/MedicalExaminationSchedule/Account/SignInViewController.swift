@@ -63,8 +63,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBAction func tappedSignIn(_ sender: Any) {
         
         view.endEditing(true)
-        self.performSegue(withIdentifier: "ShowTabBar", sender: self)
-        return
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
                 

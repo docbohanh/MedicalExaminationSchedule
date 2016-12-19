@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -149,7 +149,7 @@
                                 <rect key="frame" x="16" y="150" width="382" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Địa chỉ email" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="913-dd-lPz">
-                                        <rect key="frame" x="43" y="0.0" width="339" height="36"/>
+                                        <rect key="frame" x="35" y="0.0" width="347" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,10 +165,10 @@
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_name" translatesAutoresizingMaskIntoConstraints="NO" id="fvn-fZ-0Wm">
-                                        <rect key="frame" x="5" y="4" width="28" height="28"/>
+                                        <rect key="frame" x="5" y="8" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="28" id="R6e-uV-Jjc"/>
-                                            <constraint firstAttribute="height" constant="28" id="sL1-J9-Pzd"/>
+                                            <constraint firstAttribute="width" constant="20" id="R6e-uV-Jjc"/>
+                                            <constraint firstAttribute="height" constant="20" id="sL1-J9-Pzd"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -187,7 +187,7 @@
                                 <rect key="frame" x="16" y="202" width="382" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTv-ET-xlZ">
-                                        <rect key="frame" x="41" y="0.0" width="341" height="36"/>
+                                        <rect key="frame" x="35" y="0.0" width="347" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,10 +203,10 @@
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_password" translatesAutoresizingMaskIntoConstraints="NO" id="DJ1-wq-Ir5">
-                                        <rect key="frame" x="5" y="5" width="26" height="26"/>
+                                        <rect key="frame" x="5" y="8" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="9zy-4j-thy"/>
-                                            <constraint firstAttribute="width" constant="26" id="TRl-QL-4j7"/>
+                                            <constraint firstAttribute="height" constant="20" id="9zy-4j-thy"/>
+                                            <constraint firstAttribute="width" constant="20" id="TRl-QL-4j7"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
