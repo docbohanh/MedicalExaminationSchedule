@@ -209,7 +209,6 @@
                                             <outlet property="doctorAddressLabel" destination="Wyd-6P-hyS" id="jSB-30-ywK"/>
                                             <outlet property="doctorNameLabel" destination="zfP-KN-pmP" id="T7d-Ft-2g7"/>
                                             <outlet property="locationIconImageView" destination="Rpj-nC-mh5" id="cYP-8S-CVu"/>
-                                            <segue destination="mEs-v1-GJa" kind="push" identifier="SeeDoctorInformation" id="Tk7-Iu-Rou"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -249,11 +248,12 @@
                         <outlet property="searchView" destination="d1X-yP-MUR" id="dCm-qs-GwO"/>
                         <outlet property="segmentView" destination="gYS-pa-NzJ" id="CIs-9S-mLU"/>
                         <outlet property="tabLineView" destination="5uE-33-X2r" id="0bp-oA-5CU"/>
+                        <segue destination="mEs-v1-GJa" kind="push" identifier="PushToServiceDetail" id="FIO-Xg-OK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSR-ZP-LQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4396" y="1211"/>
+            <point key="canvasLocation" x="-3165" y="1714"/>
         </scene>
         <!--Timer Free View Controller-->
         <scene sceneID="0ac-d5-i8x">
@@ -1423,6 +1423,7 @@ a. Trang chủ: phía trên là điểm các tin mới (tham khảo ứng
                         <outlet property="rateImageView" destination="5b1-vu-Lsc" id="zK5-dJ-He7"/>
                         <outlet property="sendCommentButton" destination="VzB-NQ-756" id="3tb-QA-zbR"/>
                         <outlet property="tabLineView" destination="JcR-le-m7Z" id="Ehj-iF-mq5"/>
+                        <outlet property="titleViewLabel" destination="OSp-oF-l6d" id="pEK-2W-WTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4LM-8a-xet" userLabel="First Responder" sceneMemberID="firstResponder"/>

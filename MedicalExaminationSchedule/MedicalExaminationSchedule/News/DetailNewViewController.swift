@@ -13,6 +13,7 @@ protocol DetailNewControllerDelegate {
 }
 
 class DetailNewViewController: UIViewController {
+    @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
@@ -31,6 +32,7 @@ class DetailNewViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        titleViewLabel.text = newsObject?.news_title
         titleLabel.text = newsObject?.news_title
         timeLabel.text = newsObject?.last_updated
         authorNameLabel.text = newsObject?.news_author
@@ -90,7 +92,9 @@ class DetailNewViewController: UIViewController {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObject?.news_id
+        LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.postDataToURL(url: NEWS_POST_LIKE, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
             print(response)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in

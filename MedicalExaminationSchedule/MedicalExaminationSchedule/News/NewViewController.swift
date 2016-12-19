@@ -27,7 +27,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
-        self.getListNew(page_index: 1)
+        self.getListNew(page_index: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +50,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     
-    func getListLiked(page_index:Int) -> Void {
+    func getListLiked(page_index:Int) -> Void { // DONT USE
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["page_index"] = String.init(format: "%d", page_index)
@@ -156,7 +156,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObiect.news_id
+        LoadingOverlay.shared.showOverlay(view: view)
         APIManager.sharedInstance.postDataToURL(url: NEWS_POST_LIKE, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
             print(response)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in

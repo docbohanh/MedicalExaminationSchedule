@@ -252,7 +252,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxn-Ym-qar">
-                                        <rect key="frame" x="124" y="32" width="127" height="21"/>
+                                        <rect key="frame" x="74" y="32" width="227" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -261,6 +261,7 @@
                                 <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="FXE-bx-Zgc"/>
+                                    <constraint firstItem="bxn-Ym-qar" firstAttribute="leading" secondItem="Uc3-VR-W7U" secondAttribute="trailing" constant="30" id="HBx-76-hKz"/>
                                     <constraint firstItem="bxn-Ym-qar" firstAttribute="centerY" secondItem="k2v-31-zN0" secondAttribute="centerY" constant="10" id="Ico-0p-uis"/>
                                     <constraint firstItem="bxn-Ym-qar" firstAttribute="centerX" secondItem="k2v-31-zN0" secondAttribute="centerX" id="Yaf-78-LMg"/>
                                     <constraint firstItem="Uc3-VR-W7U" firstAttribute="leading" secondItem="k2v-31-zN0" secondAttribute="leading" id="nsG-or-QrE"/>
@@ -410,6 +411,7 @@
                         <outlet property="shareButton" destination="n5x-mF-C1J" id="CBI-OU-SD1"/>
                         <outlet property="timeLabel" destination="Ke6-2p-mLE" id="eLM-Fm-6B4"/>
                         <outlet property="titleLabel" destination="Dq7-Vg-Aj0" id="A2O-pO-0cU"/>
+                        <outlet property="titleViewLabel" destination="bxn-Ym-qar" id="s89-ID-a3Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYl-gO-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -22,8 +22,13 @@ class DoctorAddressTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    func setupCell(object:ServiceModel) -> Void {
+        doctorNameLabel.text = object.name
+        doctorAddressLabel.text = object.address
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+//        super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }

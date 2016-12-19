@@ -11,6 +11,7 @@ import UIKit
 class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextFieldDelegate,UITextViewDelegate{
 
     
+    @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     @IBOutlet weak var backgroundInformationView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -37,13 +38,15 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
 
+    var serviceObject : ServiceModel?
+    
     
     @IBOutlet weak var informationTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
         imageCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-
+        self.getServiceDetail()
         // Do any additional setup after loading the view.
     }
 
@@ -52,6 +55,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func initUI() {
+        titleViewLabel.text = serviceObject?.name
         commentView.isHidden = true
         informationTableView.isHidden = true
         imageCollectionView.isHidden = true
@@ -227,6 +231,42 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getServiceDetail() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMyQG5hbC52biIsImlkIjoiMDAwMDAwMDAyMTgiLCJ0eXBlIjowLCJqdGkiOiJiY2JiYzM3OC01MWFkLTRjMmMtYmEyMy1mMjY0OWYxOTY1MzMiLCJpYXQiOjE0ODIxNjc4NTJ9.1BpGxLLB5XyN9qywOSToD3mSdkqGax3yupEknteP5y8"//UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["service_id"] = serviceObject?.service_id
+        
+        LoadingOverlay.shared.showOverlay(view: self.view)
+        APIManager.sharedInstance.getDataToURL(url: SERVICE_GET_DETAIL, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    
+                    let listItem = resultData["items"] as! [AnyObject]
+                    var tempArray = [ServiceModel]()
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = ServiceModel.init(dict: item)
+                        tempArray += [newsObject]
+                    }
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+
     }
     
 

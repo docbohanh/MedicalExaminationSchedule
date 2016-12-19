@@ -70,6 +70,7 @@
 		D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */; };
 		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
 		D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22859B91E081A2E00570A8F /* NewsModel.swift */; };
+		D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22859BB1E08506500570A8F /* ServiceModel.swift */; };
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
 		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
 		D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */; };
@@ -219,6 +220,7 @@
 		D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTableViewCell.xib; sourceTree = "<group>"; };
 		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		D22859B91E081A2E00570A8F /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		D22859BB1E08506500570A8F /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
 		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
 		D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewController.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			children = (
 				D2F778E51E01AE80007D63E4 /* UserModel.swift */,
 				D22859B91E081A2E00570A8F /* NewsModel.swift */,
+				D22859BB1E08506500570A8F /* ServiceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				84321D851DF7469100CCA4D4 /* FSCalendar+Deprecated.m in Sources */,
 				D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */,
+				D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */,
 				D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,

@@ -34,10 +34,24 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var currentLocation = CLLocation()
     var searchMapView = UIView()
     
+    var serviceHospitalArray = [ServiceModel]()
+    var serviceClinicArray = [ServiceModel]()
+    var serviceDrugStoreArray = [ServiceModel]()
+    var serviceDoctorArray = [ServiceModel]()
+    
+    var pageIndexHospital = 0
+    var pageIndexClinic = 0
+    var pageIndexDrugStore = 0
+    var pageIndexDoctor = 0
+    
+    var selectedTab = 0
+    var currentService : ServiceModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        self.getServiceHospital(page_index: pageIndexHospital, type: "bv")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -113,30 +127,51 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         sender.isSelected = !sender.isSelected
     }
     @IBAction func tappedHospitalSearch(_ sender: UIButton) {
+        selectedTab = 0
         tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
-    }
-    
-    @IBAction func tappedDrugStoreSearch(_ sender: UIButton) {
-        tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
-    }
-    
-    @IBAction func tappedDoctorSearch(_ sender: UIButton) {
-        tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
+        if serviceHospitalArray.count == 0 {
+            self.getServiceHospital(page_index: 0, type: "bv")
+        }
     }
     
     @IBAction func tappedClinicSearch(_ sender: UIButton) {
+        selectedTab = 1
         tabLineView.center = CGPoint.init(x: clinicButton.center.x, y: tabLineView.center.y)
+        if serviceClinicArray.count == 0 {
+            self.getServiceHospital(page_index: 0, type: "pk")
+        }
+    }
+    
+    @IBAction func tappedDrugStoreSearch(_ sender: UIButton) {
+        selectedTab = 2
+        tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
+        if serviceDrugStoreArray.count == 0 {
+            self.getServiceHospital(page_index: 0, type: "nt")
+        }
+    }
+    
+    @IBAction func tappedDoctorSearch(_ sender: UIButton) {
+        selectedTab = 3
+        tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
+        if serviceDoctorArray.count == 0 {
+            self.getServiceHospital(page_index: 0, type: "bs")
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return 4
+        switch selectedTab {
+        case 0:
+            return serviceHospitalArray.count
+        case 1:
+            return serviceClinicArray.count
+        case 2:
+            return serviceDrugStoreArray.count
+        default:
+            return serviceDoctorArray.count
         }
     }
     
@@ -145,7 +180,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -155,25 +190,113 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorAddressTableViewCell", for: indexPath) as! DoctorAddressTableViewCell
+        var object : ServiceModel?
+        switch selectedTab {
+        case 0:
+            object = serviceHospitalArray[indexPath.row]
+            break
+        case 1:
+            object = serviceClinicArray[indexPath.row]
+            break
+        case 2:
+            object = serviceDrugStoreArray[indexPath.row]
+            break
+        default:
+            object = serviceDoctorArray[indexPath.row]
+        }
+        
+        cell.setupCell(object: object!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch selectedTab {
+            case 0:
+            currentService = serviceHospitalArray[indexPath.row]
+            break
+            case 1:
+            currentService = serviceClinicArray[indexPath.row]
+            break
+            case 2:
+            currentService = serviceDrugStoreArray[indexPath.row]
+            break
+            default:
+            currentService = serviceDoctorArray[indexPath.row]
+        }
+        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func getServiceHospital(page_index:Int, type:String) -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMyQG5hbC52biIsImlkIjoiMDAwMDAwMDAyMTgiLCJ0eXBlIjowLCJqdGkiOiJiY2JiYzM3OC01MWFkLTRjMmMtYmEyMy1mMjY0OWYxOTY1MzMiLCJpYXQiOjE0ODIxNjc4NTJ9.1BpGxLLB5XyN9qywOSToD3mSdkqGax3yupEknteP5y8"//UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["lat"] = "21.0133267"
+        dictParam["lng"] = "105.7809231"
+        dictParam["type"] = type
+        dictParam["query"] = ""
+        dictParam["page_index"] = String.init(format: "%d", page_index)
+        
+        LoadingOverlay.shared.showOverlay(view: self.view)
+        APIManager.sharedInstance.getDataToURL(url: SERVCE_GET, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
 
-    /*
+                    let listItem = resultData["items"] as! [AnyObject]
+                    var tempArray = [ServiceModel]()
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = ServiceModel.init(dict: item)
+                       tempArray += [newsObject]
+                    }
+                    switch self.selectedTab {
+                    case 0:
+                        self.serviceHospitalArray += tempArray
+                        break
+                    case 1:
+                        self.serviceClinicArray += tempArray
+                        break
+                    case 2:
+                        self.serviceDrugStoreArray += tempArray
+                        break
+                    default:
+                        self.serviceDoctorArray += tempArray
+                        break
+                    }
+                    self.doctorAddressTableView.reloadData()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+
+    }
+    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "PushToServiceDetail" {
+            let detailVC = segue.destination as! DoctorManagementViewController
+            detailVC.serviceObject = currentService
+        }
     }
-    */
+   
 
 }
