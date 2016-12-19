@@ -13,8 +13,15 @@ class ProjectCommon: NSObject {
     static func boundView(button:UIView) -> Void {
         button.clipsToBounds = true
         button.layer.cornerRadius = button.frame.size.height/2;
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = COLOR_COMMON.cgColor
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = self.color(withRGB: 0x3384e1, andAlpha: 70).cgColor
+    }
+    
+    static func color(withRGB RGB: UInt, andAlpha alpha: Int) -> UIColor {
+        return UIColor(red: CGFloat((RGB & 0xFF0000) >> 16) / 255.0,
+                       green: CGFloat((RGB & 0x00FF00) >> 8) / 255.0,
+                       blue: CGFloat(RGB & 0x0000FF) / 255.0,
+                       alpha: 1)
     }
     
     static func boundViewWithColor(button:UIView, color: UIColor) {
