@@ -30,6 +30,7 @@ class CommentTableViewCell: UITableViewCell {
         nameLabel.text = object.comment_title
         commentLabel.text = object.comment_content
         startRateImageView.image = UIImage.init(named: String.init(format: "ic_star_%d", object.rate!))
+        timeLaber.text  = object.date_create
     }
 
 }

@@ -33,7 +33,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     private weak var calendar: FSCalendar!
-    let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên nghành","Nơi làm việc"]
+    let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên ngành","Nơi làm việc"]
     var dataTestProfileArray = [String]()
     
     fileprivate let itemsPerRow: CGFloat = 3
@@ -42,9 +42,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     var serviceObject : ServiceModel?
     var rate = 0
     var commentArray = [CommentModel]()
-    
+    var commentCounter = [Int]()
     
     @IBOutlet weak var informationTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
@@ -145,6 +146,13 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         }
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
+        view.endEditing(true)
+        if titleCommentTextField.text == "" {
+            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Chưa nhập tiêu đề", buttonArray: ["OK"], onCompletion: { (index) in
+                
+            })
+            return
+        }
         // Send comment
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
@@ -163,9 +171,9 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
-                    let value = resultDictionary["result"] as! [String:AnyObject]
-                    UserDefaults.standard.set(value["token_id"], forKey: "token_id")
-                    self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                    ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Send comment success", buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
@@ -179,7 +187,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBAction func tappedStarButton(_ sender: Any) {
         let button = sender as! UIButton
         let tag = button.tag
-        rate = tag - 10
+        rate = tag - 10 + 1
         for i in 10..<15 {
             let btn = view.viewWithTag(i) as! UIButton
             if i <= tag {
@@ -229,6 +237,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("RateHeaderView", owner: self, options: nil)?.first as! RateHeaderView
+        headerView.setupViewWithArray(array: commentCounter)
         return headerView
         
     }
@@ -359,6 +368,8 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                         tempArray += [newsObject]
                     }
                     self.commentArray += tempArray
+                    self.counterStar(array: self.commentArray)
+                    self.informationTableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
@@ -369,6 +380,48 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
 
     }
     
+    func counterStar(array:[CommentModel]) -> Void {
+        let totalRate = array.count
+        if array.count == 0 {
+            return
+        }
+        
+        var rate1 = 0
+        var rate2 = 0
+        var rate3 = 0
+        var rate4 = 0
+        var rate5 = 0
+        
+        for i in 0 ..< array.count {
+            let model = array[i]
+            switch model.rate! as Int {
+            case 1 :
+                rate1 += 1
+                break
+            case 2 :
+                rate2 += 1
+                break
+            case 3 :
+                rate3 += 1
+                break
+            case 4 :
+                rate4 += 1
+                break
+            case 5 :
+                rate5 += 1
+                break
+            default:
+                break
+            }
+        }
+        // avg
+        let avg = (rate1*1 + rate2*2 + rate3*3 + rate4*4 + rate5*5)/totalRate
+        rateImageView.image = UIImage.init(named: String.init(format: "ic_star_%d", avg))
+        if commentCounter.count > 0{
+            commentCounter.removeAll()
+        }
+        commentCounter += [rate1,rate2,rate3,rate4,rate5,totalRate]
+    }
 
     /*
     // MARK: - Navigation

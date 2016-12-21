@@ -48,7 +48,7 @@ class ServiceModel: NSObject {
         }else {
             self.corporation = ""
         }
-        if let v = dict["news_tags"] {
+        if let v = dict["field"] {
             self.field = "\(v)"
         }else {
             self.field = ""
