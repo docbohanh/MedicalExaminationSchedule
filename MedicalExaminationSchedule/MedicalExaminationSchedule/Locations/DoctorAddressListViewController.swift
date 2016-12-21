@@ -232,7 +232,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func getServiceHospital(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
-        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMyQG5hbC52biIsImlkIjoiMDAwMDAwMDAyMTgiLCJ0eXBlIjowLCJqdGkiOiJiY2JiYzM3OC01MWFkLTRjMmMtYmEyMy1mMjY0OWYxOTY1MzMiLCJpYXQiOjE0ODIxNjc4NTJ9.1BpGxLLB5XyN9qywOSToD3mSdkqGax3yupEknteP5y8"//UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["lat"] = "21.0133267"
         dictParam["lng"] = "105.7809231"
         dictParam["type"] = type

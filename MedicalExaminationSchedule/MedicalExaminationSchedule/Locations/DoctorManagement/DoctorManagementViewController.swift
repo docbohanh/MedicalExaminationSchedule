@@ -27,38 +27,64 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var tabLineView: UIView!
     @IBOutlet weak var doctorHistoryLabel: UILabel!
     @IBOutlet weak var commentView: UIView!
-    @IBOutlet weak var makeRateImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var sendCommentButton: UIButton!
+    @IBOutlet weak var titleCommentTextField: UITextField!
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
     private weak var calendar: FSCalendar!
     let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên nghành","Nơi làm việc"]
-    let dataTestProfileArray = ["Nguyễn Hải Đăng","Hà Nội","Nam","Đa khoa","Bệnh viện Bạch Mai"]
+    var dataTestProfileArray = [String]()
+    
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
 
     var serviceObject : ServiceModel?
+    var rate = 0
+    var commentArray = [CommentModel]()
     
     
     @IBOutlet weak var informationTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
+        self.fillData()
         imageCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-        self.getServiceDetail()
         // Do any additional setup after loading the view.
+        informationTableView.rowHeight = UITableViewAutomaticDimension;
+        informationTableView.estimatedRowHeight = 200.0;
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = true
+        view.addGestureRecognizer(tapGesture)
+        
+        self.getServiceDetail()
     }
-
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
     }
     
     func initUI() {
-        titleViewLabel.text = serviceObject?.name
+        
         commentView.isHidden = true
         informationTableView.isHidden = true
         imageCollectionView.isHidden = true
+        commentTextView.clipsToBounds = true
+        commentTextView.layer.cornerRadius = 5.0
+        commentTextView.layer.borderColor = UIColor.lightGray.cgColor
+        commentTextView.layer.borderWidth = 1.0
+        
+        sendCommentButton.clipsToBounds = true
+        sendCommentButton.layer.cornerRadius = 2.0
+    }
+    
+    func fillData() -> Void {
+        titleViewLabel.text = serviceObject?.name
+        doctorSpecializedLabel.text = serviceObject?.field
+        dataTestProfileArray += [(serviceObject?.name)!,(serviceObject?.address)!,"Nam",(serviceObject?.field)!, (serviceObject?.corporation)!]
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -119,19 +145,60 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         }
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
-        
+        // Send comment
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["service_id"] = serviceObject?.service_id
+        dictParam["comment_content"] = commentTextView.text
+        dictParam["comment_title"] = titleCommentTextField.text
+        dictParam["rate"] = String.init(format: "%d", rate)
+        LoadingOverlay.shared.showOverlay(view: self.view)
+        APIManager.sharedInstance.postDataToURL(url: COMMENT_POST, parameters: dictParam, onCompletion: { (response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let value = resultDictionary["result"] as! [String:AnyObject]
+                    UserDefaults.standard.set(value["token_id"], forKey: "token_id")
+                    self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+
     }
     
+    @IBAction func tappedStarButton(_ sender: Any) {
+        let button = sender as! UIButton
+        let tag = button.tag
+        rate = tag - 10
+        for i in 10..<15 {
+            let btn = view.viewWithTag(i) as! UIButton
+            if i <= tag {
+                btn.isSelected = true
+            }else {
+                btn.isSelected = false
+            }
+        }
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if(text == "\n") {
-            textView.resignFirstResponder()
-            return false
-        }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if(text == "\n") {
+//            textView.resignFirstResponder()
+//            return false
+//        }
         return true
     }
     
@@ -150,14 +217,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         if section == 0 {
             return 5
         }
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 44
-        }
-        return 90
+        return commentArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -183,6 +243,8 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+            let object = commentArray[indexPath.row] as CommentModel
+            cell.initCell(object: object)
             return cell
         }
     }
@@ -235,11 +297,49 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     
     func getServiceDetail() -> Void {
         var dictParam = [String : String]()
-        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMyQG5hbC52biIsImlkIjoiMDAwMDAwMDAyMTgiLCJ0eXBlIjowLCJqdGkiOiJiY2JiYzM3OC01MWFkLTRjMmMtYmEyMy1mMjY0OWYxOTY1MzMiLCJpYXQiOjE0ODIxNjc4NTJ9.1BpGxLLB5XyN9qywOSToD3mSdkqGax3yupEknteP5y8"//UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = serviceObject?.service_id
         
         LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.getDataToURL(url: SERVICE_GET_DETAIL, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            self.getListComment(pageIndex: 0)
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    
+//                    let listItem = resultData["items"] as! [AnyObject]
+//                    var tempArray = [ServiceModel]()
+//                    for i in 0..<listItem.count {
+//                        let item = listItem[i] as! [String:AnyObject]
+//                        let newsObject = ServiceModel.init(dict: item)
+//                        tempArray += [newsObject]
+//                    }
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+
+    }
+    
+    func getListComment(pageIndex:Int) -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["service_id"] = serviceObject?.service_id
+        dictParam["page_index"] = String.init(format: "%d", pageIndex)
+        
+        LoadingOverlay.shared.showOverlay(view: self.view)
+        APIManager.sharedInstance.getDataToURL(url: COMMENT_GET, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
@@ -251,14 +351,14 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // reload data
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
-                    
                     let listItem = resultData["items"] as! [AnyObject]
-                    var tempArray = [ServiceModel]()
+                    var tempArray = [CommentModel]()
                     for i in 0..<listItem.count {
                         let item = listItem[i] as! [String:AnyObject]
-                        let newsObject = ServiceModel.init(dict: item)
+                        let newsObject = CommentModel.init(dict: item)
                         tempArray += [newsObject]
                     }
+                    self.commentArray += tempArray
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
