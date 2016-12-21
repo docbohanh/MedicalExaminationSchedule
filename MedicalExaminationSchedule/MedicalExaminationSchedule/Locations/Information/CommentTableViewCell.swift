@@ -22,9 +22,14 @@ class CommentTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+//        super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func initCell(object:CommentModel) -> Void {
+        nameLabel.text = object.comment_title
+        commentLabel.text = object.comment_content
+        startRateImageView.image = UIImage.init(named: String.init(format: "ic_star_%d", object.rate!))
     }
 
 }

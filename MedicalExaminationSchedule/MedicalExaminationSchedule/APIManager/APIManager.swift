@@ -17,6 +17,24 @@ public var url : URL?
 class APIManager: NSObject,URLSessionDelegate {
     static let sharedInstance = APIManager()
     
+    static var Manager: Alamofire.SessionManager = {
+        
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "https://api.medhub.vn/": .disableEvaluation
+        ]
+        
+        // Create custom manager
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        let manager = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        
+        return manager
+    }()
+    
     func makeHTTPGetRequest(path: String, param:[String:AnyObject], onCompletion: @escaping ServiceResponse) {
         let parameterString = param.stringFromHttpParameters()
         let requestURL = URL(string:"\(path)?\(parameterString)")!
@@ -63,7 +81,7 @@ class APIManager: NSObject,URLSessionDelegate {
     
     func postDataToURL(url : String,parameters : [String:String],onCompletion: @escaping AlamofireResponse) {
         let urlString = REST_API_URL + url
-        Alamofire.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        APIManager.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
 //                print(response)
@@ -74,7 +92,7 @@ class APIManager: NSObject,URLSessionDelegate {
         let parameterString = parameters.stringFromHttpParameters()
         let requestURL = REST_API_URL + url + "?" + parameterString
         
-        Alamofire.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+        APIManager.Manager.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
 //                print(response)
