@@ -67,5 +67,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/Locations/DoctorAddressListViewController.swift"
+            timestampString = "503943747.152556"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "getServiceHospital(page_index:type:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/Locations/DoctorAddressListViewController.swift"
+            timestampString = "503943837.413266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "getServiceHospital(page_index:type:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/More/MoreViewController.swift"
+            timestampString = "503944675.33845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "getProfile()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedicalExaminationSchedule.MoreViewController.(getProfile () -&gt; ()).(closure #1)"
+                  moduleName = "MedicalExaminationSchedule"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/More/MoreViewController.swift"
+                  timestampString = "503944700.239607"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "5072">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MedicalExaminationSchedule.MoreViewController.(getProfile () -&gt; ()).(closure #1)"
+                  moduleName = "MedicalExaminationSchedule"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/More/MoreViewController.swift"
+                  timestampString = "503944700.242367"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "6614">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

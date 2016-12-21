@@ -23,7 +23,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     var titleArray = [String]()
     var iconArrayDoctor = [String]()
     var titleArrayDoctor = [String]()
-    var isDoctor = true
+    var isDoctor = false
     var userModel : UserModel?
     
     override func viewDidLoad() {
@@ -119,8 +119,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.usernameLabel.text = self.userModel?.user_display_name
                     }
                     print((self.userModel?.user_type_id)!)
-//                    self.isDoctor = (self.userModel?.user_type_id)!
-//                    self.moreTableView.reloadData()
+                    self.isDoctor = (self.userModel?.user_type_id)!
+                    self.moreTableView.reloadData()
                 }
 //            }
         })
