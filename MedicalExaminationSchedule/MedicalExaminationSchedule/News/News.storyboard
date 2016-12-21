@@ -78,19 +78,19 @@
                                                                 <constraint firstAttribute="height" constant="150" id="FTk-RE-0Su"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-CW-05V">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea3-CW-05V">
                                                             <rect key="frame" x="10" y="158" width="369" height="33.666666666666657"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="25 tháng 10 lúc 11h20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBa-6s-VTU">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 tháng 10 lúc 11h20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBa-6s-VTU">
                                                             <rect key="frame" x="10" y="200" width="124" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgW-Ui-QbO">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgW-Ui-QbO">
                                                             <rect key="frame" x="10" y="224.33333333333331" width="369" height="50.333333333333314"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volupt</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -110,10 +110,14 @@
                                                                 <constraint firstAttribute="height" constant="30" id="2zg-xh-r3A"/>
                                                                 <constraint firstAttribute="width" constant="70" id="oal-0q-bN6"/>
                                                             </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Share" image="ic_share">
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="selected" title="Share" image="ic_share_active">
+                                                                <color key="titleColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="tappedShareFacebookButton:" destination="yuD-LV-KiB" eventType="touchUpInside" id="W2v-lS-8XO"/>
@@ -121,15 +125,25 @@
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elc-s1-5V5">
                                                             <rect key="frame" x="190" y="295" width="70" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="Like" image="ic_like">
                                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <state key="selected" title="Like" image="ic_like_active">
+                                                                <color key="titleColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="tappedLikeFaceBookButton:" destination="yuD-LV-KiB" eventType="touchUpInside" id="B2c-pQ-IjE"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRa-In-0ll">
+                                                            <rect key="frame" x="165" y="302" width="9" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -142,6 +156,7 @@
                                                         <constraint firstItem="Ea3-CW-05V" firstAttribute="trailing" secondItem="pxX-85-4Ry" secondAttribute="trailing" constant="-5" id="Ead-dG-j0d"/>
                                                         <constraint firstItem="pxX-85-4Ry" firstAttribute="top" secondItem="wbB-nD-byn" secondAttribute="top" id="LmM-IR-bzW"/>
                                                         <constraint firstItem="RqF-Rj-PZN" firstAttribute="height" secondItem="Elc-s1-5V5" secondAttribute="height" id="MXo-48-ihh"/>
+                                                        <constraint firstItem="JRa-In-0ll" firstAttribute="centerY" secondItem="Elc-s1-5V5" secondAttribute="centerY" id="NAp-H9-xUc"/>
                                                         <constraint firstItem="RqF-Rj-PZN" firstAttribute="top" secondItem="hZ9-Ys-Ezp" secondAttribute="bottom" constant="10" id="PfH-D0-4XZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="pxX-85-4Ry" secondAttribute="trailing" id="Tw4-dP-Pp0"/>
                                                         <constraint firstItem="DgW-Ui-QbO" firstAttribute="leading" secondItem="Ea3-CW-05V" secondAttribute="leading" id="W8V-a2-qdg"/>
@@ -153,6 +168,7 @@
                                                         <constraint firstItem="pxX-85-4Ry" firstAttribute="leading" secondItem="wbB-nD-byn" secondAttribute="leading" id="rLi-Z0-wRe"/>
                                                         <constraint firstItem="RqF-Rj-PZN" firstAttribute="top" secondItem="Elc-s1-5V5" secondAttribute="top" id="tiS-3o-yYV"/>
                                                         <constraint firstItem="Ea3-CW-05V" firstAttribute="leading" secondItem="pxX-85-4Ry" secondAttribute="leading" constant="10" id="tjQ-hO-O1f"/>
+                                                        <constraint firstItem="Elc-s1-5V5" firstAttribute="leading" secondItem="JRa-In-0ll" secondAttribute="trailing" constant="16" id="utv-TE-vWw"/>
                                                         <constraint firstItem="hZ9-Ys-Ezp" firstAttribute="leading" secondItem="Ea3-CW-05V" secondAttribute="leading" id="wCZ-wg-Px8"/>
                                                     </constraints>
                                                 </view>
@@ -168,8 +184,11 @@
                                         <connections>
                                             <outlet property="createTimeLabel" destination="rBa-6s-VTU" id="kba-yW-w9M"/>
                                             <outlet property="detailLabel" destination="DgW-Ui-QbO" id="AgB-wQ-veE"/>
+                                            <outlet property="likeButton" destination="Elc-s1-5V5" id="aHB-B9-fYz"/>
+                                            <outlet property="likeCountLabel" destination="JRa-In-0ll" id="RbY-U3-kRA"/>
                                             <outlet property="newImageView" destination="pxX-85-4Ry" id="x1w-2P-vAU"/>
                                             <outlet property="newTitleLabel" destination="Ea3-CW-05V" id="of9-Rn-BXS"/>
+                                            <outlet property="shareButton" destination="RqF-Rj-PZN" id="Hhq-dJ-52G"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -233,7 +252,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxn-Ym-qar">
-                                        <rect key="frame" x="124.5" y="32" width="127" height="21"/>
+                                        <rect key="frame" x="74" y="32" width="227" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -242,6 +261,7 @@
                                 <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="FXE-bx-Zgc"/>
+                                    <constraint firstItem="bxn-Ym-qar" firstAttribute="leading" secondItem="Uc3-VR-W7U" secondAttribute="trailing" constant="30" id="HBx-76-hKz"/>
                                     <constraint firstItem="bxn-Ym-qar" firstAttribute="centerY" secondItem="k2v-31-zN0" secondAttribute="centerY" constant="10" id="Ico-0p-uis"/>
                                     <constraint firstItem="bxn-Ym-qar" firstAttribute="centerX" secondItem="k2v-31-zN0" secondAttribute="centerX" id="Yaf-78-LMg"/>
                                     <constraint firstItem="Uc3-VR-W7U" firstAttribute="leading" secondItem="k2v-31-zN0" secondAttribute="leading" id="nsG-or-QrE"/>
@@ -271,6 +291,12 @@
                                                 <state key="normal" title="Share" image="ic_share">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="selected" title="Share" image="ic_share_active">
+                                                    <color key="titleColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedShareButton:" destination="ZC4-VG-xdb" eventType="touchUpInside" id="3Qi-dG-gF1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-Bp-IUi">
                                                 <rect key="frame" x="205" y="160" width="70" height="30"/>
@@ -279,6 +305,12 @@
                                                 <state key="normal" title="Like" image="ic_like">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="selected" title="Like" image="ic_like_active">
+                                                    <color key="titleColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedLikeButton:" destination="ZC4-VG-xdb" eventType="touchUpInside" id="2gw-Yy-6uf"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-JX-lTT">
                                                 <rect key="frame" x="0.0" y="195" width="375" height="1"/>
@@ -299,9 +331,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsV-dW-aiH">
-                                                <rect key="frame" x="10" y="279.5" width="360" height="100.5"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volupt</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsV-dW-aiH">
+                                                <rect key="frame" x="10" y="279.5" width="360" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW6-fJ-fzP">
+                                                <rect key="frame" x="157" y="254.5" width="33" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOo-SJ-qf6">
+                                                <rect key="frame" x="194" y="175" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -311,12 +354,14 @@
                                         <constraints>
                                             <constraint firstItem="OsV-dW-aiH" firstAttribute="top" secondItem="Ke6-2p-mLE" secondAttribute="bottom" constant="10" id="6Mx-uX-Cbi"/>
                                             <constraint firstItem="Ke6-2p-mLE" firstAttribute="leading" secondItem="Dq7-Vg-Aj0" secondAttribute="leading" id="75M-T6-G3f"/>
+                                            <constraint firstItem="wW6-fJ-fzP" firstAttribute="leading" secondItem="Ke6-2p-mLE" secondAttribute="trailing" constant="23" id="9wx-v1-8du"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="top" secondItem="iwK-Bp-IUi" secondAttribute="top" id="BLx-bW-yJL"/>
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="top" secondItem="n5x-mF-C1J" secondAttribute="bottom" constant="5" id="Eh4-6W-2ii"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="leading" secondItem="iwK-Bp-IUi" secondAttribute="trailing" constant="15" id="K1G-fW-bhL"/>
                                             <constraint firstAttribute="trailing" secondItem="n5x-mF-C1J" secondAttribute="trailing" constant="15" id="O73-Fr-kFu"/>
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="leading" secondItem="cmY-pB-QmC" secondAttribute="leading" id="Of9-VT-zj1"/>
                                             <constraint firstItem="OsV-dW-aiH" firstAttribute="leading" secondItem="Dq7-Vg-Aj0" secondAttribute="leading" id="RDN-zm-4vA"/>
+                                            <constraint firstItem="iwK-Bp-IUi" firstAttribute="leading" secondItem="tOo-SJ-qf6" secondAttribute="trailing" constant="11" id="W16-iR-G6Z"/>
                                             <constraint firstItem="cmY-pB-QmC" firstAttribute="top" secondItem="rUb-4u-IoL" secondAttribute="top" id="Zos-aY-95B"/>
                                             <constraint firstItem="Ke6-2p-mLE" firstAttribute="top" secondItem="Dq7-Vg-Aj0" secondAttribute="bottom" constant="8" id="eBf-7I-m2I"/>
                                             <constraint firstItem="OsV-dW-aiH" firstAttribute="trailing" secondItem="Dq7-Vg-Aj0" secondAttribute="trailing" id="eRC-ud-3hv"/>
@@ -326,9 +371,11 @@
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="trailing" secondItem="cmY-pB-QmC" secondAttribute="trailing" id="k7z-rc-SFY"/>
                                             <constraint firstItem="Dq7-Vg-Aj0" firstAttribute="top" secondItem="3Ft-JX-lTT" secondAttribute="bottom" constant="17" id="kQY-Mh-Lih"/>
                                             <constraint firstItem="cmY-pB-QmC" firstAttribute="leading" secondItem="rUb-4u-IoL" secondAttribute="leading" id="mIu-5l-aeW"/>
+                                            <constraint firstItem="wW6-fJ-fzP" firstAttribute="centerY" secondItem="Ke6-2p-mLE" secondAttribute="centerY" id="ogL-lq-0oz"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="top" secondItem="cmY-pB-QmC" secondAttribute="bottom" constant="10" id="ooc-vT-uKw"/>
                                             <constraint firstAttribute="trailing" secondItem="cmY-pB-QmC" secondAttribute="trailing" id="yGF-h5-BXl"/>
                                             <constraint firstItem="Dq7-Vg-Aj0" firstAttribute="trailing" secondItem="cmY-pB-QmC" secondAttribute="trailing" constant="-5" id="ynH-Xh-6I5"/>
+                                            <constraint firstItem="tOo-SJ-qf6" firstAttribute="centerY" secondItem="iwK-Bp-IUi" secondAttribute="centerY" id="yrs-Qm-4w3"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -355,6 +402,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="e4r-ZM-X4P"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="authorNameLabel" destination="wW6-fJ-fzP" id="1Xd-Tw-32R"/>
+                        <outlet property="descriptionLabel" destination="OsV-dW-aiH" id="ohe-r5-hoX"/>
+                        <outlet property="likeButton" destination="iwK-Bp-IUi" id="qnN-RU-jxX"/>
+                        <outlet property="likeCountLabel" destination="tOo-SJ-qf6" id="5eI-CO-f9J"/>
+                        <outlet property="newsImageView" destination="cmY-pB-QmC" id="Atw-0G-aD7"/>
+                        <outlet property="shareButton" destination="n5x-mF-C1J" id="CBI-OU-SD1"/>
+                        <outlet property="timeLabel" destination="Ke6-2p-mLE" id="eLM-Fm-6B4"/>
+                        <outlet property="titleLabel" destination="Dq7-Vg-Aj0" id="A2O-pO-0cU"/>
+                        <outlet property="titleViewLabel" destination="bxn-Ym-qar" id="s89-ID-a3Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYl-gO-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -364,9 +422,11 @@
     <resources>
         <image name="ic_back" width="22" height="22"/>
         <image name="ic_like" width="15" height="15"/>
+        <image name="ic_like_active" width="15" height="15"/>
         <image name="ic_news" width="25" height="25"/>
         <image name="ic_search" width="22" height="22"/>
         <image name="ic_share" width="15" height="15"/>
+        <image name="ic_share_active" width="15" height="15"/>
         <image name="image_new_test.png" width="277" height="134"/>
     </resources>
 </document>
