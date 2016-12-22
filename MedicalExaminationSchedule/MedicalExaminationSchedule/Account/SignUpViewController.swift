@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: femaleButton)
         ProjectCommon.boundView(button: maleButton)
-        ProjectCommon.boundView(button: signInButton)
+//        ProjectCommon.boundView(button: signInButton)
         ProjectCommon.boundView(button: registerButton)
         ProjectCommon.boundView(button: passwordTextField)
         ProjectCommon.boundView(button: phoneTextField)
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         var dictParam = [String : AnyObject]()
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
         dictParam["email"] = emailTextField.text as AnyObject?
-        let datastring = NSString(data: ProjectCommon.sha256(string: passwordTextField.text!)!, encoding: String.Encoding.utf8.rawValue)
+        let datastring = ProjectCommon.sha256(string: passwordTextField.text!)
         dictParam["password"] = datastring as AnyObject?
         dictParam["user_display_name"] = nameTextField.text as AnyObject?
         dictParam["phone"] = phoneTextField.text as AnyObject?

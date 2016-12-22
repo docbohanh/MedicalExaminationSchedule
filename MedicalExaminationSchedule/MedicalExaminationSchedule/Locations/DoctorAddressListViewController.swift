@@ -11,25 +11,18 @@ import GoogleMaps
 import GooglePlaces
 
 class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate {
+    
     @IBOutlet weak var searchView: UIView!
-
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var mapButton: UIButton!
-    
-    @IBOutlet weak var searchButton: UIButton!
-    
     @IBOutlet weak var segmentView: UIView!
-    
     @IBOutlet weak var hospitalButton: UIButton!
-    
     @IBOutlet weak var drugStore: UIButton!
-    
     @IBOutlet weak var doctorButton: UIButton!
-    
     @IBOutlet weak var clinicButton: UIButton!
-    
     @IBOutlet weak var tabLineView: UIView!
     @IBOutlet weak var doctorAddressTableView: UITableView!
+    @IBOutlet weak var locationSearchBar: UISearchBar!
+    
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
     var searchMapView = UIView()
@@ -38,6 +31,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var serviceClinicArray = [ServiceModel]()
     var serviceDrugStoreArray = [ServiceModel]()
     var serviceDoctorArray = [ServiceModel]()
+    var filterArray = [ServiceModel]()
     
     var pageIndexHospital = 0
     var pageIndexClinic = 0
@@ -46,12 +40,16 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     var selectedTab = 0
     var currentService : ServiceModel?
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         self.getServiceHospital(page_index: pageIndexHospital, type: "bv")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +62,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     override func viewDidLayoutSubviews() {
         
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     /**
@@ -132,6 +134,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if serviceHospitalArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bv")
         }
+        self.resetSearchBar()
     }
     
     @IBAction func tappedClinicSearch(_ sender: UIButton) {
@@ -140,6 +143,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if serviceClinicArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "pk")
         }
+        self.resetSearchBar()
     }
     
     @IBAction func tappedDrugStoreSearch(_ sender: UIButton) {
@@ -148,6 +152,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if serviceDrugStoreArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "nt")
         }
+        self.resetSearchBar()
     }
     
     @IBAction func tappedDoctorSearch(_ sender: UIButton) {
@@ -156,6 +161,13 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if serviceDoctorArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bs")
         }
+        self.resetSearchBar()
+    }
+    
+    func resetSearchBar() -> Void {
+        locationSearchBar.text = ""
+        searchActive = false
+        doctorAddressTableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -163,15 +175,19 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedTab {
-        case 0:
-            return serviceHospitalArray.count
-        case 1:
-            return serviceClinicArray.count
-        case 2:
-            return serviceDrugStoreArray.count
-        default:
-            return serviceDoctorArray.count
+        if searchActive {
+            return filterArray.count
+        }else {
+            switch selectedTab {
+            case 0:
+                return serviceHospitalArray.count
+            case 1:
+                return serviceClinicArray.count
+            case 2:
+                return serviceDrugStoreArray.count
+            default:
+                return serviceDoctorArray.count
+            }
         }
     }
     
@@ -191,38 +207,46 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorAddressTableViewCell", for: indexPath) as! DoctorAddressTableViewCell
         var object : ServiceModel?
-        switch selectedTab {
-        case 0:
-            object = serviceHospitalArray[indexPath.row]
-            break
-        case 1:
-            object = serviceClinicArray[indexPath.row]
-            break
-        case 2:
-            object = serviceDrugStoreArray[indexPath.row]
-            break
-        default:
-            object = serviceDoctorArray[indexPath.row]
+        if searchActive {
+            object = filterArray[indexPath.row]
+        }else {
+            switch selectedTab {
+            case 0:
+                object = serviceHospitalArray[indexPath.row]
+                break
+            case 1:
+                object = serviceClinicArray[indexPath.row]
+                break
+            case 2:
+                object = serviceDrugStoreArray[indexPath.row]
+                break
+            default:
+                object = serviceDoctorArray[indexPath.row]
+            }
         }
-        
         cell.setupCell(object: object!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch selectedTab {
+        if searchActive {
+            currentService = filterArray[indexPath.row]
+        }else {
+            switch selectedTab {
             case 0:
-            currentService = serviceHospitalArray[indexPath.row]
-            break
+                currentService = serviceHospitalArray[indexPath.row]
+                break
             case 1:
-            currentService = serviceClinicArray[indexPath.row]
-            break
+                currentService = serviceClinicArray[indexPath.row]
+                break
             case 2:
-            currentService = serviceDrugStoreArray[indexPath.row]
-            break
+                currentService = serviceDrugStoreArray[indexPath.row]
+                break
             default:
-            currentService = serviceDoctorArray[indexPath.row]
+                currentService = serviceDoctorArray[indexPath.row]
+            }
         }
+        
         self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     override func didReceiveMemoryWarning() {
@@ -282,9 +306,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                 }
             }
         })
-
     }
-    
 
     // MARK: - Navigation
 
@@ -296,6 +318,35 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             let detailVC = segue.destination as! DoctorManagementViewController
             detailVC.serviceObject = currentService
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchString = searchText.lowercased()
+        var array = [ServiceModel]()
+        switch self.selectedTab {
+        case 0:
+            array = self.serviceHospitalArray
+            break
+        case 1:
+            array = self.serviceClinicArray
+            break
+        case 2:
+            array = self.serviceDrugStoreArray
+            break
+        default:
+            array = self.serviceDoctorArray
+            break
+        }
+        filterArray = array.filter({ (object : ServiceModel) -> Bool in
+            let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
+            return categoryMatch
+        })
+        if(filterArray.count == 0 && searchString == ""){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        doctorAddressTableView.reloadData()
     }
    
 

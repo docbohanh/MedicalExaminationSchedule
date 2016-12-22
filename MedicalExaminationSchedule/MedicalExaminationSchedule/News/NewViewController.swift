@@ -8,17 +8,19 @@
 
 import UIKit
 
-class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewTableViewCellDelegate, DetailNewControllerDelegate {
+class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NewTableViewCellDelegate, DetailNewControllerDelegate {
 
     @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
+//    @IBOutlet weak var searchTextField: UITextField!
+//    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var newTableView: UITableView!
     var newsArray = [NewsModel]()
+    var filterArray = [NewsModel]()
     
     var page_max = 1
     var currentNewsObject : NewsModel?
     var currentIndexPath : IndexPath?
+    var searchActive : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
         self.getListNew(page_index: 0)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +49,13 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pushToNewDetail" {
             let detailVC = segue.destination as! DetailNewViewController
-            
             detailVC.newsObject = currentNewsObject
         }
     }
     
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
     
     func getListLiked(page_index:Int) -> Void { // DONT USE
         var dictParam = [String : String]()
@@ -132,6 +139,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchActive {
+            return filterArray.count
+        }
         return newsArray.count
     }
     
@@ -139,12 +149,23 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let strIdentifer = "NewTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: strIdentifer, for: indexPath) as! NewTableViewCell
         cell.delegate = self
-        cell.setupCell(object: newsArray[indexPath.row])
+        let object : NewsModel?
+        if searchActive {
+            object = filterArray[indexPath.row]
+        }else {
+            object = newsArray[indexPath.row]
+        }
+        cell.setupCell(object: object!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentNewsObject = newsArray[indexPath.row]
+        if searchActive {
+            currentNewsObject = filterArray[indexPath.row]
+        }else {
+            currentNewsObject = newsArray[indexPath.row]
+        }
+        
         currentIndexPath = indexPath
         self.performSegue(withIdentifier: "pushToNewDetail", sender: self)
     }
@@ -182,9 +203,21 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     func updateNews(newObject: NewsModel) {
         newsArray[(currentIndexPath?.row)!] = newObject
-//        self.newTableView.reloadRows(at: [self.currentIndexPath!], with: UITableViewRowAnimation.none)
         newTableView.reloadData()
-       
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchString = searchText.lowercased()
+        filterArray = newsArray.filter({ (object : NewsModel) -> Bool in
+            let categoryMatch = (object.description.lowercased().contains(searchString)) || (object.news_title?.lowercased().contains(searchString))!
+            return categoryMatch
+        })
+        if(filterArray.count == 0 && searchString == ""){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        newTableView.reloadData()
     }
     
 }

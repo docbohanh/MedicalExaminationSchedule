@@ -547,10 +547,10 @@
                                             <constraint firstItem="Mvl-nz-Cws" firstAttribute="height" secondItem="YAc-S7-Lmg" secondAttribute="height" id="oY0-Ar-vPD"/>
                                             <constraint firstItem="DUi-0K-e0t" firstAttribute="leading" secondItem="9tv-lP-37o" secondAttribute="leading" id="pz4-7T-nkH"/>
                                             <constraint firstItem="7t4-WO-BC4" firstAttribute="height" secondItem="Mvl-nz-Cws" secondAttribute="height" id="svS-rn-qaF"/>
-                                            <constraint firstAttribute="bottom" secondItem="TiG-yw-PnK" secondAttribute="bottom" constant="68" id="ucr-4e-ROX"/>
                                             <constraint firstAttribute="trailing" secondItem="YAc-S7-Lmg" secondAttribute="trailing" constant="15" id="udc-Tu-LT8"/>
                                             <constraint firstItem="SQ4-WM-jLZ" firstAttribute="height" secondItem="7t4-WO-BC4" secondAttribute="height" id="wkI-hT-qoh"/>
                                             <constraint firstItem="YAc-S7-Lmg" firstAttribute="leading" secondItem="9tv-lP-37o" secondAttribute="leading" constant="15" id="wrg-zA-c5I"/>
+                                            <constraint firstAttribute="bottom" secondItem="TiG-yw-PnK" secondAttribute="bottom" priority="250" constant="68" id="x9x-OG-Rx3"/>
                                             <constraint firstItem="yfl-Z0-tha" firstAttribute="top" secondItem="gVS-iF-AS6" secondAttribute="bottom" constant="16" id="xJL-3d-FAY"/>
                                         </constraints>
                                     </view>
