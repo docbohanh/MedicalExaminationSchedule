@@ -10,5 +10,6 @@
 #define SwiftExample_Objc_Bridge_Header_h
 
 #import "FSCalendar.h"
+#import <CommonCrypto/CommonHMAC.h>
 
 #endif

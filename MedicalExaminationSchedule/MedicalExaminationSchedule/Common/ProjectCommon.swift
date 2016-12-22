@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 typealias AlertHandler = (Int) -> Void
 class ProjectCommon: NSObject {
     static func boundView(button:UIView) -> Void {
@@ -68,6 +69,26 @@ class ProjectCommon: NSObject {
             }))
         }
         viewController.present(alertCustomView, animated: true, completion: nil)
+    }
+    
+//    static func sha256(data : Data) -> Data {
+//        var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
+//        data.withUnsafeBytes {
+//            _ = CC_SHA256($0, CC_LONG(data.count), &hash)
+//        }
+//        return Data(bytes: hash)
+//    }
+//    
+    static func sha256(string: String) -> Data? {
+        guard let messageData = string.data(using:String.Encoding.utf8) else { return nil }
+        var digestData = Data(count: Int(CC_SHA256_DIGEST_LENGTH))
+        
+        _ = digestData.withUnsafeMutableBytes {digestBytes in
+            messageData.withUnsafeBytes {messageBytes in
+                CC_SHA256(messageBytes, CC_LONG(messageData.count), digestBytes)
+            }
+        }
+        return digestData
     }
 
 }

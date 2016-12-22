@@ -72,7 +72,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         var dictParam = [String : String]()
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
         dictParam["email"] = userNameTextField.text
-        dictParam["password"] = passwordTextField.text
+        let datastring = NSString(data: ProjectCommon.sha256(string: passwordTextField.text!)!, encoding: String.Encoding.utf8.rawValue)
+        dictParam["password"] = datastring as String?
         LoadingOverlay.shared.showOverlay(view: self.view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_LOGIN, parameters: dictParam, onCompletion: { (response) in
             print(response)
