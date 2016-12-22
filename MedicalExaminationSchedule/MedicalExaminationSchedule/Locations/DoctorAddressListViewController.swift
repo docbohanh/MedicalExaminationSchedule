@@ -263,7 +263,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index)
         
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: SERVCE_GET, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()

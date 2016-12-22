@@ -9,12 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicalExaminationSchedule/More/UpdateProfileDoctorViewController.swift"
-            timestampString = "503663125.780013"
+            filePath = "MedicalExaminationSchedule/More/UpdateUserViewController.swift"
+            timestampString = "503663142.124261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "updateProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -25,13 +25,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicalExaminationSchedule/More/UpdateUserViewController.swift"
-            timestampString = "503663142.124261"
+            filePath = "MedicalExaminationSchedule/More/UpdateProfileDoctorViewController.swift"
+            timestampString = "504124812.246677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "updateProfile()"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "updateAvatarUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/APIManager/APIManager.swift"
+            timestampString = "504124850.767158"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "uploadImage(url:image:param:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/APIManager/APIManager.swift"
+            timestampString = "504125310.125187"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "uploadImage(url:image:param:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

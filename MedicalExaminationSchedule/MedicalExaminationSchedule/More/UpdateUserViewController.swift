@@ -197,7 +197,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
-        LoadingOverlay.shared.showOverlay(view: view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {

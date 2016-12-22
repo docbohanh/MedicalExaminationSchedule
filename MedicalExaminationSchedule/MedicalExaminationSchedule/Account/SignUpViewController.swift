@@ -96,7 +96,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         dictParam["home_address"] = addressTextField.text as AnyObject?
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
         
-        LoadingOverlay.shared.showOverlay(view: view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {

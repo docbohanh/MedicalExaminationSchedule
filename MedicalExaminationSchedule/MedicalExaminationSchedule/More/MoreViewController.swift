@@ -93,7 +93,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: USER_GET_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
             print(response)
 //            DispatchQueue.main.async {

@@ -56,7 +56,7 @@ class DetailNewViewController: UIViewController {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObject?.news_id
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: NEWS_GET_CONTENT, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
@@ -92,7 +92,7 @@ class DetailNewViewController: UIViewController {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObject?.news_id
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.postDataToURL(url: NEWS_POST_LIKE, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             print(response)

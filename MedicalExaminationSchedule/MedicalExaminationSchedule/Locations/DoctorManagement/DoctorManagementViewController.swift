@@ -160,7 +160,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["comment_content"] = commentTextView.text
         dictParam["comment_title"] = titleCommentTextField.text
         dictParam["rate"] = String.init(format: "%d", rate)
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.postDataToURL(url: COMMENT_POST, parameters: dictParam, onCompletion: { (response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
@@ -172,7 +172,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Send comment success", buttonArray: ["OK"], onCompletion: { (index) in
-                        
+                        self.getListComment(pageIndex: 0)
                     })
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
@@ -309,7 +309,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = serviceObject?.service_id
         
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: SERVICE_GET_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
@@ -347,7 +347,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["service_id"] = serviceObject?.service_id
         dictParam["page_index"] = String.init(format: "%d", pageIndex)
         
-        LoadingOverlay.shared.showOverlay(view: self.view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: COMMENT_GET, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
@@ -367,6 +367,12 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                         let newsObject = CommentModel.init(dict: item)
                         tempArray += [newsObject]
                     }
+                    if pageIndex == 0 {
+                        if (self.commentArray.count > 0)
+                        {
+                             self.commentArray.removeAll()
+                        }
+                    }
                     self.commentArray += tempArray
                     self.counterStar(array: self.commentArray)
                     self.informationTableView.reloadData()
@@ -385,13 +391,11 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         if array.count == 0 {
             return
         }
-        
         var rate1 = 0
         var rate2 = 0
         var rate3 = 0
         var rate4 = 0
         var rate5 = 0
-        
         for i in 0 ..< array.count {
             let model = array[i]
             switch model.rate! as Int {

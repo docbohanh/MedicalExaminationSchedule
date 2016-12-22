@@ -198,7 +198,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
-        LoadingOverlay.shared.showOverlay(view: view)
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
@@ -282,9 +282,23 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageAvatar = pickedImage
+            self.updateAvatarUser()
             tableView.reloadData()
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func updateAvatarUser() -> Void {
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_type"] = "profile"
+        dictParam["image_title"] = ""
+        dictParam["image_desc"] = ""
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+            print(response)
+        
+        })
     }
 
     /*
