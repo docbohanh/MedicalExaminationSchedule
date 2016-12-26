@@ -11,6 +11,7 @@ import Alamofire
 
 typealias ServiceResponse = (AnyObject, NSError?) -> Void
 typealias AlamofireResponse = (DataResponse<Any>) -> Void
+//typealias UploadImageresponse = (MultipartFormDataEncodingResult) -> Void
 
 public var acceptSelfSignedCertificate = true
 public var url : URL?
@@ -130,10 +131,12 @@ class APIManager: NSObject,URLSessionDelegate {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
+                        completion(response)
                         debugPrint(response)
                     }
                 case .failure(let encodingError):
-                    print(encodingError)
+                    
+                    completion(DataResponse.init(request: nil, response: nil, data: nil, result: Result.failure(encodingError)))
                 }
         }
         )
