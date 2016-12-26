@@ -134,7 +134,6 @@ class APIManager: NSObject,URLSessionDelegate {
                         debugPrint(response)
                     }
                 case .failure(let encodingError):
-                    
                     completion(DataResponse.init(request: nil, response: nil, data: nil, result: Result.failure(encodingError)))
                 }
         }
