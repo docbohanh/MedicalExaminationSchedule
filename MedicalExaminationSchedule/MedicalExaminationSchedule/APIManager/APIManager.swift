@@ -111,29 +111,34 @@ class APIManager: NSObject,URLSessionDelegate {
     
     func uploadImage(url : String, image: UIImage, param: [String:String], completion: @escaping AlamofireResponse) {
         let requestURL = REST_API_URL + url
+        let URL = try! URLRequest(url: requestURL, method: .get, headers: nil)
         APIManager.Manager.upload(
             multipartFormData: { multipartFormData in
+                //                multipartFormData.append(imageData!, withName: "image", mimeType: "image/png")
+                //                multipartFormData.append(imageData!, withName: "image")
                 if let imageData = UIImageJPEGRepresentation(image, 0.5) {
-                      multipartFormData.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
+                    multipartFormData.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
                 }
+                
                 for (key, value) in param {
                     print("\(key) -> \(value)")
                     multipartFormData.append(value.data(using: .utf8)!, withName: key)
                 }
-            },
-            to: requestURL,
+        },
+            to: URL as! URLConvertible,
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
-                    
                     upload.responseJSON { response in
+                        completion(response)
                         debugPrint(response)
-//                        completion(response, nil)
                     }
                 case .failure(let encodingError):
-                    print(encodingError)
+                    
+                    completion(DataResponse.init(request: nil, response: nil, data: nil, result: Result.failure(encodingError)))
                 }
-        })
+        }
+        )
     }
 
 }
