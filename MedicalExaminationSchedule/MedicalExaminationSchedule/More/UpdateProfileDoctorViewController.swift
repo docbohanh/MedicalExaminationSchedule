@@ -343,6 +343,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func loadImage(url:String) -> Void {
+        //http://res.cloudinary.com/davnu7ghj/image/upload/v1482767292/ux2mjpfy3vn6pzjhc7ez.jpg
         let catPictureURL = URL(string: url)!
         // Creating a session object with the default configuration.
         // You can read more about it here https://developer.apple.com/reference/foundation/urlsessionconfiguration
