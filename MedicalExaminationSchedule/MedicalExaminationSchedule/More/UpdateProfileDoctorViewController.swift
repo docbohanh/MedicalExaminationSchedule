@@ -44,6 +44,11 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         tableView.register(UINib.init(nibName: "SelectGenderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SelectGenderTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
         self.createPopup()
+        if let imageUrl = UserDefaults.standard.object(forKey: "avatar_url") {
+            self.loadImage(url: imageUrl as! String)
+        }else {
+            self.getAvatarUrl()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -297,8 +302,96 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
+            LoadingOverlay.shared.hideOverlayView()
         
         })
+    }
+    
+    func getAvatarUrl() -> Void {
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_type"] = "profile"
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.getDataToURL(url: IMAGE_GET_USER, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
+            print(response)
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    if listItem.count > 0 {
+                        let item = listItem[0] as! [String:AnyObject]
+                        self.loadImage(url: item["url"] as! String)
+                        UserDefaults.standard.set(item["url"], forKey: "avatar_url")
+                    }else {
+                        self.imageAvatar = UIImage.init(named: "ic_avar_map")!
+                        self.tableView.reloadData()
+                    }
+                    
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+    }
+    
+    func loadImage(url:String) -> Void {
+        let catPictureURL = URL(string: url)!
+        // Creating a session object with the default configuration.
+        // You can read more about it here https://developer.apple.com/reference/foundation/urlsessionconfiguration
+        let session = URLSession(configuration: .default)
+        
+        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
+        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading cat picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded cat picture with response code \(res.statusCode)")
+                    if let imageData = data {
+                        // Finally convert that Data into an image and do what you wish with it.
+                        self.imageAvatar = UIImage(data: imageData)!
+                        // Do something with your image.
+                        self.tableView.reloadData()
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                    }
+                } else {
+                    print("Couldn't get response code for some reason")
+                }
+            }
+        }
+        downloadPicTask.resume()
+    }
+    
+    func downloadImage(url: URL) {
+        print("Download Started")
+        getDataFromUrl(url: url) { (data, response, error)  in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished")
+            DispatchQueue.main.async() { () -> Void in
+                self.imageAvatar = UIImage(data: data)!
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
+        URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            completion(data, response, error)
+            }.resume()
     }
 
     /*

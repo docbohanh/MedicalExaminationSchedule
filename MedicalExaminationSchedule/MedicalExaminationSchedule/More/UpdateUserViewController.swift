@@ -29,7 +29,12 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
         imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
-        dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!,(self.userProfile?.sex)!]
+        if self.userProfile != nil {
+            dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!,(self.userProfile?.sex)!]
+        }else {
+            dataArray += ["","","","","",""]
+        }
+        
         keyArray += ["user_display_name","home_address","birthday","phone","email","sex"]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
