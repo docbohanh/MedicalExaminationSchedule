@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
         }
-        APIManager.sharedInstance.uploadImage(url : "upload/image", image: UIImage.init(named: "test")!, param: ["dangnh":"test"], completion: {_ in
-            print("aaaaaa")
-        })
         // Override point for customization after application launch.
         return true
     }

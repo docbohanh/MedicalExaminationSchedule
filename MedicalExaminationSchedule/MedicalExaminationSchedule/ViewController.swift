@@ -12,9 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.sharedInstance.uploadImage(url : "upload/image", image: UIImage.init(named: "test")!, param: ["dangnh":"test"], completion: {_ in 
-        
-        })
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
