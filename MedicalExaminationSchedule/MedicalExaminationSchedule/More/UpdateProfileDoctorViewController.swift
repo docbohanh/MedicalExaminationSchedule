@@ -215,7 +215,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
-                            //                            self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {
@@ -303,7 +302,21 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
-        
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
         })
     }
     
@@ -317,7 +330,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             print(response)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
-                    
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -330,12 +342,12 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                         UserDefaults.standard.set(item["url"], forKey: "avatar_url")
                     }else {
                         self.imageAvatar = UIImage.init(named: "ic_avar_map")!
-                        self.tableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
-                    
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
                     })
                 }
             }
@@ -343,13 +355,8 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func loadImage(url:String) -> Void {
-        //http://res.cloudinary.com/davnu7ghj/image/upload/v1482767292/ux2mjpfy3vn6pzjhc7ez.jpg
         let catPictureURL = URL(string: url)!
-        // Creating a session object with the default configuration.
-        // You can read more about it here https://developer.apple.com/reference/foundation/urlsessionconfiguration
         let session = URLSession(configuration: .default)
-        
-        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
         let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
             // The download has finished.
             if let e = error {
@@ -374,35 +381,4 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         }
         downloadPicTask.resume()
     }
-    
-    func downloadImage(url: URL) {
-        print("Download Started")
-        getDataFromUrl(url: url) { (data, response, error)  in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async() { () -> Void in
-                self.imageAvatar = UIImage(data: data)!
-                self.tableView.reloadData()
-            }
-        }
-    }
-
-    func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {
-        URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            completion(data, response, error)
-            }.resume()
-    }
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
 }
