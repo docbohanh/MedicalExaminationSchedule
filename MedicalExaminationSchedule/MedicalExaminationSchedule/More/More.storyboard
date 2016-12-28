@@ -981,7 +981,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cFj-YZ-Bde" firstAttribute="top" secondItem="CAr-uW-eLD" secondAttribute="bottom" constant="70" id="2C6-bS-4b7"/>
+                            <constraint firstItem="SoA-J2-uXp" firstAttribute="top" secondItem="CAr-uW-eLD" secondAttribute="bottom" constant="15" id="1ty-Wh-Jbt"/>
                             <constraint firstItem="ubW-MV-JqD" firstAttribute="leading" secondItem="e2h-5U-G68" secondAttribute="leading" id="645-co-YgH"/>
                             <constraint firstItem="CAr-uW-eLD" firstAttribute="top" secondItem="ubW-MV-JqD" secondAttribute="bottom" id="6bG-Zc-iQd"/>
                             <constraint firstAttribute="trailing" secondItem="SoA-J2-uXp" secondAttribute="trailing" constant="15" id="H0A-P3-dRK"/>
@@ -997,6 +997,7 @@
                     <connections>
                         <outlet property="isntroduceListTableView" destination="CAr-uW-eLD" id="3lw-EQ-DAl"/>
                         <outlet property="updateButton" destination="SoA-J2-uXp" id="3gD-Hv-siz"/>
+                        <outlet property="updateButtonBottomConstraint" destination="gdg-c6-zeI" id="NnC-Cw-vAJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBI-ko-nFi" userLabel="First Responder" sceneMemberID="firstResponder"/>

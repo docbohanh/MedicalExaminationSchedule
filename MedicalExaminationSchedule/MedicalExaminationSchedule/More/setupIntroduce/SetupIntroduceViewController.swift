@@ -13,9 +13,11 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     @IBOutlet weak var isntroduceListTableView: UITableView!
     @IBOutlet weak var updateButton: UIButton!
     
+    @IBOutlet weak var updateButtonBottomConstraint: NSLayoutConstraint!
     var introduceItemsArray = [IntroduceModel]()
     var userProfile : UserModel?
     var currentIndexPath : IndexPath?
+    var isShowLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,9 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,18 +43,55 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         view.endEditing(true)
     }
     
+    func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            updateButtonBottomConstraint.constant = keyboardHeight
+        }
+    }
+    
+    func keyboardWillHidden(notification:NSNotification) {
+        updateButtonBottomConstraint.constant = 15
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedAddNewInstroduce(_ sender: UIButton) {
         let newObj = IntroduceModel.init(dict: ["":"" as AnyObject])
+        newObj.isChange = true
         introduceItemsArray.append(newObj)
         isntroduceListTableView.reloadData()
+        isntroduceListTableView.scrollToRow(at: IndexPath.init(row: introduceItemsArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
     }
     
     @IBAction func tappedUpdateInstroduce(_ sender: Any) {
-        
+        view.endEditing(true)
+        var array = [IntroduceModel]()
+        for i in 0..<introduceItemsArray.count {
+            let obj = introduceItemsArray[i] as IntroduceModel
+            if obj.isChange == true && (obj.name != "" || obj.desc != "") {
+                array.append(obj)
+            }
+        }
+        while array.count > 0 {
+            if (array.count == 1)
+            {
+                isShowLoading = true
+            }else {
+                isShowLoading = false
+            }
+            let object = array[0] as IntroduceModel
+            if object.id != "" {
+                // update
+                self.updateIntroduceItem(item: object)
+            }else {
+                // new
+                self.addNewIntrodule(item: object)
+            }
+            array .removeFirst()
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -82,7 +124,7 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     func getAllIntroduce() -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = userProfile?.user_id
+        dictParam["service_id"] = userProfile?.service_id
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
@@ -113,13 +155,17 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     func addNewIntrodule(item:IntroduceModel) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = userProfile?.user_id
+        dictParam["service_id"] = userProfile?.service_id
         dictParam["title"] = item.name
         dictParam["desc"] = item.desc
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        if isShowLoading {
+            LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        }
         APIManager.sharedInstance.postDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            if self.isShowLoading {
+                LoadingOverlay.shared.hideOverlayView()
+            }
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -138,14 +184,18 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     func updateIntroduceItem(item:IntroduceModel) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = userProfile?.user_id
+        dictParam["service_id"] = userProfile?.service_id
         dictParam["id"] = item.id
         dictParam["title"] = item.name
         dictParam["desc"] = item.desc
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        if isShowLoading {
+            LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        }
         APIManager.sharedInstance.postDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            if self.isShowLoading {
+                LoadingOverlay.shared.hideOverlayView()
+            }
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -164,7 +214,7 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     func deleteIntroduceItem(item:IntroduceModel) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = userProfile?.user_id
+        dictParam["service_id"] = userProfile?.service_id
         dictParam["id"] = item.id
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.deleteDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
@@ -203,11 +253,13 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     func textFieldDidEndEditing(_ textField: UITextField) {
         let object = introduceItemsArray[textField.tag] as IntroduceModel
         object.name = textField.text
+        object.isChange = true
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         let object = introduceItemsArray[textView.tag] as IntroduceModel
         object.desc = textView.text
+        object.isChange = true
     }
     
     /*

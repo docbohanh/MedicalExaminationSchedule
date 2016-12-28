@@ -36,6 +36,7 @@ public class LoadingOverlay{
         activityIndicator.center = overlayView.center
         overlayView.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        overlayView.tag = 100
         view.addSubview(overlayView)
     }
     

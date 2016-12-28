@@ -25,7 +25,6 @@ class UserModel: NSObject {
     var list_sevice_id = [AnyObject]()
     var service_id : String?
     
-    
     init(dict:[String:AnyObject]) {
         if let v = dict["birthday"] {
             self.birthday = "\(v)"

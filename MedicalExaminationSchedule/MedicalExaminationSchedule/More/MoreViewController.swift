@@ -132,7 +132,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // success
                 let dictResult = value["result"] as! [String:AnyObject]
                 self.userModel = UserModel.init(dict: dictResult)
-                
                 if (self.userModel?.user_display_name == ""){
                     self.usernameLabel.text = "No name"
                 }else {
@@ -167,10 +166,12 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let dictResult = value["result"] as! [String:AnyObject]
                 let listItem = dictResult["items"] as! [AnyObject]
                 self.userModel?.list_sevice_id = listItem
-//                if listItem.count > 0 {
-//                    let itemObj = listItem[0] as! [String:AnyObject]
-//                    self.userModel?.service_id = itemObj["id"] as! String?
-//                }
+                if listItem.count > 0 {
+                    let itemObj = listItem[0] as! [String:AnyObject]
+                    if let v = itemObj["id"] {
+                        self.userModel?.service_id = "\(v)"
+                    }
+                }
             }
         })
     }

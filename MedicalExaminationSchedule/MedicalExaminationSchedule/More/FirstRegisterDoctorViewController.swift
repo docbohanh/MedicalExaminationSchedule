@@ -192,18 +192,49 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
     func updateProfile() {
-//        self.delegate?.registerDoctorSuccess()
-//        self.navigationController?.popViewController(animated: true)
         view.endEditing(true)
-        var dictParam = [String : AnyObject]()
-        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         for i in 0..<dataArray.count {
             let key = keyArray[i]
             if key != "email" {
-                dictParam[keyArray[i]] = dataArray[i] as AnyObject?
+                dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if let status = resultDictionary["status"] {
+                    if (status as! NSNumber) == 1 {
+                        self.appdelegate.userName = self.dataArray[0]
+                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                        return
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }
+                } else {
+                    if resultDictionary["message"] != nil {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }
+                }
+                
+            }
+            
+        })
     }
+
     
     func cancel() {
         view.endEditing(true)

@@ -26,7 +26,7 @@ let NEWS_CONTENT = "news/content"
 let NEWS_TAG = "news/tag"
 let NEWS_LIKE = "news/like"
 
-let SERVCE = "service"
+let SERVICE = "service"
 let SERVICE_DETAIL = "service/detail"
 let SERVICE_USER = "service/user"
 
