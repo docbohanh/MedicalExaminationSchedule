@@ -97,7 +97,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_POST_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in

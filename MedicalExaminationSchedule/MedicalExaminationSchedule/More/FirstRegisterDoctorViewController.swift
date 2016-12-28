@@ -246,7 +246,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
             
         })

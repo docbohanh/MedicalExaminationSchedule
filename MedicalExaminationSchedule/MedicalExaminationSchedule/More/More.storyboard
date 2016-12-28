@@ -882,6 +882,9 @@
                                                         <constraint firstAttribute="width" constant="17" id="bSX-nr-b01"/>
                                                     </constraints>
                                                     <state key="normal" image="ic_delete_avar"/>
+                                                    <connections>
+                                                        <action selector="deleteItemButton_clicked:" destination="acJ-Sh-G3s" eventType="touchUpInside" id="u3Q-Ci-cAU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

@@ -161,7 +161,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["comment_title"] = titleCommentTextField.text
         dictParam["rate"] = String.init(format: "%d", rate)
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: COMMENT_POST, parameters: dictParam, onCompletion: { (response) in
+        APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if response.result.error != nil {
@@ -310,7 +310,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["service_id"] = serviceObject?.service_id
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: SERVICE_GET_DETAIL, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             self.getListComment(pageIndex: 0)
@@ -348,7 +348,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["page_index"] = String.init(format: "%d", pageIndex)
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: COMMENT_GET, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: COMMENT, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {

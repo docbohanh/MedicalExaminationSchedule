@@ -204,7 +204,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             }
         }
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
@@ -299,7 +299,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if response.result.error != nil {
@@ -325,7 +325,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
         dictParam["image_type"] = "profile"
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: IMAGE_GET_USER, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             print(response)
             if response.result.error != nil {

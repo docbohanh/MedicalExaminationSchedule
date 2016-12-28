@@ -76,7 +76,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
 //        dictParam["password"] = datastring as String?
         dictParam["password"] = passwordTextField.text
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_POST_LOGIN, parameters: dictParam, onCompletion: { (response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_LOGIN, parameters: dictParam, onCompletion: { (response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if response.result.error != nil {

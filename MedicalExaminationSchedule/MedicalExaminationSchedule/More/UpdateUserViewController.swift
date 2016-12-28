@@ -203,7 +203,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
@@ -298,7 +298,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
             
         })

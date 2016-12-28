@@ -84,7 +84,6 @@ class APIManager: NSObject,URLSessionDelegate {
         APIManager.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
-//                print(response)
         }
     }
     
@@ -95,18 +94,25 @@ class APIManager: NSObject,URLSessionDelegate {
         APIManager.Manager.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 onCompletion(response)
-//                print(response)
+        }
+    }
+
+    func putDataToURL(url:String, parameters:[String:String], onCompletion: @escaping AlamofireResponse) {
+        let parameterString = parameters.stringFromHttpParameters()
+        let requestURL = REST_API_URL + url + "?" + parameterString
+        APIManager.Manager.request(requestURL, method: .put, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                onCompletion(response)
         }
     }
     
-    func postImage(url : String,image : UIImage,onCompletion: @escaping AlamofireResponse) {
-        
-        let requestURL = REST_API_URL + url// + "/post"
-        let imageData = UIImageJPEGRepresentation(image, 0.5)
-        Alamofire.upload(imageData!, to: requestURL).responseJSON { response in
-            onCompletion(response)
+    func deleteDataToURL(url:String, parameters:[String:String], onCompletion: @escaping AlamofireResponse) {
+        let parameterString = parameters.stringFromHttpParameters()
+        let requestURL = REST_API_URL + url + "?" + parameterString
+        APIManager.Manager.request(requestURL, method: .delete, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                onCompletion(response)
         }
-        
     }
     
     func uploadImage(url : String, image: UIImage, param: [String:String], completion: @escaping AlamofireResponse) {

@@ -8,11 +8,20 @@
 
 import UIKit
 
+protocol SetupIntroduceTableViewCellDelegate {
+    func deleteItem(indexPath:IndexPath) -> Void
+}
+
 class SetupIntroduceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var removeInstroduceButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    var delegate : SetupIntroduceTableViewCellDelegate?
+    var cellIndexPath : IndexPath?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,9 +32,17 @@ class SetupIntroduceTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+//        super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    @IBAction func deleteItemButton_clicked(_ sender: Any) {
+        self.delegate?.deleteItem(indexPath: cellIndexPath!)
+    }
 
+    func setupCell(object:IntroduceModel, indexPath:IndexPath) -> Void {
+        titleTextField.text = object.name
+        descriptionTextView.text = object.desc
+        cellIndexPath = indexPath
+    }
 }

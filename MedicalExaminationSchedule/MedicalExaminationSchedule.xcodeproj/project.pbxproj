@@ -78,6 +78,7 @@
 		D23A182B1E067C8000E3DA8F /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */; };
 		D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */; };
 		D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */; };
+		D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D242084E1E12D7B100C7760A /* IntroduceModel.swift */; };
 		D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */; };
 		D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */; };
 		D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */; };
@@ -229,6 +230,7 @@
 		D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
 		D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
 		D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllPhoto.swift; sourceTree = "<group>"; };
+		D242084E1E12D7B100C7760A /* IntroduceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceModel.swift; sourceTree = "<group>"; };
 		D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNewViewController.swift; sourceTree = "<group>"; };
 		D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNormalTableViewCell.swift; sourceTree = "<group>"; };
 		D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldNormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				D22859B91E081A2E00570A8F /* NewsModel.swift */,
 				D22859BB1E08506500570A8F /* ServiceModel.swift */,
 				8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */,
+				D242084E1E12D7B100C7760A /* IntroduceModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
+				D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */,
 				84321D851DF7469100CCA4D4 /* FSCalendar+Deprecated.m in Sources */,
 				D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */,
 				D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */,

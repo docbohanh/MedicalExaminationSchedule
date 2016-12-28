@@ -94,35 +94,62 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: USER_GET_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
+        APIManager.sharedInstance.getDataToURL(url: USER_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
             print(response)
-//            DispatchQueue.main.async {
-                LoadingOverlay.shared.hideOverlayView()
-                if (response.result.error != nil)
-                {
-                    // error
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
-                        // dismiss
-                    })
-                    return
-                }
-                let value = response.result.value as! [String:AnyObject]
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil)
+            {
+                // error
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                    // dismiss
+                })
+                return
+            }
+            let value = response.result.value as! [String:AnyObject]
+            
+            if (value["status"] as! NSNumber) == 1 {
+                // success
+                let dictResult = value["result"] as! [String:AnyObject]
+                self.userModel = UserModel.init(dict: dictResult)
                 
-                if (value["status"] as! NSNumber) == 1 {
-                    // success
-                    let dictResult = value["result"] as! [String:AnyObject]
-                    self.userModel = UserModel.init(dict: dictResult)
-                    
-                    if (self.userModel?.user_display_name == ""){
-                        self.usernameLabel.text = "No name"
-                    }else {
-                        self.usernameLabel.text = self.userModel?.user_display_name
-                    }
-                    print((self.userModel?.user_type_id)!)
-                    self.isDoctor = (self.userModel?.user_type_id)!
-                    self.moreTableView.reloadData()
+                if (self.userModel?.user_display_name == ""){
+                    self.usernameLabel.text = "No name"
+                }else {
+                    self.usernameLabel.text = self.userModel?.user_display_name
                 }
-//            }
+                print((self.userModel?.user_type_id)!)
+                self.isDoctor = (self.userModel?.user_type_id)!
+                self.getUserServiceId()
+                self.moreTableView.reloadData()
+            }
+        })
+    }
+    
+    func getUserServiceId() -> Void {
+        var dictParam = [String : AnyObject]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.getDataToURL(url: SERVICE_USER, parameters: dictParam as! [String : String], onCompletion: { (response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil)
+            {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                })
+                return
+            }
+            let value = response.result.value as! [String:AnyObject]
+            
+            if (value["status"] as! NSNumber) == 1 {
+                // success
+                let dictResult = value["result"] as! [String:AnyObject]
+                let listItem = dictResult["items"] as! [AnyObject]
+                self.userModel?.list_sevice_id = listItem
+//                if listItem.count > 0 {
+//                    let itemObj = listItem[0] as! [String:AnyObject]
+//                    self.userModel?.service_id = itemObj["id"] as! String?
+//                }
+            }
         })
     }
     
@@ -235,6 +262,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else if (segue.identifier == "PushToUpdateProfileDoctor") {
             let updateVC = segue.destination as! UpdateProfileDoctorViewController
             updateVC.userProfile = self.userModel
+        }else if (segue.identifier == "PushToSetupIntroduce") {
+            let vc  = segue.destination as! SetupIntroduceViewController
+            vc.userProfile = self.userModel
         }
     }
 
