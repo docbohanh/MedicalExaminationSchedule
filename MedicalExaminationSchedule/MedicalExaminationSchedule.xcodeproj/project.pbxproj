@@ -72,6 +72,7 @@
 		D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */; };
 		D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D212650F1DF3A06300C70F83 /* MoreViewController.swift */; };
 		D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21863611E13FEDB002C04C3 /* ImageViewExtension.swift */; };
+		D21863641E143BEA002C04C3 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21863631E143BEA002C04C3 /* DetailTableViewCell.swift */; };
 		D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22859B91E081A2E00570A8F /* NewsModel.swift */; };
 		D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22859BB1E08506500570A8F /* ServiceModel.swift */; };
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
@@ -226,6 +227,7 @@
 		D212650C1DF39F7B00C70F83 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalTableViewCell.xib; sourceTree = "<group>"; };
 		D212650F1DF3A06300C70F83 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		D21863611E13FEDB002C04C3 /* ImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
+		D21863631E143BEA002C04C3 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		D22859B91E081A2E00570A8F /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		D22859BB1E08506500570A8F /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */,
+				D21863631E143BEA002C04C3 /* DetailTableViewCell.swift */,
 			);
 			path = DoctorManagement;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
 				845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */,
 				8BF746D61DF85644006C9B48 /* InviteDoctorTableViewCell.swift in Sources */,
+				D21863641E143BEA002C04C3 /* DetailTableViewCell.swift in Sources */,
 				84321D931DF7469200CCA4D4 /* FSCalendarWeekdayView.m in Sources */,
 				845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */,
 				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
