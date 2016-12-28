@@ -17,22 +17,49 @@ public var url : URL?
 class APIManager: NSObject,URLSessionDelegate {
     static let sharedInstance = APIManager()
     
+//    static var Manager: Alamofire.SessionManager = {
+//        
+//        // Create the server trust policies
+//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+//            "https://api.medhub.vn/": .disableEvaluation
+//        ]
+//        
+//        // Create custom manager
+//        let configuration = URLSessionConfiguration.default
+//        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+//        let manager = Alamofire.SessionManager(
+//            configuration: URLSessionConfiguration.default,
+//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+//        )
+//        
+//        return manager
+//    }()
+    
     static var Manager: Alamofire.SessionManager = {
+        // Set up certificates
+        let pathToCert = Bundle.main.path(forResource: "github.com", ofType: "cer")
+        let localCertificate = NSData(contentsOfFile: pathToCert!)
+        let certificates = [SecCertificateCreateWithData(nil, localCertificate!)!]
         
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "https://api.medhub.vn/": .disableEvaluation
-        ]
+        let hostname = "https://api.medhub.vn"
         
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        let manager = Alamofire.SessionManager(
+        // Configure the trust policy manager
+        let serverTrustPolicy = ServerTrustPolicy.pinCertificates(
+            certificates: certificates,
+            validateCertificateChain: true,
+            validateHost: true
+        )
+        let serverTrustPolicies = [hostname: serverTrustPolicy]
+        
+        let serverTrustPolicyManager = ServerTrustPolicyManager(policies: serverTrustPolicies)
+        
+        // Configure session manager with trust policy
+        let afManager = SessionManager(
             configuration: URLSessionConfiguration.default,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+            serverTrustPolicyManager: serverTrustPolicyManager
         )
         
-        return manager
+        return afManager
     }()
     
     func makeHTTPGetRequest(path: String, param:[String:AnyObject], onCompletion: @escaping ServiceResponse) {

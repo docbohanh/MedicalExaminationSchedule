@@ -58,6 +58,7 @@
 		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
 		8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */; };
 		8BD905A91E0AA3C900DBF1C3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */; };
+		8BE7476A1E13B57500519416 /* github.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 8BE747691E13B57500519416 /* github.com.cer */; };
 		8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */; };
 		8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */; };
 		8BF746D01DF83CC8006C9B48 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */; };
@@ -210,6 +211,7 @@
 		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
 		8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDoctorViewController.swift; sourceTree = "<group>"; };
 		8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		8BE747691E13B57500519416 /* github.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = github.com.cer; sourceTree = "<group>"; };
 		8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPhotoViewController.swift; sourceTree = "<group>"; };
 		8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				8BE747691E13B57500519416 /* github.com.cer */,
 				D2F778E41E01AE6E007D63E4 /* Models */,
 				D2EF30501DFD52AF00287924 /* APIManager */,
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
@@ -744,6 +747,7 @@
 				D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
 				D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */,
+				8BE7476A1E13B57500519416 /* github.com.cer in Resources */,
 				8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */,
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				84321D941DF7469200CCA4D4 /* Info.plist in Resources */,
@@ -1160,7 +1164,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1179,7 +1183,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Developer/Documents/THUY/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
