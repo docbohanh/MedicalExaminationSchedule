@@ -25,10 +25,19 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     var titleArrayDoctor = [String]()
     var isDoctor = false
     var userModel : UserModel?
+    var appDelegate = AppDelegate()
+    
+    static let sharedInstance : MoreViewController = {
+        let instance = MoreViewController()
+        return instance
+    }()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        ProjectCommon.boundView(button: avatarImageView, cornerRadius: avatarImageView.frame.size.height/2, color: UIColor.white, borderWith: 0)
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         moreTableView.register(UINib.init(nibName: "NormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "NormalTableViewCell")
         moreTableView.rowHeight = UITableViewAutomaticDimension;
         moreTableView.estimatedRowHeight = 70.0;
@@ -39,13 +48,25 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         iconArrayDoctor += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
         titleArrayDoctor += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
         self.createPopup()
-
+        self.getProfile()
+        self.getAvatarUrl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
-        self.getProfile()
+        if appDelegate.userName != "" {
+            self.usernameLabel.text = appDelegate.userName
+        }
+        if (appDelegate.avatarImage != nil) {
+             avatarImageView.image = appDelegate.avatarImage
+        } else {
+            if appDelegate.avatarUrl != "" && (appDelegate.avatarUrl != nil) {
+                avatarImageView.loadImage(url: appDelegate.avatarUrl!)
+            }else {
+                avatarImageView.image = UIImage.init(named: "ic_avar_map")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,6 +138,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }else {
                     self.usernameLabel.text = self.userModel?.user_display_name
                 }
+                self.appDelegate.userName = self.usernameLabel.text
                 print((self.userModel?.user_type_id)!)
                 self.isDoctor = (self.userModel?.user_type_id)!
                 self.getUserServiceId()
@@ -152,6 +174,36 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
     }
+    
+    func getAvatarUrl() -> Void {
+    
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_type"] = "profile"
+        APIManager.sharedInstance.getDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    if listItem.count > 0 {
+                        let item = listItem[0] as! [String:AnyObject]
+                        self.appDelegate.avatarId = item["id"] as! String?
+                        self.appDelegate.avatarUrl = item["url"] as! String?
+                        self.avatarImageView.loadImage(url: item["url"] as! String)
+                    }
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    })
+                }
+            }
+        })
+    }
+
     
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
@@ -254,14 +306,16 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "pushToUpdateUserProfile" {
             let updateVC = segue.destination as! UpdateUserViewController
             updateVC.userProfile = self.userModel
-            
+            updateVC.imageAvatar = avatarImageView.image!
         }else if (segue.identifier == "PushToFirstRegisterDoctor") {
             let registerVC = segue.destination as! FirstRegisterDoctorViewController
             registerVC.delegate = self
             registerVC.userProfile = self.userModel
+            registerVC.imageAvatar = avatarImageView.image!
         }else if (segue.identifier == "PushToUpdateProfileDoctor") {
             let updateVC = segue.destination as! UpdateProfileDoctorViewController
             updateVC.userProfile = self.userModel
+            updateVC.imageAvatar = avatarImageView.image!
         }else if (segue.identifier == "PushToSetupIntroduce") {
             let vc  = segue.destination as! SetupIntroduceViewController
             vc.userProfile = self.userModel

@@ -28,6 +28,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         self.setupNavigationBar()
         self.setupComponent()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
     

@@ -24,11 +24,18 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         ProjectCommon.boundViewWithColor(button: updateButton, color: UIColor.clear)
         isntroduceListTableView.tableFooterView = UIView.init(frame: CGRect.zero)
         self.getAllIntroduce()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
@@ -42,6 +49,7 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     }
     
     @IBAction func tappedUpdateInstroduce(_ sender: Any) {
+        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -59,7 +67,9 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetupIntroduceTableViewCell", for: indexPath) as! SetupIntroduceTableViewCell
         cell.setupCell(object: (introduceItemsArray[indexPath.row]), indexPath: indexPath)
         cell.titleTextField.delegate = self
+        cell.titleTextField.tag = indexPath.row
         cell.descriptionTextView.delegate = self
+        cell.descriptionTextView.tag = indexPath.row
         cell.delegate = self
         return cell
     }
@@ -188,9 +198,18 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
             introduceItemsArray.remove(at: indexPath.row)
             isntroduceListTableView.reloadData()
         }
-        
-        
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let object = introduceItemsArray[textField.tag] as IntroduceModel
+        object.name = textField.text
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let object = introduceItemsArray[textView.tag] as IntroduceModel
+        object.desc = textView.text
+    }
+    
     /*
     // MARK: - Navigation
 

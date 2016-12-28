@@ -55,7 +55,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         informationTableView.rowHeight = UITableViewAutomaticDimension;
         informationTableView.estimatedRowHeight = 200.0;
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = true
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
         self.getServiceDetail()

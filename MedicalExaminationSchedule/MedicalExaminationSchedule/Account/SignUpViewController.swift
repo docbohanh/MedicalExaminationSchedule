@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         self.setupNavigationBar()
         // Do any additional setup after loading the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
 
