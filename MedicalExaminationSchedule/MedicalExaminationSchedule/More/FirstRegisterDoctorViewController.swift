@@ -27,13 +27,14 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     var isFirstRegisterDoctor = false
     var userProfile : UserModel?
     var changeBirthdayView :ChooseBirthdayView?
-    
+    var appdelegate = AppDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        imageAvatar = UIImage.init(named: "ic_avar_map")!
+        appdelegate = UIApplication.shared.delegate as! AppDelegate
+
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
         keyArray += ["user_display_name","home_address","birthday","phone","work_address","job","activate_code"]
         dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
@@ -49,6 +50,9 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         tableView.register(UINib.init(nibName: "ProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
         self.createPopup()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +63,10 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func createPopup() -> Void {
@@ -184,18 +192,49 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     /* ============= BOTTOM VIEW DELEGATE ============= */
     func updateProfile() {
-//        self.delegate?.registerDoctorSuccess()
-//        self.navigationController?.popViewController(animated: true)
         view.endEditing(true)
-        var dictParam = [String : AnyObject]()
-        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         for i in 0..<dataArray.count {
             let key = keyArray[i]
             if key != "email" {
-                dictParam[keyArray[i]] = dataArray[i] as AnyObject?
+                dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
+            LoadingOverlay.shared.hideOverlayView()
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if let status = resultDictionary["status"] {
+                    if (status as! NSNumber) == 1 {
+                        self.appdelegate.userName = self.dataArray[0]
+                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                        return
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }
+                } else {
+                    if resultDictionary["message"] != nil {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }else {
+                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        })
+                    }
+                }
+                
+            }
+            
+        })
     }
+
     
     func cancel() {
         view.endEditing(true)
@@ -210,7 +249,35 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     func deleteAvatar() {
         backgroundPopUpView.isHidden = true
         imageAvatar = UIImage.init(named: "ic_avar_map")!
-        tableView.reloadData()
+        if appdelegate.avatarId == "" {
+            return
+        }
+        
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_id"] = appdelegate.avatarId
+        
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    self.appdelegate.avatarId = ""
+                    self.appdelegate.avatarUrl = ""
+                    self.appdelegate.avatarImage = nil
+                    self.tableView.reloadData()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    })
+                }
+            }
+            
+        })
     }
     
     func takePhoto() {
@@ -234,6 +301,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageAvatar = pickedImage
+            self.updateAvatarUser()
             tableView.reloadData()
         }
         picker.dismiss(animated: true, completion: nil)
@@ -246,9 +314,28 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
-            
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    if let v = resultData["image_id"] {
+                        self.appdelegate.avatarId = "\(v)"
+                    }
+                    self.appdelegate.avatarUrl = resultData["image_url"] as! String?
+                    self.appdelegate.avatarImage = self.imageAvatar
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
         })
     }
     

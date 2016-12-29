@@ -25,7 +25,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var imageTabButton: UIButton!
     @IBOutlet weak var commentTabButton: UIButton!
     @IBOutlet weak var tabLineView: UIView!
-    @IBOutlet weak var doctorHistoryLabel: UILabel!
+//    @IBOutlet weak var doctorHistoryLabel: UILabel!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var sendCommentButton: UIButton!
@@ -43,6 +43,8 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     var rate = 0
     var commentArray = [CommentModel]()
     var commentCounter = [Int]()
+    var tabIndex = 0
+    var introduceArray = [IntroduceModel]()
     
     @IBOutlet weak var informationTableView: UITableView!
     
@@ -55,10 +57,12 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         informationTableView.rowHeight = UITableViewAutomaticDimension;
         informationTableView.estimatedRowHeight = 200.0;
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tapGesture.cancelsTouchesInView = true
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
+        self.tappedDoctorProfile(profileTabButton)
         self.getServiceDetail()
+        
     }
     func hideKeyboard() {
         view.endEditing(true)
@@ -89,7 +93,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.origin.y + doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y)
+//        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.origin.y + doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y)
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
@@ -103,47 +107,38 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     @IBAction func tappedDoctorProfile(_ sender: Any) {
-        if doctorHistoryLabel.isHidden {
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: doctorHistoryLabel.frame.size.height + backgroundInformationView.frame.size.height)
-            tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
-            doctorHistoryLabel.isHidden = false
-            commentView.isHidden = true
-            informationTableView.isHidden = true
-            imageCollectionView.isHidden = true
-        }
+        tabIndex = 0
+        tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
+        commentView.isHidden = true
+        informationTableView.isHidden = false
+        imageCollectionView.isHidden = true
+        informationTableView.reloadData()
     }
     
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
-        if informationTableView.isHidden {
-            tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundInformationView.frame.size.height + informationTableView.frame.size.height)
-            
-            backgroundScrollView.scrollRectToVisible(CGRect.init(x: informationTabButton.frame.origin.x, y: backgroundInformationView.frame.size.height - informationTabButton.frame.size.height, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
-            informationTableView.isHidden = false
-            doctorHistoryLabel.isHidden = true
-            commentView.isHidden = true
-            imageCollectionView.isHidden = true
-        }
+        tabIndex = 1
+        tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
+        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundInformationView.frame.size.height + informationTableView.frame.size.height)
+        backgroundScrollView.scrollRectToVisible(CGRect.init(x: informationTabButton.frame.origin.x, y: backgroundInformationView.frame.size.height - informationTabButton.frame.size.height, width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.size.height), animated: true)
+        informationTableView.isHidden = false
+        commentView.isHidden = true
+        informationTableView.reloadData()
     }
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
-        if imageCollectionView.isHidden {
-            tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
-            doctorHistoryLabel.isHidden = true
-            informationTableView.isHidden = true
-            commentView.isHidden = true
-            imageCollectionView.isHidden = false
-        }
+        tabIndex = 3
+        tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
+        informationTableView.isHidden = true
+        commentView.isHidden = true
+        imageCollectionView.isHidden = false
     }
     @IBAction func tappedComment(_ sender: UIButton) {
-        if commentView.isHidden {
-            backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + backgroundInformationView.frame.size.height)
-            tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
-            doctorHistoryLabel.isHidden = true
-            informationTableView.isHidden = true
-            commentView.isHidden = false
-            imageCollectionView.isHidden = true
-        }
+        tabIndex = 4
+        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + backgroundInformationView.frame.size.height)
+        tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
+        informationTableView.isHidden = true
+        commentView.isHidden = false
+        imageCollectionView.isHidden = true
     }
     @IBAction func tappedSendComment(_ sender: UIButton) {
         view.endEditing(true)
@@ -161,7 +156,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["comment_title"] = titleCommentTextField.text
         dictParam["rate"] = String.init(format: "%d", rate)
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: COMMENT_POST, parameters: dictParam, onCompletion: { (response) in
+        APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if response.result.error != nil {
@@ -218,17 +213,28 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if tabIndex == 0 {
+            return 1
+        }else {
+             return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 5
+        if tabIndex == 0 {
+            return introduceArray.count
+        } else {
+            if section == 0 {
+                return 5
+            }
+            return commentArray.count
         }
-        return commentArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tabIndex == 0 {
+            return 0
+        }
         if section == 1 {
             return 220
         }
@@ -243,18 +249,25 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorProfileTableViewCell", for: indexPath) as! DoctorProfileTableViewCell
-            if titleProfileArray.count > indexPath.row {
-                cell.titleProfileLabel.text = titleProfileArray[indexPath.row]
-                cell.valueProfileLabel.text = dataTestProfileArray[indexPath.row]
-            }
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
-            let object = commentArray[indexPath.row] as CommentModel
+        if tabIndex == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
+            let object = introduceArray[indexPath.row] as IntroduceModel
             cell.initCell(object: object)
             return cell
+        }else {
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorProfileTableViewCell", for: indexPath) as! DoctorProfileTableViewCell
+                if titleProfileArray.count > indexPath.row {
+                    cell.titleProfileLabel.text = titleProfileArray[indexPath.row]
+                    cell.valueProfileLabel.text = dataTestProfileArray[indexPath.row]
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+                let object = commentArray[indexPath.row] as CommentModel
+                cell.initCell(object: object)
+                return cell
+            }
         }
     }
     
@@ -310,7 +323,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["service_id"] = serviceObject?.service_id
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: SERVICE_GET_DETAIL, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             self.getListComment(pageIndex: 0)
@@ -323,14 +336,15 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // reload data
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
-                    
-//                    let listItem = resultData["items"] as! [AnyObject]
-//                    var tempArray = [ServiceModel]()
-//                    for i in 0..<listItem.count {
-//                        let item = listItem[i] as! [String:AnyObject]
-//                        let newsObject = ServiceModel.init(dict: item)
-//                        tempArray += [newsObject]
-//                    }
+                    let listItem = resultData["contents"] as! [AnyObject]
+                    var tempArray = [IntroduceModel]()
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = IntroduceModel.init(dict: item)
+                        tempArray.append(newsObject)
+                    }
+                    self.introduceArray += tempArray
+                    self.informationTableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
@@ -348,7 +362,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["page_index"] = String.init(format: "%d", pageIndex)
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: COMMENT_GET, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: COMMENT, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {

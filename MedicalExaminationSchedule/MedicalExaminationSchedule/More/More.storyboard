@@ -89,8 +89,8 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr.Nguyễn Hải Đăng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pv-um-MXi">
-                                                    <rect key="frame" x="81" y="0.0" width="240" height="59"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="81" y="7" width="240" height="16"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -101,15 +101,23 @@
                                                         <constraint firstAttribute="width" constant="20" id="sU4-o4-3Xq"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUa-db-6pd">
+                                                    <rect key="frame" x="81" y="31" width="240" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Wtn-bW-v1t" firstAttribute="centerY" secondItem="ZVM-fa-UYS" secondAttribute="centerY" id="FtV-92-USE"/>
                                                 <constraint firstItem="Wtn-bW-v1t" firstAttribute="leading" secondItem="ZVM-fa-UYS" secondAttribute="leading" constant="16" id="TwN-oa-Rlh"/>
                                                 <constraint firstItem="8ZU-U2-YR0" firstAttribute="centerY" secondItem="ZVM-fa-UYS" secondAttribute="centerY" id="Uhy-4I-nWv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8ZU-U2-YR0" secondAttribute="trailing" constant="16" id="WXE-nq-ijC"/>
-                                                <constraint firstAttribute="bottom" secondItem="1Pv-um-MXi" secondAttribute="bottom" id="g3l-bi-pQD"/>
+                                                <constraint firstItem="BUa-db-6pd" firstAttribute="top" secondItem="1Pv-um-MXi" secondAttribute="bottom" constant="8" id="XfS-NL-Ev3"/>
+                                                <constraint firstItem="BUa-db-6pd" firstAttribute="leading" secondItem="1Pv-um-MXi" secondAttribute="leading" id="aWe-Ee-ATV"/>
                                                 <constraint firstItem="8ZU-U2-YR0" firstAttribute="leading" secondItem="1Pv-um-MXi" secondAttribute="trailing" constant="10" id="nFv-9q-AwG"/>
-                                                <constraint firstItem="1Pv-um-MXi" firstAttribute="top" secondItem="ZVM-fa-UYS" secondAttribute="top" id="pWM-Ah-W9Z"/>
+                                                <constraint firstItem="BUa-db-6pd" firstAttribute="trailing" secondItem="1Pv-um-MXi" secondAttribute="trailing" id="ugd-R9-RA4"/>
+                                                <constraint firstItem="1Pv-um-MXi" firstAttribute="top" secondItem="Wtn-bW-v1t" secondAttribute="top" id="wHN-0t-QgT"/>
                                                 <constraint firstItem="1Pv-um-MXi" firstAttribute="leading" secondItem="Wtn-bW-v1t" secondAttribute="trailing" constant="20" id="wnF-ae-q4D"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -117,6 +125,7 @@
                                             <outlet property="avatarImageView" destination="Wtn-bW-v1t" id="OKs-mS-sLx"/>
                                             <outlet property="choosedDoctorImageView" destination="8ZU-U2-YR0" id="gBk-f7-5sX"/>
                                             <outlet property="doctorNameLabel" destination="1Pv-um-MXi" id="BaC-W0-STe"/>
+                                            <outlet property="emailLabel" destination="BUa-db-6pd" id="SB4-Ss-bSe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -162,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ud-cy-OlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-951" y="2307"/>
+            <point key="canvasLocation" x="-951.20000000000005" y="2306.8965517241381"/>
         </scene>
         <!--List Photo View Controller-->
         <scene sceneID="8hB-zy-TPt">
@@ -882,6 +891,9 @@
                                                         <constraint firstAttribute="width" constant="17" id="bSX-nr-b01"/>
                                                     </constraints>
                                                     <state key="normal" image="ic_delete_avar"/>
+                                                    <connections>
+                                                        <action selector="deleteItemButton_clicked:" destination="acJ-Sh-G3s" eventType="touchUpInside" id="u3Q-Ci-cAU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -978,7 +990,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cFj-YZ-Bde" firstAttribute="top" secondItem="CAr-uW-eLD" secondAttribute="bottom" constant="70" id="2C6-bS-4b7"/>
+                            <constraint firstItem="SoA-J2-uXp" firstAttribute="top" secondItem="CAr-uW-eLD" secondAttribute="bottom" constant="15" id="1ty-Wh-Jbt"/>
                             <constraint firstItem="ubW-MV-JqD" firstAttribute="leading" secondItem="e2h-5U-G68" secondAttribute="leading" id="645-co-YgH"/>
                             <constraint firstItem="CAr-uW-eLD" firstAttribute="top" secondItem="ubW-MV-JqD" secondAttribute="bottom" id="6bG-Zc-iQd"/>
                             <constraint firstAttribute="trailing" secondItem="SoA-J2-uXp" secondAttribute="trailing" constant="15" id="H0A-P3-dRK"/>
@@ -994,6 +1006,7 @@
                     <connections>
                         <outlet property="isntroduceListTableView" destination="CAr-uW-eLD" id="3lw-EQ-DAl"/>
                         <outlet property="updateButton" destination="SoA-J2-uXp" id="3gD-Hv-siz"/>
+                        <outlet property="updateButtonBottomConstraint" destination="gdg-c6-zeI" id="NnC-Cw-vAJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBI-ko-nFi" userLabel="First Responder" sceneMemberID="firstResponder"/>

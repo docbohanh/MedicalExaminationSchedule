@@ -22,7 +22,8 @@ class UserModel: NSObject {
     var user_id : String?
     var user_type_id : Bool?
     var work_address : String?
-    
+    var list_sevice_id = [AnyObject]()
+    var service_id : String?
     
     init(dict:[String:AnyObject]) {
         if let v = dict["birthday"] {

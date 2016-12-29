@@ -20,14 +20,15 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     var imageAvatar = UIImage()
     var isDoctor = false
     var isFirstRegisterDoctor = false
-     var userProfile : UserModel?
+    var userProfile : UserModel?
     var changeBirthdayView : ChooseBirthdayView?
+    var appdelegate = AppDelegate()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        appdelegate = UIApplication.shared.delegate as! AppDelegate
         // Do any additional setup after loading the view.
-        imageAvatar = UIImage.init(named: "ic_avar_map")!
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Email","Chuyên ngành","Nơi làm việc", "Giới tính"]
         keyArray += ["user_display_name","home_address","birthday","phone","email","job","work_address","sex"]
         dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!, (self.userProfile?.job)!, (self.userProfile?.work_address)!,(self.userProfile?.sex)!]
@@ -44,11 +45,9 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         tableView.register(UINib.init(nibName: "SelectGenderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SelectGenderTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
         self.createPopup()
-        if let imageUrl = UserDefaults.standard.object(forKey: "avatar_url") {
-            self.loadImage(url: imageUrl as! String)
-        }else {
-            self.getAvatarUrl()
-        }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +58,10 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     func createPopup() -> Void {
@@ -166,6 +169,9 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            return
+        }
         let key = keyArray[indexPath.row - 1]
         if (key == "birthday") {
             changeBirthdayView?.isHidden = false
@@ -174,7 +180,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+       _ = navigationController?.popViewController(animated: true)
     }
     
     /* =========== TEXT FIELD ========*/
@@ -204,7 +210,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             }
         }
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_POST_INFO, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
@@ -214,6 +220,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
+                        self.appdelegate.userName = self.dataArray[0]
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
                         })
                         return
@@ -238,7 +245,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func cancel() {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
      /* ============= SELECT GENDER DELEGATE ============ */
@@ -262,7 +269,36 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     func deleteAvatar() {
         backgroundPopUpView.isHidden = true
         imageAvatar = UIImage.init(named: "ic_avar_map")!
-        tableView.reloadData()
+       
+        if appdelegate.avatarId == "" {
+            return
+        }
+        
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_id"] = appdelegate.avatarId
+        
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    self.appdelegate.avatarId = ""
+                    self.appdelegate.avatarUrl = ""
+                    self.appdelegate.avatarImage = nil
+                    self.tableView.reloadData()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    })
+                }
+            }
+
+        })
     }
     
     func takePhoto() {
@@ -299,7 +335,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.uploadImage(url: IMAGE_POST_USER, image: imageAvatar, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if response.result.error != nil {
@@ -310,7 +346,11 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
-                    
+                    if let v = resultData["image_id"] {
+                        self.appdelegate.avatarId = "\(v)"
+                    }
+                    self.appdelegate.avatarUrl = resultData["image_url"] as! String?
+                    self.appdelegate.avatarImage = self.imageAvatar
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
@@ -318,67 +358,5 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 }
             }
         })
-    }
-    
-    func getAvatarUrl() -> Void {
-        var dictParam = [String:String]()
-        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
-        dictParam["image_type"] = "profile"
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: IMAGE_GET_USER, parameters: dictParam, onCompletion: {(response) in
-            LoadingOverlay.shared.hideOverlayView()
-            print(response)
-            if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
-                })
-            } else {
-                let resultDictionary = response.result.value as! [String:AnyObject]
-                if (resultDictionary["status"] as! NSNumber) == 1 {
-                    let resultData = resultDictionary["result"] as! [String:AnyObject]
-                    let listItem = resultData["items"] as! [AnyObject]
-                    if listItem.count > 0 {
-                        let item = listItem[0] as! [String:AnyObject]
-                        self.loadImage(url: item["url"] as! String)
-                        UserDefaults.standard.set(item["url"], forKey: "avatar_url")
-                    }else {
-                        self.imageAvatar = UIImage.init(named: "ic_avar_map")!
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                    })
-                }
-            }
-        })
-    }
-    
-    func loadImage(url:String) -> Void {
-        let catPictureURL = URL(string: url)!
-        let session = URLSession(configuration: .default)
-        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
-            // The download has finished.
-            if let e = error {
-                print("Error downloading cat picture: \(e)")
-            } else {
-                // No errors found.
-                // It would be weird if we didn't have a response, so check for that too.
-                if let res = response as? HTTPURLResponse {
-                    print("Downloaded cat picture with response code \(res.statusCode)")
-                    if let imageData = data {
-                        // Finally convert that Data into an image and do what you wish with it.
-                        self.imageAvatar = UIImage(data: imageData)!
-                        // Do something with your image.
-                        self.tableView.reloadData()
-                    } else {
-                        print("Couldn't get image: Image is nil")
-                    }
-                } else {
-                    print("Couldn't get response code for some reason")
-                }
-            }
-        }
-        downloadPicTask.resume()
     }
 }

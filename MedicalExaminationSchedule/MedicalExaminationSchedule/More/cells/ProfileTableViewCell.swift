@@ -21,6 +21,8 @@ class ProfileTableViewCell: UITableViewCell {
         // Initialization code
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.height/2
+        avatarImageView.layer.borderColor = UIColor.white.cgColor
+        avatarImageView.layer.borderWidth = 2.0
     }
 
     @IBAction func tappedEditAvatarButton(_ sender: Any) {

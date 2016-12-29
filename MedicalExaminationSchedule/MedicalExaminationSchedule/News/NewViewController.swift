@@ -63,7 +63,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         dictParam["page_index"] = String.init(format: "%d", page_index)
         dictParam["query"] = "test"
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: NEWS_GET, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
@@ -99,7 +99,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         dictParam["page_index"] = String.init(format: "%d", page_index)
         dictParam["query"] = "test"
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.getDataToURL(url: NEWS_GET, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
             LoadingOverlay.shared.hideOverlayView()
             if (response.result.error != nil) {
@@ -178,7 +178,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObiect.news_id
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: NEWS_POST_LIKE, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: NEWS_LIKE, parameters: dictParam, onCompletion: {(response) in
             LoadingOverlay.shared.hideOverlayView()
             print(response)
             if response.result.error != nil {
