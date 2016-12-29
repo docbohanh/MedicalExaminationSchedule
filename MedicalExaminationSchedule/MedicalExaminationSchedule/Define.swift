@@ -20,6 +20,7 @@ let USER_INFO = "user/info"
 let USER_LOCATION = "user/location"
 let USER_INVITE = "user/invite"
 let USER_DOCTOR = "user/doctor"
+let USER_LIST = "user/list"
 
 let NEWS = "news"
 let NEWS_CONTENT = "news/content"

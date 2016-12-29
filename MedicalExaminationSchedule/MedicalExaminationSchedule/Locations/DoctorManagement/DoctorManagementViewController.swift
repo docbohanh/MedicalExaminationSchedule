@@ -320,7 +320,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     func getServiceDetail() -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = "29"
+        dictParam["service_id"] = serviceObject?.service_id
         
         LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
         APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in

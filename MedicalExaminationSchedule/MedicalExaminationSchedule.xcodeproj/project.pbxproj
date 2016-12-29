@@ -94,6 +94,7 @@
 		D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C471DF738660000815B /* CreateCommentView.xib */; };
 		D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */; };
 		D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C4B1DF743430000815B /* CreateCommentView.swift */; };
+		D2A349411E15679D000B7F48 /* UserSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A349401E15679D000B7F48 /* UserSearchModel.swift */; };
 		D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */; };
 		D2C1F6E81E06C838004FCD9A /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */; };
 		D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */; };
@@ -249,6 +250,7 @@
 		D29E8C471DF738660000815B /* CreateCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCommentView.xib; sourceTree = "<group>"; };
 		D29E8C491DF7432E0000815B /* ChangeAvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeAvatarView.xib; sourceTree = "<group>"; };
 		D29E8C4B1DF743430000815B /* CreateCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCommentView.swift; sourceTree = "<group>"; };
+		D2A349401E15679D000B7F48 /* UserSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchModel.swift; sourceTree = "<group>"; };
 		D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_test@2x.png"; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 				D22859BB1E08506500570A8F /* ServiceModel.swift */,
 				8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */,
 				D242084E1E12D7B100C7760A /* IntroduceModel.swift */,
+				D2A349401E15679D000B7F48 /* UserSearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -705,7 +708,7 @@
 				TargetAttributes = {
 					84CB42CA1DE16FE00059B057 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = RT689AHQ26;
+						DevelopmentTeam = 78F7F9Y9CK;
 						ProvisioningStyle = Automatic;
 					};
 					84CB42E11DE16FE10059B057 = {
@@ -971,6 +974,7 @@
 				84321D931DF7469200CCA4D4 /* FSCalendarWeekdayView.m in Sources */,
 				845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */,
 				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
+				D2A349411E15679D000B7F48 /* UserSearchModel.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */,
@@ -1164,13 +1168,13 @@
 			baseConfigurationReference = CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TOMOKI MORIMOTO (RT689AHQ26)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RT689AHQ26;
+				DEVELOPMENT_TEAM = 78F7F9Y9CK;
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1183,13 +1187,13 @@
 			baseConfigurationReference = 0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TOMOKI MORIMOTO (RT689AHQ26)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RT689AHQ26;
+				DEVELOPMENT_TEAM = 78F7F9Y9CK;
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
