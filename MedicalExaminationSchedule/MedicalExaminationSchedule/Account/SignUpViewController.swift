@@ -109,7 +109,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
-                            self.navigationController?.popViewController(animated: true)
+                            _ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {

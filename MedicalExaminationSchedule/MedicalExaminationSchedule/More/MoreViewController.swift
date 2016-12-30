@@ -209,7 +209,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
         UserDefaults.standard.removeObject(forKey: "token_id")
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedMyProfileButton(_ sender: Any) {
@@ -257,9 +257,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.row {
             case 0:
                 // Thiết lập lịch hẹn
-                let storyboard = UIStoryboard.init(name: "Locations", bundle: Bundle.main)
-                let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SetupScheduleViewController")
-                self.navigationController?.pushViewController(scheduleVC, animated: true)
+//                let storyboard = UIStoryboard.init(name: "Locations", bundle: Bundle.main)
+//                let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SetupScheduleViewController")
+//                self.navigationController?.pushViewController(scheduleVC, animated: true)
+                self.performSegue(withIdentifier: "PushToSetupCalendar", sender: self)
                 break
             case 1:
                 // Thiết lập giới thiệu dịch vụ

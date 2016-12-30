@@ -127,16 +127,14 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var strIdentifier = ""
+
         switch indexPath.row {
         case 0:
-            strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.delegate = self
              cell.avatarImageView.image = imageAvatar
             return cell
         case titleArray.count:
-            strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.delegate = self
             cell.titleLabel.text = titleArray[indexPath.row - 1]
@@ -147,7 +145,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             }
             return cell
         default:
-            strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self

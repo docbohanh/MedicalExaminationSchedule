@@ -28,7 +28,7 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     }
     
     @IBAction func tappedBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     // The number of columns of data

@@ -85,5 +85,12 @@ class ProjectCommon: NSObject {
         
         return shaHex
     }
-
+    
+    func showTimeTwoCharacter(time:String) -> String {
+        if time.characters.count > 1 {
+            return time
+        }else {
+            return String.init(format: "%@", time)
+        }
+    }
 }
