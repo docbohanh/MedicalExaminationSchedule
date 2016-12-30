@@ -8,8 +8,12 @@
 
 import UIKit
 import Alamofire
+import FacebookLogin
+import FacebookCore
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class SignInViewController: UIViewController,UITextFieldDelegate {
+class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
 
     @IBOutlet weak var registerAccountButton: UIButton!
     @IBOutlet weak var googleSignInButton: UIButton!
@@ -30,6 +34,12 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        let loginButton = LoginButton(readPermissions: [ .publicProfile,.email,.userFriends])
+        loginButton.center = CGPoint(x: self.view.center.x, y: 200)
+        loginButton.frame = CGRect.init(x: facebookSignInButton.frame.origin.x, y: facebookSignInButton.frame.origin.y, width: facebookSignInButton.frame.width, height: facebookSignInButton.frame.height)
+        loginButton.delegate = self
+        view.addSubview(loginButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,4 +130,38 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        print("Did complete login via LoginButton with result \(result)")
+        let fbAccessToken = FBSDKAccessToken.current().tokenString as String
+        print (fbAccessToken)
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        print("Did logout via LoginButton")
+    }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: Error!) {
+        if (error) != nil {
+            print(error)
+        }
+        else {
+            //            performSegueWithIdentifier("idSegueContent", sender: self)
+        }
+    }
+    
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        if (error) != nil {
+            print(error)
+        }
+        
+        //        contentViewController.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+
 }

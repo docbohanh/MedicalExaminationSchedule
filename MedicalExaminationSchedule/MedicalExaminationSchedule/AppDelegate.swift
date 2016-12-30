@@ -11,6 +11,7 @@ import CoreData
 import GooglePlaces
 import GoogleMaps
 import Alamofire
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

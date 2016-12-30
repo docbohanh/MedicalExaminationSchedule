@@ -8,7 +8,9 @@ target 'MedicalExaminationSchedule' do
     pod 'GoogleMaps'
     pod 'GooglePlaces'
     pod 'Alamofire', '~> 4.0'
-
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FacebookShare'
   # Pods for MedicalExaminationSchedule
 
   target 'MedicalExaminationScheduleTests' do

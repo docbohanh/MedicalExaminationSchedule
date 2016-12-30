@@ -57,6 +57,11 @@
 		8B47A89F1DF79FF1001868EE /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B47A89E1DF79FF1001868EE /* BottomView.xib */; };
 		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
 		8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */; };
+		8B7DD3B71E166B280080A814 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B7DD3B61E166B280080A814 /* GoogleSignIn.bundle */; };
+		8B7DD3B91E166B390080A814 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7DD3B81E166B390080A814 /* GoogleSignIn.framework */; };
+		8B7DD3BB1E166B520080A814 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7DD3BA1E166B520080A814 /* SystemConfiguration.framework */; };
+		8B7DD3BD1E166B600080A814 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7DD3BC1E166B600080A814 /* StoreKit.framework */; };
+		8B7DD3C11E166B7F0080A814 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7DD3C01E166B7F0080A814 /* AddressBook.framework */; };
 		8BD905A91E0AA3C900DBF1C3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */; };
 		8BE7476A1E13B57500519416 /* github.com.cer in Resources */ = {isa = PBXBuildFile; fileRef = 8BE747691E13B57500519416 /* github.com.cer */; };
 		8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */; };
@@ -185,7 +190,7 @@
 		84321D821DF7469100CCA4D4 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		84321D831DF7469100CCA4D4 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		84321D841DF7469100CCA4D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84321D951DF74A0800CCA4D4 /* Objc-Bridge-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Objc-Bridge-Header.h"; sourceTree = "<group>"; };
+		84321D951DF74A0800CCA4D4 /* MedicalExaminationSchedule-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MedicalExaminationSchedule-Bridging-Header.h"; sourceTree = "<group>"; };
 		84321D971DF752D000CCA4D4 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		84321D981DF752D000CCA4D4 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
 		843292CA1DFF3778004C44A3 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
@@ -213,6 +218,11 @@
 		8B47A89E1DF79FF1001868EE /* BottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
 		8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDoctorViewController.swift; sourceTree = "<group>"; };
+		8B7DD3B61E166B280080A814 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		8B7DD3B81E166B390080A814 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		8B7DD3BA1E166B520080A814 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8B7DD3BC1E166B600080A814 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8B7DD3C01E166B7F0080A814 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		8BD905A81E0AA3C900DBF1C3 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		8BE747691E13B57500519416 /* github.com.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = github.com.cer; sourceTree = "<group>"; };
 		8BF746CA1DF83672006C9B48 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -280,7 +290,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7DD3C11E166B7F0080A814 /* AddressBook.framework in Frameworks */,
+				8B7DD3BD1E166B600080A814 /* StoreKit.framework in Frameworks */,
+				8B7DD3BB1E166B520080A814 /* SystemConfiguration.framework in Frameworks */,
 				65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */,
+				8B7DD3B91E166B390080A814 /* GoogleSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +400,7 @@
 			children = (
 				D2EF30531DFD96DF00287924 /* NSVBarController.swift */,
 				D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */,
-				84321D951DF74A0800CCA4D4 /* Objc-Bridge-Header.h */,
+				84321D951DF74A0800CCA4D4 /* MedicalExaminationSchedule-Bridging-Header.h */,
 				84321D651DF7469100CCA4D4 /* FSCalendar */,
 				D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */,
 				D2C1F6E71E06C838004FCD9A /* AlbumModel.swift */,
@@ -471,6 +485,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				8B7DD3B61E166B280080A814 /* GoogleSignIn.bundle */,
 				8BE747691E13B57500519416 /* github.com.cer */,
 				D2F778E41E01AE6E007D63E4 /* Models */,
 				D2EF30501DFD52AF00287924 /* APIManager */,
@@ -540,6 +555,10 @@
 		D00E98537ADEDF5A31AAFA5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B7DD3C01E166B7F0080A814 /* AddressBook.framework */,
+				8B7DD3BC1E166B600080A814 /* StoreKit.framework */,
+				8B7DD3BA1E166B520080A814 /* SystemConfiguration.framework */,
+				8B7DD3B81E166B390080A814 /* GoogleSignIn.framework */,
 				B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */,
 				35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */,
 				581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */,
@@ -761,6 +780,7 @@
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				84321D941DF7469200CCA4D4 /* Info.plist in Resources */,
 				D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */,
+				8B7DD3B71E166B280080A814 /* GoogleSignIn.bundle in Resources */,
 				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
@@ -1171,12 +1191,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1190,12 +1214,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/NguyenHaiDang/Desktop/My Project/Outsource/Medhub/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/Objc-Bridge-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
