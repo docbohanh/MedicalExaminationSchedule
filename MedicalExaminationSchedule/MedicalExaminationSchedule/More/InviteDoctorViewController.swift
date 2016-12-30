@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var searchtextField: UITextField!
     @IBOutlet weak var doctorListTableView: UITableView!
     @IBOutlet weak var inviteButton: UIButton!
@@ -87,6 +87,11 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
         tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func getListUser(text:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
@@ -141,6 +146,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
+                    
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                     })

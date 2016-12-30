@@ -27,6 +27,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     @IBOutlet weak var logoImageView: UIImageView!
     
     @IBOutlet weak var activityView: UIActivityIndicatorView!
+    
+    var loginButton : LoginButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -35,18 +38,18 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-        let loginButton = LoginButton(readPermissions: [ .publicProfile,.email,.userFriends])
-        loginButton.center = CGPoint(x: self.view.center.x, y: 200)
-        loginButton.frame = CGRect.init(x: facebookSignInButton.frame.origin.x, y: facebookSignInButton.frame.origin.y, width: facebookSignInButton.frame.width, height: facebookSignInButton.frame.height)
-        loginButton.delegate = self
-        view.addSubview(loginButton)
+        loginButton = LoginButton(readPermissions: [ .publicProfile,.email,.userFriends])
+        loginButton?.center = CGPoint(x: self.view.center.x, y: 200)
+        loginButton?.frame = CGRect.init(x: facebookSignInButton.frame.origin.x, y: facebookSignInButton.frame.origin.y, width:view.frame.width - facebookSignInButton.frame.origin.x*2, height: facebookSignInButton.frame.height)
+        loginButton?.delegate = self
+        ProjectCommon.boundView(button: loginButton!)
+        view.addSubview(loginButton!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
     }
     
     func setupComponent() -> Void {
-//        ProjectCommon.boundView(button: registerAccountButton)
         ProjectCommon.boundView(button: googleSignInButton)
         ProjectCommon.boundView(button: facebookSignInButton)
         ProjectCommon.boundView(button: signInButton)
@@ -68,11 +71,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     }
     
     @IBAction func tappedSignInWithFacebook(_ sender: Any) {
-        
     }
 
     @IBAction func tappedSignIn(_ sender: Any) {
-        
         view.endEditing(true)
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
@@ -86,27 +87,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         let datastring = ProjectCommon.sha256(string: passwordTextField.text!)
 //        dictParam["password"] = datastring as String?
         dictParam["password"] = passwordTextField.text
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        APIManager.sharedInstance.postDataToURL(url: USER_LOGIN, parameters: dictParam, onCompletion: { (response) in
-            print(response)
-            LoadingOverlay.shared.hideOverlayView()
-            if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
-                    
-                })
-            } else {
-                let resultDictionary = response.result.value as! [String:AnyObject]
-                if (resultDictionary["status"] as! NSNumber) == 1 {
-                    let value = resultDictionary["result"] as! [String:AnyObject]
-                    UserDefaults.standard.set(value["token_id"], forKey: "token_id")
-                    self.performSegue(withIdentifier: "ShowTabBar", sender: self)
-                }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
-                    })
-                }
-            }
-        })
+        self.callLoginApi(dictParam: dictParam)
     }
     
     @IBAction func tappedRemember(_ sender: Any) {
@@ -133,8 +114,21 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         print("Did complete login via LoginButton with result \(result)")
-        let fbAccessToken = FBSDKAccessToken.current().tokenString as String
-        print (fbAccessToken)
+        switch result {
+        case .failed( _):
+        // User log in failed with error
+            break
+        case .cancelled:
+        // User cancelled login
+            break
+        case .success:
+            // Log in user
+            let fbAccessToken = FBSDKAccessToken.current().tokenString as String
+            print (fbAccessToken)
+            self.loginServerWithFacebook(tokenFb: fbAccessToken)
+            break
+        }
+        
     }
     
     func loginButtonDidLogOut(_ loginButton: LoginButton) {
@@ -164,4 +158,35 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         
     }
 
+    func loginServerWithFacebook(tokenFb:String) -> Void {
+        var dictParam = [String : String]()
+        dictParam["type"] = USER_TYPE.userTypeFacebook.rawValue
+        dictParam["social_token_id"] = passwordTextField.text
+        self.callLoginApi(dictParam: dictParam)
+    }
+    
+    func callLoginApi(dictParam:[String:String]) -> Void {
+        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        APIManager.sharedInstance.postDataToURL(url: USER_LOGIN, parameters: dictParam, onCompletion: { (response) in
+            print(response)
+            LoadingOverlay.shared.hideOverlayView()
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    let value = resultDictionary["result"] as! [String:AnyObject]
+                    UserDefaults.standard.set(value["token_id"], forKey: "token_id")
+                    self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+
+    }
 }

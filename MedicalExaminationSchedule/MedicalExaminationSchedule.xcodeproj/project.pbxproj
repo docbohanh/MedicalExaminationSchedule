@@ -87,6 +87,7 @@
 		D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */; };
 		D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */; };
 		D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D242084E1E12D7B100C7760A /* IntroduceModel.swift */; };
+		D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27DE73F1E16B7B800169D4E /* CKCalendarView.m */; };
 		D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */; };
 		D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */; };
 		D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */; };
@@ -248,6 +249,8 @@
 		D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
 		D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllPhoto.swift; sourceTree = "<group>"; };
 		D242084E1E12D7B100C7760A /* IntroduceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceModel.swift; sourceTree = "<group>"; };
+		D27DE73E1E16B7B800169D4E /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
+		D27DE73F1E16B7B800169D4E /* CKCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCalendarView.m; sourceTree = "<group>"; };
 		D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNewViewController.swift; sourceTree = "<group>"; };
 		D29E8C361DF723920000815B /* TextFieldNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldNormalTableViewCell.swift; sourceTree = "<group>"; };
 		D29E8C371DF723920000815B /* TextFieldNormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldNormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -398,6 +401,7 @@
 		84321D641DF7469100CCA4D4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D27DE73D1E16B7A400169D4E /* CKCallendar */,
 				D2EF30531DFD96DF00287924 /* NSVBarController.swift */,
 				D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */,
 				84321D951DF74A0800CCA4D4 /* MedicalExaminationSchedule-Bridging-Header.h */,
@@ -583,6 +587,15 @@
 				8BF746CF1DF83CC8006C9B48 /* PhotoCollectionViewCell.xib */,
 			);
 			path = cells;
+			sourceTree = "<group>";
+		};
+		D27DE73D1E16B7A400169D4E /* CKCallendar */ = {
+			isa = PBXGroup;
+			children = (
+				D27DE73E1E16B7B800169D4E /* CKCalendarView.h */,
+				D27DE73F1E16B7B800169D4E /* CKCalendarView.m */,
+			);
+			path = CKCallendar;
 			sourceTree = "<group>";
 		};
 		D29E8C441DF738300000815B /* Popup */ = {
@@ -1034,6 +1047,7 @@
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
+				D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */,
 				84321D901DF7469200CCA4D4 /* FSCalendarHeaderView.m in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);
@@ -1200,7 +1214,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1223,7 +1237,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

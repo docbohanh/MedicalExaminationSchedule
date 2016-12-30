@@ -297,7 +297,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                     })
                 }
             }
-
         })
     }
     

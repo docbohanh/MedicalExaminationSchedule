@@ -28,7 +28,11 @@ class InviteDoctorTableViewCell: UITableViewCell {
     func initCell(object:UserSearchModel) -> Void {
         doctorNameLabel.text = object.name
         emailLabel.text = object.email
-        choosedDoctorImageView.isHidden = object.isSelected
+        if object.isSelected == true {
+            choosedDoctorImageView.image = UIImage.init(named: "ic_checkbox_list_active")
+        }else {
+            choosedDoctorImageView.image = UIImage.init(named: "ic_checkbox_image")
+        }
     }
 
 }
