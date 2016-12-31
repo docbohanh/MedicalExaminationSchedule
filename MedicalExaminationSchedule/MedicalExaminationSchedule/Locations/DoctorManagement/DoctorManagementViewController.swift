@@ -103,6 +103,14 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBAction func tappedCallDoctor(_ sender: UIButton) {
     }
     
+    @IBAction func tappedBookCalendar(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "More", bundle: nil)
+        let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SettingCalendarViewController") as! SettingCalendarViewController
+        scheduleVC.serviceObject = serviceObject
+        scheduleVC.isBookFlow = true
+        self.navigationController?.pushViewController(scheduleVC, animated: true)
+    }
+    
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
     }
     
@@ -140,6 +148,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         commentView.isHidden = false
         imageCollectionView.isHidden = true
     }
+    
     @IBAction func tappedSendComment(_ sender: UIButton) {
         view.endEditing(true)
         if titleCommentTextField.text == "" {

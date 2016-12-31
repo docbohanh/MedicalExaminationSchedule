@@ -177,6 +177,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // reload data
                     if self.isLastObjectUpdate {
+                        self.calendarBookUpdate()
                         self.getCalendarTime()
                     }
                 }else {
@@ -186,7 +187,6 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         })
-
     }
 
     func deleteCalendarTime(object:CalendarTimeObject) -> Void {
@@ -207,6 +207,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // reload data get all again
+                    self.calendarBookUpdate()
                      self.getCalendarTime()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
@@ -235,6 +236,32 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // add new object
                     self.updateAllCalendar()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+    }
+    
+    func calendarBookUpdate() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["date"] = ProjectCommon.convertDateToString(date: selectedDate!)
+        
+//        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.postDataToURL(url: CALENDAR_BOOK_UPDATE, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+//            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // add new object
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         

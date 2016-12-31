@@ -93,4 +93,8 @@ class ProjectCommon: NSObject {
             return String.init(format: "%@", time)
         }
     }
+    
+    func converDateFromServer(string:String) -> Void {
+        
+    }
 }

@@ -24,6 +24,8 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     var selectedDate : Date?
     var userProfile : UserModel?
     var imageAvatar : UIImage?
+    var serviceObject : ServiceModel?
+    var isBookFlow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         // Do any additional setup after loading the view.
         
         self.setupView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,12 +51,17 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         callendarView.layer.borderColor = UIColor.lightGray.cgColor
         callendarView.layer.borderWidth = 1.0
         callendarView .select(Date(), makeVisible: true)
-//        [callendarView selectDate:[NSDate date] makeVisible:YES];
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
-        avatarImageView.image = self.imageAvatar
-        doctorNameLabel.text = self.userProfile?.user_display_name
-        specialLabel.text = String.init(format: "Chuyên ngành : %@", "Nội tiết")
+        if !isBookFlow {
+            avatarImageView.image = self.imageAvatar
+            doctorNameLabel.text = self.userProfile?.user_display_name
+            specialLabel.text = String.init(format: "Chuyên ngành : %@", "Nội tiết")
+        }else {
+            doctorNameLabel.text = serviceObject?.name
+            specialLabel.text = String.init(format: "Chuyên ngành : %@", (serviceObject?.field)!)
+        }
+        
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -66,14 +74,21 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         if date != nil {
             selectedDate = date
         }
-        self.performSegue(withIdentifier: "PushToSetupTime", sender: self)
+        if !isBookFlow {
+            self.performSegue(withIdentifier: "PushToSetupTime", sender: self)
+        } else {
+            let storyboard = UIStoryboard.init(name: "Locations", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "TimerFreeViewController") as! TimerFreeViewController
+            vc.selectedDate = selectedDate
+            vc.serviceObject = serviceObject
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func calendar(_ calendar: CKCalendarView!, didChangeToMonth date: Date!) {
         
     }
     
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

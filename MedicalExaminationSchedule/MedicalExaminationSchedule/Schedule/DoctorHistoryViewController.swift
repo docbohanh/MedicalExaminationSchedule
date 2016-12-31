@@ -10,18 +10,56 @@ import UIKit
 
 class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var segmentBackgroundView: UIView!
+    @IBOutlet weak var tabLineView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var cancelTabButton: UIButton!
+    @IBOutlet weak var bookedTabButton: UIButton!
+    @IBOutlet weak var endTabButton: UIButton!
+    
+    var tabIndex = 0
+    var bookCanceledArray = [CalendarBookModel]()
+    var bookedArray = [CalendarBookModel]()
+    var bookEndedArray = [CalendarBookModel]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.getAllBook()
     }
-
+    @IBAction func cancelTabSelected(_ sender: Any) {
+        tabIndex = 0
+        tabLineView.center = CGPoint.init(x: cancelTabButton.center.x, y: tabLineView.center.y)
+        tableView.reloadData()
+    }
+ 
+    @IBAction func bookedTabSelected(_ sender: Any) {
+        tabIndex = 1
+        tabLineView.center = CGPoint.init(x: bookedTabButton.center.x, y: tabLineView.center.y)
+        tableView.reloadData()
+    }
+    @IBAction func endTabSelected(_ sender: Any) {
+        tabIndex = 2
+        tabLineView.center = CGPoint.init(x: endTabButton.center.x, y: tabLineView.center.y)
+        tableView.reloadData()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        switch tabIndex {
+        case 0:
+            return bookedArray.count
+        case 1:
+            return bookEndedArray.count
+        default:
+            return bookCanceledArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -30,6 +68,18 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorHistoryTableViewCell", for: indexPath) as! DoctorHistoryTableViewCell
+        switch tabIndex {
+        case 0:
+            cell.initCell(object: bookedArray[indexPath.row])
+            break
+        case 1:
+            cell.initCell(object: bookEndedArray[indexPath.row])
+            break
+        default:
+            cell.initCell(object: bookCanceledArray[indexPath.row])
+            break
+            
+        }
         return cell
     }
     override func didReceiveMemoryWarning() {
@@ -38,6 +88,45 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
 
+    /* ----------- API ------------- */
+    func getAllBook() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMzQGdtYWlsLmNvbSIsImlkIjoiMDAwMDAwMDAyNDAiLCJ0eXBlIjoxLCJqdGkiOiIyMDQxYTkwZS0yZTExLTQ1OGQtYWE5Yy1mMWEzNTYxNDFhYjAiLCJpYXQiOjE0ODMwMjUwMDR9.WY2V75cvS1MgGQ3tV6NfaNWkoSxDCurDPxYpi_D-Vks" //UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["page_index"] = "0"
+        
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.getDataToURL(url: CALENDAR_BOOK, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                   
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = CalendarBookModel.init(dict: item)
+                        if newsObject.status == "OK" {
+                            self.bookedArray.append(newsObject)
+                        }else {
+                            self.bookCanceledArray.append(newsObject)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    })
+                }
+            }
+        })
+    }
+    
     /*
     // MARK: - Navigation
 
