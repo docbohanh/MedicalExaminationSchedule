@@ -14,7 +14,6 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var inviteButton: UIButton!
     
     var userArray = [UserSearchModel]()
-    var isShowLoading = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,12 +36,6 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         while array.count > 0 {
-            if (array.count == 1)
-            {
-                isShowLoading = true
-            }else {
-                isShowLoading = false
-            }
             let object = array[0] as UserSearchModel
             self.inviteUser(object: object)
             array .removeFirst()
@@ -98,10 +91,10 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
         dictParam["text"] = text
         dictParam["page_index"] = "0"
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: USER_LIST, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -136,10 +129,10 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["email"] = object.email
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: USER_INVITE, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })

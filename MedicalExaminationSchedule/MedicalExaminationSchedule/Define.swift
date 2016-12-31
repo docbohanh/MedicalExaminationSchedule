@@ -36,6 +36,8 @@ let COMMENT = "comment"
 
 let CALENDAR_TIME = "calendar/time"
 let CALENDAR_BOOK = "calendar/book"
+let CALENDAR_BOOK_UPDATE = "calendar/book/update"
+
 
 let IMAGE_SERVICE = "image/service"
 let IMAGE_USER = "image/user"

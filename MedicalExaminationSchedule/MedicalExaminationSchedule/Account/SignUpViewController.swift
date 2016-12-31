@@ -97,9 +97,9 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         dictParam["home_address"] = addressTextField.text as AnyObject?
         dictParam["birthday"] = chooseBirthdayButton.titleLabel?.text as AnyObject?
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: USER_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -109,7 +109,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
-                            self.navigationController?.popViewController(animated: true)
+                            _ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {

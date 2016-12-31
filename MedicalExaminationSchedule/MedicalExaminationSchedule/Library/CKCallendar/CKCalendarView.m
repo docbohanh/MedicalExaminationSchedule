@@ -21,15 +21,15 @@
 #import "CKCalendarView.h"
 
 #define BUTTON_MARGIN 4
-#define CALENDAR_MARGIN 5
+#define CALENDAR_MARGIN 10
 #define TOP_HEIGHT 44
-#define DAYS_HEADER_HEIGHT 22
-#define OKBUTTON_HEIGHT 41
-#define DEFAULT_CELL_WIDTH 43
-#define DEFAULT_CELL_HEIGHT 44
+#define DAYS_HEADER_HEIGHT 30
+#define OKBUTTON_HEIGHT 0
+#define DEFAULT_CELL_WIDTH 30
+#define DEFAULT_CELL_HEIGHT 30
 #define DEFAULT_RATE 1
-#define CELL_BORDER_WIDTH 1
-#define CELL_BORDER_HEIGHT 5
+#define CELL_BORDER_WIDTH 10
+#define CELL_BORDER_HEIGHT 2
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -126,7 +126,6 @@
 @property (nonatomic, strong) NSCalendar *calendar;
 @property(nonatomic, assign) CGFloat cellWidth;
 @property (nonatomic, assign) CGFloat cellHeight;
-@property (nonatomic, strong) UIButton *okButton;
 @property (nonatomic, strong) UIView *viewLine;
 
 @end
@@ -140,7 +139,7 @@
 }
 
 - (id)initWithStartDay:(CKCalendarStartDay)firstDay {
-    return [self initWithStartDay:firstDay frame:CGRectMake(0, 0, 320, 320)];
+    return [self initWithStartDay:firstDay frame:CGRectMake(0, 0, 320, 200)];
 }
 
 - (void)_init:(CKCalendarStartDay)firstDay {
@@ -158,7 +157,7 @@
     self.onlyShowCurrentMonth = YES;
     self.adaptHeightToNumberOfWeeksInMonth = YES;
 
-    self.layer.cornerRadius = 6.0f;
+    self.layer.cornerRadius = 5.0f;
 
     UIView *highlight = [[UIView alloc] initWithFrame:CGRectZero];
     highlight.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
@@ -169,43 +168,38 @@
     // SET UP THE HEADER
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.backgroundColor = [UIColor colorWithRed:52/255.0 green:126/255.0 blue:214/255.0 alpha:1];
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    titleLabel.clipsToBounds = YES;
+    titleLabel.layer.cornerRadius = 5.0;
     [self addSubview:titleLabel];
     self.titleLabel = titleLabel;
 
     UIButton *prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [prevButton setImage:[UIImage imageNamed:@"ic_back.png"] forState:UIControlStateNormal];
+    [prevButton setImage:[UIImage imageNamed:@"ic_arrow_left_calendar"] forState:UIControlStateNormal];
     prevButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
     [prevButton addTarget:self action:@selector(_moveCalendarToPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:prevButton];
     self.prevButton = prevButton;
 
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [nextButton setImage:[UIImage imageNamed:@"ic_back"] forState:UIControlStateNormal];
+    [nextButton setImage:[UIImage imageNamed:@"ic_arrow_left_calendar"] forState:UIControlStateNormal];
     nextButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     [nextButton addTarget:self action:@selector(_moveCalendarToNextMonth) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:nextButton];
      nextButton.transform = CGAffineTransformMakeRotation(M_PI);
     self.nextButton = nextButton;
     
-    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    okButton.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
-    [self addSubview:okButton];
-    [okButton setTitle:@"OK" forState:UIControlStateNormal];
-    [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [okButton addTarget:self action:@selector(actionOKButton:) forControlEvents:UIControlEventTouchUpInside];
-    self.okButton = okButton;
-    
     UIView *viewLine = [[UIView alloc] init];
     viewLine.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin;
     [self addSubview:viewLine];
     self.viewLine = viewLine;
-    viewLine.backgroundColor = [UIColor colorWithRed:230.0/255 green:231.0/255 blue:233.0/255 alpha:1];
+//    viewLine.backgroundColor = [UIColor colorWithRed:230.0/255 green:231.0/255 blue:233.0/255 alpha:1];
+    
     // THE CALENDAR ITSELF
     UIView *calendarContainer = [[UIView alloc] initWithFrame:CGRectZero];
 //    calendarContainer.layer.borderWidth = 1.0f;
-//    calendarContainer.layer.borderColor = [UIColor blackColor].CGColor;
+//    calendarContainer.layer.borderColor = [UIColor lightGrayColor].CGColor;
     calendarContainer.backgroundColor = [UIColor clearColor];
     calendarContainer.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     calendarContainer.layer.cornerRadius = 4.0f;
@@ -295,7 +289,6 @@
     self.calendarContainer.frame = CGRectMake(CALENDAR_MARGIN, CGRectGetMaxY(self.titleLabel.frame), containerWidth, containerHeight );
     self.daysHeader.frame = CGRectMake(0, 0, self.calendarContainer.frame.size.width, DAYS_HEADER_HEIGHT);
     self.viewLine.frame = CGRectMake(0, CGRectGetMaxY(self.calendarContainer.frame), self.frame.size.width, 1);
-    self.okButton.frame = CGRectMake(0, CGRectGetMaxY(self.viewLine.frame), self.frame.size.width, OKBUTTON_HEIGHT);
 
     CGRect lastDayFrame = CGRectZero;
     for (UILabel *dayLabel in self.dayOfWeekLabels) {
@@ -451,7 +444,7 @@
 //    self.backgroundColor = UIColorFromRGB(0x393B40);
 
     self.backgroundColor = [UIColor whiteColor];
-    [self setTitleColor:[UIColor blackColor]];
+    [self setTitleColor:[UIColor whiteColor]];
     [self setTitleFont:[UIFont boldSystemFontOfSize:17.0]];
 
     [self setDayOfWeekFont:[UIFont boldSystemFontOfSize:13.0]];
@@ -469,7 +462,7 @@
 	
     NSInteger placeInWeek = [self _placeInWeekForDate:date];
 
-    return CGRectMake(placeInWeek * (self.cellWidth + CELL_BORDER_WIDTH), (row * (self.cellHeight + CELL_BORDER_HEIGHT)) + CGRectGetMaxY(self.daysHeader.frame) + CELL_BORDER_HEIGHT, self.cellWidth, self.cellHeight);
+    return CGRectMake(placeInWeek * (self.cellWidth + CELL_BORDER_WIDTH) + CELL_BORDER_WIDTH, (row * (self.cellHeight + CELL_BORDER_HEIGHT)) + CGRectGetMaxY(self.daysHeader.frame) + CELL_BORDER_HEIGHT, self.cellWidth, self.cellHeight);
 }
 
 - (void)_moveCalendarToNextMonth {
@@ -504,11 +497,11 @@
     DateButton *dateButton = sender;
     NSDate *date = dateButton.date;
     if ([date isEqualToDate:self.selectedDate]) {
-        // deselection..
-        if ([self.delegate respondsToSelector:@selector(calendar:willDeselectDate:)] && ![self.delegate calendar:self willDeselectDate:date]) {
-            return;
-        }
-        date = nil;
+        // deselection.. // don't need deselect
+//        if ([self.delegate respondsToSelector:@selector(calendar:willDeselectDate:)] && ![self.delegate calendar:self willDeselectDate:date]) {
+//            return;
+//        }
+//        date = nil;
     } else if ([self.delegate respondsToSelector:@selector(calendar:willSelectDate:)] && ![self.delegate calendar:self willSelectDate:date]) {
         return;
     }
@@ -685,12 +678,6 @@
     UIGraphicsEndImageContext();
 
     return coloredImg;
-}
-
--(void) actionOKButton:(id) sender{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(calendar:didOK:)]) {
-        [self.delegate calendar:self didOK:sender];
-    }
 }
 
 @end

@@ -97,10 +97,18 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedCallDoctor(_ sender: UIButton) {
+    }
+    
+    @IBAction func tappedBookCalendar(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "More", bundle: nil)
+        let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SettingCalendarViewController") as! SettingCalendarViewController
+        scheduleVC.serviceObject = serviceObject
+        scheduleVC.isBookFlow = true
+        self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
     
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
@@ -140,6 +148,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         commentView.isHidden = false
         imageCollectionView.isHidden = true
     }
+    
     @IBAction func tappedSendComment(_ sender: UIButton) {
         view.endEditing(true)
         if titleCommentTextField.text == "" {
@@ -155,10 +164,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["comment_content"] = commentTextView.text
         dictParam["comment_title"] = titleCommentTextField.text
         dictParam["rate"] = String.init(format: "%d", rate)
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -322,10 +331,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = serviceObject?.service_id
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             self.getListComment(pageIndex: 0)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
@@ -361,10 +370,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["service_id"] = serviceObject?.service_id
         dictParam["page_index"] = String.init(format: "%d", pageIndex)
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: COMMENT, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     

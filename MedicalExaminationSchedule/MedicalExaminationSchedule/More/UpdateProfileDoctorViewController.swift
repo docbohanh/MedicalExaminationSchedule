@@ -127,16 +127,14 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var strIdentifier = ""
+
         switch indexPath.row {
         case 0:
-            strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.delegate = self
              cell.avatarImageView.image = imageAvatar
             return cell
         case titleArray.count:
-            strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.delegate = self
             cell.titleLabel.text = titleArray[indexPath.row - 1]
@@ -147,7 +145,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             }
             return cell
         default:
-            strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
@@ -209,9 +206,9 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -278,10 +275,10 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
         dictParam["image_id"] = appdelegate.avatarId
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -333,10 +330,10 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dictParam["image_type"] = "profile"
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     
