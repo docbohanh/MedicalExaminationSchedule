@@ -17,7 +17,6 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
     var introduceItemsArray = [IntroduceModel]()
     var userProfile : UserModel?
     var currentIndexPath : IndexPath?
-    var isShowLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,12 +75,6 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
             }
         }
         while array.count > 0 {
-            if (array.count == 1)
-            {
-                isShowLoading = true
-            }else {
-                isShowLoading = false
-            }
             let object = array[0] as IntroduceModel
             if object.id != "" {
                 // update
@@ -125,10 +118,10 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = userProfile?.service_id
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -158,14 +151,10 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         dictParam["service_id"] = userProfile?.service_id
         dictParam["title"] = item.name
         dictParam["desc"] = item.desc
-        if isShowLoading {
-            LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        }
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            if self.isShowLoading {
-                LoadingOverlay.shared.hideOverlayView()
-            }
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -188,14 +177,10 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         dictParam["id"] = item.id
         dictParam["title"] = item.name
         dictParam["desc"] = item.desc
-        if isShowLoading {
-            LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
-        }
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            if self.isShowLoading {
-                LoadingOverlay.shared.hideOverlayView()
-            }
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -216,10 +201,10 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = userProfile?.service_id
         dictParam["id"] = item.id
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.deleteDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })

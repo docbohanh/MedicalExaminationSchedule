@@ -497,11 +497,11 @@
     DateButton *dateButton = sender;
     NSDate *date = dateButton.date;
     if ([date isEqualToDate:self.selectedDate]) {
-        // deselection..
-        if ([self.delegate respondsToSelector:@selector(calendar:willDeselectDate:)] && ![self.delegate calendar:self willDeselectDate:date]) {
-            return;
-        }
-        date = nil;
+        // deselection.. // don't need deselect
+//        if ([self.delegate respondsToSelector:@selector(calendar:willDeselectDate:)] && ![self.delegate calendar:self willDeselectDate:date]) {
+//            return;
+//        }
+//        date = nil;
     } else if ([self.delegate respondsToSelector:@selector(calendar:willSelectDate:)] && ![self.delegate calendar:self willSelectDate:date]) {
         return;
     }

@@ -114,10 +114,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: USER_INFO, parameters: dictParam as! [String : String], onCompletion: { (response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil)
             {
                 // error
@@ -149,10 +149,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getUserServiceId() -> Void {
         var dictParam = [String : AnyObject]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as AnyObject?
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: SERVICE_USER, parameters: dictParam as! [String : String], onCompletion: { (response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil)
             {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
@@ -321,6 +321,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else if (segue.identifier == "PushToSetupIntroduce") {
             let vc  = segue.destination as! SetupIntroduceViewController
             vc.userProfile = self.userModel
+        }else if (segue.identifier == "PushToSetupCalendar") {
+            let vc = segue.destination as! SettingCalendarViewController
+            vc.userProfile = self.userModel
+            vc.imageAvatar = avatarImageView.image!
         }
     }
 

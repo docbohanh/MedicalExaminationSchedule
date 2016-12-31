@@ -10,7 +10,7 @@ import UIKit
 
 protocol SetupTimeCellDelegate {
     func deleteCalendar(cell:SetupTimeTableViewCell) -> Void
-    func selectTime(cell:SetupTimeTableViewCell) -> Void
+    func selectTime(cell:SetupTimeTableViewCell,buttonTag:Int) -> Void
 }
 
 class SetupTimeTableViewCell: UITableViewCell {
@@ -67,7 +67,8 @@ class SetupTimeTableViewCell: UITableViewCell {
         self.delegate?.deleteCalendar(cell: self)
     }
     @IBAction func tappedButtonTime(_ sender: Any) {
-        self.delegate?.selectTime(cell: self)
+        let button = sender as! UIButton
+        self.delegate?.selectTime(cell: self,buttonTag: button.tag)
     }
     
 

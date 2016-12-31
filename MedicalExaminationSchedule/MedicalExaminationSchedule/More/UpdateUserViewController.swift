@@ -213,9 +213,9 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -281,10 +281,10 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
         dictParam["image_id"] = appdelegate.avatarId
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                 })
@@ -337,10 +337,10 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         dictParam["image_type"] = "profile"
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imageAvatar, param: dictParam, completion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     

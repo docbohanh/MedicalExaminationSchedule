@@ -118,6 +118,10 @@
 		D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30511DFD52BC00287924 /* APIManager.swift */; };
 		D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30531DFD96DF00287924 /* NSVBarController.swift */; };
 		D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */; };
+		D2F4A9E41E1757F500EE737B /* Lib.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2F4A9DB1E1757F500EE737B /* Lib.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F4A9EA1E17589100EE737B /* THBReachability.m */; };
+		D2F4A9F41E17589100EE737B /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F4A9F01E17589100EE737B /* UIView+Toast.m */; };
+		D2F4A9F61E17598100EE737B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F4A9F51E17598100EE737B /* AssetsLibrary.framework */; };
 		D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F778E51E01AE80007D63E4 /* UserModel.swift */; };
 		EA05ED141DF7AA26002DD339 /* SetupScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */; };
 		EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */; };
@@ -287,6 +291,13 @@
 		D2EF30511DFD52BC00287924 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D2EF30531DFD96DF00287924 /* NSVBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVBarController.swift; sourceTree = "<group>"; };
 		D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVTabBarController.swift; sourceTree = "<group>"; };
+		D2F4A9DA1E1757F500EE737B /* Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lib.h; sourceTree = "<group>"; };
+		D2F4A9DB1E1757F500EE737B /* Lib.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Lib.mm; sourceTree = "<group>"; };
+		D2F4A9E91E17589100EE737B /* THBReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THBReachability.h; sourceTree = "<group>"; };
+		D2F4A9EA1E17589100EE737B /* THBReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THBReachability.m; sourceTree = "<group>"; };
+		D2F4A9EF1E17589100EE737B /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		D2F4A9F01E17589100EE737B /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		D2F4A9F51E17598100EE737B /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		D2F778E51E01AE80007D63E4 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EA05ED131DF7AA26002DD339 /* SetupScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupScheduleViewController.swift; sourceTree = "<group>"; };
 		EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setupTimeScheduleViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2F4A9F61E17598100EE737B /* AssetsLibrary.framework in Frameworks */,
 				8B7DD3C11E166B7F0080A814 /* AddressBook.framework in Frameworks */,
 				8B7DD3BD1E166B600080A814 /* StoreKit.framework in Frameworks */,
 				8B7DD3BB1E166B520080A814 /* SystemConfiguration.framework in Frameworks */,
@@ -415,6 +427,7 @@
 		84321D641DF7469100CCA4D4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2F4A9D91E1757F500EE737B /* Toast */,
 				D27DE73D1E16B7A400169D4E /* CKCallendar */,
 				D2EF30531DFD96DF00287924 /* NSVBarController.swift */,
 				D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */,
@@ -573,6 +586,7 @@
 		D00E98537ADEDF5A31AAFA5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2F4A9F51E17598100EE737B /* AssetsLibrary.framework */,
 				8B7DD3C01E166B7F0080A814 /* AddressBook.framework */,
 				8B7DD3BC1E166B600080A814 /* StoreKit.framework */,
 				8B7DD3BA1E166B520080A814 /* SystemConfiguration.framework */,
@@ -642,6 +656,19 @@
 				D2EF30511DFD52BC00287924 /* APIManager.swift */,
 			);
 			path = APIManager;
+			sourceTree = "<group>";
+		};
+		D2F4A9D91E1757F500EE737B /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				D2F4A9DA1E1757F500EE737B /* Lib.h */,
+				D2F4A9DB1E1757F500EE737B /* Lib.mm */,
+				D2F4A9E91E17589100EE737B /* THBReachability.h */,
+				D2F4A9EA1E17589100EE737B /* THBReachability.m */,
+				D2F4A9EF1E17589100EE737B /* UIView+Toast.h */,
+				D2F4A9F01E17589100EE737B /* UIView+Toast.m */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		D2F778E41E01AE6E007D63E4 /* Models */ = {
@@ -999,6 +1026,7 @@
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
+				D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
 				84321D861DF7469100CCA4D4 /* FSCalendar.m in Sources */,
 				D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */,
@@ -1047,6 +1075,7 @@
 				D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				D21A80221E16DA6C00DF6077 /* CalendarTimeObject.swift in Sources */,
+				D2F4A9F41E17589100EE737B /* UIView+Toast.m in Sources */,
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
@@ -1056,6 +1085,7 @@
 				84321D8D1DF7469100CCA4D4 /* FSCalendarConstants.m in Sources */,
 				D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */,
 				D27DE7481E16BE8500169D4E /* SettingCalendarViewController.swift in Sources */,
+				D2F4A9E41E1757F500EE737B /* Lib.mm in Sources */,
 				EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */,
 				843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */,
 				84321D8A1DF7469100CCA4D4 /* FSCalendarCell.m in Sources */,

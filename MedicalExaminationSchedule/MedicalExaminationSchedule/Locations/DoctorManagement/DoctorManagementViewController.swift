@@ -155,10 +155,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["comment_content"] = commentTextView.text
         dictParam["comment_title"] = titleCommentTextField.text
         dictParam["rate"] = String.init(format: "%d", rate)
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     
@@ -322,10 +322,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["service_id"] = serviceObject?.service_id
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: SERVICE_DETAIL, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             self.getListComment(pageIndex: 0)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
@@ -361,10 +361,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         dictParam["service_id"] = serviceObject?.service_id
         dictParam["page_index"] = String.init(format: "%d", pageIndex)
         
-        LoadingOverlay.shared.showOverlay(view: self.navigationController?.view)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: COMMENT, parameters: dictParam, onCompletion: {(response) in
             print(response)
-            LoadingOverlay.shared.hideOverlayView()
+            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     

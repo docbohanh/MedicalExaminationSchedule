@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,20 +24,23 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-x1-9GN">
-                    <rect key="frame" x="47" y="214" width="280" height="240"/>
+                    <rect key="frame" x="67" y="214" width="240" height="240"/>
                     <subviews>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7A-IZ-xXM">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="190"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="190"/>
+                        </pickerView>
+                        <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knB-Ta-yOf">
+                            <rect key="frame" x="100" y="0.0" width="100" height="190"/>
                         </pickerView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTG-cO-U7f">
-                            <rect key="frame" x="0.0" y="190" width="280" height="1"/>
+                            <rect key="frame" x="0.0" y="190" width="240" height="1"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="rv5-MD-Wx9"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qys-3f-aGj">
-                            <rect key="frame" x="0.0" y="191" width="280" height="49"/>
+                            <rect key="frame" x="0.0" y="191" width="240" height="49"/>
                             <state key="normal" title="OK">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -44,26 +48,46 @@
                                 <action selector="tappedSaveButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="I9f-hi-hVh"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giờ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77d-yu-aCi">
+                            <rect key="frame" x="70" y="85.5" width="26.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phút" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUW-2b-2kk">
+                            <rect key="frame" x="170" y="85" width="35.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="x7A-IZ-xXM" secondAttribute="trailing" id="61O-L7-pWN"/>
                         <constraint firstItem="Qys-3f-aGj" firstAttribute="top" secondItem="lTG-cO-U7f" secondAttribute="bottom" id="APg-JU-cUm"/>
+                        <constraint firstItem="xUW-2b-2kk" firstAttribute="centerY" secondItem="knB-Ta-yOf" secondAttribute="centerY" id="FrG-QG-M7D"/>
                         <constraint firstItem="x7A-IZ-xXM" firstAttribute="top" secondItem="JGC-x1-9GN" secondAttribute="top" id="GaY-dc-MLo"/>
                         <constraint firstItem="Qys-3f-aGj" firstAttribute="leading" secondItem="JGC-x1-9GN" secondAttribute="leading" id="H7F-ui-XIe"/>
                         <constraint firstItem="lTG-cO-U7f" firstAttribute="top" secondItem="x7A-IZ-xXM" secondAttribute="bottom" id="OJP-I4-LjA"/>
                         <constraint firstAttribute="trailing" secondItem="Qys-3f-aGj" secondAttribute="trailing" id="PHh-Vp-PaT"/>
+                        <constraint firstItem="knB-Ta-yOf" firstAttribute="top" secondItem="JGC-x1-9GN" secondAttribute="top" id="PWc-pT-5Hp"/>
+                        <constraint firstItem="xUW-2b-2kk" firstAttribute="leading" secondItem="knB-Ta-yOf" secondAttribute="trailing" constant="-30" id="Rcx-Ef-u6J"/>
                         <constraint firstItem="lTG-cO-U7f" firstAttribute="leading" secondItem="JGC-x1-9GN" secondAttribute="leading" id="XYK-MX-JGG"/>
                         <constraint firstAttribute="trailing" secondItem="lTG-cO-U7f" secondAttribute="trailing" id="bc6-Fr-kMK"/>
+                        <constraint firstItem="77d-yu-aCi" firstAttribute="leading" secondItem="x7A-IZ-xXM" secondAttribute="trailing" constant="-30" id="cFp-Lr-O1T"/>
                         <constraint firstAttribute="height" constant="240" id="cPo-48-sxc"/>
                         <constraint firstAttribute="bottom" secondItem="Qys-3f-aGj" secondAttribute="bottom" id="g1E-3P-Q2c"/>
+                        <constraint firstItem="77d-yu-aCi" firstAttribute="centerY" secondItem="x7A-IZ-xXM" secondAttribute="centerY" id="gTB-dH-3qS"/>
                         <constraint firstAttribute="bottom" secondItem="x7A-IZ-xXM" secondAttribute="bottom" constant="50" id="jBs-3J-If9"/>
-                        <constraint firstAttribute="width" constant="280" id="pIF-js-2hI"/>
+                        <constraint firstItem="knB-Ta-yOf" firstAttribute="width" secondItem="x7A-IZ-xXM" secondAttribute="width" id="jlj-cg-TuR"/>
+                        <constraint firstAttribute="width" constant="240" id="pIF-js-2hI"/>
                         <constraint firstItem="x7A-IZ-xXM" firstAttribute="leading" secondItem="JGC-x1-9GN" secondAttribute="leading" id="rNG-rz-hmS"/>
+                        <constraint firstItem="knB-Ta-yOf" firstAttribute="leading" secondItem="x7A-IZ-xXM" secondAttribute="trailing" id="sGR-Lo-vvS"/>
+                        <constraint firstItem="x7A-IZ-xXM" firstAttribute="width" secondItem="JGC-x1-9GN" secondAttribute="width" multiplier="1:2" constant="-20" id="tgk-h7-OFw"/>
+                        <constraint firstItem="knB-Ta-yOf" firstAttribute="bottom" secondItem="x7A-IZ-xXM" secondAttribute="bottom" id="wvc-Sc-cMc"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="JGC-x1-9GN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FOU-yY-hzO"/>
                 <constraint firstItem="JGC-x1-9GN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Pf5-2I-HMh"/>
@@ -73,6 +97,8 @@
                 <constraint firstAttribute="trailing" secondItem="V6R-W3-pZv" secondAttribute="trailing" id="s9p-MR-p1t"/>
             </constraints>
             <connections>
+                <outlet property="bodyView" destination="JGC-x1-9GN" id="WZl-F2-mhX"/>
+                <outlet property="minutesPickerView" destination="knB-Ta-yOf" id="1k0-4V-c9X"/>
                 <outlet property="pickerView" destination="x7A-IZ-xXM" id="PZW-YJ-OAG"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="106.5"/>

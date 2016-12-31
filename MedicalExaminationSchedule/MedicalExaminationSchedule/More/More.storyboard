@@ -381,7 +381,7 @@
         <scene sceneID="1EA-Mz-L7q">
             <objects>
                 <collectionViewController id="qpW-sm-2hg" customClass="AssetGridViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6xD-5e-8Y6">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6xD-5e-8Y6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -746,14 +746,14 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar" translatesAutoresizingMaskIntoConstraints="NO" id="sp3-CH-ZcH">
-                                        <rect key="frame" x="143" y="75" width="90" height="90"/>
+                                        <rect key="frame" x="148" y="75" width="80" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="3X4-j7-lWA"/>
-                                            <constraint firstAttribute="height" constant="90" id="FHy-Ul-GF3"/>
+                                            <constraint firstAttribute="width" constant="80" id="3X4-j7-lWA"/>
+                                            <constraint firstAttribute="height" constant="80" id="FHy-Ul-GF3"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chuyên ngành:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLL-Oi-6Y7">
-                                        <rect key="frame" x="0.0" y="165" width="375" height="20"/>
+                                        <rect key="frame" x="0.0" y="155" width="375" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="QNm-NP-OVn"/>
                                         </constraints>
@@ -762,7 +762,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_0" translatesAutoresizingMaskIntoConstraints="NO" id="Xgd-2s-ulk">
-                                        <rect key="frame" x="147" y="190" width="81" height="14"/>
+                                        <rect key="frame" x="147" y="180" width="81" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="81" id="Xbq-6e-kT6"/>
                                             <constraint firstAttribute="height" constant="14" id="q8V-bW-FNj"/>
@@ -809,6 +809,7 @@
                     <connections>
                         <outlet property="avatarImageView" destination="sp3-CH-ZcH" id="RzU-Xu-Ra0"/>
                         <outlet property="callendarView" destination="a84-AJ-iXX" id="iVr-Ot-6NR"/>
+                        <outlet property="doctorNameLabel" destination="X5d-3I-2fI" id="reV-8r-GAT"/>
                         <outlet property="freeLabel" destination="osE-qV-8kT" id="hjq-DT-Q24"/>
                         <outlet property="freeView" destination="W4a-Jl-N3k" id="M2A-oY-jHz"/>
                         <outlet property="fullLabel" destination="KWr-as-x0Y" id="MfV-P1-GhI"/>
@@ -1058,7 +1059,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="tappedUpdateInstroduce:" destination="Ld6-qt-dph" eventType="touchUpInside" id="fbV-2x-dC7"/>
+                                    <action selector="tappedUpdateButton:" destination="fgJ-xd-Xv4" eventType="touchUpInside" id="1IL-Zu-bLP"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dB5-f6-nSs">

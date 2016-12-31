@@ -9,9 +9,12 @@
 import UIKit
 
 class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
+    
+    @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var specialLabel: UILabel!
     @IBOutlet weak var starImageView: UIImageView!
+    
     @IBOutlet weak var freeLabel: UILabel!
     @IBOutlet weak var freeView: UIView!
     @IBOutlet weak var fullLabel: UILabel!
@@ -19,7 +22,8 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     @IBOutlet weak var callendarView: CKCalendarView!
 
     var selectedDate : Date?
-    
+    var userProfile : UserModel?
+    var imageAvatar : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     }
     
     func setupView() -> Void {
+        ProjectCommon.boundView(button: avatarImageView, cornerRadius: avatarImageView.frame.width/2, color: UIColor.white, borderWith: 1.0)
         ProjectCommon.boundViewWithColor(button: freeView, color: UIColor.clear)
         ProjectCommon.boundViewWithColor(button: fullView, color: UIColor.clear)
         callendarView.isHidden = false;
@@ -46,6 +51,9 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
 //        [callendarView selectDate:[NSDate date] makeVisible:YES];
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
+        avatarImageView.image = self.imageAvatar
+        doctorNameLabel.text = self.userProfile?.user_display_name
+        specialLabel.text = String.init(format: "Chuyên ngành : %@", "Nội tiết")
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -55,7 +63,9 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     /* CKCALENDAR */
     
     func calendar(_ calendar: CKCalendarView!, didSelect date: Date!) {
-        selectedDate = date
+        if date != nil {
+            selectedDate = date
+        }
         self.performSegue(withIdentifier: "PushToSetupTime", sender: self)
     }
     
@@ -73,6 +83,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         if segue.identifier == "PushToSetupTime" {
             let vc = segue.destination as! SettingTimeViewController
             vc.selectedDate = selectedDate
+            vc.service_id = userProfile?.service_id
         }
     }
 
