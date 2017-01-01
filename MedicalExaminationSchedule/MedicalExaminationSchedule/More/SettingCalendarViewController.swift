@@ -23,7 +23,6 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
 
     var selectedDate : Date?
     var userProfile : UserModel?
-    var imageAvatar : UIImage?
     var serviceObject : ServiceModel?
     var isBookFlow = false
     
@@ -54,7 +53,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
         if !isBookFlow {
-            avatarImageView.image = self.imageAvatar
+            avatarImageView.loadImage(url: (userProfile?.avatar_url)!)
             doctorNameLabel.text = self.userProfile?.user_display_name
             specialLabel.text = String.init(format: "Chuyên ngành : %@", "Nội tiết")
         }else {

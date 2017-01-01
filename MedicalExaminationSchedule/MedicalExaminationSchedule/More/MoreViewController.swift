@@ -193,6 +193,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let listItem = resultData["items"] as! [AnyObject]
                     if listItem.count > 0 {
                         let item = listItem[0] as! [String:AnyObject]
+                        self.userModel?.avatar_url = item["url"] as! String?
+                        self.userModel?.avatar_id = item["id"] as! String?
                         self.appDelegate.avatarId = item["id"] as! String?
                         self.appDelegate.avatarUrl = item["url"] as! String?
                         self.avatarImageView.loadImage(url: item["url"] as! String)
@@ -322,7 +324,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else if (segue.identifier == "PushToSetupCalendar") {
             let vc = segue.destination as! SettingCalendarViewController
             vc.userProfile = self.userModel
-            vc.imageAvatar = avatarImageView.image!
+        }else if (segue.identifier == "PushToListPhoto") {
+            let vc = segue.destination as! ListPhotoViewController
+            vc.userProfile = self.userModel
+
         }
     }
 

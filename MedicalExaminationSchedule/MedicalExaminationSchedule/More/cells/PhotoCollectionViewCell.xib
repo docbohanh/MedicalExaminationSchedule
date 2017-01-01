@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestPhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-bQ-xq5">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-bQ-xq5">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eom-KO-aey">
@@ -36,7 +36,7 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.86274509799999999" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eom-KO-aey" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3dU-bH-let"/>
                 <constraint firstItem="KBj-bQ-xq5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OBF-JD-xVw"/>
@@ -54,7 +54,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="TestPhoto.png" width="112" height="112"/>
         <image name="ic_checkbox_image" width="16" height="16"/>
         <image name="ic_checkbox_list_active" width="15" height="15"/>
     </resources>

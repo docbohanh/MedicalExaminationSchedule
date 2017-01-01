@@ -268,6 +268,7 @@
                     <navigationItem key="navigationItem" id="fkH-6R-jfS"/>
                     <connections>
                         <outlet property="addButton" destination="WHW-6u-eg1" id="QDS-J2-uGS"/>
+                        <outlet property="doctorNameLabel" destination="uFd-jc-P0z" id="2Fp-P4-Xgu"/>
                         <outlet property="photoCollectionView" destination="thH-sK-SDU" id="h4X-cl-Jpw"/>
                     </connections>
                 </viewController>

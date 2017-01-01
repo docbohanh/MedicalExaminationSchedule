@@ -8,21 +8,24 @@
 
 import UIKit
 
-class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PhotoCellDelegate {
+class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PhotoCellDelegate, NewImageDelegate {
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
     
+    @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     @IBOutlet weak var addButton: UIButton!
     var imagesArray = [ImageModel]()
     var isShowDeleteImage = false
     var selectedImageArray = [ImageModel]()
+    var userProfile : UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        doctorNameLabel.text = userProfile?.user_display_name
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
         self.getListPhoto()
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector (handleLongPress(gestureReconizer:)))
@@ -80,8 +83,9 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
                 })
             }
         }else {
-            let storyboard = UIStoryboard.init(name: "", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "NewImageViewController")
+            let storyboard = UIStoryboard.init(name: "More", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "NewImageViewController") as! NewImageViewController
+            vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -179,7 +183,6 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
         })
-
     }
     func deleteImageObject(object:ImageModel) -> Void {
         var dictParam = [String:String]()
@@ -228,6 +231,10 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
         }
+    }
+    
+    func updateListImage() {
+        self.getListPhoto()
     }
     
     /*

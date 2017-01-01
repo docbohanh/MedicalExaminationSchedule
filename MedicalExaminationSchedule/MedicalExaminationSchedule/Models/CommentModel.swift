@@ -43,7 +43,7 @@ class CommentModel: NSObject {
             self.rate = 0
         }
         if let v = dict["date_create"] {
-            self.date_create = "\(v)"
+            self.date_create = ProjectCommon.convertDateFromServer(string: v as! String)
         }else {
             self.date_create = ""
         }

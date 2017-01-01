@@ -45,6 +45,8 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     var commentCounter = [Int]()
     var tabIndex = 0
     var introduceArray = [IntroduceModel]()
+    var imagesArray = [ImageModel]()
+    
     
     @IBOutlet weak var informationTableView: UITableView!
     
@@ -62,7 +64,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         
         self.tappedDoctorProfile(profileTabButton)
         self.getServiceDetail()
-        
+        self.getListPhoto()
     }
     func hideKeyboard() {
         view.endEditing(true)
@@ -114,15 +116,6 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
     }
     
-    @IBAction func tappedDoctorProfile(_ sender: Any) {
-        tabIndex = 0
-        tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
-        commentView.isHidden = true
-        informationTableView.isHidden = false
-        imageCollectionView.isHidden = true
-        informationTableView.reloadData()
-    }
-    
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
         tabIndex = 1
         tabLineView.center = CGPoint.init(x: informationTabButton.center.x, y: tabLineView.center.y)
@@ -131,61 +124,69 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         informationTableView.isHidden = false
         commentView.isHidden = true
         informationTableView.reloadData()
+        self.reloadSelectedButton()
+    }
+    
+    @IBAction func tappedDoctorProfile(_ sender: Any) {
+        tabIndex = 0
+        tabLineView.center = CGPoint.init(x: profileTabButton.center.x, y: tabLineView.center.y)
+        commentView.isHidden = true
+        informationTableView.isHidden = false
+        imageCollectionView.isHidden = true
+        informationTableView.reloadData()
+        self.reloadSelectedButton()
     }
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
-        tabIndex = 3
+        tabIndex = 2
         tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
         informationTableView.isHidden = true
         commentView.isHidden = true
         imageCollectionView.isHidden = false
+        imageCollectionView.reloadData()
+        self.reloadSelectedButton()
     }
     @IBAction func tappedComment(_ sender: UIButton) {
-        tabIndex = 4
+        tabIndex = 3
         backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + backgroundInformationView.frame.size.height)
         tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
         informationTableView.isHidden = true
         commentView.isHidden = false
         imageCollectionView.isHidden = true
+        self.reloadSelectedButton()
     }
     
     @IBAction func tappedSendComment(_ sender: UIButton) {
         view.endEditing(true)
         if titleCommentTextField.text == "" {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Chưa nhập tiêu đề", buttonArray: ["OK"], onCompletion: { (index) in
-                
             })
             return
         }
         // Send comment
-        var dictParam = [String : String]()
-        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
-        dictParam["service_id"] = serviceObject?.service_id
-        dictParam["comment_content"] = commentTextView.text
-        dictParam["comment_title"] = titleCommentTextField.text
-        dictParam["rate"] = String.init(format: "%d", rate)
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
-        APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
-            print(response)
-            Lib.removeLoadingView(on: self.view)
-            if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
-                    
-                })
-            } else {
-                let resultDictionary = response.result.value as! [String:AnyObject]
-                if (resultDictionary["status"] as! NSNumber) == 1 {
-                    ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Send comment success", buttonArray: ["OK"], onCompletion: { (index) in
-                        self.getListComment(pageIndex: 0)
-                    })
-                }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
-                    })
-                }
-            }
-        })
-
+        self.sendComment()
+    }
+    
+    func reloadSelectedButton() -> Void {
+        
+        informationTabButton.isSelected = false
+        profileTabButton.isSelected = false
+        imageTabButton.isSelected = false
+        commentTabButton.isSelected = false
+        switch tabIndex {
+        case 0:
+            profileTabButton.isSelected = true
+            break
+        case 1:
+            informationTabButton.isSelected = true
+            break
+        case 2:
+            imageTabButton.isSelected = true
+            break
+        default:
+            commentTabButton.isSelected = true
+            break
+        }
     }
     
     @IBAction func tappedStarButton(_ sender: Any) {
@@ -284,11 +285,14 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return imagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        let object = imagesArray[indexPath.row]
+        item.photoImageView.loadImage(url: object.url!)
+        item.checkButton.isHidden = true
         return item
     }
     
@@ -323,6 +327,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         // Dispose of any resources that can be recreated.
     }
     
+    /* ---------------- API -------------- */
     func getServiceDetail() -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
@@ -398,12 +403,76 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     self.informationTableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
                     })
                 }
             }
         })
 
+    }
+    
+    func sendComment() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["service_id"] = serviceObject?.service_id
+        dictParam["comment_content"] = commentTextView.text
+        dictParam["comment_title"] = titleCommentTextField.text
+        dictParam["rate"] = String.init(format: "%d", rate)
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.postDataToURL(url: COMMENT, parameters: dictParam, onCompletion: { (response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            if response.result.error != nil {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    
+                })
+            } else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Send comment success", buttonArray: ["OK"], onCompletion: { (index) in
+                        self.getListComment(pageIndex: 0)
+                    })
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
+    }
+    
+    func getListPhoto() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["service_id"] = serviceObject?.service_id
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.getDataToURL(url: IMAGE_SERVICE, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    if self.imagesArray.count > 0 {
+                        self.imagesArray.removeAll()
+                    }
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = ImageModel.init(dict: item)
+                        self.imagesArray += [newsObject]
+                    }
+                    self.imageCollectionView.reloadData()
+                }else {
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        
+                    })
+                }
+            }
+        })
     }
     
     func counterStar(array:[CommentModel]) -> Void {

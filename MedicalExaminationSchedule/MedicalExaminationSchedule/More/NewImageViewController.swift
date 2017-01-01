@@ -9,6 +9,10 @@
 import UIKit
 import Photos
 
+protocol NewImageDelegate {
+    func updateListImage() -> Void
+}
+
 private extension UICollectionView {
     func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
         let allLayoutAttributes = collectionViewLayout.layoutAttributesForElements(in: rect)!
@@ -33,11 +37,15 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
     var photoArray = [AnyObject]()
     var selectedImageArray = [UIImage]()
     var selectedTag = [Int]()
+    var userProfile : UserModel?
+    var delegate : NewImageDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        doctorNameLabel.text = userProfile?.user_display_name
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
         resetCachedAssets()
         
@@ -234,7 +242,8 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
             if self.selectedImageArray.count > 0 {
                 self.updateAvatarUser(imagePost: self.selectedImageArray[0])
             }else {
-                ProjectCommon.initAlertView(viewController: self, title: "Finish", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Thêm ảnh thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                    self.delegate?.updateListImage()
                     _ = self.navigationController?.popViewController(animated: true)
                 })
                 if response.result.error != nil {
