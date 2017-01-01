@@ -88,7 +88,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedSignInWithGoogle:" destination="Trf-25-esx" eventType="touchUpInside" id="geH-VW-DVN"/>
-                                    <segue destination="3Qx-Fk-DSi" kind="show" id="KDV-C2-Ij4"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_google_plus" translatesAutoresizingMaskIntoConstraints="NO" id="SSF-rc-5wR">
@@ -129,7 +128,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedSignInWithFacebook:" destination="Trf-25-esx" eventType="touchUpInside" id="bMz-XB-YLe"/>
-                                    <segue destination="3Qx-Fk-DSi" kind="show" id="Rma-cH-kEa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQg-Ci-mxY">
@@ -844,7 +842,4 @@
         <image name="tab_bar_background" width="375" height="49"/>
         <image name="tab_bar_selected" width="93" height="49"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="KDV-C2-Ij4"/>
-    </inferredMetricsTieBreakers>
 </document>
