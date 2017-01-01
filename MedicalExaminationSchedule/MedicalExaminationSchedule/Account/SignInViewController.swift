@@ -85,8 +85,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
         dictParam["email"] = userNameTextField.text
         let datastring = ProjectCommon.sha256(string: passwordTextField.text!)
-//        dictParam["password"] = datastring as String?
-        dictParam["password"] = passwordTextField.text
+        dictParam["password"] = datastring as String?
+//        dictParam["password"] = passwordTextField.text
         self.callLoginApi(dictParam: dictParam)
     }
     

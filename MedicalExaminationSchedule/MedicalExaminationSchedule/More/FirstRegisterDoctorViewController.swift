@@ -199,9 +199,11 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         dataArray[textField.tag] = textField.text!
-        if keyArray[textField.tag] == "work_address" {
+        if keyArray[textField.tag] == "corporation" {
             // tìm kiểm để ra lat long
-            
+            let mapView = Bundle.main.loadNibNamed("AddressMapView", owner: self, options: nil)?.first as! AddressMapView
+            mapView.searchLocationByAddress(address: textField.text ?? "")
+            self.view.addSubview(mapView)
         }
     }
     
