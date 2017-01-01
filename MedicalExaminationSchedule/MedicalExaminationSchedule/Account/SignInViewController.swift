@@ -55,6 +55,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
 
             //User is not logged-in. Allow the user for login using FB.
         }
+        if (UserDefaults.standard.object(forKey: "token_id") != nil) {
+            self.performSegue(withIdentifier: "ShowTabBar", sender: self)
+        }
     }
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
@@ -193,7 +196,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     func loginServerWithFacebook(tokenFb:String) -> Void {
         var dictParam = [String : String]()
         dictParam["type"] = USER_TYPE.userTypeFacebook.rawValue
-        dictParam["social_token_id"] = passwordTextField.text
+        dictParam["social_token_id"] = tokenFb
         self.callLoginApi(dictParam: dictParam)
     }
     
@@ -204,7 +207,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
-                    
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -213,6 +215,15 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
                     UserDefaults.standard.set(value["token_id"], forKey: "token_id")
                     self.performSegue(withIdentifier: "ShowTabBar", sender: self)
                 }else {
+                    if (resultDictionary["status"] as! NSNumber) == -1 {
+                        if (dictParam["type"] == USER_TYPE.userTypeFacebook.rawValue || dictParam["type"] == USER_TYPE.userTypeGoogle.rawValue) {
+                            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileWithFacebookViewController")as! UpdateProfileWithFacebookViewController
+                            vc.social_token_id = dictParam["social_token_id"]
+                            self.navigationController?.pushViewController(vc, animated: true)
+                            return
+                        }
+                    }
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
                     })
