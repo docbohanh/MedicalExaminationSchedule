@@ -29,6 +29,8 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     var userProfile : UserModel?
     var changeBirthdayView :ChooseBirthdayView?
     var appdelegate = AppDelegate()
+    var lat : Float = 0.0
+    var lng : Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,6 +199,10 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         dataArray[textField.tag] = textField.text!
+        if keyArray[textField.tag] == "work_address" {
+            // tìm kiểm để ra lat long
+            
+        }
     }
     
     /* ========== PROFILE CELL DELEGATE =========== */
@@ -216,6 +222,8 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
         }
+        dictParam["lat"] = "\(lat)"
+        dictParam["lng"] = "\(lng)"
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.postDataToURL(url: USER_DOCTOR, parameters: dictParam, onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
