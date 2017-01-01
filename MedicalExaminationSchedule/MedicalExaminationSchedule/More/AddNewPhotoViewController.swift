@@ -83,6 +83,9 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
                 imageManager.requestImageData(for: asset, options: options, resultHandler: {(data,identifier,orientationImage,info:[AnyHashable : Any]? ) in
                     if data != nil {
                         let image = UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            item.photoImageView.image = image
+                        }
                     }
                 
                 })

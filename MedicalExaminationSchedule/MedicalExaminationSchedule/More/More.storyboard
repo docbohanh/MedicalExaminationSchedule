@@ -1455,6 +1455,73 @@
             </objects>
             <point key="canvasLocation" x="629" y="2328"/>
         </scene>
+        <!--Asset Grid View Controller-->
+        <scene sceneID="pSk-ZM-0KH">
+            <objects>
+                <collectionViewController storyboardIdentifier="AssetGridViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9rT-UV-oqB" customClass="AssetGridViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="N9l-po-FSA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JGy-Eh-GJ7">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridViewCell" id="dOd-zl-CGS" customClass="GridViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-yg-fbv">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-h9-ZRY">
+                                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" placeholder="YES" id="4Ha-RT-7H9"/>
+                                                <constraint firstAttribute="width" constant="28" placeholder="YES" id="YEw-aj-JUx"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="sS6-h9-ZRY" firstAttribute="leading" secondItem="dOd-zl-CGS" secondAttribute="leading" id="1cb-y6-Etc"/>
+                                    <constraint firstItem="YXR-yg-fbv" firstAttribute="top" secondItem="dOd-zl-CGS" secondAttribute="top" id="Mcc-73-1n7"/>
+                                    <constraint firstAttribute="trailing" secondItem="YXR-yg-fbv" secondAttribute="trailing" id="Nna-hd-fut"/>
+                                    <constraint firstItem="sS6-h9-ZRY" firstAttribute="top" secondItem="dOd-zl-CGS" secondAttribute="top" id="Uhq-2f-VQP"/>
+                                    <constraint firstAttribute="bottom" secondItem="YXR-yg-fbv" secondAttribute="bottom" id="abn-7z-zhX"/>
+                                    <constraint firstItem="YXR-yg-fbv" firstAttribute="leading" secondItem="dOd-zl-CGS" secondAttribute="leading" id="v8v-sa-jsN"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="YXR-yg-fbv" id="mIS-dB-BQy"/>
+                                    <outlet property="livePhotoBadgeImageView" destination="sS6-h9-ZRY" id="cHJ-b6-O3k"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="9rT-UV-oqB" id="kvl-0x-ZFv"/>
+                            <outlet property="delegate" destination="9rT-UV-oqB" id="ErW-wo-RbM"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="3wB-Iz-c9n"/>
+                    <connections>
+                        <outlet property="addButtonItem" destination="m8M-p5-FXx" id="MOa-3s-bzA"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPS-k6-8Nl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="add" id="m8M-p5-FXx">
+                    <connections>
+                        <action selector="addAsset:" destination="9rT-UV-oqB" id="nJ7-NI-gNO"/>
+                    </connections>
+                </barButtonItem>
+            </objects>
+            <point key="canvasLocation" x="249" y="-85"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_add" width="22" height="22"/>

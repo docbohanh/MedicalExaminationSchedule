@@ -96,7 +96,7 @@ class ProjectCommon: NSObject {
         return shaHex
     }
     
-    func showTimeTwoCharacter(time:String) -> String {
+    static func showTimeTwoCharacter(time:String) -> String {
         if time.characters.count > 1 {
             return time
         }else {
@@ -104,7 +104,17 @@ class ProjectCommon: NSObject {
         }
     }
     
-    func converDateFromServer(string:String) -> Void {
+    static func isExpireDate(timeString:String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let myDate = dateFormatter.date(from: timeString)
+        let currentDate = Date()
+        let result = currentDate.compare(myDate!)
+        if result == ComparisonResult.orderedDescending {
+            return true
+        }else {
+            return false
+        }
         
     }
 }

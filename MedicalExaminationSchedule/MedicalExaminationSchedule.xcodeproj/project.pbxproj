@@ -87,8 +87,6 @@
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
 		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
 		D23A18291E06374400E3DA8F /* AddNewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */; };
-		D23A182B1E067C8000E3DA8F /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */; };
-		D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */; };
 		D23A182F1E06917E00E3DA8F /* FetchAllPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */; };
 		D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D242084E1E12D7B100C7760A /* IntroduceModel.swift */; };
 		D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27DE73F1E16B7B800169D4E /* CKCalendarView.m */; };
@@ -115,6 +113,9 @@
 		D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */; };
 		D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */; };
 		D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */; };
+		D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */; };
+		D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */; };
+		D2E89B811E19006200DDA4A3 /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B801E19006200DDA4A3 /* AssetViewController.swift */; };
 		D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30511DFD52BC00287924 /* APIManager.swift */; };
 		D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30531DFD96DF00287924 /* NSVBarController.swift */; };
 		D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */; };
@@ -261,8 +262,6 @@
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
 		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
 		D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPhotoViewController.swift; sourceTree = "<group>"; };
-		D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
-		D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
 		D23A182E1E06917E00E3DA8F /* FetchAllPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAllPhoto.swift; sourceTree = "<group>"; };
 		D242084E1E12D7B100C7760A /* IntroduceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceModel.swift; sourceTree = "<group>"; };
 		D27DE73E1E16B7B800169D4E /* CKCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCalendarView.h; sourceTree = "<group>"; };
@@ -290,6 +289,9 @@
 		D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonTableViewCell.swift; sourceTree = "<group>"; };
+		D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
+		D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
+		D2E89B801E19006200DDA4A3 /* AssetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		D2EF30511DFD52BC00287924 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		D2EF30531DFD96DF00287924 /* NSVBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVBarController.swift; sourceTree = "<group>"; };
 		D2EF30541DFD96DF00287924 /* NSVTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSVTabBarController.swift; sourceTree = "<group>"; };
@@ -364,10 +366,11 @@
 				8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */,
 				8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */,
 				D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */,
-				D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */,
-				D23A182C1E067E0A00E3DA8F /* GridViewCell.swift */,
 				D27DE7471E16BE8500169D4E /* SettingCalendarViewController.swift */,
 				D21A801F1E16D3DB00DF6077 /* SettingTimeViewController.swift */,
+				D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */,
+				D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */,
+				D2E89B801E19006200DDA4A3 /* AssetViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				84321D911DF7469200CCA4D4 /* FSCalendarScopeHandle.m in Sources */,
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
+				D2E89B811E19006200DDA4A3 /* AssetViewController.swift in Sources */,
 				D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */,
 				84321D891DF7469100CCA4D4 /* FSCalendarCalculator.m in Sources */,
 				84321D861DF7469100CCA4D4 /* FSCalendar.m in Sources */,
@@ -1055,7 +1059,6 @@
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
 				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
-				D23A182B1E067C8000E3DA8F /* AssetGridViewController.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				84321D921DF7469200CCA4D4 /* FSCalendarStickyHeader.m in Sources */,
 				EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */,
@@ -1071,6 +1074,7 @@
 				84321D931DF7469200CCA4D4 /* FSCalendarWeekdayView.m in Sources */,
 				845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */,
 				84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */,
+				D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */,
 				D2A349411E15679D000B7F48 /* UserSearchModel.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
@@ -1089,7 +1093,6 @@
 				84321D871DF7469100CCA4D4 /* FSCalendarAnimator.m in Sources */,
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
-				D23A182D1E067E0A00E3DA8F /* GridViewCell.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				D21A80221E16DA6C00DF6077 /* CalendarTimeObject.swift in Sources */,
 				D2F4A9F41E17589100EE737B /* UIView+Toast.m in Sources */,
@@ -1103,6 +1106,7 @@
 				84321D8D1DF7469100CCA4D4 /* FSCalendarConstants.m in Sources */,
 				D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */,
 				D2F4A9FA1E17A2EE00EE737B /* HMSegmentedControl.m in Sources */,
+				D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */,
 				D27DE7481E16BE8500169D4E /* SettingCalendarViewController.swift in Sources */,
 				D2F4A9E41E1757F500EE737B /* Lib.mm in Sources */,
 				EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */,

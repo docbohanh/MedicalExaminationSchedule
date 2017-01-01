@@ -71,7 +71,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func keyboardWillHidden(notification:NSNotification) {
-        updateButtonBottomConstraint.constant = 15
+        updateButtonBottomConstraint.constant = 0
     }
     
     func createPopup() -> Void {

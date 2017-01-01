@@ -27,7 +27,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func tappedInviteDoctor(_ sender: UIButton) {
-        
+        view.endEditing(true)
         var array = [UserSearchModel]()
         for i in 0..<userArray.count {
             let obj = userArray[i] as UserSearchModel
@@ -42,6 +42,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     @IBAction func tappedSearch(_ sender: Any) {
+        view.endEditing(true)
         if searchtextField.text == "" {
             ProjectCommon.initAlertView(viewController: self, title: "", message: "Hãy gõ từ khoá tìm kiếm", buttonArray: ["OK"], onCompletion: { (index) in
             })

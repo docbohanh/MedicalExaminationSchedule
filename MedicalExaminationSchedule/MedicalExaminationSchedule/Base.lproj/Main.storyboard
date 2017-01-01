@@ -659,6 +659,7 @@
                         <outlet property="phoneTextField" destination="gVS-iF-AS6" id="Dik-h8-lGE"/>
                         <outlet property="registerButton" destination="rbs-yC-QpE" id="lxK-py-yAA"/>
                         <outlet property="scrollView" destination="duv-Td-cGq" id="K8K-z5-349"/>
+                        <outlet property="scrollViewBottomContraint" destination="lfo-tg-Gm8" id="ENz-7c-EHq"/>
                         <outlet property="signInButton" destination="TiG-yw-PnK" id="4Ey-Md-bOW"/>
                     </connections>
                 </viewController>

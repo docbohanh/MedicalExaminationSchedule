@@ -268,7 +268,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             case 2:
                 // Thư mục ảnh
-                self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
+//                self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
+                let storyboard = UIStoryboard.init(name: "More", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "AssetGridViewController")
+                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 3:
                 // Mời bác sỹ tham gia

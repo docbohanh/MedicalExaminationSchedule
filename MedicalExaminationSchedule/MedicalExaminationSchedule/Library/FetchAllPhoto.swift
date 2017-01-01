@@ -18,20 +18,6 @@ public class FetchAllPhoto {
         let options = PHFetchOptions()
         options.includeAllBurstAssets = true
         let collections = PHAssetCollection.fetchAssetCollections(with: .moment, subtype: .any, options: options)
-//        let unapplied = userAlbums.enumerateObjects(_:)
-//        unapplied { (object, count, stop) in
-//            stop.pointee = true
-//            if object is PHAssetCollection {
-//                let obj:PHAssetCollection = object as! PHAssetCollection
-//                
-//                let fetchOptions = PHFetchOptions()
-//                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-//                fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-//                
-//                let newAlbum = AlbumModel(name: obj.localizedTitle!, count: obj.estimatedAssetCount, collection:obj)
-//                album.append(newAlbum)
-//            }
-//        }
         collections.enumerateObjects(_:) { (object, count, stop) in
             stop.pointee = true
             if object is PHAssetCollection {
@@ -46,24 +32,27 @@ public class FetchAllPhoto {
             }
         }
         
-//        userAlbums.enumerateObjects({ (object: AnyObject!, count: Int, stop: UnsafeMutablePointer) in
-//            stop.pointee = true
-//            if object is PHAssetCollection {
-//                let obj:PHAssetCollection = object as! PHAssetCollection
-//                
-//                let fetchOptions = PHFetchOptions()
-//                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-//                fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-//                
-//                let newAlbum = AlbumModel(name: obj.localizedTitle!, count: obj.estimatedAssetCount, collection:obj)
-//                album.append(newAlbum)
-//            }
-//        })
-        
+        let collectionFavorite = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: options)
+        collectionFavorite.enumerateObjects(_:) { (object, count, stop) in
+            stop.pointee = true
+            if object is PHAssetCollection {
+                let obj:PHAssetCollection = object
+                
+                let fetchOptions = PHFetchOptions()
+                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+                fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+                
+                let newAlbum = AlbumModel(name: obj.localizedTitle!, count: obj.estimatedAssetCount, collection:obj)
+                album.append(newAlbum)
+            }
+        }
+
         for item in album {
             print(item)
         }
         return album
     }
+    
+    
 }
 
