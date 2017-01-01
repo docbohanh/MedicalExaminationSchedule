@@ -29,8 +29,8 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     var userProfile : UserModel?
     var changeBirthdayView :ChooseBirthdayView?
     var appdelegate = AppDelegate()
-    var lat : Float = 0.0
-    var lng : Float = 0.0
+    var lat : Float = 20.997092
+    var lng : Float = 105.8593733
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         appdelegate = UIApplication.shared.delegate as! AppDelegate
 
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
-        keyArray += ["name","home_address","birthday","phone","work_address","job","active_code"]
+        keyArray += ["name","address","birthday","phone","corporation","field","active_code"]
         dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
@@ -79,7 +79,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func keyboardWillHidden(notification:NSNotification) {
-        updateButtonBottomConstraint.constant = 15
+        updateButtonBottomConstraint.constant = 0
     }
     
     func createPopup() -> Void {
@@ -239,6 +239,8 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
                     if (status as! NSNumber) == 1 {
                         self.appdelegate.userName = self.dataArray[0]
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                            self.delegate?.registerDoctorSuccess()
+                            _ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {

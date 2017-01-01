@@ -28,6 +28,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     @IBOutlet weak var choosePickerView: UIView!
     @IBOutlet weak var okBirthdayButton: UIButton!
     @IBOutlet weak var chooseBirthdayButton: UIButton!
+    @IBOutlet weak var scrollViewBottomContraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +49,19 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     
     func dismissKeyboard() -> Void {
         view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            scrollViewBottomContraint.constant = keyboardHeight
+            scrollView.layoutIfNeeded()
+        }
+    }
+    
+    func keyboardWillHidden(notification:NSNotification) {
+        scrollViewBottomContraint.constant = 0
+        scrollView.layoutIfNeeded()
     }
     
     override func viewDidLayoutSubviews() {

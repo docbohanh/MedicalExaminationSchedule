@@ -14,9 +14,9 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var tabLineView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var cancelTabButton: UIButton!
     @IBOutlet weak var bookedTabButton: UIButton!
     @IBOutlet weak var endTabButton: UIButton!
+    @IBOutlet weak var cancelTabButton: UIButton!
     
     var tabIndex = 0
     var bookCanceledArray = [CalendarBookModel]()
@@ -29,21 +29,32 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
 
         // Do any additional setup after loading the view.
         self.getAllBook()
-    }
-    @IBAction func cancelTabSelected(_ sender: Any) {
-        tabIndex = 0
-        tabLineView.center = CGPoint.init(x: cancelTabButton.center.x, y: tabLineView.center.y)
-        tableView.reloadData()
+        tableView.tableFooterView = UIView.init(frame: CGRect.zero)
     }
  
     @IBAction func bookedTabSelected(_ sender: Any) {
-        tabIndex = 1
+        tabIndex = 0
+        bookedTabButton.isSelected = true
+        endTabButton.isSelected = false
+        cancelTabButton.isSelected = false
         tabLineView.center = CGPoint.init(x: bookedTabButton.center.x, y: tabLineView.center.y)
         tableView.reloadData()
     }
     @IBAction func endTabSelected(_ sender: Any) {
-        tabIndex = 2
+        tabIndex = 1
+        bookedTabButton.isSelected = false
+        endTabButton.isSelected = true
+        cancelTabButton.isSelected = false
         tabLineView.center = CGPoint.init(x: endTabButton.center.x, y: tabLineView.center.y)
+        tableView.reloadData()
+    }
+    
+    @IBAction func cancelTabSelected(_ sender: Any) {
+        tabIndex = 2
+        bookedTabButton.isSelected = false
+        endTabButton.isSelected = false
+        cancelTabButton.isSelected = true
+        tabLineView.center = CGPoint.init(x: cancelTabButton.center.x, y: tabLineView.center.y)
         tableView.reloadData()
     }
     
@@ -116,6 +127,10 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                             self.bookedArray.append(newsObject)
                         }else {
                             self.bookCanceledArray.append(newsObject)
+                        }
+                        let dateToCompare = String.init(format: "%@ %@", newsObject.book_time!, newsObject.end_time!)
+                        if ProjectCommon.isExpireDate(timeString: dateToCompare) {
+                            self.bookEndedArray.append(newsObject)
                         }
                     }
                     self.tableView.reloadData()

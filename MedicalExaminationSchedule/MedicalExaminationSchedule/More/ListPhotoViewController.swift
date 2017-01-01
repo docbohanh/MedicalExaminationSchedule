@@ -13,6 +13,10 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    var imagesArray = [String]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +46,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return imagesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

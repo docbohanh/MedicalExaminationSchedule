@@ -74,6 +74,11 @@ class CalendarBookModel: NSObject {
         }else {
             self.start_time = ""
         }
+        if let v = dict["end_time"] {
+            self.end_time = "\(v)"
+        }else {
+            self.end_time = ""
+        }
         if let v = dict["status"] {
             self.status = "\(v)"
         }else {

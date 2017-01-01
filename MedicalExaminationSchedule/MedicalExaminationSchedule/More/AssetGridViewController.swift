@@ -74,12 +74,17 @@ class AssetGridViewController: UICollectionViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let destination = segue.destination as? AssetViewController
-//            else { fatalError("unexpected view controller for segue") }
-//
-//        let indexPath = collectionView!.indexPath(for: sender as! UICollectionViewCell)!
-//        destination.asset = fetchResult.object(at: indexPath.item)
-//        destination.assetCollection = assetCollection
+        if #available(iOS 9.1, *) {
+            guard let destination = segue.destination as? AssetViewController
+                else { fatalError("unexpected view controller for segue") }
+            let indexPath = collectionView!.indexPath(for: sender as! UICollectionViewCell)!
+            destination.asset = fetchResult.object(at: indexPath.item)
+            destination.assetCollection = assetCollection
+        } else {
+            // Fallback on earlier versions
+        }
+
+        
     }
 
     // MARK: UICollectionView
@@ -187,6 +192,40 @@ class AssetGridViewController: UICollectionViewController {
         } else {
             return ([new], [old])
         }
+    }
+
+    // MARK: UI Actions
+
+    @IBAction func addAsset(_ sender: AnyObject?) {
+
+        // Create a dummy image of a random solid color and random orientation.
+        let size = (arc4random_uniform(2) == 0) ?
+            CGSize(width: 400, height: 300) :
+            CGSize(width: 300, height: 400)
+        if #available(iOS 10.0, *) {
+            let renderer = UIGraphicsImageRenderer(size: size)
+            let image = renderer.image { context in
+                UIColor(hue: CGFloat(arc4random_uniform(100))/100,
+                        saturation: 1, brightness: 1, alpha: 1).setFill()
+                context.fill(context.format.bounds)
+                
+            }
+            // Add it to the photo library.
+            PHPhotoLibrary.shared().performChanges({
+                let creationRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                if let assetCollection = self.assetCollection {
+                    let addAssetRequest = PHAssetCollectionChangeRequest(for: assetCollection)
+                    addAssetRequest?.addAssets([creationRequest.placeholderForCreatedAsset!] as NSArray)
+                }
+            }, completionHandler: {success, error in
+                if !success { print("error creating asset: \(error)") }
+            })
+        } else {
+            // Fallback on earlier versions
+        }
+        
+
+        
     }
 
 }

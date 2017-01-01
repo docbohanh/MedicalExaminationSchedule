@@ -76,7 +76,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func keyboardWillHidden(notification:NSNotification) {
-        updateButtonBottomConstraint.constant = 15
+        updateButtonBottomConstraint.constant = 0
     }
     
     func createPopup() -> Void {
