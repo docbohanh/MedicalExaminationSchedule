@@ -23,7 +23,7 @@ class InformationDoctorViewController: UIViewController,UITableViewDelegate,UITa
         self.tabBarController?.tabBar.isHidden = true
     }
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        _ = navigationController?.popToRootViewController(animated: true)
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2

@@ -47,10 +47,20 @@ class ProjectCommon: NSObject {
         return dateFormatter.string(from: date)
     }
     
+    static func subStringDate(string:String) -> String {
+        var newString = string
+        let index = newString.index(newString.startIndex, offsetBy: 10)
+        if newString.characters.count > 10 {
+            newString = newString.substring(to: index)
+        }
+        return newString
+    }
+    
     static func convertStringDate(string: String) -> Date {
+        let newString = ProjectCommon.subStringDate(string: string)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.date(from: string)!
+        return dateFormatter.date(from: newString)!
     }
     
     static func isValidEmail(testStr:String) -> Bool {

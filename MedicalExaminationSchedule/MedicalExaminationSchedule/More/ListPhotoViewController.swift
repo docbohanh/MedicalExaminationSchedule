@@ -31,7 +31,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
     @IBAction func tappedAddButton(_ sender: Any) {

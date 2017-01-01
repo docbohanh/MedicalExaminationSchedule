@@ -86,6 +86,7 @@ class CalendarBookModel: NSObject {
         }
         if let v = dict["book_time"] {
             self.book_time = "\(v)"
+            self.book_time = ProjectCommon.subStringDate(string: self.book_time!)
         }else {
             self.book_time = ""
         }

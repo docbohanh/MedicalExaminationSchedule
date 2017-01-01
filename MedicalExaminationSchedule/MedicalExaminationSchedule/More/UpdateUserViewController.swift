@@ -8,11 +8,12 @@
 
 import UIKit
 
-class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, BottomViewDelegate,ChangeAvatarViewDelegate, SelectGengerTableViewCellDelegate {
+class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, ChangeAvatarViewDelegate, SelectGengerTableViewCellDelegate,BottomViewCellDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundPopUpView: UIView!
+    @IBOutlet weak var updateButtonBottomConstraint: NSLayoutConstraint!
     
     var titleArray = [String]()
     var dataArray = [String]()
@@ -39,19 +40,18 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         keyArray += ["user_display_name","home_address","birthday","phone","email","sex"]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
-        
-        let bottomButtonView = UINib(nibName: "BottomView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! BottomView
-        bottomButtonView.delegate = self
-        bottomButtonView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 170)
-        tableView.tableFooterView = bottomButtonView
+
         // register cell
         tableView.register(UINib.init(nibName: "ProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.register(UINib.init(nibName: "SelectGenderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SelectGenderTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
+        tableView.register(UINib.init(nibName: "BottomButtonTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "BottomButtonTableViewCell")
         self.createPopup()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +66,17 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            updateButtonBottomConstraint.constant = keyboardHeight
+        }
+    }
+    
+    func keyboardWillHidden(notification:NSNotification) {
+        updateButtonBottomConstraint.constant = 15
     }
     
     func createPopup() -> Void {
@@ -127,20 +138,21 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count + 1
+        return titleArray.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var strIdentifier = ""
         switch indexPath.row {
         case 0:
-            strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.avatarImageView.image = imageAvatar
             cell.delegate = self
             return cell
+        case (titleArray.count+1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BottomButtonTableViewCell", for: indexPath) as! BottomButtonTableViewCell
+            cell.delegate = self
+            return cell
         case titleArray.count:
-            strIdentifier = "SelectGenderTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row-1]
             cell.delegate = self
@@ -151,7 +163,6 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             return cell
         default:
-            strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
@@ -173,7 +184,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 || indexPath.row == titleArray.count + 1 {
             return
         }
         let key = keyArray[indexPath.row - 1]
@@ -184,7 +195,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     /* =========== TEXT FIELD ========*/
@@ -249,7 +260,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func cancel() {
         view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
     /* ============= SELECT GENDER DELEGATE ============ */

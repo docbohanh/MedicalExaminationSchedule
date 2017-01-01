@@ -27,7 +27,7 @@ class SetupScheduleViewController: UIViewController,FSCalendarDataSource, FSCale
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func bookSchedule() {
