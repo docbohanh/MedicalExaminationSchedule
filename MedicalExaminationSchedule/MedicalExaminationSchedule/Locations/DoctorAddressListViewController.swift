@@ -75,26 +75,44 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         currentLocation = locations.last!
         //Update location to server
         //make new map after updated location
-        let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-        let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 10)
-        mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: segmentView.frame.origin.y + segmentView.frame.height, width: doctorAddressTableView.frame.size.width, height:view.frame.size.height - segmentView.frame.origin.y - segmentView.frame.height), camera: camera)
-        mapView?.isMyLocationEnabled = true
-        
-        let getPositionButton = UIButton.init(type: UIButtonType.custom)
-        getPositionButton.frame = CGRect.init(x: 30, y: self.view.frame.size.height - 100, width: self.view.frame.size.width - 60, height: 40)
-        getPositionButton.layer.cornerRadius = getPositionButton.frame.height/2
-        getPositionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        getPositionButton.setTitle("LẤY PHƯƠNG HƯỚNG", for:  UIControlState.normal)
-        getPositionButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
-        mapView?.addSubview(getPositionButton)
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = center
-        marker.map = mapView
+        if mapView == nil {
+            let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 14)
+
+            mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: segmentView.frame.origin.y + segmentView.frame.height, width: doctorAddressTableView.frame.size.width, height:view.frame.size.height - segmentView.frame.origin.y - segmentView.frame.height), camera: camera)
+            mapView?.isMyLocationEnabled = true
+            let getPositionButton = UIButton.init(type: UIButtonType.custom)
+            getPositionButton.frame = CGRect.init(x: 30, y: (mapView?.frame.size.height)! - 100, width: self.view.frame.size.width - 60, height: 40)
+            getPositionButton.layer.cornerRadius = getPositionButton.frame.height/2
+            getPositionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+            getPositionButton.setTitle("LẤY PHƯƠNG HƯỚNG", for:  UIControlState.normal)
+            getPositionButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
+            mapView?.addSubview(getPositionButton)
+            
+            // Creates a marker in the center of the map.
+
+        }
         locationManager.stopUpdatingLocation()
     }
     
+    func initMapview(locations : [ServiceModel]) {
+        mapView?.clear()
+        let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+        let marker = GMSMarker()
+        marker.position = center
+        marker.map = mapView
+        marker.icon = UIImage(named: "ic_location_active")
+        for location : ServiceModel in locations {
+            let lat = Double(location.latitude!)! as CLLocationDegrees
+            let lng = Double(location.longitude!)! as CLLocationDegrees
+            let marker = GMSMarker()
+            let center = CLLocationCoordinate2D(latitude:lat, longitude:lng)
+            marker.position = center
+            marker.title = location.name
+            marker.snippet = location.address
+            marker.icon = UIImage(named: "ic_location")
+            marker.map = mapView
+        }
+    }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("get location falure")
     }
@@ -133,6 +151,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
         if serviceHospitalArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bv")
+        } else {
+            self.initMapview(locations: serviceHospitalArray)
         }
         self.resetSearchBar()
     }
@@ -142,6 +162,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         tabLineView.center = CGPoint.init(x: clinicButton.center.x, y: tabLineView.center.y)
         if serviceClinicArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "pk")
+        } else {
+            self.initMapview(locations: serviceClinicArray)
         }
         self.resetSearchBar()
     }
@@ -151,6 +173,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
         if serviceDrugStoreArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "nt")
+        } else {
+            self.initMapview(locations: serviceDrugStoreArray)
         }
         self.resetSearchBar()
     }
@@ -160,6 +184,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
         if serviceDoctorArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bs")
+        } else {
+            self.initMapview(locations: serviceDoctorArray)
         }
         self.resetSearchBar()
     }
@@ -287,17 +313,26 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                     switch self.selectedTab {
                     case 0:
                         self.serviceHospitalArray += tempArray
+                        self.initMapview(locations: self.serviceHospitalArray)
+                        self.locationManager.startUpdatingLocation()
                         break
                     case 1:
                         self.serviceClinicArray += tempArray
+                        self.initMapview(locations: self.serviceClinicArray)
+                        self.locationManager.startUpdatingLocation()
                         break
                     case 2:
                         self.serviceDrugStoreArray += tempArray
+                        self.initMapview(locations: self.serviceDrugStoreArray)
+                        self.locationManager.startUpdatingLocation()
                         break
                     default:
                         self.serviceDoctorArray += tempArray
+                        self.initMapview(locations: self.serviceDoctorArray)
+                        self.locationManager.startUpdatingLocation()
                         break
                     }
+                    
                     self.doctorAddressTableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in

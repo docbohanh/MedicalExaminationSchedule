@@ -41,7 +41,7 @@ let CALENDAR_BOOK_UPDATE = "calendar/book/update"
 
 let IMAGE_SERVICE = "image/service"
 let IMAGE_USER = "image/user"
-let googleKey = "AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s"
+let googleKey = "AIzaSyCupPZeGH2WyU6-NJbqIx9oxHdyYKH9iRs"
 
 let TAG = "tag"
 

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 protocol FirstRegisterDoctorVCDelegate {
     func registerDoctorSuccess() -> Void
 }
 
-class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, ChangeAvatarViewDelegate, BottomViewCellDelegate {
+class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, ChangeAvatarViewDelegate, BottomViewCellDelegate,CLLocationManagerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -29,12 +31,15 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     var userProfile : UserModel?
     var changeBirthdayView :ChooseBirthdayView?
     var appdelegate = AppDelegate()
-    var lat : Float = 20.997092
-    var lng : Float = 105.8593733
+    var lat : Double = 20.997092
+    var lng : Double = 105.8593733
+    var locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
+    var mapView = GMSMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        locationManager.delegate = self
         // Do any additional setup after loading the view.
         appdelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -201,9 +206,53 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         dataArray[textField.tag] = textField.text!
         if keyArray[textField.tag] == "corporation" {
             // tìm kiểm để ra lat long
-            let mapView = Bundle.main.loadNibNamed("AddressMapView", owner: self, options: nil)?.first as! AddressMapView
-            mapView.searchLocationByAddress(address: textField.text ?? "")
-            self.view.addSubview(mapView)
+            if (textField.text?.characters.count)! > 0 {
+                self.searchLocationByAddress(address: textField.text!, onCompletion: {response in
+                    if response.result != nil {
+                        
+                        let valueObject = response.result.value
+                        if valueObject != nil {
+                            let value = response.result.value as! [String : AnyObject]
+                            let results = value["results"] as! [AnyObject]
+                            if results != nil {
+                                let geometry = results.first?["geometry"]
+                                if geometry != nil{
+                                    let location = geometry as? [String:AnyObject]
+                                    if location != nil {
+                                        let subLocation = location?["location"] as? [String:AnyObject]
+                                        if subLocation != nil {
+                                            self.lat = subLocation?["lat"] as! Double
+                                            self.lng = subLocation?["lng"] as! Double
+                                            self.initMapView()
+                                        } else {
+                                            ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                                            })
+                                        }
+
+                                    } else {
+                                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                                        })
+                                    }
+                                } else {
+                                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                                    })
+                                }
+                                
+                            } else {
+                                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                                })
+                            }
+                        } else {
+                            ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                            })
+                        }
+                    } else {
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xác định địa điểm này trên bản đồ", buttonArray: ["Đóng"], onCompletion: {_ in
+                        })
+                    }
+
+                })
+            }
         }
     }
     
@@ -238,7 +287,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
                         self.appdelegate.userName = self.dataArray[0]
-                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
                             self.delegate?.registerDoctorSuccess()
                             _ = self.navigationController?.popViewController(animated: true)
                         })
@@ -366,14 +415,69 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         })
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+    /**
+     Show Address map view
      */
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        currentLocation = locations.last!
+//        //Update location to server
+//        //make new map after updated location
+//        let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+//        let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 10)
+//        mapView? = GMSMapView.map(withFrame:CGRect.init(x: 0, y: 0, width: view.frame.width, height:view.frame.height), camera: camera)
+//        mapView?.isMyLocationEnabled = true
+//        
+//        
+//        let confirmButton = UIButton.init(type: UIButtonType.custom)
+//        confirmButton.frame = CGRect.init(x: 30, y: view.frame.size.height - 100, width: view.frame.size.width - 60, height: 40)
+//        confirmButton.layer.cornerRadius = (confirmButton
+//            .frame.height)/2
+//        confirmButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+//        confirmButton.setTitle("XÁC NHẬN", for:  UIControlState.normal)
+//        confirmButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
+//        mapView?.addSubview(confirmButton)
+//        
+//        // Creates a marker in the center of the map.
+//        let marker = GMSMarker()
+//        marker.position = center
+//        marker.map = mapView!
+//        locationManager.stopUpdatingLocation()
+//    }
+    
+    func initMapView() {
+        let center = CLLocationCoordinate2D(latitude:lat, longitude: lng)
+        let camera = GMSCameraPosition.camera(withLatitude:
+            lat, longitude: lng, zoom: 14)
+        mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: 0, width: view.frame.width, height:view.frame.height), camera: camera)
+        mapView.isMyLocationEnabled = true
+        self.view.addSubview(mapView)
+        
+        let confirmButton = UIButton.init(type: UIButtonType.custom)
+        confirmButton.frame = CGRect.init(x: 30, y: view.frame.size.height - 100, width: view.frame.size.width - 60, height: 40)
+        confirmButton.layer.cornerRadius = (confirmButton
+            .frame.height)/2
+        confirmButton.addTarget(self, action: #selector(finishedConfirmLocation), for: UIControlEvents.touchUpInside)
+        confirmButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        confirmButton.setTitle("XÁC NHẬN", for:  UIControlState.normal)
+        confirmButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
+        mapView.addSubview(confirmButton)
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = center
+        marker.map = mapView
 
+    }
+    
+    func finishedConfirmLocation() {
+        mapView.removeFromSuperview()
+    }
+    
+    func searchLocationByAddress(address:String,onCompletion: @escaping AlamofireResponse) {
+        let parameter = ["address":address,"key":googleKey]
+        APIManager.sharedInstance.getDataFromFullUrl(url: "https://maps.googleapis.com/maps/api/geocode/json", parameters: parameter, onCompletion: { response in
+            onCompletion(response)
+            print(response)
+        })
+    }
 }

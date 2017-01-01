@@ -12,6 +12,8 @@ import GooglePlaces
 import GoogleMaps
 import Alamofire
 import FacebookCore
+import FacebookLogin
+import FacebookShare
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userName : String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         GMSServices.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
         GMSPlacesClient.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -39,9 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window!.rootViewController = rootNavigation
         }
         // Override point for customization after application launch.
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return SDKApplicationDelegate.shared.application(application,
+                                                         open: url,
+                                                         sourceApplication: sourceApplication,
+                                                         annotation: annotation)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

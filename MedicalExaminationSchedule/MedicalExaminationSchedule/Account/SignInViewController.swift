@@ -47,6 +47,14 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (FBSDKAccessToken.current()) != nil{
+            print("da dong y cho phep su dung facebook")
+            //User is already logged-in. Please do your additional code/task.
+        }else{
+            print("Khong dong y")
+
+            //User is not logged-in. Allow the user for login using FB.
+        }
     }
     
     func setupComponent() -> Void {
@@ -124,7 +132,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         case .success:
             // Log in user
             let fbAccessToken = FBSDKAccessToken.current().tokenString as String
-            print (fbAccessToken)
+            print ("Token Id" + fbAccessToken)
             self.loginServerWithFacebook(tokenFb: fbAccessToken)
             break
         }
@@ -189,4 +197,5 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         })
 
     }
+    
 }
