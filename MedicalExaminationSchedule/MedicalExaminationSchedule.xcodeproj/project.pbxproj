@@ -39,6 +39,8 @@
 		84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D971DF752D000CCA4D4 /* AppTheme.swift */; };
 		84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D981DF752D000CCA4D4 /* ProjectCommon.swift */; };
 		843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843292CA1DFF3778004C44A3 /* CustomUITextField.swift */; };
+		844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844520B51E18E53C00444AA1 /* AddressMapView.swift */; };
+		844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844520B71E18E55800444AA1 /* AddressMapView.xib */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
@@ -207,6 +209,8 @@
 		84321D971DF752D000CCA4D4 /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		84321D981DF752D000CCA4D4 /* ProjectCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCommon.swift; sourceTree = "<group>"; };
 		843292CA1DFF3778004C44A3 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
+		844520B51E18E53C00444AA1 /* AddressMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapView.swift; sourceTree = "<group>"; };
+		844520B71E18E55800444AA1 /* AddressMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressMapView.xib; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -362,6 +366,8 @@
 				D29E8C421DF729860000815B /* UpdateUserViewController.swift */,
 				8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */,
 				8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */,
+				844520B51E18E53C00444AA1 /* AddressMapView.swift */,
+				844520B71E18E55800444AA1 /* AddressMapView.xib */,
 				8BF746CC1DF83BB4006C9B48 /* ListPhotoViewController.swift */,
 				D23A18281E06374400E3DA8F /* AddNewPhotoViewController.swift */,
 				D23A182A1E067C8000E3DA8F /* AssetGridViewController.swift */,
@@ -868,6 +874,7 @@
 				8BF746D11DF83CC8006C9B48 /* PhotoCollectionViewCell.xib in Resources */,
 				845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */,
 				D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */,
+				844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */,
 				EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1097,6 +1104,7 @@
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
 				D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */,
+				844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */,
 				D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */,
 				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
 				84321D8B1DF7469100CCA4D4 /* FSCalendarCollectionView.m in Sources */,

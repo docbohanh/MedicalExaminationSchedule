@@ -124,6 +124,16 @@ class APIManager: NSObject,URLSessionDelegate {
         }
     }
 
+    func getDataFromFullUrl(url : String,parameters : [String:String],onCompletion: @escaping AlamofireResponse) {
+        let parameterString = parameters.stringFromHttpParameters()
+        let requestURL =  url + "?" + parameterString
+        
+        APIManager.Manager.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                onCompletion(response)
+        }
+    }
+    
     func putDataToURL(url:String, parameters:[String:String], onCompletion: @escaping AlamofireResponse) {
         let parameterString = parameters.stringFromHttpParameters()
         let requestURL = REST_API_URL + url + "?" + parameterString

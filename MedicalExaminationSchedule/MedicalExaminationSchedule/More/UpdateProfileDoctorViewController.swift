@@ -203,6 +203,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         dataArray[textField.tag] = textField.text!
+        
     }
     
     /* ========== PROFILE CELL DELEGATE =========== */
