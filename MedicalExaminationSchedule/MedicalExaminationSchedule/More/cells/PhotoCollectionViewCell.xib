@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,15 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestPhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-bQ-xq5">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KBj-bQ-xq5">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eom-KO-aey">
-                        <rect key="frame" x="120" y="0.0" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eom-KO-aey">
+                        <rect key="frame" x="105" y="0.0" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="fYN-cM-OJz"/>
-                            <constraint firstAttribute="height" constant="30" id="u0N-Im-cRy"/>
+                            <constraint firstAttribute="width" constant="45" id="fYN-cM-OJz"/>
+                            <constraint firstAttribute="height" constant="45" id="u0N-Im-cRy"/>
                         </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="10" maxY="0.0"/>
                         <state key="normal" image="ic_checkbox_image"/>
                         <state key="selected" image="ic_checkbox_list_active"/>
                         <connections>
@@ -34,7 +36,7 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.86274509799999999" green="0.1137254902" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eom-KO-aey" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3dU-bH-let"/>
                 <constraint firstItem="KBj-bQ-xq5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OBF-JD-xVw"/>
@@ -52,7 +54,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="TestPhoto.png" width="112" height="112"/>
         <image name="ic_checkbox_image" width="16" height="16"/>
         <image name="ic_checkbox_list_active" width="15" height="15"/>
     </resources>

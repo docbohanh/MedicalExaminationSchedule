@@ -193,6 +193,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let listItem = resultData["items"] as! [AnyObject]
                     if listItem.count > 0 {
                         let item = listItem[0] as! [String:AnyObject]
+                        self.userModel?.avatar_url = item["url"] as! String?
+                        self.userModel?.avatar_id = item["id"] as! String?
                         self.appDelegate.avatarId = item["id"] as! String?
                         self.appDelegate.avatarUrl = item["url"] as! String?
                         self.avatarImageView.loadImage(url: item["url"] as! String)
@@ -257,9 +259,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.row {
             case 0:
                 // Thiết lập lịch hẹn
-//                let storyboard = UIStoryboard.init(name: "Locations", bundle: Bundle.main)
-//                let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SetupScheduleViewController")
-//                self.navigationController?.pushViewController(scheduleVC, animated: true)
                 self.performSegue(withIdentifier: "PushToSetupCalendar", sender: self)
                 break
             case 1:
@@ -268,10 +267,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             case 2:
                 // Thư mục ảnh
-//                self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
-                let storyboard = UIStoryboard.init(name: "More", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "AssetGridViewController")
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
                 break
             case 3:
                 // Mời bác sỹ tham gia
@@ -328,7 +324,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else if (segue.identifier == "PushToSetupCalendar") {
             let vc = segue.destination as! SettingCalendarViewController
             vc.userProfile = self.userModel
-            vc.imageAvatar = avatarImageView.image!
+        }else if (segue.identifier == "PushToListPhoto") {
+            let vc = segue.destination as! ListPhotoViewController
+            vc.userProfile = self.userModel
+
         }
     }
 

@@ -215,7 +215,6 @@
                                         <state key="normal" image="ic_add"/>
                                         <connections>
                                             <action selector="tappedAddButton:" destination="yA4-KY-eLa" eventType="touchUpInside" id="UeI-WY-KT9"/>
-                                            <segue destination="ie4-nD-CCh" kind="push" id="c6W-n3-GW9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -268,6 +267,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="fkH-6R-jfS"/>
                     <connections>
+                        <outlet property="addButton" destination="WHW-6u-eg1" id="QDS-J2-uGS"/>
+                        <outlet property="doctorNameLabel" destination="uFd-jc-P0z" id="2Fp-P4-Xgu"/>
                         <outlet property="photoCollectionView" destination="thH-sK-SDU" id="h4X-cl-Jpw"/>
                     </connections>
                 </viewController>
@@ -275,10 +276,10 @@
             </objects>
             <point key="canvasLocation" x="1137" y="1536"/>
         </scene>
-        <!--Add New Photo View Controller-->
+        <!--New Image View Controller-->
         <scene sceneID="XNj-Ay-tcY">
             <objects>
-                <viewController id="ie4-nD-CCh" customClass="AddNewPhotoViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewImageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ie4-nD-CCh" customClass="NewImageViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8eR-W8-g4K"/>
                         <viewControllerLayoutGuide type="bottom" id="qu7-py-cDj"/>
@@ -304,8 +305,7 @@
                                         </constraints>
                                         <state key="normal" image="ic_back"/>
                                         <connections>
-                                            <action selector="tappedBack:" destination="ie4-nD-CCh" eventType="touchUpInside" id="Gs1-PW-FXa"/>
-                                            <action selector="tappedBackButton:" destination="yA4-KY-eLa" eventType="touchUpInside" id="YdY-y3-O6B"/>
+                                            <action selector="tappedBackButton:" destination="ie4-nD-CCh" eventType="touchUpInside" id="PCe-qp-cR7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBh-AB-JtO">
@@ -316,7 +316,7 @@
                                         </constraints>
                                         <state key="normal" image="ic_up_image"/>
                                         <connections>
-                                            <action selector="tappedAddButton:" destination="yA4-KY-eLa" eventType="touchUpInside" id="oUY-6F-jVe"/>
+                                            <action selector="tappedSendButton:" destination="ie4-nD-CCh" eventType="touchUpInside" id="6V6-mC-4VP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -369,73 +369,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fs9-7z-2dK"/>
                     <connections>
-                        <outlet property="backButton" destination="4zo-We-dKM" id="hYJ-lA-KUM"/>
-                        <outlet property="photoCollectionView" destination="AQ4-sv-m3R" id="njq-mW-TAR"/>
+                        <outlet property="doctorNameLabel" destination="MjW-Ct-jaJ" id="29p-iO-H1d"/>
+                        <outlet property="photoCollectionView" destination="AQ4-sv-m3R" id="pGv-OI-mWd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahT-cJ-CCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687" y="1336"/>
-        </scene>
-        <!--Asset Grid View Controller-->
-        <scene sceneID="1EA-Mz-L7q">
-            <objects>
-                <collectionViewController id="qpW-sm-2hg" customClass="AssetGridViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6xD-5e-8Y6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MUr-HE-Ybg">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridViewCell" id="oKL-jH-Fp5" customClass="GridViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3QU-5n-sd3">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNT-aD-Cya">
-                                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="28" placeholder="YES" id="41y-VD-ekS"/>
-                                                <constraint firstAttribute="width" constant="28" placeholder="YES" id="XC7-Ve-EOq"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="3QU-5n-sd3" firstAttribute="leading" secondItem="oKL-jH-Fp5" secondAttribute="leading" id="9Bg-EK-v7o"/>
-                                    <constraint firstItem="hNT-aD-Cya" firstAttribute="top" secondItem="oKL-jH-Fp5" secondAttribute="top" id="FUF-BL-WkI"/>
-                                    <constraint firstAttribute="trailing" secondItem="3QU-5n-sd3" secondAttribute="trailing" id="U54-aK-HIO"/>
-                                    <constraint firstAttribute="bottom" secondItem="3QU-5n-sd3" secondAttribute="bottom" id="ayl-yB-Qh9"/>
-                                    <constraint firstItem="3QU-5n-sd3" firstAttribute="top" secondItem="oKL-jH-Fp5" secondAttribute="top" id="jIY-Cl-pMU"/>
-                                    <constraint firstItem="hNT-aD-Cya" firstAttribute="leading" secondItem="oKL-jH-Fp5" secondAttribute="leading" id="wb3-w1-5L3"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="imageView" destination="3QU-5n-sd3" id="7OF-Re-5Mb"/>
-                                    <outlet property="livePhotoBadgeImageView" destination="hNT-aD-Cya" id="Rhi-Cw-gB9"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="qpW-sm-2hg" id="306-tE-jEN"/>
-                            <outlet property="delegate" destination="qpW-sm-2hg" id="fdF-Kx-F3c"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="6lN-es-RZ8"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="li9-Eg-jLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1967" y="1549"/>
+            <point key="canvasLocation" x="2314" y="1536"/>
         </scene>
         <!--Thêm-->
         <scene sceneID="es3-SX-rRR">
@@ -1454,73 +1394,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LBI-ko-nFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="629" y="2328"/>
-        </scene>
-        <!--Asset Grid View Controller-->
-        <scene sceneID="pSk-ZM-0KH">
-            <objects>
-                <collectionViewController storyboardIdentifier="AssetGridViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9rT-UV-oqB" customClass="AssetGridViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="N9l-po-FSA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JGy-Eh-GJ7">
-                            <size key="itemSize" width="80" height="80"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GridViewCell" id="dOd-zl-CGS" customClass="GridViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-yg-fbv">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sS6-h9-ZRY">
-                                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="28" placeholder="YES" id="4Ha-RT-7H9"/>
-                                                <constraint firstAttribute="width" constant="28" placeholder="YES" id="YEw-aj-JUx"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="sS6-h9-ZRY" firstAttribute="leading" secondItem="dOd-zl-CGS" secondAttribute="leading" id="1cb-y6-Etc"/>
-                                    <constraint firstItem="YXR-yg-fbv" firstAttribute="top" secondItem="dOd-zl-CGS" secondAttribute="top" id="Mcc-73-1n7"/>
-                                    <constraint firstAttribute="trailing" secondItem="YXR-yg-fbv" secondAttribute="trailing" id="Nna-hd-fut"/>
-                                    <constraint firstItem="sS6-h9-ZRY" firstAttribute="top" secondItem="dOd-zl-CGS" secondAttribute="top" id="Uhq-2f-VQP"/>
-                                    <constraint firstAttribute="bottom" secondItem="YXR-yg-fbv" secondAttribute="bottom" id="abn-7z-zhX"/>
-                                    <constraint firstItem="YXR-yg-fbv" firstAttribute="leading" secondItem="dOd-zl-CGS" secondAttribute="leading" id="v8v-sa-jsN"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="imageView" destination="YXR-yg-fbv" id="mIS-dB-BQy"/>
-                                    <outlet property="livePhotoBadgeImageView" destination="sS6-h9-ZRY" id="cHJ-b6-O3k"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="9rT-UV-oqB" id="kvl-0x-ZFv"/>
-                            <outlet property="delegate" destination="9rT-UV-oqB" id="ErW-wo-RbM"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="3wB-Iz-c9n"/>
-                    <connections>
-                        <outlet property="addButtonItem" destination="m8M-p5-FXx" id="MOa-3s-bzA"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IPS-k6-8Nl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem systemItem="add" id="m8M-p5-FXx">
-                    <connections>
-                        <action selector="addAsset:" destination="9rT-UV-oqB" id="nJ7-NI-gNO"/>
-                    </connections>
-                </barButtonItem>
-            </objects>
-            <point key="canvasLocation" x="249" y="-85"/>
         </scene>
     </scenes>
     <resources>

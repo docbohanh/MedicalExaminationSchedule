@@ -102,7 +102,8 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     /* ----------- API ------------- */
     func getAllBook() -> Void {
         var dictParam = [String : String]()
-        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMzQGdtYWlsLmNvbSIsImlkIjoiMDAwMDAwMDAyNDAiLCJ0eXBlIjoxLCJqdGkiOiIyMDQxYTkwZS0yZTExLTQ1OGQtYWE5Yy1mMWEzNTYxNDFhYjAiLCJpYXQiOjE0ODMwMjUwMDR9.WY2V75cvS1MgGQ3tV6NfaNWkoSxDCurDPxYpi_D-Vks" //UserDefaults.standard.object(forKey: "token_id") as! String?
+//        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMzQGdtYWlsLmNvbSIsImlkIjoiMDAwMDAwMDAyNDAiLCJ0eXBlIjoxLCJqdGkiOiIyMDQxYTkwZS0yZTExLTQ1OGQtYWE5Yy1mMWEzNTYxNDFhYjAiLCJpYXQiOjE0ODMwMjUwMDR9.WY2V75cvS1MgGQ3tV6NfaNWkoSxDCurDPxYpi_D-Vks"
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["page_index"] = "0"
         
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")

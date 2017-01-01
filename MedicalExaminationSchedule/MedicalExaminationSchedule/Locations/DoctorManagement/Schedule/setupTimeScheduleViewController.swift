@@ -55,7 +55,7 @@ class setupTimeScheduleViewController: UIViewController,UITableViewDelegate,UITa
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

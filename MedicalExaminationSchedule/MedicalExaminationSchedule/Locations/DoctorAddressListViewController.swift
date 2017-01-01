@@ -148,6 +148,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedHospitalSearch(_ sender: UIButton) {
         selectedTab = 0
+        self.reloadSelectedButton()
         tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
         if serviceHospitalArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bv")
@@ -159,6 +160,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedClinicSearch(_ sender: UIButton) {
         selectedTab = 1
+        self.reloadSelectedButton()
         tabLineView.center = CGPoint.init(x: clinicButton.center.x, y: tabLineView.center.y)
         if serviceClinicArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "pk")
@@ -170,6 +172,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedDrugStoreSearch(_ sender: UIButton) {
         selectedTab = 2
+        self.reloadSelectedButton()
         tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
         if serviceDrugStoreArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "nt")
@@ -181,6 +184,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedDoctorSearch(_ sender: UIButton) {
         selectedTab = 3
+        self.reloadSelectedButton()
         tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
         if serviceDoctorArray.count == 0 {
             self.getServiceHospital(page_index: 0, type: "bs")
@@ -188,6 +192,28 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             self.initMapview(locations: serviceDoctorArray)
         }
         self.resetSearchBar()
+    }
+    
+    func reloadSelectedButton() -> Void {
+        
+        hospitalButton.isSelected = false
+        clinicButton.isSelected = false
+        drugStore.isSelected = false
+        doctorButton.isSelected = false
+        switch selectedTab {
+        case 0:
+            hospitalButton.isSelected = true
+            break
+        case 1:
+            clinicButton.isSelected = true
+            break
+        case 2:
+            drugStore.isSelected = true
+            break
+        default:
+            doctorButton.isSelected = true
+            break
+        }
     }
     
     func resetSearchBar() -> Void {

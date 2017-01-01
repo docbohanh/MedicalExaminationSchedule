@@ -8,16 +8,22 @@
 
 import UIKit
 
+protocol PhotoCellDelegate {
+    func selectedImage(cell:PhotoCollectionViewCell) -> Void
+}
+
 class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var checkButton: UIButton!
-   
+    var delegate : PhotoCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     @IBAction func tappedCheckButton(_ sender: Any) {
         checkButton.isSelected = !checkButton.isSelected
+        self.delegate?.selectedImage(cell: self)
     }
 
 }

@@ -117,4 +117,14 @@ class ProjectCommon: NSObject {
         }
         
     }
+    static func convertDateFromServer(string:String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+        let myDate = dateFormatter.date(from: string)
+        if myDate == nil {
+            return ""
+        }
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: myDate!)
+    }
 }

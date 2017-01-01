@@ -39,7 +39,7 @@ class NewsModel: NSObject {
             self.news_author = ""
         }
         if let v = dict["last_updated"] {
-            self.last_updated = "\(v)"
+            self.last_updated = ProjectCommon.convertDateFromServer(string: v as! String)
         }else {
             self.last_updated = ""
         }

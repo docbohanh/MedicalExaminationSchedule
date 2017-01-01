@@ -9,8 +9,6 @@
 #ifndef SwiftExample_Objc_Bridge_Header_h
 #define SwiftExample_Objc_Bridge_Header_h
 
-
-#import "FSCalendar.h"
 #import <CommonCrypto/CommonHMAC.h>
 #import <GoogleSignIn/GoogleSignIn.h>
 #import "CKCalendarView.h"
