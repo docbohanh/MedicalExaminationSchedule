@@ -11,6 +11,9 @@ target 'MedicalExaminationSchedule' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FacebookShare'
+    pod 'Google'
+    pod 'Google/SignIn'
+
   # Pods for MedicalExaminationSchedule
 
   target 'MedicalExaminationScheduleTests' do

@@ -14,6 +14,7 @@ import Alamofire
 import FacebookCore
 import FacebookLogin
 import FacebookShare
+import Google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,6 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // Override point for customization after application launch.
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
 
@@ -51,6 +57,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          open: url,
                                                          sourceApplication: sourceApplication,
                                                          annotation: annotation)
+    }
+    
+//    func application(application: UIApplication,
+//                     openURL url: URL, options: [String: AnyObject]) -> Bool {
+//        return GIDSignIn.sharedInstance().handle(url, sourceApplication: [UIApplicationOpenURLOptionsKey.RawValue], annotation: true)
+//    }
+//    
+//    func application(application: UIApplication,
+//                     openURL url: URL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+//        var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.RawValue: sourceApplication,
+//                                            UIApplicationOpenURLOptionsKey.RawValue: annotation]
+//        return GIDSignIn.sharedInstance().handle(url,
+//                                                    sourceApplication: sourceApplication,
+//                                                    annotation: annotation)
+//    }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

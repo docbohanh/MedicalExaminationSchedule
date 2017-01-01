@@ -25,6 +25,7 @@
 		843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843292CA1DFF3778004C44A3 /* CustomUITextField.swift */; };
 		844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844520B51E18E53C00444AA1 /* AddressMapView.swift */; };
 		844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844520B71E18E55800444AA1 /* AddressMapView.xib */; };
+		844520BA1E19808D00444AA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844520B91E19808D00444AA1 /* GoogleService-Info.plist */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
@@ -163,6 +164,7 @@
 		843292CA1DFF3778004C44A3 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		844520B51E18E53C00444AA1 /* AddressMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapView.swift; sourceTree = "<group>"; };
 		844520B71E18E55800444AA1 /* AddressMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressMapView.xib; sourceTree = "<group>"; };
+		844520B91E19808D00444AA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				84CB42D01DE16FE10059B057 /* ViewController.swift */,
 				84CB42D21DE16FE10059B057 /* Main.storyboard */,
 				84CB42D81DE16FE10059B057 /* Assets.xcassets */,
+				844520B91E19808D00444AA1 /* GoogleService-Info.plist */,
 				84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */,
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
@@ -771,6 +774,7 @@
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */,
 				8B7DD3B71E166B280080A814 /* GoogleSignIn.bundle in Resources */,
+				844520BA1E19808D00444AA1 /* GoogleService-Info.plist in Resources */,
 				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,

@@ -12,6 +12,7 @@ import FacebookLogin
 import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Google
 
 class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
 
@@ -37,7 +38,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
-        
         loginButton = LoginButton(readPermissions: [ .publicProfile,.email,.userFriends])
         loginButton?.center = CGPoint(x: self.view.center.x, y: 200)
         loginButton?.frame = CGRect.init(x: facebookSignInButton.frame.origin.x, y: facebookSignInButton.frame.origin.y, width:view.frame.width - facebookSignInButton.frame.origin.x*2, height: facebookSignInButton.frame.height)
@@ -56,6 +56,23 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
             //User is not logged-in. Allow the user for login using FB.
         }
     }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if (error == nil) {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+
     
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: googleSignInButton)
@@ -143,14 +160,21 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         print("Did logout via LoginButton")
     }
     
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: Error!) {
-        if (error) != nil {
-            print(error)
-        }
-        else {
-            //            performSegueWithIdentifier("idSegueContent", sender: self)
-        }
-    }
+//    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+//                withError error: NSError!) {
+//        if (error == nil) {
+//            // Perform any operations on signed in user here.
+//            let userId = user.userID                  // For client-side use only!
+//            let idToken = user.authentication.idToken // Safe to send to the server
+//            let fullName = user.profile.name
+//            let givenName = user.profile.givenName
+//            let familyName = user.profile.familyName
+//            let email = user.profile.email
+//            // ...
+//        } else {
+//            print("\(error.localizedDescription)")
+//        }
+//    }
     
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
