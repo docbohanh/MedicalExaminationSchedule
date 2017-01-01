@@ -28,6 +28,7 @@ class UserModel: NSObject {
     init(dict:[String:AnyObject]) {
         if let v = dict["birthday"] {
             self.birthday = "\(v)"
+            self.birthday = ProjectCommon.subStringDate(string: self.birthday!)
         }else {
             self.birthday = ""
         }

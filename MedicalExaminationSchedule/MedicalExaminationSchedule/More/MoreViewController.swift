@@ -297,6 +297,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* =========== REGISTER SUCCESS ============== */
     func registerDoctorSuccess() {
         isDoctor = true
+        userModel?.user_type_id = true
     }
 
     // MARK: - Navigation

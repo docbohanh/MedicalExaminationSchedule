@@ -12,11 +12,12 @@ protocol FirstRegisterDoctorVCDelegate {
     func registerDoctorSuccess() -> Void
 }
 
-class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, BottomViewDelegate, ChangeAvatarViewDelegate {
+class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, ChangeAvatarViewDelegate, BottomViewCellDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var delegate : FirstRegisterDoctorVCDelegate?
+    @IBOutlet weak var updateButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundPopUpView: UIView!
     var titleArray = [String]()
     var dataArray = [String]()
@@ -36,23 +37,22 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
         appdelegate = UIApplication.shared.delegate as! AppDelegate
 
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Nơi làm việc","Chuyên ngành", "Mã kích hoạt"]
-        keyArray += ["user_display_name","home_address","birthday","phone","work_address","job","activate_code"]
+        keyArray += ["name","home_address","birthday","phone","work_address","job","active_code"]
         dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.work_address)!, (self.userProfile?.job)!,""]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
-        
-        let bottomButtonView = UINib(nibName: "BottomView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! BottomView
-        bottomButtonView.delegate = self
-        bottomButtonView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 170)
-        tableView.tableFooterView = bottomButtonView
 
         // register cell
         tableView.register(UINib.init(nibName: "ProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
+        tableView.register(UINib.init(nibName: "BottomButtonTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "BottomButtonTableViewCell")
         self.createPopup()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +67,17 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            updateButtonBottomConstraint.constant = keyboardHeight
+        }
+    }
+    
+    func keyboardWillHidden(notification:NSNotification) {
+        updateButtonBottomConstraint.constant = 15
     }
     
     func createPopup() -> Void {
@@ -128,20 +139,21 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count + 1
+        return titleArray.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         var strIdentifier = ""
         switch indexPath.row {
         case 0:
-            strIdentifier = "ProfileTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.delegate = self
             cell.avatarImageView.image = imageAvatar
             return cell
+        case (titleArray.count+1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BottomButtonTableViewCell", for: indexPath) as! BottomButtonTableViewCell
+            cell.delegate = self
+            return cell
         default:
-            strIdentifier = "TextFieldNormalTableViewCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldNormalTableViewCell", for: indexPath) as! TextFieldNormalTableViewCell
             cell.titleLabel.text = titleArray[indexPath.row - 1]
             cell.cellTextField.delegate = self
@@ -152,7 +164,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
                 cell.cellTextField.isEnabled = false
             } else {
                 cell.cellTextField.isEnabled = true
-                if (key == "phone" || key == "activate_code") {
+                if (key == "phone") {
                     cell.cellTextField.keyboardType = UIKeyboardType.numberPad
                 } else {
                     cell.cellTextField.keyboardType = UIKeyboardType.default
@@ -163,6 +175,9 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 || indexPath.row == titleArray.count + 1 {
+            return
+        }
         let key = keyArray[indexPath.row - 1]
         if (key == "birthday") {
             changeBirthdayView?.isHidden = false
@@ -171,7 +186,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
-         self.navigationController?.popViewController(animated: true)
+         _ = navigationController?.popViewController(animated: true)
     }
     
     /* =========== TEXT FIELD ========*/
@@ -202,7 +217,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
             }
         }
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
-        APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.postDataToURL(url: USER_DOCTOR, parameters: dictParam, onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
@@ -238,7 +253,7 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func cancel() {
         view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     /* ============= CHANGE AVATAR VIEW DELEGATE ============= */
     

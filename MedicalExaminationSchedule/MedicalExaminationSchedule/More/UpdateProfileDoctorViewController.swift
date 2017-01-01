@@ -8,10 +8,12 @@
 
 import UIKit
 
-class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, BottomViewDelegate, ChangeAvatarViewDelegate, SelectGengerTableViewCellDelegate {
+class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileTableViewCellDelegate, ChangeAvatarViewDelegate, SelectGengerTableViewCellDelegate, BottomViewCellDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var updateButtonBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundPopUpView: UIView!
     var titleArray = [String]()
@@ -34,20 +36,18 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         dataArray += [(self.userProfile?.user_display_name)!, (self.userProfile?.home_address)!, (self.userProfile?.birthday)!, (self.userProfile?.phone)!, (self.userProfile?.email)!, (self.userProfile?.job)!, (self.userProfile?.work_address)!,(self.userProfile?.sex)!]
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 200.0;
-        
-        let bottomButtonView = UINib(nibName: "BottomView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! BottomView
-        bottomButtonView.delegate = self
-        bottomButtonView.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 170)
-        tableView.tableFooterView = bottomButtonView
 
         // register cell
         tableView.register(UINib.init(nibName: "ProfileTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.register(UINib.init(nibName: "SelectGenderTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "SelectGenderTableViewCell")
         tableView.register(UINib.init(nibName: "TextFieldNormalTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "TextFieldNormalTableViewCell")
+        tableView.register(UINib.init(nibName: "BottomButtonTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "BottomButtonTableViewCell")
         self.createPopup()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +62,17 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     
     func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification:NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            updateButtonBottomConstraint.constant = keyboardHeight
+        }
+    }
+    
+    func keyboardWillHidden(notification:NSNotification) {
+        updateButtonBottomConstraint.constant = 15
     }
     
     func createPopup() -> Void {
@@ -123,7 +134,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count + 1
+        return titleArray.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,6 +144,10 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
             cell.delegate = self
              cell.avatarImageView.image = imageAvatar
+            return cell
+        case (titleArray.count+1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BottomButtonTableViewCell", for: indexPath) as! BottomButtonTableViewCell
+            cell.delegate = self
             return cell
         case titleArray.count:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectGenderTableViewCell", for: indexPath) as! SelectGenderTableViewCell
@@ -166,7 +181,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 || indexPath.row == titleArray.count + 1 {
             return
         }
         let key = keyArray[indexPath.row - 1]
