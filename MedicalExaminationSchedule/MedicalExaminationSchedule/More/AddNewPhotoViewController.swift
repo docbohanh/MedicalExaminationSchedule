@@ -6,40 +6,84 @@
 //  Copyright © 2016 Nguyen Hai Dang. All rights reserved.
 //
 
+
 import UIKit
 import Photos
+#if os(iOS)
+    import PhotosUI
+#endif
 
-class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+private extension UICollectionView {
+    func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
+        let allLayoutAttributes = collectionViewLayout.layoutAttributesForElements(in: rect)!
+        return allLayoutAttributes.map { $0.indexPath }
+    }
+}
+
+class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, PhotoCellDelegate {
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    var fetchResult: PHFetchResult<PHAsset>!
+    var assetCollection: PHAssetCollection!
+    
+    fileprivate let imageManager = PHCachingImageManager()
+    fileprivate var thumbnailSize: CGSize!
+    fileprivate var previousPreheatRect = CGRect.zero
+    
     var photoArray = [AnyObject]()
+    var selectedImageArray = [Dictionary]()
+    var indexId = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-        self.getListPhoto()
+        resetCachedAssets()
+        
+        if fetchResult == nil {
+            let allPhotosOptions = PHFetchOptions()
+            allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
+        }
     }
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        thumbnailSize = CGSize(width: 100, height: 100)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateCachedAssets()
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if #available(iOS 9.1, *) {
+            guard let destination = segue.destination as? AssetViewController
+                else { fatalError("unexpected view controller for segue") }
+            let indexPath = photoCollectionView!.indexPath(for: sender as! UICollectionViewCell)!
+            destination.asset = fetchResult.object(at: indexPath.item)
+            destination.assetCollection = assetCollection
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func getListPhoto() -> Void {
-        if (photoArray.count > 0) {
-            photoArray.removeAll()
-        }
-        photoArray += FetchAllPhoto.listAlbums() as [AnyObject]
     }
     
     /* ========== COLLECTION VIEW DELEGATE, DATA SOURCE ============ */
@@ -48,50 +92,22 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArray.count
+         return fetchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-        let photo = photoArray[indexPath.row] as! AlbumModel
-        let assetCollection = photo.collection
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
+        cell.delegate = self
+        cell.tag = indexPath.row + 1000
         
-        let opts = PHFetchOptions()
-        
-        if #available(iOS 9.0, *) {
-            opts.fetchLimit = 1
-        }
-        
-        let assets : PHFetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
-        print(assets)
-        
-        let imageManager = PHCachingImageManager()
-        //Enumerating objects to get a chached image - This is to save loading time
-        assets.enumerateObjects({(object: AnyObject!,
-            count: Int,
-            stop: UnsafeMutablePointer<ObjCBool>) in
-            
-            if object is PHAsset {
-                let asset = object as! PHAsset
-                print(asset)
-                
-                let imageSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-                
-                let options = PHImageRequestOptions()
-                options.deliveryMode = .fastFormat
-                
-                imageManager.requestImageData(for: asset, options: options, resultHandler: {(data,identifier,orientationImage,info:[AnyHashable : Any]? ) in
-                    if data != nil {
-                        let image = UIImage(data: data!)
-                        DispatchQueue.main.async {
-                            item.photoImageView.image = image
-                        }
-                    }
-                
-                })
-            }
+        let asset = fetchResult.object(at: indexPath.item)
+        // Request an image for the asset from the PHCachingImageManager.
+//        cell.representedAssetIdentifier = asset.localIdentifier
+        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+                cell.photoImageView.image = image
         })
-        return item
+        
+        return cell
     }
     
     /*============== COLLECTION VIEW FLOW LAYOUT ============ */
@@ -120,7 +136,85 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
         return sectionInsets.left
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateCachedAssets()
+    }
+    
+    // MARK: Asset Caching
+    
+    fileprivate func resetCachedAssets() {
+        imageManager.stopCachingImagesForAllAssets()
+        previousPreheatRect = .zero
+    }
+    
+    fileprivate func updateCachedAssets() {
+        // Update only if the view is visible.
+        guard isViewLoaded && view.window != nil else { return }
+        
+        // The preheat window is twice the height of the visible rect.
+        let preheatRect = view!.bounds.insetBy(dx: 0, dy: -0.5 * view!.bounds.height)
+        
+        // Update only if the visible area is significantly different from the last preheated area.
+        let delta = abs(preheatRect.midY - previousPreheatRect.midY)
+        guard delta > view.bounds.height / 3 else { return }
+        
+        // Compute the assets to start caching and to stop caching.
+        let (addedRects, removedRects) = differencesBetweenRects(previousPreheatRect, preheatRect)
+        let addedAssets = addedRects
+            .flatMap { rect in photoCollectionView!.indexPathsForElements(in: rect) }
+            .map { indexPath in fetchResult.object(at: indexPath.item) }
+        let removedAssets = removedRects
+            .flatMap { rect in photoCollectionView!.indexPathsForElements(in: rect) }
+            .map { indexPath in fetchResult.object(at: indexPath.item) }
+        
+        // Update the assets the PHCachingImageManager is caching.
+        imageManager.startCachingImages(for: addedAssets,
+                                        targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
+        imageManager.stopCachingImages(for: removedAssets,
+                                       targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
+        
+        // Store the preheat rect to compare against in the future.
+        previousPreheatRect = preheatRect
+    }
+    
+    fileprivate func differencesBetweenRects(_ old: CGRect, _ new: CGRect) -> (added: [CGRect], removed: [CGRect]) {
+        if old.intersects(new) {
+            var added = [CGRect]()
+            if new.maxY > old.maxY {
+                added += [CGRect(x: new.origin.x, y: old.maxY,
+                                 width: new.width, height: new.maxY - old.maxY)]
+            }
+            if old.minY > new.minY {
+                added += [CGRect(x: new.origin.x, y: new.minY,
+                                 width: new.width, height: old.minY - new.minY)]
+            }
+            var removed = [CGRect]()
+            if new.maxY < old.maxY {
+                removed += [CGRect(x: new.origin.x, y: new.maxY,
+                                   width: new.width, height: old.maxY - new.maxY)]
+            }
+            if old.minY < new.minY {
+                removed += [CGRect(x: new.origin.x, y: old.minY,
+                                   width: new.width, height: new.minY - old.minY)]
+            }
+            return (added, removed)
+        } else {
+            return ([new], [old])
+        }
+    }
 
+    /* ------------------- PHOTO CELL DELEGATE ------------ */
+    func selectedImage(cell:PhotoCollectionViewCell) {
+        if cell.checkButton.isSelected{
+            let dict = ["image":cell.photoImageView.image,"id":cell.tag]
+        }else {
+            for item : Dictionary in selectedImageArray {
+                if item["id"] == cell.tag {
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -132,3 +226,5 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
     */
 
 }
+
+
