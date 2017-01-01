@@ -801,7 +801,7 @@
 				TargetAttributes = {
 					84CB42CA1DE16FE00059B057 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 78F7F9Y9CK;
+						DevelopmentTeam = Q38789M8SL;
 						ProvisioningStyle = Automatic;
 					};
 					84CB42E11DE16FE10059B057 = {
@@ -1274,9 +1274,10 @@
 			baseConfigurationReference = CE67A550160C1A2E7EDEB177 /* Pods-MedicalExaminationSchedule.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				DEVELOPMENT_TEAM = Q38789M8SL;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1284,8 +1285,10 @@
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beacon.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1297,9 +1300,10 @@
 			baseConfigurationReference = 0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dang Nguyen (SZ44HL829T)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 78F7F9Y9CK;
+				DEVELOPMENT_TEAM = Q38789M8SL;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1307,8 +1311,10 @@
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.medhub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beacon.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

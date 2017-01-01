@@ -41,7 +41,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var selectedTab = 0
     var currentService : ServiceModel?
     var searchActive : Bool = false
-    
+    var mapView : GMSMapView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,17 +77,16 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         //make new map after updated location
         let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 10)
-        let mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: 0, width: doctorAddressTableView.frame.size.width, height:  doctorAddressTableView.frame.size.height + 49), camera: camera)
-        mapView.isMyLocationEnabled = true
-        searchMapView.addSubview(mapView)
+        mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: segmentView.frame.origin.y + segmentView.frame.height, width: doctorAddressTableView.frame.size.width, height:view.frame.size.height - segmentView.frame.origin.y - segmentView.frame.height), camera: camera)
+        mapView?.isMyLocationEnabled = true
         
         let getPositionButton = UIButton.init(type: UIButtonType.custom)
-        getPositionButton.frame = CGRect.init(x: 30, y: searchMapView.frame.size.height - 280, width: self.view.frame.size.width - 60, height: 40)
+        getPositionButton.frame = CGRect.init(x: 30, y: self.view.frame.size.height - 100, width: self.view.frame.size.width - 60, height: 40)
         getPositionButton.layer.cornerRadius = getPositionButton.frame.height/2
         getPositionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         getPositionButton.setTitle("LẤY PHƯƠNG HƯỚNG", for:  UIControlState.normal)
         getPositionButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
-        searchMapView.addSubview(getPositionButton)
+        mapView?.addSubview(getPositionButton)
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
@@ -120,14 +119,15 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedSearchFollowMap(_ sender: UIButton) {
         if sender.isSelected {
-            searchMapView.isHidden = true
+            mapView?.removeFromSuperview()
             self.tabBarController?.tabBar.isHidden = false
         } else {
+            view.addSubview(mapView!)
             self.tabBarController?.tabBar.isHidden = true
-            searchMapView.isHidden = false
         }
         sender.isSelected = !sender.isSelected
     }
+    
     @IBAction func tappedHospitalSearch(_ sender: UIButton) {
         selectedTab = 0
         tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
