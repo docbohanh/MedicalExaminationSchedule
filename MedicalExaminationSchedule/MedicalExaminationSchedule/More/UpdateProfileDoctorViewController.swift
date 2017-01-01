@@ -26,7 +26,6 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
     var changeBirthdayView : ChooseBirthdayView?
     var appdelegate = AppDelegate()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         appdelegate = UIApplication.shared.delegate as! AppDelegate
