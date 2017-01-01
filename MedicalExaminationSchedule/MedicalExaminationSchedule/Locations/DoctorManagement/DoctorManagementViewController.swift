@@ -32,7 +32,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBOutlet weak var titleCommentTextField: UITextField!
     
     @IBOutlet weak var imageCollectionView: UICollectionView!
-    private weak var calendar: FSCalendar!
+//    private weak var calendar: FSCalendar!
     let titleProfileArray = ["Họ tên","Địa chỉ","Giới tính","Chuyên ngành","Nơi làm việc"]
     var dataTestProfileArray = [String]()
     
@@ -215,10 +215,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "setupScheduleOfUser" {
-            let setupScheduleViewController = segue.destination as? SetupScheduleViewController
-            setupScheduleViewController?.isDoctor = false
-        }
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

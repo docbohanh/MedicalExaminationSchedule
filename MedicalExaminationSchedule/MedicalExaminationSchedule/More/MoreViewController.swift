@@ -257,9 +257,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch indexPath.row {
             case 0:
                 // Thiết lập lịch hẹn
-//                let storyboard = UIStoryboard.init(name: "Locations", bundle: Bundle.main)
-//                let scheduleVC = storyboard.instantiateViewController(withIdentifier: "SetupScheduleViewController")
-//                self.navigationController?.pushViewController(scheduleVC, animated: true)
                 self.performSegue(withIdentifier: "PushToSetupCalendar", sender: self)
                 break
             case 1:
@@ -269,9 +266,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             case 2:
                 // Thư mục ảnh
                 self.performSegue(withIdentifier: "PushToListPhoto", sender: self)
-//                let storyboard = UIStoryboard.init(name: "More", bundle: nil)
-//                let vc = storyboard.instantiateViewController(withIdentifier: "AssetGridViewController")
-//                self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 3:
                 // Mời bác sỹ tham gia

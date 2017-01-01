@@ -1,17 +1,13 @@
 //
-//  AddNewPhotoViewController.swift
+//  NewImageViewController.swift
 //  MedicalExaminationSchedule
 //
-//  Created by Thuy Phan on 12/18/16.
-//  Copyright © 2016 Nguyen Hai Dang. All rights reserved.
+//  Created by Thuy Phan on 1/1/17.
+//  Copyright © 2017 Nguyen Hai Dang. All rights reserved.
 //
-
 
 import UIKit
 import Photos
-#if os(iOS)
-    import PhotosUI
-#endif
 
 private extension UICollectionView {
     func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
@@ -20,12 +16,12 @@ private extension UICollectionView {
     }
 }
 
-class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, PhotoCellDelegate {
+class NewImageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, PhotoCellDelegate {
+    @IBOutlet weak var doctorNameLabel: UILabel!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
-    
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var photoCollectionView: UICollectionView!
     
     var fetchResult: PHFetchResult<PHAsset>!
     var assetCollection: PHAssetCollection!
@@ -35,9 +31,8 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
     fileprivate var previousPreheatRect = CGRect.zero
     
     var photoArray = [AnyObject]()
-    var selectedImageArray = [Dictionary]()
-    var indexId = 0
-    
+    var selectedImageArray = [UIImage]()
+    var selectedTag = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,21 +47,31 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
             fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         thumbnailSize = CGSize(width: 100, height: 100)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        updateCachedAssets()
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tappedBack(_ sender: UIButton) {
+    @IBAction func tappedBackButton(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func tappedSendButton(_ sender: Any) {
+        if selectedImageArray.count > 0 {
+            self.updateAvatarUser(imagePost: selectedImageArray[0])
+        }else{
+            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Bạn chưa chọn ảnh để upload", buttonArray: ["OK"], onCompletion: { (index) in
+                
+            })
+        }
+    }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if #available(iOS 9.1, *) {
             guard let destination = segue.destination as? AssetViewController
@@ -80,11 +85,6 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     /* ========== COLLECTION VIEW DELEGATE, DATA SOURCE ============ */
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -92,7 +92,7 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return fetchResult.count
+        return fetchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,9 +102,9 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let asset = fetchResult.object(at: indexPath.item)
         // Request an image for the asset from the PHCachingImageManager.
-//        cell.representedAssetIdentifier = asset.localIdentifier
+        //        cell.representedAssetIdentifier = asset.localIdentifier
         imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-                cell.photoImageView.image = image
+            cell.photoImageView.image = image
         })
         
         return cell
@@ -135,7 +135,7 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updateCachedAssets()
     }
@@ -202,18 +202,58 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
             return ([new], [old])
         }
     }
-
-    /* ------------------- PHOTO CELL DELEGATE ------------ */
+    
     func selectedImage(cell:PhotoCollectionViewCell) {
         if cell.checkButton.isSelected{
-            let dict = ["image":cell.photoImageView.image,"id":cell.tag]
+            selectedImageArray.append(cell.photoImageView.image!)
+            selectedTag.append(cell.tag)
         }else {
-            for item : Dictionary in selectedImageArray {
-                if item["id"] == cell.tag {
+            for i in 0..<selectedTag.count {
+                let item = selectedTag[i]
+                if item == cell.tag {
+                    selectedTag.remove(at: i)
+                    selectedImageArray.remove(at: i)
+                    break
                 }
             }
         }
     }
+    
+    /* ------------- API --------------- */
+    func updateAvatarUser(imagePost:UIImage) -> Void {
+        var dictParam = [String:String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
+        dictParam["image_type"] = "image"
+        dictParam["image_title"] = ""
+        dictParam["image_desc"] = ""
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imagePost, param: dictParam, completion: {(response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            self.selectedImageArray.removeFirst()
+            if self.selectedImageArray.count > 0 {
+                self.updateAvatarUser(imagePost: self.selectedImageArray[0])
+            }else {
+                ProjectCommon.initAlertView(viewController: self, title: "Finish", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                    _ = self.navigationController?.popViewController(animated: true)
+                })
+                if response.result.error != nil {
+                    //                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    //
+                    //                })
+                } else {
+                    let resultDictionary = response.result.value as! [String:AnyObject]
+                    if (resultDictionary["status"] as! NSNumber) == 1 {
+                    }else {
+                        //                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        //                        
+                        //                    })
+                    }
+                }
+            }
+        })
+    }
+
     
     /*
     // MARK: - Navigation
@@ -226,5 +266,3 @@ class AddNewPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
     */
 
 }
-
-

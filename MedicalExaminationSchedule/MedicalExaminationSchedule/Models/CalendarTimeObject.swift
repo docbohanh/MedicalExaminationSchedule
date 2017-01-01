@@ -24,7 +24,7 @@ class CalendarTimeObject: NSObject {
         }else {
             self.end_time = ""
         }
-        if let v = dict["status"] {
+        if dict["status"] != nil {
             self.status = dict["status"] as! Bool
         }
     }

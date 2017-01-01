@@ -82,7 +82,7 @@ class DetailNewViewController: UIViewController {
     
     @IBAction func tappedBackButton(_ sender: Any) {
         self.delegate?.updateNews(newObject:newsObject!)
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
     @IBAction func tappedShareButton(_ sender: Any) {
