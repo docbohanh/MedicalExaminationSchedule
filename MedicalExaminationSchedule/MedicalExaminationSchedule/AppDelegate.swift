@@ -55,16 +55,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          annotation: annotation)
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if #available(iOS 9.0, *) {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-        } else {
-            return false
-            // Fallback on earlier versions
-        }
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+        print(user.to)
     }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//        if #available(iOS 9.0, *) {
+//            return GIDSignIn.sharedInstance().handle(url,
+//                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+//                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+//        } else {
+//            return false
+//            // Fallback on earlier versions
+//        }
+//    }
     
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -14,6 +14,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import Google
 import GoogleSignIn
+
 class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate,GIDSignInUIDelegate,GIDSignInDelegate {
 
     @IBOutlet weak var registerAccountButton: UIButton!
@@ -53,6 +54,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         if configureError != nil {
             print(configureError ?? "")
         }
+        GIDSignIn.sharedInstance().clientID = "236770973454-ubijs6cfiepiu84vr0den9kh475gl2dk.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
     }
@@ -62,7 +64,20 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         
     }
 
+    func initializeFirstView() {
+        if GIDSignIn.sharedInstance().hasAuthInKeychain(){
+            logInToBackendServerAuthIdToken()
+        } else{
+        }
+    }
+    
+    func logInToBackendServerAuthIdToken() {
+        let user = GIDSignIn.sharedInstance().currentUser
+        print(user) // fatal error: unexpectedly found nil
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.initializeFirstView()
         if (FBSDKAccessToken.current()) != nil{
             print("da dong y cho phep su dung facebook")
             //User is already logged-in. Please do your additional code/task.
@@ -117,21 +132,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         self.callLoginApi(dictParam: dictParam)
     }
     
-//    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-//        if (error == nil) {
-//            // Perform any operations on signed in user here.
-//            let userId = user.userID                  // For client-side use only!
-//            let idToken = user.authentication.idToken // Safe to send to the server
-//            let fullName = user.profile.name
-//            let givenName = user.profile.givenName
-//            let familyName = user.profile.familyName
-//            let email = user.profile.email
-//            // ...
-//        } else {
-//            print("\(error.localizedDescription)")
-//        }
-//
-//    }
+
 //    
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {

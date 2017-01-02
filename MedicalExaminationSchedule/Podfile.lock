@@ -39,6 +39,9 @@ PODS:
     - Google/Core (= 3.0.3)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
+  - Google/SignIn (3.0.3):
+    - Google/Core
+    - GoogleSignIn (~> 4.0)
   - GoogleAppUtilities (1.1.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleAuthUtilities (2.0.2):
@@ -76,6 +79,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - Google
+  - Google/SignIn
   - GoogleMaps
   - GooglePlaces
   - GoogleSignIn (= 4.0.0)
@@ -106,6 +110,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: 579a1ad188b4a4f1559d65fd044deb6b909d1907
+PODFILE CHECKSUM: a52a5df37461bd4180e1153d0d883c3a813da791
 
 COCOAPODS: 1.1.1
