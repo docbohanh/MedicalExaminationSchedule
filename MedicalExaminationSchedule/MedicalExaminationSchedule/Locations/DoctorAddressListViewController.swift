@@ -120,14 +120,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        
-//        let path = GMSMutablePath()
-//        path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
+        mapView.clear()
+        locationManager.startUpdatingLocation()
+        let path = GMSMutablePath()
+        path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
 //        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
-//        
-//        let rectangle = GMSPolyline(path: path)
-//        rectangle.strokeWidth = 2.0
-//        rectangle.map = self.mapView
         
         APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(coordinate.latitude), destinationLng: String(coordinate.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
             if response.result.error == nil && response.result.isSuccess {
@@ -137,7 +134,22 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                     if value != nil {
                         let routes = value["routes"] as! [[String:AnyObject]]
                         if routes.count > 0 {
-                        
+                            let firstRoute = routes.first
+                            let legs = firstRoute?["legs"] as! [[String:AnyObject]]
+                            let steps:[[String:AnyObject]] = legs.first!["steps"] as! [[String : AnyObject]]
+                            for location in steps {
+                                let start_location = location["start_location"]
+                                let lat = start_location!["lat"] as! Double
+                                let lng = start_location!["lng"] as! Double
+                                if lat != nil && lng != nil {
+                                    path.add(CLLocationCoordinate2DMake(lat,lng))
+                                }
+                            }
+                                path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+                            let rectangle = GMSPolyline(path: path)
+                            rectangle.strokeWidth = 4.0
+                            rectangle.strokeColor = UIColor.init(red: 25/255, green: 114/255, blue: 196/266, alpha: 1)
+                            rectangle.map = self.mapView
                         }
                     }
                 }

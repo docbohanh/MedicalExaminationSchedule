@@ -95,6 +95,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        commentView.frame = CGRect.init(x: commentView.frame.origin.x, y: commentView.frame.origin.y, width: commentView.frame.width, height: sendCommentButton.frame.size.height + sendCommentButton.frame.origin.y + 10)
 //        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: backgroundScrollView.frame.origin.y + doctorHistoryLabel.frame.size.height + doctorHistoryLabel.frame.origin.y)
     }
     
@@ -148,7 +149,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     @IBAction func tappedComment(_ sender: UIButton) {
         tabIndex = 3
-        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: sendCommentButton.frame.size.height + backgroundInformationView.frame.size.height)
+        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: commentView.frame.origin.y + commentView.frame.height)
         tabLineView.center = CGPoint.init(x: commentTabButton.center.x, y: tabLineView.center.y)
         informationTableView.isHidden = true
         commentView.isHidden = false
