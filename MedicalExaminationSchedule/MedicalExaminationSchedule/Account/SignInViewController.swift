@@ -15,7 +15,7 @@ import FBSDKLoginKit
 import Google
 import GoogleSignIn
 
-class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate,GIDSignInUIDelegate,GIDSignInDelegate {
+class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDelegate,GIDSignInDelegate {
 
     @IBOutlet weak var registerAccountButton: UIButton!
     @IBOutlet weak var googleSignInButton: UIButton!
@@ -27,27 +27,22 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     @IBOutlet weak var userNameView: UIView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var logoImageView: UIImageView!
-    
-    @IBOutlet weak var activityView: UIActivityIndicatorView!
-    
-    @IBOutlet weak var googleSignInView: GIDSignInButton!
-    var loginButton : LoginButton?
-    
-    @IBAction func tappedSignInGoogle(_ sender: GIDSignInButton) {
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupComponent()
+        if (UserDefaults.standard.object(forKey: "remember_email") != nil) {
+            userNameTextField.text = UserDefaults.standard.object(forKey: "remember_email") as! String?
+        }
+        if (UserDefaults.standard.object(forKey: "remember_password") != nil) {
+            passwordTextField.text = UserDefaults.standard.object(forKey: "remember_password") as! String?
+        }
+        rememberButton.isSelected = UserDefaults.standard.bool(forKey: "remember")
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
-        loginButton = LoginButton(readPermissions: [ .publicProfile,.email,.userFriends])
-        loginButton?.center = CGPoint(x: self.view.center.x, y: 200)
-        loginButton?.frame = CGRect.init(x: facebookSignInButton.frame.origin.x, y: facebookSignInButton.frame.origin.y, width:view.frame.width - facebookSignInButton.frame.origin.x*2, height: facebookSignInButton.frame.height)
-        loginButton?.delegate = self
-        ProjectCommon.boundView(button: loginButton!)
-        view.addSubview(loginButton!)
 
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -77,18 +72,21 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.initializeFirstView()
-        if (FBSDKAccessToken.current()) != nil{
-            print("da dong y cho phep su dung facebook")
-            //User is already logged-in. Please do your additional code/task.
-        }else{
-            print("Khong dong y")
-
-            //User is not logged-in. Allow the user for login using FB.
-        }
         if (UserDefaults.standard.object(forKey: "token_id") != nil) {
             self.performSegue(withIdentifier: "ShowTabBar", sender: self)
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupNavigationBar() {
+        //        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func setupComponent() -> Void {
@@ -102,24 +100,33 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     func dismissKeyboard() -> Void {
         view.endEditing(true)
     }
-    
 
     @IBAction func tappedRegisterAccount(_ sender: Any) {
         
     }
     
     @IBAction func tappedSignInWithGoogle(_ sender: Any) {
-        
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func tappedSignInWithFacebook(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logIn(withReadPermissions: ["public_profile"], from: self, handler: { (response, error) in
+            if(error == nil){
+                print("No Error")
+                let fbAccessToken = response?.token.tokenString
+                self.loginServerWithFacebook(tokenFb: fbAccessToken!)
+                FBSDKAccessToken.current()
+                let loginManager = FBSDKLoginManager()
+                loginManager.logOut() // this is an instance function
+            }
+        })
     }
 
     @IBAction func tappedSignIn(_ sender: Any) {
         view.endEditing(true)
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
             ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
-                
             })
             return
         }
@@ -129,6 +136,14 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         let datastring = ProjectCommon.sha256(string: passwordTextField.text!)
         dictParam["password"] = datastring as String?
 //        dictParam["password"] = passwordTextField.text
+        UserDefaults.standard.set(rememberButton.isSelected, forKey: "remember")
+        if rememberButton.isSelected {
+            UserDefaults.standard.set(userNameTextField.text, forKey: "remember_email")
+            UserDefaults.standard.set(passwordTextField.text, forKey: "remember_password")
+        }else {
+            UserDefaults.standard.removeObject(forKey: "remember_email")
+            UserDefaults.standard.removeObject(forKey: "remember_password")
+        }
         self.callLoginApi(dictParam: dictParam)
     }
 //
@@ -139,7 +154,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     }
     
     @IBAction func tappedRemember(_ sender: Any) {
-        
+        let button = sender as! UIButton
+        button.isSelected = !button.isSelected
     }
     
     /** 
@@ -150,61 +166,36 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         return true
     }
     
-    func setupNavigationBar() {
-//        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        print("Did complete login via LoginButton with result \(result)")
-        switch result {
-        case .failed( _):
-        // User log in failed with error
-            break
-        case .cancelled:
-        // User cancelled login
-            break
-        case .success:
-            // Log in user
-            let fbAccessToken = FBSDKAccessToken.current().tokenString as String
-            print ("Token Id" + fbAccessToken)
-            UserDefaults.standard.set(fbAccessToken, forKey: "token_fb")
-            self.loginServerWithFacebook(tokenFb: fbAccessToken)
-            break
-        }
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        print("Did logout via LoginButton")
-    }
-    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         if (error) != nil {
             print(error)
         }
-        
         //        contentViewController.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-                        let idToken = user.authentication.idToken //
-                    } else {
-                        print("\(error.localizedDescription)")
-                    }
+            let idToken = user.authentication.accessToken //
+//            UserDefaults.standard.set(idToken, forKey: "token_google")
+            self.loginServerWithGooglePlus(tokenGoogle: idToken!)
+            GIDSignIn.sharedInstance().signOut()
+        } else {
+            print("\(error.localizedDescription)")
+        }
     }
 
     func loginServerWithFacebook(tokenFb:String) -> Void {
         var dictParam = [String : String]()
         dictParam["type"] = USER_TYPE.userTypeFacebook.rawValue
         dictParam["social_token_id"] = tokenFb
+        self.callLoginApi(dictParam: dictParam)
+    }
+    
+    func loginServerWithGooglePlus(tokenGoogle:String) -> Void {
+        var dictParam = [String : String]()
+        dictParam["type"] = USER_TYPE.userTypeGoogle.rawValue
+        dictParam["social_token_id"] = tokenGoogle
         self.callLoginApi(dictParam: dictParam)
     }
     
@@ -238,7 +229,5 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
                 }
             }
         })
-
     }
-    
 }

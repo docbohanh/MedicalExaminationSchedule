@@ -139,4 +139,17 @@ class ProjectCommon: NSObject {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: myDate!)
     }
+    
+    static func birthdayIsValidate(string:String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let myDate = dateFormatter.date(from: string)
+        let currentDate = Date()
+        let result = currentDate.compare(myDate!)
+        if result == ComparisonResult.orderedDescending {
+            return true
+        }else {
+            return false
+        }
+    }
 }

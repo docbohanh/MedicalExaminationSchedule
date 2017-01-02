@@ -20,10 +20,6 @@ import Google
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var avatarImage : UIImage?
-    var avatarUrl : String?
-    var avatarId : String?
-    var userName : String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -48,23 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return SDKApplicationDelegate.shared.application(application,
-                                                         open: url,
-                                                         sourceApplication: sourceApplication,
-                                                         annotation: annotation)
-    }
-
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
     }
     
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+        if(url.scheme!.isEqual("fb173352946462694")) {
+            return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+            
+        } else {
+            return GIDSignIn.sharedInstance().handle(url as URL!,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!,
                                                      annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

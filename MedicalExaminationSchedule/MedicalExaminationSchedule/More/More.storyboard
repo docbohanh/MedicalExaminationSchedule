@@ -189,9 +189,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXE-8g-6lK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Thanh Nguyễn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFd-jc-P0z">
-                                        <rect key="frame" x="114" y="32" width="147" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Thanh Nguyễn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFd-jc-P0z">
+                                        <rect key="frame" x="105" y="33.5" width="165" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -217,16 +217,26 @@
                                             <action selector="tappedAddButton:" destination="yA4-KY-eLa" eventType="touchUpInside" id="UeI-WY-KT9"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar_map" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-FA-6O5">
+                                        <rect key="frame" x="65" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="nRk-ho-nqy"/>
+                                            <constraint firstAttribute="width" constant="30" id="xWQ-Zq-mta"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="6dV-FA-6O5" firstAttribute="leading" secondItem="cy1-yF-mHN" secondAttribute="trailing" constant="20" id="5x7-U7-j9O"/>
                                     <constraint firstItem="cy1-yF-mHN" firstAttribute="leading" secondItem="mXE-8g-6lK" secondAttribute="leading" constant="15" id="6be-On-kqk"/>
+                                    <constraint firstItem="6dV-FA-6O5" firstAttribute="centerY" secondItem="cy1-yF-mHN" secondAttribute="centerY" id="730-4w-f7V"/>
                                     <constraint firstItem="uFd-jc-P0z" firstAttribute="centerY" secondItem="mXE-8g-6lK" secondAttribute="centerY" constant="10" id="EFL-2M-uJx"/>
                                     <constraint firstItem="uFd-jc-P0z" firstAttribute="centerX" secondItem="mXE-8g-6lK" secondAttribute="centerX" id="WAy-yV-1pp"/>
                                     <constraint firstItem="cy1-yF-mHN" firstAttribute="centerY" secondItem="mXE-8g-6lK" secondAttribute="centerY" constant="10" id="WnR-zX-WCD"/>
                                     <constraint firstAttribute="trailing" secondItem="WHW-6u-eg1" secondAttribute="trailing" constant="15" id="gow-ZW-oYR"/>
                                     <constraint firstItem="WHW-6u-eg1" firstAttribute="centerY" secondItem="mXE-8g-6lK" secondAttribute="centerY" constant="10" id="lnf-Zl-6D5"/>
                                     <constraint firstAttribute="height" constant="64" id="ota-3a-87C"/>
+                                    <constraint firstItem="uFd-jc-P0z" firstAttribute="leading" secondItem="6dV-FA-6O5" secondAttribute="trailing" constant="10" id="yaX-Jp-ENG"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="thH-sK-SDU">
@@ -268,6 +278,7 @@
                     <navigationItem key="navigationItem" id="fkH-6R-jfS"/>
                     <connections>
                         <outlet property="addButton" destination="WHW-6u-eg1" id="QDS-J2-uGS"/>
+                        <outlet property="avatarImageView" destination="6dV-FA-6O5" id="8GW-70-AND"/>
                         <outlet property="doctorNameLabel" destination="uFd-jc-P0z" id="2Fp-P4-Xgu"/>
                         <outlet property="photoCollectionView" destination="thH-sK-SDU" id="h4X-cl-Jpw"/>
                     </connections>
@@ -292,8 +303,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dr. Thanh Nguyễn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjW-Ct-jaJ">
-                                        <rect key="frame" x="114" y="32" width="147" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="105" y="33.5" width="165" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -319,13 +330,23 @@
                                             <action selector="tappedSendButton:" destination="ie4-nD-CCh" eventType="touchUpInside" id="6V6-mC-4VP"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar_map" translatesAutoresizingMaskIntoConstraints="NO" id="vZP-sV-jGb">
+                                        <rect key="frame" x="65" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="h0R-Uq-SpJ"/>
+                                            <constraint firstAttribute="width" constant="30" id="tqs-9c-uit"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="vZP-sV-jGb" firstAttribute="leading" secondItem="4zo-We-dKM" secondAttribute="trailing" constant="20" id="B48-FA-LC0"/>
                                     <constraint firstItem="MjW-Ct-jaJ" firstAttribute="centerX" secondItem="Eyr-L9-ZeR" secondAttribute="centerX" id="CnY-aV-2U6"/>
                                     <constraint firstItem="jBh-AB-JtO" firstAttribute="centerY" secondItem="Eyr-L9-ZeR" secondAttribute="centerY" constant="10" id="JIb-lC-bAv"/>
                                     <constraint firstItem="MjW-Ct-jaJ" firstAttribute="centerY" secondItem="Eyr-L9-ZeR" secondAttribute="centerY" constant="10" id="Mev-nm-8Ku"/>
                                     <constraint firstItem="4zo-We-dKM" firstAttribute="centerY" secondItem="Eyr-L9-ZeR" secondAttribute="centerY" constant="10" id="Yle-iL-VJh"/>
+                                    <constraint firstItem="MjW-Ct-jaJ" firstAttribute="leading" secondItem="vZP-sV-jGb" secondAttribute="trailing" constant="10" id="bOt-ti-s90"/>
+                                    <constraint firstItem="vZP-sV-jGb" firstAttribute="centerY" secondItem="4zo-We-dKM" secondAttribute="centerY" id="eIs-JC-GOz"/>
                                     <constraint firstItem="4zo-We-dKM" firstAttribute="leading" secondItem="Eyr-L9-ZeR" secondAttribute="leading" constant="15" id="hPg-fh-Ig9"/>
                                     <constraint firstAttribute="trailing" secondItem="jBh-AB-JtO" secondAttribute="trailing" constant="15" id="p1u-ID-PP9"/>
                                     <constraint firstAttribute="height" constant="64" id="vhj-s4-Pb3"/>
@@ -369,6 +390,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Fs9-7z-2dK"/>
                     <connections>
+                        <outlet property="avatarImageView" destination="vZP-sV-jGb" id="JVu-Ob-zqC"/>
                         <outlet property="doctorNameLabel" destination="MjW-Ct-jaJ" id="29p-iO-H1d"/>
                         <outlet property="photoCollectionView" destination="AQ4-sv-m3R" id="pGv-OI-mWd"/>
                     </connections>
@@ -542,8 +564,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvU-V2-bdd">
-                                        <rect key="frame" x="164" y="32" width="48" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="165.5" y="32" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -780,8 +802,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặt giờ hẹn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIG-0u-XyW">
-                                        <rect key="frame" x="141" y="32" width="94" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="144" y="32" width="88" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1059,8 +1081,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTd-1v-lNh">
-                                        <rect key="frame" x="164" y="32" width="48" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="165.5" y="32" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1142,8 +1164,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hồ sơ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jv-cg-VJW">
-                                        <rect key="frame" x="164" y="32" width="48" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <rect key="frame" x="165" y="32" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>

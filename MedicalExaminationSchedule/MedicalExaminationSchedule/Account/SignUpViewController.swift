@@ -89,11 +89,16 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         view.endEditing(true)
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
-                
+            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
             })
             return
         }
+        if !ProjectCommon.birthdayIsValidate(string: (chooseBirthdayButton.titleLabel?.text)!) {
+            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+            })
+            return
+        }
+        
         var dictParam = [String : AnyObject]()
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue as AnyObject?
         dictParam["email"] = emailTextField.text as AnyObject?
@@ -120,17 +125,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
-                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
                             _ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         })
                     }else {
                         ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in

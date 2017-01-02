@@ -22,13 +22,11 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     var imageAvatar = UIImage()
     var userProfile : UserModel?
     var changeBirthdayView : ChooseBirthdayView?
-    var appdelegate = AppDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        appdelegate = UIApplication.shared.delegate as! AppDelegate
         
         titleArray += ["Họ Tên","Địa chỉ","Ngày sinh","Điện thoại","Email","Giới tính"]
         if self.userProfile != nil {
@@ -220,6 +218,13 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         for i in 0..<dataArray.count {
             let key = keyArray[i]
+            if key == "birthday" {
+                if !ProjectCommon.birthdayIsValidate(string: dataArray[i]) {
+                    ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+                    })
+                    return
+                }
+            }
             if key != "email" {
                 dictParam[keyArray[i]] = dataArray[i] as String?
             }
@@ -235,7 +240,8 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
-                        self.appdelegate.userName = self.dataArray[0]
+                        // Post notification
+                        NotificationCenter.default.post(name: Notification.Name(UPDATE_PROFILE_SUCCESS), object: nil)
                         ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
                         })
                         return
@@ -284,13 +290,10 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
     func deleteAvatar() {
         backgroundPopUpView.isHidden = true
         imageAvatar = UIImage.init(named: "ic_avar_map")!
-        if appdelegate.avatarId == "" {
-            return
-        }
-        
+
         var dictParam = [String:String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
-        dictParam["image_id"] = appdelegate.avatarId
+        dictParam["image_id"] = userProfile?.avatar_id
         
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
@@ -302,9 +305,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
-                    self.appdelegate.avatarId = ""
-                    self.appdelegate.avatarUrl = ""
-                    self.appdelegate.avatarImage = nil
+                    NotificationCenter.default.post(name: Notification.Name(UPDATE_AVATAR_SUCCESS), object: nil)
                     self.tableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
@@ -359,12 +360,8 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
+                    NotificationCenter.default.post(name: Notification.Name(UPDATE_AVATAR_SUCCESS), object: nil)
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
-                    if let v = resultData["image_id"] {
-                        self.appdelegate.avatarId = "\(v)"
-                    }
-                    self.appdelegate.avatarUrl = resultData["image_url"] as! String?
-                    self.appdelegate.avatarImage = self.imageAvatar
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         

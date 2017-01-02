@@ -53,24 +53,15 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         titleArrayDoctor += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
         self.createPopup()
         self.getProfile()
-        self.getAvatarUrl()
+        
+        // Register to receive notification
+        NotificationCenter.default.addObserver(self, selector: #selector(getProfile), name: NSNotification.Name(rawValue: UPDATE_PROFILE_SUCCESS), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getAvatarUrl), name: NSNotification.Name(rawValue: UPDATE_AVATAR_SUCCESS), object: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
-        if appDelegate.userName != "" {
-            self.usernameLabel.text = appDelegate.userName
-        }
-        if (appDelegate.avatarImage != nil) {
-             avatarImageView.image = appDelegate.avatarImage
-        } else {
-            if appDelegate.avatarUrl != "" && (appDelegate.avatarUrl != nil) {
-                avatarImageView.loadImage(url: appDelegate.avatarUrl!)
-            }else {
-                avatarImageView.image = UIImage.init(named: "ic_avar_map")
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -141,10 +132,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }else {
                     self.usernameLabel.text = self.userModel?.user_display_name
                 }
-                self.appDelegate.userName = self.usernameLabel.text
                 print((self.userModel?.user_type_id)!)
                 self.isDoctor = (self.userModel?.user_type_id)!
                 self.getUserServiceId()
+                self.getAvatarUrl()
                 self.moreTableView.reloadData()
             }
         })
@@ -199,9 +190,9 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let item = listItem[0] as! [String:AnyObject]
                         self.userModel?.avatar_url = item["url"] as! String?
                         self.userModel?.avatar_id = item["id"] as! String?
-                        self.appDelegate.avatarId = item["id"] as! String?
-                        self.appDelegate.avatarUrl = item["url"] as! String?
                         self.avatarImageView.loadImage(url: item["url"] as! String)
+                    }else {
+                        self.avatarImageView.image = UIImage.init(named: "ic_avar_map")
                     }
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
@@ -215,13 +206,6 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
         UserDefaults.standard.removeObject(forKey: "token_id")
-        if (UserDefaults.standard.object(forKey: "token_fb") != nil) {
-            // logout facebook
-            FBSDKAccessToken.current()
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut() // this is an instance function
-            UserDefaults.standard.removeObject(forKey: "token_fb")
-        }
         _ = navigationController?.popViewController(animated: true)
     }
     

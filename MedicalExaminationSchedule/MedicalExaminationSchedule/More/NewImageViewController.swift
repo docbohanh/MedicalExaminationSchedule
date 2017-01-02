@@ -21,6 +21,7 @@ private extension UICollectionView {
 }
 
 class NewImageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, PhotoCellDelegate {
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
@@ -45,6 +46,11 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if userProfile?.avatar_url != nil {
+            avatarImageView.loadImage(url: (userProfile?.avatar_url)!)
+        }else {
+            avatarImageView.image = UIImage.init(named: "ic_avar_map")
+        }
         doctorNameLabel.text = userProfile?.user_display_name
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
         resetCachedAssets()
