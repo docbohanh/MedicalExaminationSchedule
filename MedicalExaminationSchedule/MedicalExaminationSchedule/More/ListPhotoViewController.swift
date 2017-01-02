@@ -12,6 +12,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 3.0, right: 2.0)
     
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
@@ -25,6 +26,12 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if userProfile?.avatar_url != nil {
+             avatarImageView.loadImage(url: (userProfile?.avatar_url)!)
+        }else {
+            avatarImageView.image = UIImage.init(named: "ic_avar_map")
+        }
+       
         doctorNameLabel.text = userProfile?.user_display_name
         photoCollectionView.register(UINib.init(nibName: "PhotoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PhotoCollectionViewCell")
         self.getListPhoto()

@@ -121,13 +121,14 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         
-        let path = GMSMutablePath()
-        path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
-        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+//        let path = GMSMutablePath()
+//        path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
+//        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+//        
+//        let rectangle = GMSPolyline(path: path)
+//        rectangle.strokeWidth = 2.0
+//        rectangle.map = self.mapView
         
-        let rectangle = GMSPolyline(path: path)
-        rectangle.strokeWidth = 2.0
-        rectangle.map = self.mapView
         APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(coordinate.latitude), destinationLng: String(coordinate.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
             if response.result.error == nil && response.result.isSuccess {
                 let results = response.result

@@ -28,10 +28,14 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.getAllBook()
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
     }
  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getAllBook()
+    }
+    
     @IBAction func bookedTabSelected(_ sender: Any) {
         tabIndex = 0
         bookedTabButton.isSelected = true
@@ -124,14 +128,16 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                     for i in 0..<listItem.count {
                         let item = listItem[i] as! [String:AnyObject]
                         let newsObject = CalendarBookModel.init(dict: item)
-                        if newsObject.status == "OK" {
-                            self.bookedArray.append(newsObject)
-                        }else {
-                            self.bookCanceledArray.append(newsObject)
-                        }
+                        
                         let dateToCompare = String.init(format: "%@ %@", newsObject.book_time!, newsObject.end_time!)
                         if ProjectCommon.isExpireDate(timeString: dateToCompare) {
                             self.bookEndedArray.append(newsObject)
+                        }else{
+                            if newsObject.status == "OK" {
+                                self.bookedArray.append(newsObject)
+                            }else {
+                                self.bookCanceledArray.append(newsObject)
+                            }
                         }
                     }
                     self.tableView.reloadData()

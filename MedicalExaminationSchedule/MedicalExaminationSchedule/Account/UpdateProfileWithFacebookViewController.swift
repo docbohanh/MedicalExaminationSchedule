@@ -110,6 +110,12 @@ class UpdateProfileWithFacebookViewController: UIViewController {
             })
             return
         }
+        if !ProjectCommon.birthdayIsValidate(string: (birthdayButton.titleLabel?.text)!) {
+            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+            })
+            return
+        }
+        
         var dictParam = [String : String]()
         for item in oldDict {
             dictParam[item.key] = item.value

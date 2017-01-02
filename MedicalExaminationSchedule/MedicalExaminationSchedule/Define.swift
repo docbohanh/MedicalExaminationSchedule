@@ -44,6 +44,8 @@ let IMAGE_USER = "image/user"
 let googleKey = "AIzaSyCupPZeGH2WyU6-NJbqIx9oxHdyYKH9iRs"
 
 let TAG = "tag"
+let UPDATE_PROFILE_SUCCESS = "UpdateProfileSuccessNotification"
+let UPDATE_AVATAR_SUCCESS = "UpdateAvatarSuccessNotification"
 
 
 // define enum key
