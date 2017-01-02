@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var userName : String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        // Override point for customization after application launch.
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         GMSServices.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
         GMSPlacesClient.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -42,8 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarViewController.navigationController?.navigationBar.isHidden = true
             window!.rootViewController = rootNavigation
         }
-        // Override point for customization after application launch.
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+
         
         return true
     }
@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return GIDSignIn.sharedInstance().handle(url,
                                                      sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                      annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
 
     }
     
