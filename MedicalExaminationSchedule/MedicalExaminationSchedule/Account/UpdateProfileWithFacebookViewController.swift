@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 class UpdateProfileWithFacebookViewController: UIViewController {
     
@@ -42,8 +43,41 @@ class UpdateProfileWithFacebookViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.fillData()
     }
     
+    func fillData() {
+        if oldDict["type"] == USER_TYPE.userTypeFacebook.rawValue {
+                let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters:["fields":"email,id,last_name,first_name,name,gender,location,education,timezone,about,context,middle_name,hometown"])
+                graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+                    if ((error) != nil){
+                        print("Error: \(error)")
+                        return
+                    } else {
+                        let data:[String:AnyObject] = result as! [String : AnyObject]
+                        if data["email"] != nil {
+                            self.emailTextField.text = data["email"] as! String?
+                        }
+                        if data["name"] != nil {
+                            self.usernameTextField.text = data["name"] as! String?
+                        }
+                        if data["gender"] != nil {
+                            if (data["gender"] as! String) == "male" {
+                                self.maleButton.isSelected = true
+                                self.femaleButton.isSelected = false
+                            } else {
+                                self.maleButton.isSelected = false
+                                self.femaleButton.isSelected = true
+                            }
+                        }
+                        
+                        print(data)
+                    }
+                })
+            
+        }
+
+    }
     override func viewDidLayoutSubviews() {
         
     }

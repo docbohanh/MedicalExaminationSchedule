@@ -114,15 +114,18 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
         loginManager.logIn(withReadPermissions: ["public_profile"], from: self, handler: { (response, error) in
             if(error == nil){
                 print("No Error")
-                let fbAccessToken = response?.token.tokenString
-                self.loginServerWithFacebook(tokenFb: fbAccessToken!)
-                FBSDKAccessToken.current()
-                let loginManager = FBSDKLoginManager()
-                loginManager.logOut() // this is an instance function
+                if response?.token != nil {
+                    if let tokenString = response?.token.tokenString {
+                        self.loginServerWithFacebook(tokenFb: tokenString)
+                        FBSDKAccessToken.current()
+                        let loginManager = FBSDKLoginManager()
+                        loginManager.logOut() // this is an instance function          
+                    }
+                }
             }
         })
     }
-
+    
     @IBAction func tappedSignIn(_ sender: Any) {
         view.endEditing(true)
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
