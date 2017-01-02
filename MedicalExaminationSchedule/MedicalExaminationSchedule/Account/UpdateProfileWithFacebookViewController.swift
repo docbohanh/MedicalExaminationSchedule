@@ -106,12 +106,12 @@ class UpdateProfileWithFacebookViewController: UIViewController {
         view.endEditing(true)
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Email không đúng định dạng", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
         if !ProjectCommon.birthdayIsValidate(string: (birthdayButton.titleLabel?.text)!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Bạn không thể chọn ngày sinh ở tương lai", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
@@ -136,29 +136,29 @@ class UpdateProfileWithFacebookViewController: UIViewController {
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)! , buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
-                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đăng kí thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                             let value = resultDictionary["result"] as! [String:AnyObject]
                             UserDefaults.standard.set(value["token_id"], forKey: "token_id")
                             _ = self.navigationController?.popViewController(animated: false)
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 }

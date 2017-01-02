@@ -126,7 +126,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
     @IBAction func tappedSignIn(_ sender: Any) {
         view.endEditing(true)
         if !ProjectCommon.isValidEmail(testStr: userNameTextField.text!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "Email không đúng định dạng", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
@@ -205,7 +205,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -223,7 +223,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
                             return
                         }
                     }
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

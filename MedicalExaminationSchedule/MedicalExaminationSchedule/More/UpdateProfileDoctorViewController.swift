@@ -217,7 +217,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             let key = keyArray[i]
             if key == "birthday" {
                 if !ProjectCommon.birthdayIsValidate(string: dataArray[i]) {
-                    ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                     return
                 }
@@ -230,7 +230,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
         APIManager.sharedInstance.postDataToURL(url: USER_INFO, parameters: dictParam, onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)! , buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -239,19 +239,19 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                     if (status as! NSNumber) == 1 {
                         // Post notification
                         NotificationCenter.default.post(name: Notification.Name(UPDATE_PROFILE_SUCCESS), object: nil)
-                        ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Cập nhật thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã cập nhật thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "Something went error!", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 }
@@ -297,7 +297,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -305,7 +305,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                     NotificationCenter.default.post(name: Notification.Name(UPDATE_AVATAR_SUCCESS), object: nil)
                     self.tableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -350,7 +350,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
@@ -359,7 +359,7 @@ class UpdateProfileDoctorViewController: UIViewController, UITableViewDelegate, 
                     NotificationCenter.default.post(name: Notification.Name(UPDATE_AVATAR_SUCCESS), object: nil)
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

@@ -44,7 +44,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func tappedSearch(_ sender: Any) {
         view.endEditing(true)
         if searchtextField.text == "" {
-            ProjectCommon.initAlertView(viewController: self, title: "", message: "Hãy gõ từ khoá tìm kiếm", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Hãy gõ từ khoá tìm kiếm", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
         }
         self.getListUser(text: searchtextField.text!)
@@ -97,7 +97,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -118,7 +118,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
                     self.userArray += tempArray
                     self.doctorListTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -135,14 +135,14 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }

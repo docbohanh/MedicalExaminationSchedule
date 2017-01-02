@@ -89,12 +89,12 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         view.endEditing(true)
         
         if !ProjectCommon.isValidEmail(testStr: emailTextField.text!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Email không đúng định dạng", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Email không đúng định dạng", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
         if !ProjectCommon.birthdayIsValidate(string: (chooseBirthdayButton.titleLabel?.text)!) {
-            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: "Ngày sinh không thể là ngày tương lai", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
@@ -118,27 +118,27 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         APIManager.sharedInstance.postDataToURL(url: USER_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)! , buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)! , buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
-                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đăng kí thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đăng kí thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                             _ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Something went error!", buttonArray: ["OK"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "Something went error!", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 }

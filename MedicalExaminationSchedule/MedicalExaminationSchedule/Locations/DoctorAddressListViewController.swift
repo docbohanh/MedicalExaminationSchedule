@@ -31,6 +31,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var serviceClinicArray = [ServiceModel]()
     var serviceDrugStoreArray = [ServiceModel]()
     var serviceDoctorArray = [ServiceModel]()
+    var currentArray = [ServiceModel]()
     var filterArray = [ServiceModel]()
     
     var pageIndexHospital = 0
@@ -121,7 +122,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         mapView.clear()
-        locationManager.startUpdatingLocation()
+        if currentArray.count > 0 {
+            self.initMapview(locations: currentArray)
+        }
         let path = GMSMutablePath()
         path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
 //        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
@@ -369,7 +372,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -389,28 +392,32 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                     case 0:
                         self.serviceHospitalArray += tempArray
                         self.initMapview(locations: self.serviceHospitalArray)
+                        self.currentArray = self.serviceHospitalArray
                         self.locationManager.startUpdatingLocation()
                         break
                     case 1:
                         self.serviceClinicArray += tempArray
                         self.initMapview(locations: self.serviceClinicArray)
+                        self.currentArray = self.serviceClinicArray
                         self.locationManager.startUpdatingLocation()
                         break
                     case 2:
                         self.serviceDrugStoreArray += tempArray
                         self.initMapview(locations: self.serviceDrugStoreArray)
+                        self.currentArray = self.serviceDrugStoreArray
                         self.locationManager.startUpdatingLocation()
                         break
                     default:
                         self.serviceDoctorArray += tempArray
                         self.initMapview(locations: self.serviceDoctorArray)
+                        self.currentArray = self.serviceDoctorArray
                         self.locationManager.startUpdatingLocation()
                         break
                     }
                     
                     self.doctorAddressTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

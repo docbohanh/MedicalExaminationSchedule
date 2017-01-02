@@ -21,7 +21,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var currentNewsObject : NewsModel?
     var currentIndexPath : IndexPath?
     var searchActive : Bool = false
-    
+    var currentPageIndex: String = "0"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,7 +67,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -84,7 +84,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                     self.newTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -96,14 +96,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["page_index"] = String.init(format: "%d", page_index)
-        dictParam["query"] = "test"
+        dictParam["page_index"] = currentPageIndex
+        dictParam["query"] = ""
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -119,8 +119,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         self.newsArray += [newsObject]
                     }
                     self.newTableView.reloadData()
+                    DispatchQueue.global().async {
+                        self.loadMoreNews()
+                    }
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -128,6 +131,40 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         })
     }
     
+    func loadMoreNews() {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["page_index"] = String(Int(currentPageIndex)!+1)
+        dictParam["query"] = ""
+        APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            if (response.result.error != nil) {
+
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    self.page_max = resultData["count"] as! Int
+                    let listItem = resultData["items"] as! [AnyObject]
+                    for i in 0..<listItem.count {
+                        let item = listItem[i] as! [String:AnyObject]
+                        let newsObject = NewsModel.init(dict: item)
+                        self.newsArray += [newsObject]
+                    }
+                    if listItem.count > 0 {
+                        self.loadMoreNews()
+                    } else {
+                        self.newTableView.reloadData()
+                    }
+                    self.currentPageIndex = String(Int(self.currentPageIndex)! + 1)
+
+                }else {
+
+                }
+            }
+        })
+    }
     @IBAction func tappedSearchButton(_ sender: Any) {
     }
     
@@ -182,14 +219,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             Lib.removeLoadingView(on: self.view)
             print(response)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

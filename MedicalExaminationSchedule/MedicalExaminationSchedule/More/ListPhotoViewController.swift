@@ -85,7 +85,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
             if selectedImageArray.count > 0 {
                 self.deleteImageObject(object: selectedImageArray[0])
             } else {
-                ProjectCommon.initAlertView(viewController: self, title: "", message: "Bạn chưa chọn ảnh nào để xoá", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Bạn chưa chọn ảnh nào để xoá", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }
@@ -172,7 +172,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -191,7 +191,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
                     }
                     self.photoCollectionView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -211,20 +211,20 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
             if self.selectedImageArray.count > 0 {
                 self.deleteImageObject(object: self.selectedImageArray[0])
             }else {
-                ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xoá thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xoá thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                     self.isShowDeleteImage = false
                     self.addButton.setImage(UIImage.init(named: "ic_add"), for: UIControlState.normal)
                     self.getListPhoto()
                 })
                 if response.result.error != nil {
-                    //                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                    //                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     //
                     //                })
                 } else {
                     let resultDictionary = response.result.value as! [String:AnyObject]
                     if (resultDictionary["status"] as! NSNumber) == 1 {
                     }else {
-                        //                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                        //                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         //
                         //                    })
                     }

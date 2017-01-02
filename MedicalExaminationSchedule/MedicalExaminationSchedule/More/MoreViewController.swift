@@ -116,7 +116,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (response.result.error != nil)
             {
                 // error
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "", buttonArray: ["Đóng"], onCompletion: { (index) in
                     // dismiss
                 })
                 return
@@ -150,7 +150,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil)
             {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: "", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
                 return
             }
@@ -179,7 +179,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         APIManager.sharedInstance.getDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
             print(response)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -195,7 +195,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.avatarImageView.image = UIImage.init(named: "ic_avar_map")
                     }
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }

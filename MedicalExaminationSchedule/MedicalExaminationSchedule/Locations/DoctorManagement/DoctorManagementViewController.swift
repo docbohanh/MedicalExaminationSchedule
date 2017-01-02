@@ -161,7 +161,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     @IBAction func tappedSendComment(_ sender: UIButton) {
         view.endEditing(true)
         if titleCommentTextField.text == "" {
-            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Chưa nhập tiêu đề", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Vui lòng nhập tiêu đề cho nhận xét!", buttonArray: ["Đóng"], onCompletion: { (index) in
             })
             return
         }
@@ -341,7 +341,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             Lib.removeLoadingView(on: self.view)
             self.getListComment(pageIndex: 0)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -359,7 +359,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     self.introduceArray += tempArray
                     self.informationTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -379,7 +379,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -404,7 +404,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     self.counterStar(array: self.commentArray)
                     self.informationTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -424,17 +424,17 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
-                    ProjectCommon.initAlertView(viewController: self, title: "Success", message: "Send comment success", buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã gửi nhận xét thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                         self.getListComment(pageIndex: 0)
                     })
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -451,7 +451,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -469,7 +469,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     }
                     self.imageCollectionView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

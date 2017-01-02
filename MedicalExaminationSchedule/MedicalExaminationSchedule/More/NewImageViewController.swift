@@ -80,7 +80,7 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
         if selectedImageArray.count > 0 {
             self.updateAvatarUser(imagePost: selectedImageArray[0])
         }else{
-            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Bạn chưa chọn ảnh để upload", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "Error", message: "Bạn chưa chọn ảnh để upload", buttonArray: ["Đóng"], onCompletion: { (index) in
                 
             })
         }
