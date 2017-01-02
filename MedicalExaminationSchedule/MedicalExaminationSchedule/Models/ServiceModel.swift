@@ -19,37 +19,65 @@ class ServiceModel: NSObject {
     
     init(dict:[String:AnyObject]) {
         if let v = dict["id"] {
-            self.service_id = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.service_id = ""
+            } else {
+                self.service_id = "\(v)"
+            }
         }else {
             self.service_id = ""
         }
         if let v = dict["name"] {
-            self.name = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.name = ""
+            } else {
+                self.name = "\(v)"
+            }
         }else {
             self.name = ""
         }
         if let v = dict["latitude"] {
-            self.latitude = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.latitude = ""
+            } else {
+                self.latitude = "\(v)"
+            }
         }else {
             self.latitude = ""
         }
         if let v = dict["longitude"] {
-            self.longitude = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.longitude = ""
+            } else {
+                self.longitude = "\(v)"
+            }
         }else {
             self.longitude = ""
         }
         if let v = dict["address"] {
-            self.address = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.address = ""
+            } else {
+                self.address = "\(v)"
+            }
         }else {
             self.address = ""
         }
         if let v = dict["corporation"] {
-            self.corporation = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.corporation = ""
+            } else {
+                self.corporation = "\(v)"
+            }
         }else {
             self.corporation = ""
         }
         if let v = dict["field"] {
-            self.field = "\(v)"
+            if v as! NSObject == NSNull() {
+                self.field = ""
+            } else {
+                self.field = "\(v)"
+            }
         }else {
             self.field = ""
         }

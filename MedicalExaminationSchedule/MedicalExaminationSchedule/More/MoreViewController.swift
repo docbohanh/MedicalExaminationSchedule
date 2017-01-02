@@ -284,8 +284,28 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundPopupView.isHidden = true
     }
     
-    func sendComment() {
-        backgroundPopupView.isHidden = true
+    func sendComment(title: String, suggesstion: String) {
+        if title.characters.count > 0 && suggesstion.characters.count > 0 {
+            let parameter:[String:String] = ["token_id":(UserDefaults.standard.object(forKey: "token_id") as? String)!,"title":title,"content":suggesstion]
+            LoadingOverlay.shared.showOverlay(view: view)
+            APIManager.sharedInstance.postDataToURL(url: SUGGESTION, parameters: parameter, onCompletion: { response in
+                if response.result.error == nil && response.result.isSuccess {
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã gửi ý kiến thành công", buttonArray: ["Đóng"], onCompletion: {_ in
+                        self.backgroundPopupView.isHidden = true
+                        LoadingOverlay.shared.hideOverlayView()
+                    })
+                } else {
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đóng góp ý kiến thất bại, vui lòng thử lại", buttonArray: ["Đóng"], onCompletion: {_ in
+                        self.backgroundPopupView.isHidden = true
+                        LoadingOverlay.shared.hideOverlayView()
+                    })
+                }
+            })
+        } else {
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Vui lòng nhập nội dung đóng góp ý kiến!", buttonArray: ["Đóng"], onCompletion: {_ in
+            })
+        }
+        
     }
 
     /* =========== REGISTER SUCCESS ============== */

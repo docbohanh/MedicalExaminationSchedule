@@ -10,13 +10,14 @@ import UIKit
 
 protocol CreateCommentViewDelegate {
     func closePopup() -> Void
-    func sendComment() -> Void
+    func sendComment(title:String,suggesstion:String) -> Void
 }
 
-class CreateCommentView : UIView {
+class CreateCommentView : UIView,UITextFieldDelegate {
     var delegate : CreateCommentViewDelegate?
     @IBOutlet weak var commentTextView: KMPlaceholderTextView!
     @IBOutlet weak var sendCommentButton: UIButton!
+    @IBOutlet weak var suggestionTitleTextField: UITextField!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -36,10 +37,14 @@ class CreateCommentView : UIView {
     }
     
     @IBAction func tappedSendCommentButton(_ sender: Any) {
-        self.delegate?.sendComment()
+        self.delegate?.sendComment(title: commentTextView.text ?? "", suggesstion: suggestionTitleTextField.text ?? "")
     }
     @IBAction func tappedCloseButtonComment(_ sender: Any) {
         self.delegate?.closePopup()
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
