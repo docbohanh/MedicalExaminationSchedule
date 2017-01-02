@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -220,6 +220,14 @@
                                     <constraint firstAttribute="height" constant="36" id="ycc-xU-Zkt"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="GIDSignInButton" translatesAutoresizingMaskIntoConstraints="NO" id="hgP-Fb-PSH" customClass="GIDSignInButton">
+                                <rect key="frame" x="15" y="491" width="383" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.098894216120000003" green="0.4475263357" blue="0.76723611349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="tappedSignInGoogle:" destination="Trf-25-esx" eventType="valueChanged" id="1hI-3q-kp8"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -274,6 +282,7 @@
                     <connections>
                         <outlet property="facebookSignInButton" destination="Rvo-ct-ich" id="k7N-ae-8nj"/>
                         <outlet property="googleSignInButton" destination="KF9-TB-3Hw" id="Wg7-FM-bw4"/>
+                        <outlet property="googleSignInView" destination="hgP-Fb-PSH" id="qCp-Hl-3VQ"/>
                         <outlet property="logoImageView" destination="5Xd-Y9-a9t" id="wez-V6-6B9"/>
                         <outlet property="passwordTextField" destination="fTv-ET-xlZ" id="eCz-EQ-TKO"/>
                         <outlet property="passwordView" destination="hmd-uQ-e5h" id="fca-tT-86T"/>
@@ -287,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-jo-XjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1378.125" y="-273.59154929577466"/>
+            <point key="canvasLocation" x="-1378.2608695652175" y="-273.91304347826087"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="i8D-nF-oqu">

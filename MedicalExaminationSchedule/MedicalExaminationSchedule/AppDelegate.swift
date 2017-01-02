@@ -44,9 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // Override point for customization after application launch.
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         return true
     }
@@ -57,42 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                          sourceApplication: sourceApplication,
                                                          annotation: annotation)
     }
-    
-//    func application(application: UIApplication,
-//                     openURL url: URL, options: [String: AnyObject]) -> Bool {
-//        return GIDSignIn.sharedInstance().handle(url, sourceApplication: [UIApplicationOpenURLOptionsKey.RawValue], annotation: true)
-//    }
-//    
-//    func application(application: UIApplication,
-//                     openURL url: URL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-//        var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.RawValue: sourceApplication,
-//                                            UIApplicationOpenURLOptionsKey.RawValue: annotation]
-//        return GIDSignIn.sharedInstance().handle(url,
-//                                                    sourceApplication: sourceApplication,
-//                                                    annotation: annotation)
-//    }
-    
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            // ...
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if #available(iOS 9.0, *) {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         } else {
-            print("\(error.localizedDescription)")
+            return false
+            // Fallback on earlier versions
         }
     }
     
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: NSError!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

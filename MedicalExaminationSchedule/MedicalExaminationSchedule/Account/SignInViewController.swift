@@ -13,8 +13,8 @@ import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Google
-
-class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
+import GoogleSignIn
+class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDelegate,GIDSignInUIDelegate,GIDSignInDelegate {
 
     @IBOutlet weak var registerAccountButton: UIButton!
     @IBOutlet weak var googleSignInButton: UIButton!
@@ -29,8 +29,11 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
+    @IBOutlet weak var googleSignInView: GIDSignInButton!
     var loginButton : LoginButton?
     
+    @IBAction func tappedSignInGoogle(_ sender: GIDSignInButton) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
@@ -44,8 +47,21 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         loginButton?.delegate = self
         ProjectCommon.boundView(button: loginButton!)
         view.addSubview(loginButton!)
+
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        if configureError != nil {
+            print(configureError ?? "")
+        }
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
+    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
+        print("in will dispatch")
+        
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         if (FBSDKAccessToken.current()) != nil{
             print("da dong y cho phep su dung facebook")
@@ -59,23 +75,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
             self.performSegue(withIdentifier: "ShowTabBar", sender: self)
         }
     }
-    
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            // ...
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
-
     
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: googleSignInButton)
@@ -116,6 +115,28 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         dictParam["password"] = datastring as String?
 //        dictParam["password"] = passwordTextField.text
         self.callLoginApi(dictParam: dictParam)
+    }
+    
+//    func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
+//        if (error == nil) {
+//            // Perform any operations on signed in user here.
+//            let userId = user.userID                  // For client-side use only!
+//            let idToken = user.authentication.idToken // Safe to send to the server
+//            let fullName = user.profile.name
+//            let givenName = user.profile.givenName
+//            let familyName = user.profile.familyName
+//            let email = user.profile.email
+//            // ...
+//        } else {
+//            print("\(error.localizedDescription)")
+//        }
+//
+//    }
+//    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
     
     @IBAction func tappedRemember(_ sender: Any) {

@@ -11,6 +11,7 @@
 
 #import <CommonCrypto/CommonHMAC.h>
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <Google/SignIn.h>
 #import "CKCalendarView.h"
 
 #import "Lib.h"
