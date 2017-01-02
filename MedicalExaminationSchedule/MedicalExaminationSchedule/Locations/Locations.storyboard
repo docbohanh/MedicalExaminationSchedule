@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XNy-0N-Ea6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XNy-0N-Ea6">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,7 +64,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqx-aI-1Ie">
                                         <rect key="frame" x="0.0" y="0.0" width="104" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Bệnh viện">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,7 +106,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0H-RR-5O5">
                                         <rect key="frame" x="104" y="0.0" width="104" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Phòng khám">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -839,7 +839,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="oh6-nO-J73"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Giới thiệu">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -853,7 +853,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zny-3a-mPG">
                                                         <rect key="frame" x="104" y="260" width="103" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Thông tin">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -867,7 +867,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tn-Uf-UaH">
                                                         <rect key="frame" x="208" y="260" width="103" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Ảnh ">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -881,7 +881,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xl-gj-Jgd">
                                                         <rect key="frame" x="311" y="260" width="103" height="35"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <state key="normal" title="Đánh giá">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -965,9 +965,9 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ELW-WX-CGf">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="377"/>
+                                                <rect key="frame" x="15" y="310" width="384" height="362"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iO6-f6-9v8">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="iO6-f6-9v8">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1281,7 +1281,7 @@
                                                                 <constraint firstItem="wmx-Ut-Yup" firstAttribute="top" secondItem="5f6-0L-3mt" secondAttribute="top" constant="8" id="7uy-DL-eVv"/>
                                                                 <constraint firstItem="tBf-sE-XtB" firstAttribute="trailing" secondItem="wmx-Ut-Yup" secondAttribute="trailing" id="9xJ-v5-5Ml"/>
                                                                 <constraint firstAttribute="trailing" secondItem="wmx-Ut-Yup" secondAttribute="trailing" constant="15" id="Cl8-pZ-iYZ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="tBf-sE-XtB" secondAttribute="bottom" constant="5.6699999999999999" id="Jzo-Yr-EqZ"/>
+                                                                <constraint firstAttribute="bottom" secondItem="tBf-sE-XtB" secondAttribute="bottom" priority="750" constant="5.6699999999999999" id="Jzo-Yr-EqZ"/>
                                                                 <constraint firstItem="tBf-sE-XtB" firstAttribute="leading" secondItem="wmx-Ut-Yup" secondAttribute="leading" id="VhM-29-YYW"/>
                                                                 <constraint firstItem="tBf-sE-XtB" firstAttribute="top" secondItem="wmx-Ut-Yup" secondAttribute="bottom" constant="5" id="lVG-Kx-rT4"/>
                                                                 <constraint firstItem="wmx-Ut-Yup" firstAttribute="leading" secondItem="5f6-0L-3mt" secondAttribute="leading" constant="15" id="oxY-E8-y4R"/>
@@ -1306,13 +1306,13 @@
                                             <constraint firstItem="M1A-8f-paj" firstAttribute="top" secondItem="zbF-w6-UfC" secondAttribute="top" id="Bdt-ek-uZI"/>
                                             <constraint firstAttribute="bottom" secondItem="8EI-87-EwV" secondAttribute="bottom" id="Ebb-r4-FLU"/>
                                             <constraint firstAttribute="trailing" secondItem="M1A-8f-paj" secondAttribute="trailing" id="LVr-2H-ceQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="ELW-WX-CGf" secondAttribute="trailing" id="MOM-wd-mj9"/>
+                                            <constraint firstAttribute="trailing" secondItem="ELW-WX-CGf" secondAttribute="trailing" constant="15" id="MOM-wd-mj9"/>
                                             <constraint firstItem="8EI-87-EwV" firstAttribute="top" secondItem="M1A-8f-paj" secondAttribute="bottom" id="O5F-oR-a4b"/>
                                             <constraint firstItem="M1A-8f-paj" firstAttribute="leading" secondItem="zbF-w6-UfC" secondAttribute="leading" id="QBd-Ek-v1R"/>
                                             <constraint firstAttribute="bottom" secondItem="Yjc-VJ-NGJ" secondAttribute="bottom" id="Qw7-eR-cWO"/>
-                                            <constraint firstItem="ELW-WX-CGf" firstAttribute="top" secondItem="M1A-8f-paj" secondAttribute="bottom" id="XIU-rC-dKi"/>
+                                            <constraint firstItem="ELW-WX-CGf" firstAttribute="top" secondItem="M1A-8f-paj" secondAttribute="bottom" constant="15" id="XIU-rC-dKi"/>
                                             <constraint firstAttribute="trailing" secondItem="8EI-87-EwV" secondAttribute="trailing" id="bA0-K6-jwt"/>
-                                            <constraint firstItem="ELW-WX-CGf" firstAttribute="leading" secondItem="zbF-w6-UfC" secondAttribute="leading" id="fLy-le-x7y"/>
+                                            <constraint firstItem="ELW-WX-CGf" firstAttribute="leading" secondItem="zbF-w6-UfC" secondAttribute="leading" constant="15" id="fLy-le-x7y"/>
                                             <constraint firstItem="Yjc-VJ-NGJ" firstAttribute="top" secondItem="M1A-8f-paj" secondAttribute="bottom" id="iL2-Ao-ct5"/>
                                             <constraint firstAttribute="trailing" secondItem="Yjc-VJ-NGJ" secondAttribute="trailing" id="kGf-hA-Ep1"/>
                                             <constraint firstAttribute="bottom" secondItem="ELW-WX-CGf" secondAttribute="bottom" id="snj-mo-akg"/>
@@ -1423,7 +1423,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5Y-rd-mdX">
                                         <rect key="frame" x="286" y="0.0" width="96" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Đánh giá">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1437,7 +1437,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tia-T8-MNA">
                                         <rect key="frame" x="191" y="0.0" width="96" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Ảnh ">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1451,7 +1451,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Eu-10-jfa">
                                         <rect key="frame" x="95" y="0.0" width="96" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Thông tin">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1465,7 +1465,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxj-2b-wW6">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Giới thiệu">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

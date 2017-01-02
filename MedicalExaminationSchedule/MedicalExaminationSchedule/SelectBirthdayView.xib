@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view hidden="YES" contentMode="scaleToFill" id="sK0-5L-c4D" customClass="SelectBirthdayView" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uts-sg-dT9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <action selector="tappedHiddenButton:" destination="sK0-5L-c4D" eventType="touchUpInside" id="1aY-lY-hSW"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l24-Pa-nck">
+                    <rect key="frame" x="15" y="183.5" width="345" height="300"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-yF-3Xz">
+                            <rect key="frame" x="0.0" y="15" width="345" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="216" id="Pky-l0-3ut"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="503147065.56995702">
+                                <!--2016-12-11 11:04:25 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLq-uH-uEO">
+                            <rect key="frame" x="122.5" y="255" width="100" height="30"/>
+                            <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="23E-bG-3KL"/>
+                                <constraint firstAttribute="width" constant="100" id="mGI-1d-yYl"/>
+                            </constraints>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedOKButton:" destination="sK0-5L-c4D" eventType="touchUpInside" id="MCl-dj-srX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="MCv-yF-3Xz" firstAttribute="top" secondItem="l24-Pa-nck" secondAttribute="top" constant="15" id="Cjn-hj-xsD"/>
+                        <constraint firstAttribute="bottom" secondItem="mLq-uH-uEO" secondAttribute="bottom" constant="15" id="GYu-R5-N5S"/>
+                        <constraint firstItem="mLq-uH-uEO" firstAttribute="centerX" secondItem="l24-Pa-nck" secondAttribute="centerX" id="HvD-YJ-KRa"/>
+                        <constraint firstAttribute="trailing" secondItem="MCv-yF-3Xz" secondAttribute="trailing" id="XRd-KJ-Ogc"/>
+                        <constraint firstAttribute="height" constant="300" id="d6U-l4-kJC"/>
+                        <constraint firstItem="MCv-yF-3Xz" firstAttribute="leading" secondItem="l24-Pa-nck" secondAttribute="leading" id="ydw-0L-kmf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Uts-sg-dT9" secondAttribute="bottom" id="9n9-qz-PxV"/>
+                <constraint firstItem="l24-Pa-nck" firstAttribute="centerY" secondItem="sK0-5L-c4D" secondAttribute="centerY" id="ENw-tF-qon"/>
+                <constraint firstAttribute="trailing" secondItem="l24-Pa-nck" secondAttribute="trailing" constant="15" id="NdU-zz-MHk"/>
+                <constraint firstItem="Uts-sg-dT9" firstAttribute="leading" secondItem="sK0-5L-c4D" secondAttribute="leading" id="PR1-c1-r47"/>
+                <constraint firstItem="l24-Pa-nck" firstAttribute="leading" secondItem="sK0-5L-c4D" secondAttribute="leading" constant="15" id="a3A-MQ-Pk7"/>
+                <constraint firstItem="Uts-sg-dT9" firstAttribute="top" secondItem="sK0-5L-c4D" secondAttribute="top" id="rcI-ax-6hW"/>
+                <constraint firstAttribute="trailing" secondItem="Uts-sg-dT9" secondAttribute="trailing" id="xEB-VK-snS"/>
+            </constraints>
+            <connections>
+                <outlet property="datePicker" destination="MCv-yF-3Xz" id="Hxw-us-L1X"/>
+            </connections>
+            <point key="canvasLocation" x="49" y="96"/>
+        </view>
+    </objects>
+</document>

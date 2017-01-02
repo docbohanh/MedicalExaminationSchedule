@@ -112,8 +112,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         dictParam["type"] = USER_TYPE.userTypeMedhub.rawValue
         dictParam["email"] = userNameTextField.text
         let datastring = ProjectCommon.sha256(string: passwordTextField.text!)
-//        dictParam["password"] = datastring as String?
-        dictParam["password"] = passwordTextField.text
+        dictParam["password"] = datastring as String?
+//        dictParam["password"] = passwordTextField.text
         self.callLoginApi(dictParam: dictParam)
     }
     
@@ -174,6 +174,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
             // Log in user
             let fbAccessToken = FBSDKAccessToken.current().tokenString as String
             print ("Token Id" + fbAccessToken)
+            UserDefaults.standard.set(fbAccessToken, forKey: "token_fb")
             self.loginServerWithFacebook(tokenFb: fbAccessToken)
             break
         }
@@ -240,7 +241,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
                         if (dictParam["type"] == USER_TYPE.userTypeFacebook.rawValue || dictParam["type"] == USER_TYPE.userTypeGoogle.rawValue) {
                             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "UpdateProfileWithFacebookViewController")as! UpdateProfileWithFacebookViewController
-                            vc.social_token_id = dictParam["social_token_id"]
+                            vc.oldDict = dictParam
                             self.navigationController?.pushViewController(vc, animated: true)
                             return
                         }

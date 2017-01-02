@@ -303,7 +303,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow - 8
+        let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }

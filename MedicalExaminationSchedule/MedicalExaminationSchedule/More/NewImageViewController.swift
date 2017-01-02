@@ -125,7 +125,7 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow - 6
+        let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -231,11 +231,12 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
     func updateAvatarUser(imagePost:UIImage) -> Void {
         var dictParam = [String:String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
-        dictParam["image_type"] = "image"
+//        dictParam["image_type"] = "image"
         dictParam["image_title"] = ""
         dictParam["image_desc"] = ""
+        dictParam["service_id"] = userProfile?.service_id
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
-        APIManager.sharedInstance.uploadImage(url: IMAGE_USER, image: imagePost, param: dictParam, completion: {(response) in
+        APIManager.sharedInstance.uploadImage(url: IMAGE_SERVICE, image: imagePost, param: dictParam, completion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
             self.selectedImageArray.removeFirst()
