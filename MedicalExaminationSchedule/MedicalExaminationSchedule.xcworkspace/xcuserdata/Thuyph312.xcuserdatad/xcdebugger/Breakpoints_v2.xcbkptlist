@@ -24,7 +24,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Models/CalendarBookModel.swift"
-                  timestampString = "505028643.41951"
+                  timestampString = "505030042.357236"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "27"
@@ -39,7 +39,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Models/CalendarBookModel.swift"
-                  timestampString = "505028643.422276"
+                  timestampString = "505030042.359773"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -70,7 +70,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Models/CalendarBookModel.swift"
-                  timestampString = "505028643.427795"
+                  timestampString = "505030042.365272"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -85,7 +85,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Models/CalendarBookModel.swift"
-                  timestampString = "505028643.432511"
+                  timestampString = "505030042.370347"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -118,7 +118,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Account/UpdateProfileWithFacebookViewController.swift"
-                  timestampString = "505028643.437867"
+                  timestampString = "505030042.375902"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "129"
@@ -133,7 +133,7 @@
                   moduleName = "MedicalExaminationSchedule"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Thuyph312/Desktop/Outsource/MedicalExaminationSchedule/MedicalExaminationSchedule/MedicalExaminationSchedule/Account/UpdateProfileWithFacebookViewController.swift"
-                  timestampString = "505028643.440359"
+                  timestampString = "505030042.378749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "130"
@@ -156,6 +156,22 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "tappedProfileFromFaceBook(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MedicalExaminationSchedule/News/DetailNewViewController.swift"
+            timestampString = "505030105.880384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "getLikeContent()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

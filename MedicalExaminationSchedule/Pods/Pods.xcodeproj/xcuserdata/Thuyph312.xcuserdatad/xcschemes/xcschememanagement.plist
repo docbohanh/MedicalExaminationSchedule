@@ -44,6 +44,21 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>GTMOAuth2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>MagicalRecord.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -72,6 +87,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2A146EFE847A3D6AEAEC4BDD4EECCD97</key>
 		<dict>
 			<key>primary</key>
@@ -127,6 +147,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7335E9C9689F3B8A16F063A884748533</key>
 		<dict>
 			<key>primary</key>
@@ -143,6 +168,16 @@
 			<true/>
 		</dict>
 		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CCC852F07E1BCEED0A6E4238B155ECA3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
