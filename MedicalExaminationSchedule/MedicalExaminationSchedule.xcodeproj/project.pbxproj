@@ -97,6 +97,9 @@
 		D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */; };
 		D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */; };
 		D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */; };
+		D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E69D791E1A0DB800469584 /* SelectBirthdayView.swift */; };
+		D2E69D7C1E1A0DC900469584 /* SelectBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */; };
+		D2E69D7E1E1A1DE900469584 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E69D7D1E1A1DE900469584 /* CustomCollectionViewLayout.swift */; };
 		D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */; };
 		D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */; };
 		D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */; };
@@ -242,6 +245,9 @@
 		D2DE925F1DF2D45A000C9BC7 /* image_new_test@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_new_test@2x.png"; sourceTree = "<group>"; };
 		D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		D2E69D791E1A0DB800469584 /* SelectBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectBirthdayView.swift; path = Account/SelectBirthdayView.swift; sourceTree = "<group>"; };
+		D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBirthdayView.xib; sourceTree = "<group>"; };
+		D2E69D7D1E1A1DE900469584 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonTableViewCell.swift; sourceTree = "<group>"; };
 		D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
 		D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -489,6 +495,8 @@
 				84CB43001DE19A3C0059B057 /* SignInViewController.swift */,
 				84CB43021DE1B4270059B057 /* SignUpViewController.swift */,
 				D2DE925D1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift */,
+				D2E69D791E1A0DB800469584 /* SelectBirthdayView.swift */,
+				D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -537,6 +545,7 @@
 				8BF746CE1DF83CC8006C9B48 /* PhotoCollectionViewCell.swift */,
 				8BF746CF1DF83CC8006C9B48 /* PhotoCollectionViewCell.xib */,
 				D21A801D1E16D20100DF6077 /* SetupTimeTableViewCell.swift */,
+				D2E69D7D1E1A1DE900469584 /* CustomCollectionViewLayout.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -761,6 +770,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842641911DF2B25A00EAB5CE /* More.storyboard in Resources */,
+				D2E69D7C1E1A0DC900469584 /* SelectBirthdayView.xib in Resources */,
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
 				D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */,
@@ -1002,6 +1012,7 @@
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
 				D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */,
+				D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */,
 				844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */,
 				D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */,
 				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
@@ -1023,6 +1034,7 @@
 				D21A80241E16F42C00DF6077 /* SelectTimeView.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */,
+				D2E69D7E1E1A1DE900469584 /* CustomCollectionViewLayout.swift in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

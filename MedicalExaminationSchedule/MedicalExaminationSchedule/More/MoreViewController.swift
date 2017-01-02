@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FacebookLogin
+import FacebookCore
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate, FirstRegisterDoctorVCDelegate {
 
@@ -211,6 +215,13 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func tappedSignOutButton(_ sender: Any) {
         // Sign out
         UserDefaults.standard.removeObject(forKey: "token_id")
+        if (UserDefaults.standard.object(forKey: "token_fb") != nil) {
+            // logout facebook
+            FBSDKAccessToken.current()
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut() // this is an instance function
+            UserDefaults.standard.removeObject(forKey: "token_fb")
+        }
         _ = navigationController?.popViewController(animated: true)
     }
     

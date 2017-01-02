@@ -34,6 +34,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         super.viewDidLoad()
         self.setupNavigationBar()
         // Do any additional setup after loading the view.
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -42,7 +44,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.setupScrollView()
+//        self.setupScrollView()
         self.setupComponent()
         self.tappedChooseMale(maleButton)
     }
@@ -65,19 +67,13 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     override func viewDidLayoutSubviews() {
-        if (signInButton.frame.size.height + signInButton.frame.origin.y) < scrollView.frame.size.height {
-            scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
-        } else {
-            scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y + 10)
-        }
-        scrollView.bounces = false
-        backgroundImageView.frame.size.height = scrollView.contentSize.height
+        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: signInButton.frame.size.height + signInButton.frame.origin.y)
+        scrollView.layoutIfNeeded()
     }
     
     func setupComponent() -> Void {
         ProjectCommon.boundView(button: femaleButton)
         ProjectCommon.boundView(button: maleButton)
-//        ProjectCommon.boundView(button: signInButton)
         ProjectCommon.boundView(button: registerButton)
         ProjectCommon.boundView(button: passwordTextField)
         ProjectCommon.boundView(button: phoneTextField)
@@ -184,12 +180,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         textField.resignFirstResponder()
         return true
     }
-    
-    func setupScrollView() {
-        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: 2*registerButton.frame.size.height + registerButton.frame.origin.y + 10)
-    }
+
     func setupNavigationBar() {
-//        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.isHidden = true
     }
 }

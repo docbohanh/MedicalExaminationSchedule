@@ -10,7 +10,7 @@ import UIKit
 
 class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PhotoCellDelegate, NewImageDelegate {
     fileprivate let itemsPerRow: CGFloat = 3
-    fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 3.0, right: 2.0)
     
     @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -86,6 +86,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
             let storyboard = UIStoryboard.init(name: "More", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NewImageViewController") as! NewImageViewController
             vc.delegate = self
+            vc.userProfile = self.userProfile
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -129,7 +130,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         //2
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow - 6
+        let widthPerItem = availableWidth / itemsPerRow
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -148,13 +149,19 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         return sectionInsets.left
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+    
+    
     /* ------------- API ---------------*/
     func getListPhoto() -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["image_type"] = "image"
+//        dictParam["image_type"] = "image"
+        dictParam["service_id"] = userProfile?.service_id
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
-        APIManager.sharedInstance.getDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.getDataToURL(url: IMAGE_SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
@@ -188,8 +195,9 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         var dictParam = [String:String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String
         dictParam["image_id"] = object.id
+        dictParam["service_id"] = userProfile?.service_id
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
-        APIManager.sharedInstance.deleteDataToURL(url: IMAGE_USER, parameters: dictParam, onCompletion: {(response) in
+        APIManager.sharedInstance.deleteDataToURL(url: IMAGE_SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
             self.selectedImageArray.removeFirst()
@@ -237,7 +245,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         self.getListPhoto()
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -245,6 +253,6 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }
