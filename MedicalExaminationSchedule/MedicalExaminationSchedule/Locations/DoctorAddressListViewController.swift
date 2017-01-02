@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate {
+class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapButton: UIButton!
@@ -79,6 +79,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 14)
 
             mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: segmentView.frame.origin.y + segmentView.frame.height, width: doctorAddressTableView.frame.size.width, height:view.frame.size.height - segmentView.frame.origin.y - segmentView.frame.height), camera: camera)
+            mapView?.delegate = self
             mapView?.isMyLocationEnabled = true
             let getPositionButton = UIButton.init(type: UIButtonType.custom)
             getPositionButton.frame = CGRect.init(x: 30, y: (mapView?.frame.size.height)! - 100, width: self.view.frame.size.width - 60, height: 40)
@@ -113,13 +114,49 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             marker.map = mapView
         }
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("get location falure")
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        
+//        let path = GMSMutablePath()
+//        path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
+//        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+//        
+//        let rectangle = GMSPolyline(path: path)
+//        rectangle.strokeWidth = 2.0
+//        rectangle.map = self.mapView
+        
+        APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(coordinate.latitude), destinationLng: String(coordinate.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
+            if response.result.error == nil && response.result.isSuccess {
+                let results = response.result
+                if results != nil {
+                    let value = results.value as! [String : AnyObject]
+                    if value != nil {
+                        let routes = value["routes"] as! [[String:AnyObject]]
+                        if routes.count > 0 {
+                        
+                        }
+                    }
+                }
+            }
+            print(response)
+        })
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(marker.position.longitude), destinationLng: String(marker.position.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
+            print(response)
+        })
+        
     }
     
     func getPosition() {
         
     }
+    
     func getCurrentLocation() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

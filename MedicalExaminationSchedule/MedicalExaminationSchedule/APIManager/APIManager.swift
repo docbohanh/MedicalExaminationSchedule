@@ -134,6 +134,15 @@ class APIManager: NSObject,URLSessionDelegate {
         }
     }
     
+    func getDirectionUrl(url : String,originLat : String,originLng : String,destinationLat : String,destinationLng : String,key:String, onCompletion: @escaping AlamofireResponse) {
+        let requestURL =  url + "?" + "origin=" + originLat + "," + originLng + "&" + "destination=" + destinationLat + "," + destinationLng + "&" + "key=" + key
+//        "&" + "waypoints=via:" + originLat + "C" + originLng + "C" + "via:" + destinationLat + "C" + destinationLng + "&" +
+        APIManager.Manager.request(requestURL, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                onCompletion(response)
+        }
+    }
+    
     func putDataToURL(url:String, parameters:[String:String], onCompletion: @escaping AlamofireResponse) {
         let parameterString = parameters.stringFromHttpParameters()
         let requestURL = REST_API_URL + url + "?" + parameterString
