@@ -140,6 +140,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     
     @IBAction func tappedGetImageFromDevice(_ sender: UIButton) {
         tabIndex = 2
+        backgroundScrollView.contentSize = CGSize.init(width: backgroundScrollView.frame.size.width, height: imageCollectionView.frame.origin.y + imageCollectionView.frame.height)
         tabLineView.center = CGPoint.init(x: imageTabButton.center.x, y: tabLineView.center.y)
         informationTableView.isHidden = true
         commentView.isHidden = true
