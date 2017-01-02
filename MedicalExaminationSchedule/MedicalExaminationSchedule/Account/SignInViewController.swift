@@ -131,9 +131,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
 //        dictParam["password"] = passwordTextField.text
         self.callLoginApi(dictParam: dictParam)
     }
-    
-
-//    
+//
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
         // Perform any operations when the user disconnects from app here.
@@ -186,23 +184,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
         print("Did logout via LoginButton")
     }
     
-//    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-//                withError error: NSError!) {
-//        if (error == nil) {
-//            // Perform any operations on signed in user here.
-//            let userId = user.userID                  // For client-side use only!
-//            let idToken = user.authentication.idToken // Safe to send to the server
-//            let fullName = user.profile.name
-//            let givenName = user.profile.givenName
-//            let familyName = user.profile.familyName
-//            let email = user.profile.email
-//            // ...
-//        } else {
-//            print("\(error.localizedDescription)")
-//        }
-//    }
-    
-    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         if (error) != nil {
             print(error)
@@ -213,7 +194,11 @@ class SignInViewController: UIViewController,UITextFieldDelegate, LoginButtonDel
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
+        if (error == nil) {
+                        let idToken = user.authentication.idToken //
+                    } else {
+                        print("\(error.localizedDescription)")
+                    }
     }
 
     func loginServerWithFacebook(tokenFb:String) -> Void {

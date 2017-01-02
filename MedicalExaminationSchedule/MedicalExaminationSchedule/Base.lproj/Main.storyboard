@@ -221,7 +221,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="GIDSignInButton" translatesAutoresizingMaskIntoConstraints="NO" id="hgP-Fb-PSH" customClass="GIDSignInButton">
-                                <rect key="frame" x="15" y="491" width="383" height="50"/>
+                                <rect key="frame" x="11" y="397" width="383" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.098894216120000003" green="0.4475263357" blue="0.76723611349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
