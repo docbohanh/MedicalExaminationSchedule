@@ -1198,6 +1198,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = Pods;
 			};
 			name = Debug;
 		};
@@ -1224,6 +1225,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MedicalExaminationSchedule/Library/MedicalExaminationSchedule-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = Pods;
 			};
 			name = Release;
 		};
