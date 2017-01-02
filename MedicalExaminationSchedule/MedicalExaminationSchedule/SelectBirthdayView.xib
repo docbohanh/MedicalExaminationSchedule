@@ -34,11 +34,10 @@
                             </date>
                         </datePicker>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLq-uH-uEO">
-                            <rect key="frame" x="122.5" y="255" width="100" height="30"/>
+                            <rect key="frame" x="10" y="255" width="325" height="30"/>
                             <color key="backgroundColor" red="0.2360301018" green="0.50278323889999998" blue="0.81828588250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="23E-bG-3KL"/>
-                                <constraint firstAttribute="width" constant="100" id="mGI-1d-yYl"/>
                             </constraints>
                             <state key="normal" title="OK">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,7 +51,8 @@
                     <constraints>
                         <constraint firstItem="MCv-yF-3Xz" firstAttribute="top" secondItem="l24-Pa-nck" secondAttribute="top" constant="15" id="Cjn-hj-xsD"/>
                         <constraint firstAttribute="bottom" secondItem="mLq-uH-uEO" secondAttribute="bottom" constant="15" id="GYu-R5-N5S"/>
-                        <constraint firstItem="mLq-uH-uEO" firstAttribute="centerX" secondItem="l24-Pa-nck" secondAttribute="centerX" id="HvD-YJ-KRa"/>
+                        <constraint firstItem="mLq-uH-uEO" firstAttribute="leading" secondItem="l24-Pa-nck" secondAttribute="leading" constant="10" id="HCJ-d9-Kqn"/>
+                        <constraint firstAttribute="trailing" secondItem="mLq-uH-uEO" secondAttribute="trailing" constant="10" id="Mja-Sh-TdK"/>
                         <constraint firstAttribute="trailing" secondItem="MCv-yF-3Xz" secondAttribute="trailing" id="XRd-KJ-Ogc"/>
                         <constraint firstAttribute="height" constant="300" id="d6U-l4-kJC"/>
                         <constraint firstItem="MCv-yF-3Xz" firstAttribute="leading" secondItem="l24-Pa-nck" secondAttribute="leading" id="ydw-0L-kmf"/>

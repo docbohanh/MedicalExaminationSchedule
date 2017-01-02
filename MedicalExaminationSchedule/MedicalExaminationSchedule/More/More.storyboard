@@ -849,7 +849,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODb-tc-f3h">
                                 <rect key="frame" x="15" y="622" width="345" height="35"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.098894216120000003" green="0.4475263357" blue="0.76723611349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="f7V-2J-rry"/>
                                 </constraints>
@@ -1059,6 +1059,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="qHe-O0-b2H" id="1e6-Qf-rJL"/>
                         <outlet property="tableView" destination="dB5-f6-nSs" id="Q0C-yf-57E"/>
+                        <outlet property="updateButton" destination="ODb-tc-f3h" id="dOx-Co-eyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEN-Ih-RTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1379,7 +1380,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoA-J2-uXp">
                                 <rect key="frame" x="15" y="612" width="345" height="35"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.098894216120000003" green="0.4475263357" blue="0.76723611349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="2ei-JA-CF7"/>
                                 </constraints>
