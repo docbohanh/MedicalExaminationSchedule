@@ -101,6 +101,8 @@
 		D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E69D791E1A0DB800469584 /* SelectBirthdayView.swift */; };
 		D2E69D7C1E1A0DC900469584 /* SelectBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */; };
 		D2E69D7E1E1A1DE900469584 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E69D7D1E1A1DE900469584 /* CustomCollectionViewLayout.swift */; };
+		D2E69D811E1A88D300469584 /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E69D7F1E1A88D300469584 /* FooterCell.swift */; };
+		D2E69D821E1A88D300469584 /* FooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2E69D801E1A88D300469584 /* FooterCell.xib */; };
 		D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */; };
 		D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */; };
 		D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */; };
@@ -250,6 +252,8 @@
 		D2E69D791E1A0DB800469584 /* SelectBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectBirthdayView.swift; path = Account/SelectBirthdayView.swift; sourceTree = "<group>"; };
 		D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectBirthdayView.xib; sourceTree = "<group>"; };
 		D2E69D7D1E1A1DE900469584 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D2E69D7F1E1A88D300469584 /* FooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
+		D2E69D801E1A88D300469584 /* FooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterCell.xib; sourceTree = "<group>"; };
 		D2E89B7A1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomButtonTableViewCell.swift; sourceTree = "<group>"; };
 		D2E89B7C1E18FFBC00DDA4A3 /* AssetGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetGridViewController.swift; sourceTree = "<group>"; };
 		D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewCell.swift; sourceTree = "<group>"; };
@@ -398,6 +402,8 @@
 		84321D641DF7469100CCA4D4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D2E69D7F1E1A88D300469584 /* FooterCell.swift */,
+				D2E69D801E1A88D300469584 /* FooterCell.xib */,
 				D2F4A9F71E17A2EE00EE737B /* HMSegment */,
 				D2F4A9D91E1757F500EE737B /* Toast */,
 				D27DE73D1E16B7A400169D4E /* CKCallendar */,
@@ -773,6 +779,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842641911DF2B25A00EAB5CE /* More.storyboard in Resources */,
+				D2E69D821E1A88D300469584 /* FooterCell.xib in Resources */,
 				D2E69D7C1E1A0DC900469584 /* SelectBirthdayView.xib in Resources */,
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
@@ -1005,6 +1012,7 @@
 				D26F57741E193099009E8FB8 /* NewImageViewController.swift in Sources */,
 				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,
 				D21A801E1E16D20100DF6077 /* SetupTimeTableViewCell.swift in Sources */,
+				D2E69D811E1A88D300469584 /* FooterCell.swift in Sources */,
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */,
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,

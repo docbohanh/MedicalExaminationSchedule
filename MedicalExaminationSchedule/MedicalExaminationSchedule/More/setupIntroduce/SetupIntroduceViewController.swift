@@ -22,7 +22,7 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        ProjectCommon.boundViewWithColor(button: updateButton, color: UIColor.clear)
+        ProjectCommon.boundView(button: updateButton, cornerRadius: updateButton.frame.height/2, color: UIColor.clear, borderWith: 0)
         isntroduceListTableView.tableFooterView = UIView.init(frame: CGRect.zero)
         self.getAllIntroduce()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -31,6 +31,7 @@ class SetupIntroduceViewController: UIViewController,UITableViewDataSource,UITab
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

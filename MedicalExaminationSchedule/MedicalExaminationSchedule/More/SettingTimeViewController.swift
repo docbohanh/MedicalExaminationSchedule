@@ -13,6 +13,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var updateButton: UIButton!
     var selectTimePopup : SelectTimeView?
     
     var selectedDate : Date?
@@ -26,6 +27,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ProjectCommon.boundView(button: updateButton, cornerRadius: updateButton.frame.size.height/2, color: UIColor.clear, borderWith: 0)
         dateLabel.text = ProjectCommon.convertDateToString(date: selectedDate!)
         // Do any additional setup after loading the view.
         self.getCalendarTime()
