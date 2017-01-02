@@ -22,6 +22,7 @@ class DetailNewViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
+    @IBOutlet weak var content: UITextView!
     
     var delegate : DetailNewControllerDelegate?
     
@@ -70,6 +71,8 @@ class DetailNewViewController: UIViewController {
                     // update like button
                     let resultData = resultDictionary["result"]
                     self.likeButton.isSelected = resultData?["liked"] as! Bool
+                    let likeContent = resultData?["content"] as! String
+                    self.content.text = likeContent.fromBase64()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         

@@ -48,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
-        GIDSignIn.sharedInstance().delegate = self
         return true
     }
 
