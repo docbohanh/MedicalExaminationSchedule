@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var segmentBackgroundView: UIView!
     @IBOutlet weak var tabLineView: UIView!
@@ -17,23 +17,33 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var bookedTabButton: UIButton!
     @IBOutlet weak var endTabButton: UIButton!
     @IBOutlet weak var cancelTabButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var tabIndex = 0
     var bookCanceledArray = [CalendarBookModel]()
     var bookedArray = [CalendarBookModel]()
     var bookEndedArray = [CalendarBookModel]()
-
+    var searchActive = false
+    var filterArray = [CalendarBookModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView.init(frame: CGRect.zero)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+        self.bookedTabSelected(bookedTabButton)
     }
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getAllBook()
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func bookedTabSelected(_ sender: Any) {
@@ -43,6 +53,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         cancelTabButton.isSelected = false
         tabLineView.center = CGPoint.init(x: bookedTabButton.center.x, y: tabLineView.center.y)
         tableView.reloadData()
+        self.resetSearchBar()
     }
     @IBAction func endTabSelected(_ sender: Any) {
         tabIndex = 1
@@ -51,6 +62,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         cancelTabButton.isSelected = false
         tabLineView.center = CGPoint.init(x: endTabButton.center.x, y: tabLineView.center.y)
         tableView.reloadData()
+        self.resetSearchBar()
     }
     
     @IBAction func cancelTabSelected(_ sender: Any) {
@@ -60,6 +72,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         cancelTabButton.isSelected = true
         tabLineView.center = CGPoint.init(x: cancelTabButton.center.x, y: tabLineView.center.y)
         tableView.reloadData()
+        self.resetSearchBar()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,13 +80,17 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tabIndex {
-        case 0:
-            return bookedArray.count
-        case 1:
-            return bookEndedArray.count
-        default:
-            return bookCanceledArray.count
+        if searchActive {
+            return filterArray.count
+        } else {
+            switch tabIndex {
+            case 0:
+                return bookedArray.count
+            case 1:
+                return bookEndedArray.count
+            default:
+                return bookCanceledArray.count
+            }
         }
     }
     
@@ -83,18 +100,23 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorHistoryTableViewCell", for: indexPath) as! DoctorHistoryTableViewCell
-        switch tabIndex {
-        case 0:
-            cell.initCell(object: bookedArray[indexPath.row])
-            break
-        case 1:
-            cell.initCell(object: bookEndedArray[indexPath.row])
-            break
-        default:
-            cell.initCell(object: bookCanceledArray[indexPath.row])
-            break
-            
+        if searchActive {
+            cell.initCell(object: filterArray[indexPath.row])
+        }else {
+            switch tabIndex {
+            case 0:
+                cell.initCell(object: bookedArray[indexPath.row])
+                break
+            case 1:
+                cell.initCell(object: bookEndedArray[indexPath.row])
+                break
+            default:
+                cell.initCell(object: bookCanceledArray[indexPath.row])
+                break
+                
+            }
         }
+        
         return cell
     }
     override func didReceiveMemoryWarning() {
@@ -147,6 +169,38 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                 }
             }
         })
+    }
+    
+    func resetSearchBar() -> Void {
+        searchBar.text = ""
+        searchActive = false
+        tableView.reloadData()
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchString = searchText.lowercased()
+        var array = [CalendarBookModel]()
+        switch tabIndex {
+        case 0:
+            array = bookedArray
+            break
+        case 1:
+            array = bookEndedArray
+            break
+        default:
+            array = bookCanceledArray
+            break
+        }
+        filterArray = array.filter({ (object : CalendarBookModel) -> Bool in
+            let categoryMatch = (object.service_name?.lowercased().contains(searchString))! || (object.user_name?.lowercased().contains(searchString))!
+            return categoryMatch
+        })
+        if(filterArray.count == 0 && searchString == ""){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        tableView.reloadData()
     }
     
     /*
