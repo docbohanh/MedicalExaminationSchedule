@@ -73,7 +73,7 @@
 		D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22859BB1E08506500570A8F /* ServiceModel.swift */; };
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
 		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
-		D22EE6411E1AB2CD00933D83 /* default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D22EE6401E1AB2CD00933D83 /* default-568h@2x.png */; };
+		D22EE6431E1ABEBB00933D83 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */; };
 		D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D242084E1E12D7B100C7760A /* IntroduceModel.swift */; };
 		D26F57741E193099009E8FB8 /* NewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F57731E193099009E8FB8 /* NewImageViewController.swift */; };
 		D26F57761E194B4A009E8FB8 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F57751E194B4A009E8FB8 /* ImageModel.swift */; };
@@ -224,7 +224,7 @@
 		D22859BB1E08506500570A8F /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
 		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
-		D22EE6401E1AB2CD00933D83 /* default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default-568h@2x.png"; path = "Assets.xcassets/bg_login_640x1136.imageset/default-568h@2x.png"; sourceTree = "<group>"; };
+		D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D242084E1E12D7B100C7760A /* IntroduceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceModel.swift; sourceTree = "<group>"; };
 		D26F57731E193099009E8FB8 /* NewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewImageViewController.swift; sourceTree = "<group>"; };
 		D26F57751E194B4A009E8FB8 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		84CB42CD1DE16FE10059B057 /* MedicalExaminationSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				D22EE6401E1AB2CD00933D83 /* default-568h@2x.png */,
+				D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */,
 				8B7DD3B61E166B280080A814 /* GoogleSignIn.bundle */,
 				8BE747691E13B57500519416 /* github.com.cer */,
 				D2F778E41E01AE6E007D63E4 /* Models */,
@@ -785,7 +785,6 @@
 				D2E69D821E1A88D300469584 /* FooterCell.xib in Resources */,
 				D2E69D7C1E1A0DC900469584 /* SelectBirthdayView.xib in Resources */,
 				8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */,
-				D22EE6411E1AB2CD00933D83 /* default-568h@2x.png in Resources */,
 				D2DE92581DF2A46B000C9BC7 /* logo_test@2x.png in Resources */,
 				D29E8C4A1DF7432E0000815B /* ChangeAvatarView.xib in Resources */,
 				84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */,
@@ -805,6 +804,7 @@
 				8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */,
 				D21A80261E16F43900DF6077 /* SelectTimeView.xib in Resources */,
 				8BF746D31DF84352006C9B48 /* TestPhoto@2x.png in Resources */,
+				D22EE6431E1ABEBB00933D83 /* Default-568h@2x.png in Resources */,
 				D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */,
 				8BF746D11DF83CC8006C9B48 /* PhotoCollectionViewCell.xib in Resources */,
 				845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */,
