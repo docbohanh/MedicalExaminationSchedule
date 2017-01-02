@@ -31,7 +31,7 @@ let SERVICE = "service"
 let SERVICE_DETAIL = "service/detail"
 let SERVICE_USER = "service/user"
 
-
+let SUGGESTION = "suggestion"
 let COMMENT = "comment"
 
 let CALENDAR_TIME = "calendar/time"
