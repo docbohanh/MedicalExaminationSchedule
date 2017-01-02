@@ -13,6 +13,7 @@ target 'MedicalExaminationSchedule' do
     pod 'FacebookShare'
     pod 'Google'
     pod 'GoogleSignIn', '4.0.0'
+    pod 'Google/SignIn'
 
   # Pods for MedicalExaminationSchedule
 
