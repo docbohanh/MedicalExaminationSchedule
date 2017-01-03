@@ -250,7 +250,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else if indexPath.row == 1 {
                 // ý kiến
             } else {
-                self.performSegue(withIdentifier: "guidApp", sender: nil)
+                self.performSegue(withIdentifier: "PushToAbout", sender: nil)
                 // hướng dẫn
             }
         }else {
@@ -277,7 +277,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             default:
                 // hướng dẫn
-                
+                 self.performSegue(withIdentifier: "PushToAbout", sender: nil)
                 break
             }
         }
