@@ -47,10 +47,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         moreTableView.estimatedRowHeight = 70.0;
         moreTableView.tableFooterView = UIView.init(frame: CGRect.zero)
         
-        iconArray += ["ic_imadoctor","ic_comment"]
-        titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến"]
-        iconArrayDoctor += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment"]
-        titleArrayDoctor += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến"]
+        iconArray += ["ic_imadoctor","ic_comment","ic_about"]
+        titleArray += ["Tôi là bác sỹ","Đóng góp ý kiến","Hướng dẫn sử dụng"]
+        iconArrayDoctor += ["ic_setup_calendar","ic_setup_service","ic_folder_image","ic_imadoctor","ic_comment","ic_about"]
+        titleArrayDoctor += ["Thiết lập lịch hẹn","Thiết lập giới thiệu dịch vụ","Thư mục ảnh","Mời bác sỹ tham gia","Đóng góp ý kiến", "Hướng dẫn sử dụng"]
         self.createPopup()
         self.getProfile()
         
@@ -249,6 +249,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.performSegue(withIdentifier: "PushToFirstRegisterDoctor", sender: self)
             } else if indexPath.row == 1 {
                 // ý kiến
+            } else {
+                // hướng dẫn
             }
         }else {
             switch indexPath.row {
@@ -273,6 +275,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 backgroundPopupView.isHidden = false
                 break
             default:
+                // hướng dẫn
+                
                 break
             }
         }
