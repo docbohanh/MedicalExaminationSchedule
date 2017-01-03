@@ -250,6 +250,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else if indexPath.row == 1 {
                 // ý kiến
             } else {
+                self.performSegue(withIdentifier: "guidApp", sender: nil)
                 // hướng dẫn
             }
         }else {

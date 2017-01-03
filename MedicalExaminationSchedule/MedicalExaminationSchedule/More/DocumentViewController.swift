@@ -8,15 +8,28 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController {
+class DocumentViewController: UIViewController,UIWebViewDelegate {
 
+    @IBOutlet weak var backButton: NSLayoutConstraint!
     @IBOutlet weak var webview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        webview.loadRequest(URLRequest.init(url: URL.init(string: "https://www.edx.org/course")!))
+        self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
     }
 
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if navigationType == UIWebViewNavigationType.linkClicked {
+            UIApplication.shared.openURL(URL.init(string: "https://www.edx.org/course")!)
+            return false
+        }
+        return true
+    }
+    
+    @IBAction func tappedBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
