@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bảng tin-->
+        <!--Tin tức-->
         <scene sceneID="qvI-PA-A6E">
             <objects>
                 <viewController storyboardIdentifier="NewViewController" id="vjA-MS-1k9" customClass="NewViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
@@ -195,7 +195,7 @@
                             <constraint firstAttribute="trailing" secondItem="qME-aq-xFh" secondAttribute="trailing" id="hAQ-hJ-K0x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bảng tin" image="ic_news" id="ov7-8Z-2y1"/>
+                    <tabBarItem key="tabBarItem" title="Tin tức" image="ic_news" id="ov7-8Z-2y1"/>
                     <navigationItem key="navigationItem" id="1SI-zy-btl"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

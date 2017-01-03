@@ -26,7 +26,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         self.delegate = self
         let newsStoryboard = UIStoryboard.init(name: "News", bundle: nil)
         let newsVC = newsStoryboard.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController
-        newsVC.tabBarItem = UITabBarItem.init(title: "Bảng tin", image: UIImage.init(named: ""), tag: 0)
+        newsVC.tabBarItem = UITabBarItem.init(title: "Tin tức", image: UIImage.init(named: ""), tag: 0)
         
         //location
         let locationStoryboard = UIStoryboard.init(name: "Locations", bundle: nil)
