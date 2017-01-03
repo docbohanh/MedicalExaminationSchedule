@@ -130,7 +130,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
             print(response)
              Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -152,7 +152,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     self.tableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -171,7 +171,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể cập nhật thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -183,7 +183,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                         self.getCalendarTime()
                     }
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể cập nhật thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -203,7 +203,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
             print(response)
              Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xoá thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -212,7 +212,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                     self.calendarBookUpdate()
                      self.getCalendarTime()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xoá thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -230,7 +230,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xoá thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -239,7 +239,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                     // add new object
                     self.updateAllCalendar()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể xoá thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -257,7 +257,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
             print(response)
 //            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể cập nhật thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -265,7 +265,7 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // add new object
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể cập nhật thông tin về lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

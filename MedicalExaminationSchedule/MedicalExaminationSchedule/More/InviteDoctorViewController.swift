@@ -97,7 +97,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy thành viên trong danh sách", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -118,7 +118,7 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
                     self.userArray += tempArray
                     self.doctorListTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy thành viên trong danh sách", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -130,19 +130,19 @@ class InviteDoctorViewController: UIViewController, UITableViewDelegate, UITable
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["email"] = object.email
         
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        Lib.showLoadingViewOn2(view, withAlert: "Đang tải ...")
         APIManager.sharedInstance.postDataToURL(url: USER_INVITE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể mời thành viên khác lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể mời thành viên khác lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }

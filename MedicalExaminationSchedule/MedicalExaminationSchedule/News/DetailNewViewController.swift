@@ -74,7 +74,7 @@ class DetailNewViewController: UIViewController {
                     let likeContent = resultData?["content"] as! String
                     self.content.text = likeContent.fromBase64()?.html2String
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
                     })
                 }
@@ -100,7 +100,7 @@ class DetailNewViewController: UIViewController {
             Lib.removeLoadingView(on: self.view)
             print(response)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
                     
                 })
             } else {
@@ -116,7 +116,7 @@ class DetailNewViewController: UIViewController {
                     self.newsObject?.like_count = numberLike
                     self.likeCountLabel.text = String(format: "%d", (self.newsObject?.like_count)!)
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
                         
                     })
                 }

@@ -67,7 +67,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -84,7 +84,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                     self.newTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -103,7 +103,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -123,7 +123,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         self.loadMoreNews()
                     }
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -219,14 +219,14 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             Lib.removeLoadingView(on: self.view)
             print(response)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Error", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:"Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Error", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

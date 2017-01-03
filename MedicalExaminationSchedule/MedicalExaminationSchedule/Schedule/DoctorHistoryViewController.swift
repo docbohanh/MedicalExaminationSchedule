@@ -137,7 +137,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -164,7 +164,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                     }
                     self.tableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
