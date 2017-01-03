@@ -126,6 +126,7 @@
 		EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */; };
 		EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */; };
 		EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED2D1DFACE29002DD339 /* StringExtension.swift */; };
+		EA968B2D1E1B542B0067352E /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA968B2C1E1B542B0067352E /* DocumentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,7 @@
 		EA05ED201DF81DD6002DD339 /* SetupIntroduceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceViewController.swift; sourceTree = "<group>"; };
 		EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceTableViewCell.swift; sourceTree = "<group>"; };
 		EA05ED2D1DFACE29002DD339 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		EA968B2C1E1B542B0067352E /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -340,6 +342,7 @@
 				D2E89B7D1E18FFBC00DDA4A3 /* GridViewCell.swift */,
 				D2E89B801E19006200DDA4A3 /* AssetViewController.swift */,
 				D26F57731E193099009E8FB8 /* NewImageViewController.swift */,
+				EA968B2C1E1B542B0067352E /* DocumentViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
 				D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */,
+				EA968B2D1E1B542B0067352E /* DocumentViewController.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
