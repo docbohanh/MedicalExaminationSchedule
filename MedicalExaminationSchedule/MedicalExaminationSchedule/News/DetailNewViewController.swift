@@ -23,6 +23,7 @@ class DetailNewViewController: UIViewController {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var content: UITextView!
+    @IBOutlet weak var imageViewHeightConstant: NSLayoutConstraint!
     
     var delegate : DetailNewControllerDelegate?
     
@@ -40,6 +41,9 @@ class DetailNewViewController: UIViewController {
         descriptionLabel.text = newsObject?.news_desciption
         likeCountLabel.text = String.init(format: "%d", (newsObject?.like_count)!)
         self.getLikeContent()
+        // fake test
+        newsImageView.isHidden = true
+        imageViewHeightConstant.constant = 0
     }
     
     
