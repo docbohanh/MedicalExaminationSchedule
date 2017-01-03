@@ -16,6 +16,7 @@ class NewsModel: NSObject {
     var last_updated : String?
     var like_count : Int?
     var news_tags : Array<Any>?
+    var news_url : String?
     
     init(dict:[String:AnyObject]) {
         if let v = dict["news_id"] {
@@ -52,6 +53,15 @@ class NewsModel: NSObject {
             self.news_tags = v as? Array
         }else {
             self.news_tags = []
+        }
+        if let v = dict["news_url"] {
+            if v as! NSObject == NSNull() {
+                self.news_url = ""
+            } else {
+                self.news_url = "\(v)"
+            }
+        }else {
+            self.news_url = ""
         }
     }
     

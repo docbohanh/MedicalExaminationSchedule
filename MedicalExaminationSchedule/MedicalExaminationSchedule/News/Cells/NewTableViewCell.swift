@@ -35,8 +35,15 @@ class NewTableViewCell: UITableViewCell {
         detailLabel.text = object.news_desciption
         createTimeLabel.text = object.last_updated
         likeCountLabel.text = String(format: "%d", object.like_count!)
-        newImageView.isHidden = true
-        imageViewHeightConstraint.constant = 0
+        
+        if object.news_url != "" {
+            newImageView.isHidden = false
+            imageViewHeightConstraint.constant = 150
+            newImageView.loadImage(url: (object.news_url)!)
+        }else {
+            newImageView.isHidden = true
+            imageViewHeightConstraint.constant = 0
+        }
     }
 
     @IBAction func tappedShareFacebookButton(_ sender: UIButton) {

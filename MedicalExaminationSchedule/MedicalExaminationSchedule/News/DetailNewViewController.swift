@@ -42,8 +42,14 @@ class DetailNewViewController: UIViewController {
         likeCountLabel.text = String.init(format: "%d", (newsObject?.like_count)!)
         self.getLikeContent()
         // fake test
-        newsImageView.isHidden = true
-        imageViewHeightConstant.constant = 0
+        if newsObject?.news_url != "" {
+            newsImageView.isHidden = false
+            imageViewHeightConstant.constant = 150
+            newsImageView.loadImage(url: (newsObject?.news_url)!)
+        }else {
+            newsImageView.isHidden = true
+            imageViewHeightConstant.constant = 0
+        }
     }
     
     
