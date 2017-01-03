@@ -79,7 +79,7 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -101,7 +101,7 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
                     
                     self.timePickerView.reloadAllComponents()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -122,7 +122,7 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -130,7 +130,7 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     _ = self.navigationController?.popViewController(animated: true)
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể lấy thông tin lịch làm việc lúc này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

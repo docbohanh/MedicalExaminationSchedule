@@ -118,7 +118,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
         APIManager.sharedInstance.postDataToURL(url: USER_REGISTER, parameters: dictParam as! [String : String], onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)! , buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá tình đăng ký,vui lòng quay lại sau" , buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -130,15 +130,15 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá tình đăng ký,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "Lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá tình đăng ký,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: "Something went error!", buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá tình đăng ký,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 }

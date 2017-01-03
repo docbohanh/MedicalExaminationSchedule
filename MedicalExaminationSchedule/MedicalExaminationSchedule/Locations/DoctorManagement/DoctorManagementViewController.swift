@@ -341,7 +341,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             Lib.removeLoadingView(on: self.view)
             self.getListComment(pageIndex: 0)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -359,7 +359,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     self.introduceArray += tempArray
                     self.informationTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -379,7 +379,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy nhận xét.", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -404,7 +404,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     self.counterStar(array: self.commentArray)
                     self.informationTableView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy nhận xét", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -424,7 +424,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể gửi nhận xét,vui lòng kiểm tra lại kết nối", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
@@ -434,7 +434,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                         self.getListComment(pageIndex: 0)
                     })
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể gửi nhận xét,vui lòng kiểm tra lại kết nối", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -451,7 +451,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể tải ảnh,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -469,7 +469,7 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
                     }
                     self.imageCollectionView.reloadData()
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "Đã xảy ra lỗi", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể tải ảnh,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
