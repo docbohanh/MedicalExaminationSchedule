@@ -43,6 +43,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var currentService : ServiceModel?
     var searchActive : Bool = false
     var mapView : GMSMapView?
+    
+    var refreshControl : UIRefreshControl?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +54,31 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        // PullToRefresh
+        weak var weakSelf = self
+        refreshControl = ProjectCommon.addPullRefreshControl(doctorAddressTableView, actionHandler: {
+            switch self.selectedTab {
+            case 0:
+                self.pageIndexHospital = 0
+                self.getServiceHospital(page_index: self.pageIndexHospital, type: "bv")
+                break
+            case 1:
+                self.pageIndexClinic = 0
+                self.getServiceHospital(page_index: self.pageIndexClinic, type: "pk")
+                break
+            case 2:
+                self.pageIndexDrugStore = 0
+                self.getServiceHospital(page_index: self.pageIndexDrugStore, type: "nt")
+                break
+            case 3:
+                self.pageIndexDoctor = 0
+                self.getServiceHospital(page_index: self.pageIndexDoctor, type: "bs")
+                break
+            default:
+                break
+            }
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -370,6 +398,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
+            ProjectCommon.stopAnimationRefresh()
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
@@ -380,42 +409,59 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                 if (resultDictionary["status"] as! NSNumber) == 1 {
                     // reload data
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
-
                     let listItem = resultData["items"] as! [AnyObject]
-                    var tempArray = [ServiceModel]()
-                    for i in 0..<listItem.count {
-                        let item = listItem[i] as! [String:AnyObject]
-                        let newsObject = ServiceModel.init(dict: item)
-                       tempArray += [newsObject]
-                    }
-                    switch self.selectedTab {
-                    case 0:
-                        self.serviceHospitalArray += tempArray
-                        self.initMapview(locations: self.serviceHospitalArray)
-                        self.currentArray = self.serviceHospitalArray
-                        self.locationManager.startUpdatingLocation()
-                        break
-                    case 1:
-                        self.serviceClinicArray += tempArray
-                        self.initMapview(locations: self.serviceClinicArray)
-                        self.currentArray = self.serviceClinicArray
-                        self.locationManager.startUpdatingLocation()
-                        break
-                    case 2:
-                        self.serviceDrugStoreArray += tempArray
-                        self.initMapview(locations: self.serviceDrugStoreArray)
-                        self.currentArray = self.serviceDrugStoreArray
-                        self.locationManager.startUpdatingLocation()
-                        break
-                    default:
-                        self.serviceDoctorArray += tempArray
-                        self.initMapview(locations: self.serviceDoctorArray)
-                        self.currentArray = self.serviceDoctorArray
-                        self.locationManager.startUpdatingLocation()
-                        break
+                    if listItem.count > 0 {
+                        var tempArray = [ServiceModel]()
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = ServiceModel.init(dict: item)
+                            tempArray += [newsObject]
+                        }
+                        switch self.selectedTab {
+                        case 0:
+                            self.pageIndexHospital = self.pageIndexHospital + 1
+                            self.serviceHospitalArray += tempArray
+                            self.initMapview(locations: self.serviceHospitalArray)
+                            self.currentArray = self.serviceHospitalArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexHospital, type: "bv")
+                            }
+                            break
+                        case 1:
+                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicArray += tempArray
+                            self.initMapview(locations: self.serviceClinicArray)
+                            self.currentArray = self.serviceClinicArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexClinic, type: "pk")
+                            }
+                            break
+                        case 2:
+                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+                            self.serviceDrugStoreArray += tempArray
+                            self.initMapview(locations: self.serviceDrugStoreArray)
+                            self.currentArray = self.serviceDrugStoreArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexDrugStore, type: "nt")
+                            }
+                            break
+                        default:
+                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+                            self.serviceDoctorArray += tempArray
+                            self.initMapview(locations: self.serviceDoctorArray)
+                            self.currentArray = self.serviceDoctorArray
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexDoctor, type: "bs")
+                            }
+                            self.locationManager.startUpdatingLocation()
+                            break
+                        }
+                        self.doctorAddressTableView.reloadData()
                     }
                     
-                    self.doctorAddressTableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
@@ -424,6 +470,92 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             }
         })
     }
+    
+    func loadMoreService(page_index:Int, type:String) -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["lat"] = "21.0133267"
+        dictParam["lng"] = "105.7809231"
+        dictParam["type"] = type
+        dictParam["query"] = ""
+        dictParam["page_index"] = String.init(format: "%d", page_index+1)
+        
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+//                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
+//                    
+//                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    if listItem.count > 0 {
+                        var tempArray = [ServiceModel]()
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = ServiceModel.init(dict: item)
+                            tempArray += [newsObject]
+                        }
+                        switch self.selectedTab {
+                        case 0:
+                            self.pageIndexHospital = self.pageIndexHospital + 1
+                            self.serviceHospitalArray += tempArray
+                            self.initMapview(locations: self.serviceHospitalArray)
+                            self.currentArray = self.serviceHospitalArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexHospital, type: "bv")
+                            }
+                            break
+                        case 1:
+                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicArray += tempArray
+                            self.initMapview(locations: self.serviceClinicArray)
+                            self.currentArray = self.serviceClinicArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexClinic, type: "pk")
+                            }
+                            break
+                        case 2:
+                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+                            self.serviceDrugStoreArray += tempArray
+                            self.initMapview(locations: self.serviceDrugStoreArray)
+                            self.currentArray = self.serviceDrugStoreArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexDrugStore, type: "nt")
+                            }
+                            break
+                        default:
+                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+                            self.serviceDoctorArray += tempArray
+                            self.initMapview(locations: self.serviceDoctorArray)
+                            self.currentArray = self.serviceDoctorArray
+                            self.locationManager.startUpdatingLocation()
+                            DispatchQueue.global().async {
+                                self.loadMoreService(page_index: self.pageIndexDoctor, type: "bs")
+                            }
+                            break
+                        }
+                    }else {
+                        self.doctorAddressTableView.reloadData()
+                    }
+                    
+                }else {
+//                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
+//                        
+//                    })
+                }
+            }
+        })
+    }
+
 
     // MARK: - Navigation
 

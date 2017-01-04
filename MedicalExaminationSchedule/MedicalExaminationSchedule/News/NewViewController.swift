@@ -21,7 +21,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var currentNewsObject : NewsModel?
     var currentIndexPath : IndexPath?
     var searchActive : Bool = false
-    var currentPageIndex: String = "0"
     var refreshControl : UIRefreshControl?
     var pageIndex = 0
     
@@ -43,17 +42,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         // PullToRefresh
         refreshControl = ProjectCommon.addPullRefreshControl(newTableView, actionHandler: { 
             weakSelf?.pageIndex = 0
+            if self.newsArray.count > 0 {
+                self.newsArray.removeAll()
+            }
             weakSelf?.getListNew(page_index: (weakSelf?.pageIndex)!)
         })
-//        refreshControl = ProjectCommon.
-//        self.refreshControl = [self addPullRefreshControl:_collectionView actionHandler:^{
-//            [weakSelf performSelector:@selector(refreshSVPullToRefresh:) withObject:weakSelf afterDelay:0.0f];
-//            }];
-//        
-//        // Loadmore
-//        [self.collectionView addInfiniteScrollingWithActionHandler:^{
-//            [weakSelf performSelector:@selector(loadMoreData:) withObject:weakSelf afterDelay:0.0f];
-//            }];
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +82,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
-                    
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -135,14 +127,16 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
                     self.page_max = resultData["count"] as! Int
                     let listItem = resultData["items"] as! [AnyObject]
-                    for i in 0..<listItem.count {
-                        let item = listItem[i] as! [String:AnyObject]
-                        let newsObject = NewsModel.init(dict: item)
-                        self.newsArray += [newsObject]
-                    }
-                    self.newTableView.reloadData()
-                    DispatchQueue.global().async {
-                        self.loadMoreNews()
+                    if listItem.count > 0 {
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = NewsModel.init(dict: item)
+                            self.newsArray += [newsObject]
+                        }
+                        self.newTableView.reloadData()
+                        DispatchQueue.global().async {
+                            self.loadMoreNews()
+                        }
                     }
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
@@ -156,7 +150,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     func loadMoreNews() {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["page_index"] = String(Int(currentPageIndex)!+1)
+        dictParam["page_index"] = String(pageIndex + 1)
         dictParam["query"] = ""
         APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
@@ -175,12 +169,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         self.newsArray += [newsObject]
                     }
                     if listItem.count > 0 {
+                        self.pageIndex = self.pageIndex + 1
                         self.loadMoreNews()
                     } else {
                         self.newTableView.reloadData()
                     }
-                    self.currentPageIndex = String(Int(self.currentPageIndex)! + 1)
-
                 }else {
 
                 }

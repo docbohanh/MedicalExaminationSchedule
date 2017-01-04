@@ -25,6 +25,8 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
     var bookEndedArray = [CalendarBookModel]()
     var searchActive = false
     var filterArray = [CalendarBookModel]()
+    var refreshControl : UIRefreshControl?
+    var pageIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,22 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         self.bookedTabSelected(bookedTabButton)
+        
+        // PullToRefresh
+        weak var weakSelf = self
+        refreshControl = ProjectCommon.addPullRefreshControl(tableView, actionHandler: {
+            weakSelf?.pageIndex = 0
+            if self.bookedArray.count > 0 {
+                self.bookedArray.removeAll()
+            }
+            if self.bookEndedArray.count > 0 {
+                self.bookEndedArray.removeAll()
+            }
+            if self.bookCanceledArray.count > 0 {
+                self.bookCanceledArray.removeAll()
+            }
+            self.getAllBook()
+        })
     }
  
     override func viewWillAppear(_ animated: Bool) {
@@ -130,11 +148,12 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         var dictParam = [String : String]()
 //        dictParam["token_id"] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5tZWRodWIudm4vIiwiZW1haWwiOiJhYmMzQGdtYWlsLmNvbSIsImlkIjoiMDAwMDAwMDAyNDAiLCJ0eXBlIjoxLCJqdGkiOiIyMDQxYTkwZS0yZTExLTQ1OGQtYWE5Yy1mMWEzNTYxNDFhYjAiLCJpYXQiOjE0ODMwMjUwMDR9.WY2V75cvS1MgGQ3tV6NfaNWkoSxDCurDPxYpi_D-Vks"
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["page_index"] = "0"
+        dictParam["page_index"] = String(pageIndex)
         
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: CALENDAR_BOOK, parameters: dictParam, onCompletion: {(response) in
             print(response)
+            ProjectCommon.stopAnimationRefresh()
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
@@ -146,23 +165,29 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                     // reload data
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
                     let listItem = resultData["items"] as! [AnyObject]
-                   
-                    for i in 0..<listItem.count {
-                        let item = listItem[i] as! [String:AnyObject]
-                        let newsObject = CalendarBookModel.init(dict: item)
-                        
-                        let dateToCompare = String.init(format: "%@ %@", newsObject.book_time!, newsObject.end_time!)
-                        if ProjectCommon.isExpireDate(timeString: dateToCompare) {
-                            self.bookEndedArray.append(newsObject)
-                        }else{
-                            if newsObject.status == "Đóng" {
-                                self.bookedArray.append(newsObject)
-                            }else {
-                                self.bookCanceledArray.append(newsObject)
+                    if listItem.count > 0 {
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = CalendarBookModel.init(dict: item)
+                            
+                            let dateToCompare = String.init(format: "%@ %@", newsObject.book_time!, newsObject.end_time!)
+                            if ProjectCommon.isExpireDate(timeString: dateToCompare) {
+                                self.bookEndedArray.append(newsObject)
+                            }else{
+                                if newsObject.status == "Đóng" {
+                                    self.bookedArray.append(newsObject)
+                                }else {
+                                    self.bookCanceledArray.append(newsObject)
+                                }
                             }
                         }
+                        self.tableView.reloadData()
+                        DispatchQueue.global().async {
+                            self.loadMoreBook()
+                        }
+                    }else {
+                        
                     }
-                    self.tableView.reloadData()
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
@@ -170,6 +195,57 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
             }
         })
     }
+    
+    func loadMoreBook() -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["page_index"] = String(pageIndex+1)
+        
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.getDataToURL(url: CALENDAR_BOOK, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            ProjectCommon.stopAnimationRefresh()
+            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+//                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
+//                    
+//                })
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    if listItem.count > 0 {
+                        self.pageIndex = self.pageIndex + 1
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = CalendarBookModel.init(dict: item)
+                            
+                            let dateToCompare = String.init(format: "%@ %@", newsObject.book_time!, newsObject.end_time!)
+                            if ProjectCommon.isExpireDate(timeString: dateToCompare) {
+                                self.bookEndedArray.append(newsObject)
+                            }else{
+                                if newsObject.status == "Đóng" {
+                                    self.bookedArray.append(newsObject)
+                                }else {
+                                    self.bookCanceledArray.append(newsObject)
+                                }
+                            }
+                        }
+                    }else {
+                        self.tableView.reloadData()
+                    }
+                    
+//                    self.tableView.reloadData()
+                }else {
+//                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
+//                    })
+                }
+            }
+        })
+    }
+
     
     func resetSearchBar() -> Void {
         searchBar.text = ""
