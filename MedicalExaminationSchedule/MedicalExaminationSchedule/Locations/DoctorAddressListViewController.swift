@@ -460,8 +460,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func getServiceHospital(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index)
@@ -558,8 +558,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func loadMoreService(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index+1)

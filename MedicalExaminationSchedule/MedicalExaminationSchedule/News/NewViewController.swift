@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
-class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NewTableViewCellDelegate, DetailNewControllerDelegate {
+class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NewTableViewCellDelegate, DetailNewControllerDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var searchView: UIView!
 //    @IBOutlet weak var searchTextField: UITextField!
@@ -23,13 +25,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var searchActive : Bool = false
     var refreshControl : UIRefreshControl?
     var pageIndex = 0
-    
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
+        self.getCurrentLocation()
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
         self.getListNew(page_index: 0)
@@ -272,4 +273,29 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         newTableView.reloadData()
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var currentLocation = CLLocation()
+        currentLocation = locations.last!
+        
+        UserDefaults.standard.set(String(currentLocation.coordinate.latitude), forKey: "latitude")
+        UserDefaults.standard.set(String(currentLocation.coordinate.longitude), forKey: "longitude")
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("get location falure")
+    }
+    
+    func getCurrentLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        if #available(iOS 9.0, *) {
+            locationManager.requestLocation()
+        } else {
+            // Fallback on earlier versions
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+
 }
