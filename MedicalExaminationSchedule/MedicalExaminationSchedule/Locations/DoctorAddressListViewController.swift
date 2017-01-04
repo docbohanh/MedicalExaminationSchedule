@@ -462,7 +462,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         case 0:
                             self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexHospital = self.pageIndexHospital + 1
+//                            self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
@@ -473,7 +473,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             break
                         case 1:
                     self.serviceClinicDictionary = self.groupService(originArray: tempArray)
-                            self.pageIndexClinic = self.pageIndexClinic + 1
+//                            self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
@@ -485,7 +485,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         case 2:
                     self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+//                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
@@ -497,7 +497,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         default:
                     self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+//                            self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray

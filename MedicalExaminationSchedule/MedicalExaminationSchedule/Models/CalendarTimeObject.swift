@@ -11,7 +11,7 @@ import UIKit
 class CalendarTimeObject: NSObject {
     var start_time : String?
     var end_time : String?
-    var status : Bool = false
+    var status : String?
     
     init(dict:[String:AnyObject]) {
         if let v = dict["start_time"] {
@@ -24,8 +24,10 @@ class CalendarTimeObject: NSObject {
         }else {
             self.end_time = ""
         }
-        if dict["status"] != nil {
-            self.status = dict["status"] as! Bool
+        if let v = dict["status"] {
+            self.status = "\(v)"
+        }else {
+            self.status = ""
         }
     }
 }
