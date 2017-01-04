@@ -73,7 +73,6 @@ typedef enum {
 - (void)selectDate:(NSDate *)date makeVisible:(BOOL)visible;
 - (void)reloadData;
 - (void)reloadDates:(NSArray *)dates;
-- (void)setFullTimeDate:(NSDate *)date;
 
 // Helper methods for delegates, etc.
 - (BOOL)date:(NSDate *)date1 isSameDayAsDate:(NSDate *)date2;

@@ -333,7 +333,7 @@
         }
 
         if (dateButton.isBookedFull) {
-            [dateButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+            [dateButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         }else{
             [dateButton setTitleColor:item.textColor forState:UIControlStateNormal];
         }
@@ -678,13 +678,4 @@
     return coloredImg;
 }
 
-- (void)setFullTimeDate:(NSDate *)date
-{
-    for (int i = 0; i < self.dateButtons.count; i++){
-        DateButton *button = self.dateButtons[i];
-        if ([self date:button.date isSameDayAsDate:date]) {
-            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        }
-    }
-}
 @end

@@ -53,7 +53,6 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         callendarView .select(Date(), makeVisible: true)
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
-        callendarView.setFullTime(Date())
         self.getFreeTime()
         if !isBookFlow {
             if userProfile?.avatar_url != nil {
@@ -101,7 +100,18 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     
     func calendar(_ calendar: CKCalendarView!, didChangeToMonth date: Date!) {
         index = 0
-        self.getFreeTime()
+        for i in 0..<callendarView.dateButtons.count {
+            let button = callendarView.dateButtons[i] as? DateButton
+            button?.isBookedFull = false
+            
+        }
+        callendarView.layoutSubviews()
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            // your code here
+            self.getFreeTime()
+        }
+        
     }
     
     // MARK: - Navigation
@@ -132,7 +142,12 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     func getFreetimeInday(date:Date) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["service_id"] = serviceObject?.service_id
+        if !isBookFlow {
+            dictParam["service_id"] = userProfile?.service_id
+        } else {
+            dictParam["service_id"] = serviceObject?.service_id
+        }
+        
         dictParam["date"] = ProjectCommon.convertDateToString(date: date)
         
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
@@ -153,7 +168,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
                         for i in 0..<listItem.count {
                             let item = listItem[i] as! [String:AnyObject]
                             let newsObject = CalendarTimeObject.init(dict: item)
-                            if newsObject.status == "BOOKED" {
+                            if newsObject.status {
                                 countBooked = countBooked + 1
                             }
                         }
