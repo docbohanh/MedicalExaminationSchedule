@@ -22,7 +22,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var currentIndexPath : IndexPath?
     var searchActive : Bool = false
     var currentPageIndex: String = "0"
-    var refreshControl : UIRefreshControl
+    var refreshControl : UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
