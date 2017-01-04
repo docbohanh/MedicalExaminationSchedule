@@ -167,4 +167,16 @@ class ProjectCommon: NSObject {
             return false
         }
     }
+    
+//    static func addPullRefreshControl(_ view: UIScrollView, actionHandler: pullRefreshHandler) -> UIRefreshControl {
+//        if !mRefreshControl {
+//            mRefreshHandler = actionHandler
+//            mRefreshControl = UIRefreshControl()
+//            mRefreshControl.tintColor = kPinkColor
+//            mRefreshControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//            mRefreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+//            view.addSubview(mRefreshControl)
+//        }
+//        return mRefreshControl
+//    }
 }

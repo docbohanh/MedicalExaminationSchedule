@@ -22,6 +22,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var currentIndexPath : IndexPath?
     var searchActive : Bool = false
     var currentPageIndex: String = "0"
+    var refreshControl : UIRefreshControl
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,19 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+       weak var weakSelf = self
+        
+        // PullToRefresh
+//        refreshControl = ProjectCommon.
+//        self.refreshControl = [self addPullRefreshControl:_collectionView actionHandler:^{
+//            [weakSelf performSelector:@selector(refreshSVPullToRefresh:) withObject:weakSelf afterDelay:0.0f];
+//            }];
+//        
+//        // Loadmore
+//        [self.collectionView addInfiniteScrollingWithActionHandler:^{
+//            [weakSelf performSelector:@selector(loadMoreData:) withObject:weakSelf afterDelay:0.0f];
+//            }];
     }
     
     override func viewWillAppear(_ animated: Bool) {
