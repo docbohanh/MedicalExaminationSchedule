@@ -69,22 +69,13 @@
 @end
 
 
-@interface DateButton : UIButton
-
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) CKDateItem *dateItem;
-@property (nonatomic, strong) NSCalendar *calendar;
-@property (nonatomic) BOOL isBookedFull;
-
-@end
-
 @implementation DateButton
 
 - (void)setDate:(NSDate *)date {
     _date = date;
     if (date) {
         NSDateComponents *comps = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit fromDate:date];
-        [self setTitle:[NSString stringWithFormat:@"%d", comps.day] forState:UIControlStateNormal];
+        [self setTitle:[NSString stringWithFormat:@"%ld", (long)comps.day] forState:UIControlStateNormal];
     } else {
         [self setTitle:@"" forState:UIControlStateNormal];
     }

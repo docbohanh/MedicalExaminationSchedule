@@ -27,6 +27,15 @@
 
 @end
 
+@interface DateButton : UIButton
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) CKDateItem *dateItem;
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic) BOOL isBookedFull;
+
+@end
+
 typedef enum {
     startSunday = 1,
     startMonday = 2,

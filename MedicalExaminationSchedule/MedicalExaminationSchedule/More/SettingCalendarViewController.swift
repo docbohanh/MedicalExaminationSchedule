@@ -70,8 +70,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         
         // GetFreeTime 
         for i in 0..<callendarView.dateButtons.count {
-            let button = callendarView.dateButtons[i]
-            
+            let button = callendarView.dateButtons[i] as? DateButton
         }
     }
     

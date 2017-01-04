@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+
 class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
     @IBOutlet weak var searchView: UIView!
@@ -39,7 +40,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var currentArray = [ServiceModel]()
     var filterArray = [ServiceModel]()
     var numOfSectionFilter: Int = 0
-    
+    var serviceFilterDictionary = [String : [ServiceModel]]()
     
     var pageIndexHospital = 0
     var pageIndexClinic = 0
@@ -307,7 +308,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchActive {
-            return filterArray.count
+            return numOfSectionFilter
         }else {
             switch selectedTab {
             case 0:
@@ -659,7 +660,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             
             for serviceObject in filterArray {
                 if serviceObject.field != nil {
-                    if keyDict[serviceObject.field!] != nil {
+                    if keyDict[serviceObject.field!] == nil {
                         keyDict[serviceObject.field!] = serviceObject.field!
                     }
                 }
