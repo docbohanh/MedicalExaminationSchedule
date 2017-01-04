@@ -23,6 +23,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var searchActive : Bool = false
     var currentPageIndex: String = "0"
     var refreshControl : UIRefreshControl?
+    var pageIndex = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
        weak var weakSelf = self
         
         // PullToRefresh
+        refreshControl = ProjectCommon.addPullRefreshControl(newTableView, actionHandler: { 
+            weakSelf?.pageIndex = 0
+            weakSelf?.getListNew(page_index: (weakSelf?.pageIndex)!)
+        })
 //        refreshControl = ProjectCommon.
 //        self.refreshControl = [self addPullRefreshControl:_collectionView actionHandler:^{
 //            [weakSelf performSelector:@selector(refreshSVPullToRefresh:) withObject:weakSelf afterDelay:0.0f];
@@ -111,11 +117,12 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["page_index"] = currentPageIndex
+        dictParam["page_index"] = String(pageIndex)
         dictParam["query"] = ""
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
+            ProjectCommon.stopAnimationRefresh()
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Đã xảy ra lỗi trong quá trình lấy tin tức,vui lòng chờ đợi trong ít phút", buttonArray: ["Đóng"], onCompletion: { (index) in
