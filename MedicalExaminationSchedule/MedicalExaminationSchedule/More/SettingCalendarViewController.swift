@@ -52,6 +52,8 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         callendarView .select(Date(), makeVisible: true)
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
+        callendarView.setFullTime(Date())
+
         if !isBookFlow {
             if userProfile?.avatar_url != nil {
                  avatarImageView.loadImage(url: (userProfile?.avatar_url)!)
@@ -66,6 +68,10 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
             specialLabel.text = String.init(format: "Chuyên ngành : %@", (serviceObject?.field)!)
         }
         
+        // GetFreeTime 
+        for i in 0..<callendarView.dateButtons.count {
+            let button = callendarView.dateButtons[i] as? DateButton
+        }
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -113,6 +119,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         }
     }
 
+    
     func getFreetimeInday(date:Date) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
@@ -137,13 +144,26 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
                             let newsObject = CalendarTimeObject.init(dict: item)
                             tempArray += [newsObject]
                         }
+                    }else {
+                        
                     }
-                    
                 }else {
                 }
             }
         })
     }
 
+    func getFreeTimeInMonth() -> Void {
+//        let dateFormatter = DateFormatter()
+//        let date = NSDate()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let calendar = NSCalendar.current
+//        let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: date)
+//        
+//        let month = components.month
+//        let year = components.year
+//        
+//        let startOfMonth = ("\(year)-\(month)-01")
+    }
 
 }

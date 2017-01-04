@@ -74,6 +74,7 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) CKDateItem *dateItem;
 @property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic) BOOL isBookedFull;
 
 @end
 
@@ -83,7 +84,7 @@
     _date = date;
     if (date) {
         NSDateComponents *comps = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit fromDate:date];
-        [self setTitle:[NSString stringWithFormat:@"%d", comps.day] forState:UIControlStateNormal];
+        [self setTitle:[NSString stringWithFormat:@"%ld", (long)comps.day] forState:UIControlStateNormal];
     } else {
         [self setTitle:@"" forState:UIControlStateNormal];
     }
@@ -118,7 +119,7 @@
 @property(nonatomic, strong) UIView *calendarContainer;
 @property(nonatomic, strong) GradientView *daysHeader;
 @property(nonatomic, strong) NSArray *dayOfWeekLabels;
-@property(nonatomic, strong) NSMutableArray *dateButtons;
+
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @property (nonatomic, strong) NSDate *monthShowing;
@@ -322,7 +323,7 @@
         dateButton.date = date;
         CKDateItem *item = [[CKDateItem alloc] init];
         if ([self _dateIsToday:dateButton.date]) {
-            item.textColor = UIColorFromRGB(0xF2F2F2);
+//            item.textColor = UIColorFromRGB(0xF2F2F2);
             item.backgroundColor = [UIColor lightGrayColor];
         } else if (!self.onlyShowCurrentMonth && [self _compareByMonth:date toDate:self.monthShowing] != NSOrderedSame) {
             item.textColor = [UIColor lightGrayColor];
@@ -333,13 +334,19 @@
         }
 
         if (self.selectedDate && [self date:self.selectedDate isSameDayAsDate:date]) {
-            [dateButton setTitleColor:item.selectedTextColor forState:UIControlStateNormal];
+//            [dateButton setTitleColor:item.selectedTextColor forState:UIControlStateNormal];
             dateButton.backgroundColor = item.selectedBackgroundColor;
         } else {
-            [dateButton setTitleColor:item.textColor forState:UIControlStateNormal];
+            
             dateButton.backgroundColor = item.backgroundColor;
         }
 
+        if (dateButton.isBookedFull) {
+            [dateButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+        }else{
+            [dateButton setTitleColor:item.textColor forState:UIControlStateNormal];
+        }
+        
         dateButton.frame = [self _calculateDayCellFrame:date];
 
         [self.calendarContainer addSubview:dateButton];
@@ -680,4 +687,13 @@
     return coloredImg;
 }
 
+- (void)setFullTimeDate:(NSDate *)date
+{
+    for (int i = 0; i < self.dateButtons.count; i++){
+        DateButton *button = self.dateButtons[i];
+        if ([self date:button.date isSameDayAsDate:date]) {
+            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }
+    }
+}
 @end

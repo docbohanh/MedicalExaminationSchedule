@@ -75,6 +75,7 @@
 		D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */; };
 		D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */; };
 		D22EE6431E1ABEBB00933D83 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */; };
+		D232FB2F1E1D424E00AA8F1E /* DateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D232FB2E1E1D424E00AA8F1E /* DateButton.m */; };
 		D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D242084E1E12D7B100C7760A /* IntroduceModel.swift */; };
 		D26F57741E193099009E8FB8 /* NewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F57731E193099009E8FB8 /* NewImageViewController.swift */; };
 		D26F57761E194B4A009E8FB8 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F57751E194B4A009E8FB8 /* ImageModel.swift */; };
@@ -228,6 +229,8 @@
 		D22D4A611E044814007A76B9 /* ChooseBirthdayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBirthdayView.swift; sourceTree = "<group>"; };
 		D22D4A631E04484F007A76B9 /* ChooseBirthdayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseBirthdayView.xib; sourceTree = "<group>"; };
 		D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D232FB2D1E1D424E00AA8F1E /* DateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateButton.h; sourceTree = "<group>"; };
+		D232FB2E1E1D424E00AA8F1E /* DateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateButton.m; sourceTree = "<group>"; };
 		D242084E1E12D7B100C7760A /* IntroduceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceModel.swift; sourceTree = "<group>"; };
 		D26F57731E193099009E8FB8 /* NewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewImageViewController.swift; sourceTree = "<group>"; };
 		D26F57751E194B4A009E8FB8 /* ImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 			children = (
 				D27DE73E1E16B7B800169D4E /* CKCalendarView.h */,
 				D27DE73F1E16B7B800169D4E /* CKCalendarView.m */,
+				D232FB2D1E1D424E00AA8F1E /* DateButton.h */,
+				D232FB2E1E1D424E00AA8F1E /* DateButton.m */,
 			);
 			path = CKCallendar;
 			sourceTree = "<group>";
@@ -992,6 +997,7 @@
 				D2E89B811E19006200DDA4A3 /* AssetViewController.swift in Sources */,
 				D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */,
 				D2F4A9FC1E17ABAD00EE737B /* CalendarBookModel.swift in Sources */,
+				D232FB2F1E1D424E00AA8F1E /* DateButton.m in Sources */,
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
 				8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
