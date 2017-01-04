@@ -177,7 +177,7 @@ class ProjectCommon: NSObject {
             return ""
         }
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone.init(secondsFromGMT: TimeZone.current.secondsFromGMT())
+        dateFormatter.timeZone = TimeZone.init(secondsFromGMT: NSTimeZone.local.secondsFromGMT())
         return dateFormatter.string(from: myDate!)
     }
     
