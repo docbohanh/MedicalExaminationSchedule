@@ -13,6 +13,7 @@ protocol DetailNewControllerDelegate {
 }
 
 class DetailNewViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
@@ -52,7 +53,10 @@ class DetailNewViewController: UIViewController {
             imageViewHeightConstant.constant = 0
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
+        scrollView.layoutIfNeeded()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

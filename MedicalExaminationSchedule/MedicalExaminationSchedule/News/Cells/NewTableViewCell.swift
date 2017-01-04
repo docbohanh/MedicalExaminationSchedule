@@ -15,6 +15,8 @@ protocol NewTableViewCellDelegate {
 
 class NewTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lineHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundCell: UIView!
     @IBOutlet weak var newImageView: UIImageView!
     @IBOutlet weak var newTitleLabel: UILabel!
     @IBOutlet weak var createTimeLabel: UILabel!
@@ -28,6 +30,8 @@ class NewTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        ProjectCommon.boundView(button: backgroundCell, cornerRadius: 0, color: UIColor.lightGray, borderWith: 0.5)
+        lineHeightConstraint.constant = 0.5
     }
     
     func setupCell(object:NewsModel) -> Void {

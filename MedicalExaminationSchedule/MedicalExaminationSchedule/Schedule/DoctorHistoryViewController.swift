@@ -51,6 +51,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
             if self.bookCanceledArray.count > 0 {
                 self.bookCanceledArray.removeAll()
             }
+            self.tableView.reloadData()
             self.getAllBook()
         })
     }

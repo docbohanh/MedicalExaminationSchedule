@@ -40,11 +40,13 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
        weak var weakSelf = self
         
         // PullToRefresh
-        refreshControl = ProjectCommon.addPullRefreshControl(newTableView, actionHandler: { 
+        refreshControl = ProjectCommon.addPullRefreshControl(newTableView, actionHandler: {
+            self.searchActive = false
             weakSelf?.pageIndex = 0
             if self.newsArray.count > 0 {
                 self.newsArray.removeAll()
             }
+            self.newTableView.reloadData()
             weakSelf?.getListNew(page_index: (weakSelf?.pageIndex)!)
         })
     }
@@ -172,7 +174,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                         self.pageIndex = self.pageIndex + 1
                         self.loadMoreNews()
                     } else {
-                        self.newTableView.reloadData()
+//                        self.newTableView.reloadData()
                     }
                 }else {
 
