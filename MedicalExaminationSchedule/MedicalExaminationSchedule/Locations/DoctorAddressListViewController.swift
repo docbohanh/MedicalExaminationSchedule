@@ -419,32 +419,34 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchActive {
-            currentService = filterArray[indexPath.row]
-        }else {
-            switch selectedTab {
-            case 0:
-                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
-                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
-                currentService = serviceArray?[indexPath.row]
-                break
-            case 1:
-                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
-                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
-                currentService = serviceArray?[indexPath.row]
-                break
-            case 2:
-                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
-                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
-                currentService = serviceArray?[indexPath.row]
-                break
-            default:
-                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
-                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
-                currentService = serviceArray?[indexPath.row]
-            }
-        }
+//        if searchActive {
+//            currentService = filterArray[indexPath.row]
+//        }else {
+//            switch selectedTab {
+//            case 0:
+//                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+//                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            case 1:
+//                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+//                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            case 2:
+//                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+//                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            default:
+//                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+//                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//            }
+//        }
         
+        let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
+        currentService = cell.serviceDetail
         self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     override func didReceiveMemoryWarning() {
@@ -487,7 +489,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             self.serviceHospitalDictionary.removeAll()
                             self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexHospital = self.pageIndexHospital + 1
+//                            self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
@@ -497,9 +499,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
+                    self.serviceClinicDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicDictionary.removeAll()
                             self.serviceClinicDictionary = self.groupService(originArray: tempArray)
-                            self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
@@ -512,7 +515,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             self.serviceDrugStoreDictionary.removeAll()
                             self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+//                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
@@ -525,7 +528,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             self.serviceDoctorDictionary.removeAll()
                             self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
 
-                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+//                            self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray

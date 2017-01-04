@@ -25,6 +25,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     var userProfile : UserModel?
     var serviceObject : ServiceModel?
     var isBookFlow = false
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         callendarView.onlyShowCurrentMonth = true;
         callendarView.adaptHeightToNumberOfWeeksInMonth = true;
         callendarView.setFullTime(Date())
-
+        self.getFreeTime()
         if !isBookFlow {
             if userProfile?.avatar_url != nil {
                  avatarImageView.loadImage(url: (userProfile?.avatar_url)!)
@@ -67,11 +68,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
             doctorNameLabel.text = serviceObject?.name
             specialLabel.text = String.init(format: "Chuyên ngành : %@", (serviceObject?.field)!)
         }
-        
-        // GetFreeTime 
-        for i in 0..<callendarView.dateButtons.count {
-            let button = callendarView.dateButtons[i] as? DateButton
-        }
+
     }
     
     @IBAction func tappedBackButton(_ sender: Any) {
@@ -103,7 +100,8 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
     }
     
     func calendar(_ calendar: CKCalendarView!, didChangeToMonth date: Date!) {
-        
+        index = 0
+        self.getFreeTime()
     }
     
     // MARK: - Navigation
@@ -119,6 +117,17 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         }
     }
 
+    func getFreeTime() -> Void {
+        // GetFreeTime
+        for i in 0..<callendarView.dateButtons.count {
+            let button = callendarView.dateButtons[i] as? DateButton
+            if button?.date != nil {
+                index = i
+                self.getFreetimeInday(date: (button?.date)!)
+                break;
+            }
+        }
+    }
     
     func getFreetimeInday(date:Date) -> Void {
         var dictParam = [String : String]()
@@ -130,6 +139,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         APIManager.sharedInstance.getDataToURL(url: CALENDAR_TIME, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
+            
             if (response.result.error != nil) {
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -137,12 +147,22 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
                     // reload data
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
                     let listItem = resultData["items"] as! [AnyObject]
-                    var tempArray = [CalendarTimeObject]()
+//                    var tempArray = [CalendarTimeObject]()
                     if listItem.count > 0 {
+                        var countBooked = 0;
                         for i in 0..<listItem.count {
                             let item = listItem[i] as! [String:AnyObject]
                             let newsObject = CalendarTimeObject.init(dict: item)
-                            tempArray += [newsObject]
+                            if newsObject.status == "BOOKED" {
+                                countBooked = countBooked + 1
+                            }
+                        }
+                        let button = self.callendarView.dateButtons[self.index] as? DateButton
+                        if countBooked == listItem.count {
+                            // full booked
+                            button?.isBookedFull = true
+                        }else {
+                            button?.isBookedFull = false
                         }
                     }else {
                         
@@ -150,20 +170,21 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
                 }else {
                 }
             }
-        })
-    }
+            // load next 
+           
+            if self.index < self.callendarView.dateButtons.count - 1 {
+                self.index = self.index + 1
+                let button = self.callendarView.dateButtons[self.index] as? DateButton
+                if button?.date != nil {
+                    self.getFreetimeInday(date: (button?.date)!)
+                }else {
+                    self.callendarView.layoutSubviews()
+                }
 
-    func getFreeTimeInMonth() -> Void {
-//        let dateFormatter = DateFormatter()
-//        let date = NSDate()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        let calendar = NSCalendar.current
-//        let components = calendar.components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: date)
-//        
-//        let month = components.month
-//        let year = components.year
-//        
-//        let startOfMonth = ("\(year)-\(month)-01")
+            }else {
+                self.callendarView.layoutSubviews()
+            }
+        })
     }
 
 }

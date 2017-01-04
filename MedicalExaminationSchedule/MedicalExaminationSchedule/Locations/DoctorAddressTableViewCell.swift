@@ -16,6 +16,7 @@ class DoctorAddressTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationIconImageView: UIImageView!
     @IBOutlet weak var doctorAddressLabel: UILabel!
+    var serviceDetail : ServiceModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,7 @@ class DoctorAddressTableViewCell: UITableViewCell {
     func setupCell(object:ServiceModel) -> Void {
         doctorNameLabel.text = object.name
         doctorAddressLabel.text = object.address
+        serviceDetail = object
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -42,7 +42,7 @@ typedef enum {
 } CKCalendarStartDay;
 
 @interface CKCalendarView : UIView
-
+- (void)layoutSubviews;
 - (id)initWithStartDay:(CKCalendarStartDay)firstDay;
 - (id)initWithStartDay:(CKCalendarStartDay)firstDay frame:(CGRect)frame;
 
