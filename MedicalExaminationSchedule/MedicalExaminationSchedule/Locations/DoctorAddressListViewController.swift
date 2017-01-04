@@ -404,7 +404,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorAddressTableViewCell", for: indexPath) as! DoctorAddressTableViewCell
         var object : ServiceModel?
         if searchActive {
-            object = filterArray[indexPath.row]
+            let serviceKeyArray = serviceFilterDictionary.keys.sorted()
+            let serviceArray = serviceFilterDictionary[serviceKeyArray[indexPath.section]]
+            object = serviceArray?[indexPath.row]
+
         }else {
             switch selectedTab {
             case 0:
@@ -473,13 +476,14 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func getServiceHospital(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index)
-        
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        DispatchQueue.main.async {
+            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
+        }
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             ProjectCommon.stopAnimationRefresh()
@@ -515,7 +519,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
-                    self.serviceClinicDictionary = self.groupService(originArray: tempArray)
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
 //                            self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicDictionary.removeAll()
                             self.serviceClinicDictionary = self.groupService(originArray: tempArray)
@@ -569,13 +574,14 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func loadMoreService(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index+1)
-        
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        DispatchQueue.main.async {
+            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
+        }
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
@@ -710,13 +716,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
             return categoryMatch
         })
-        if(filterArray.count == 0 && searchString == ""){
+        if(filterArray.count == 0 || searchString == ""){
             searchActive = false;
         } else {
             serviceFilterDictionary.removeAll()
             serviceFilterDictionary = self.groupService(originArray: filterArray)
-
-            numOfSectionFilter = serviceFilterDictionary.keys.count
             searchActive = true;
         }
         doctorAddressTableView.reloadData()

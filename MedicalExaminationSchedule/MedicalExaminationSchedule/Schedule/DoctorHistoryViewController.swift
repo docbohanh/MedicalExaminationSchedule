@@ -202,11 +202,11 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["page_index"] = String(pageIndex+1)
         
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+//        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: CALENDAR_BOOK, parameters: dictParam, onCompletion: {(response) in
             print(response)
             ProjectCommon.stopAnimationRefresh()
-            Lib.removeLoadingView(on: self.view)
+//            Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
 //                ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  lịch hẹn nào", buttonArray: ["Đóng"], onCompletion: { (index) in
 //                    
