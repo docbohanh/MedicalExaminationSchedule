@@ -148,6 +148,26 @@ class ProjectCommon: NSObject {
         }
         
     }
+    
+    static func dateIsExpireDate(myDate:Date) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let myDateString = dateFormatter.string(from: myDate) as String
+        let currentDate = Date()
+        let currentDateString = dateFormatter.string(from: currentDate) as String
+        if myDateString == currentDateString {
+            return true
+        }
+        
+        let result = currentDate.compare(myDate)
+        if result == ComparisonResult.orderedAscending {
+            return true
+        }else {
+            return false
+        }
+        
+    }
+    
     static func convertDateFromServer(string:String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"

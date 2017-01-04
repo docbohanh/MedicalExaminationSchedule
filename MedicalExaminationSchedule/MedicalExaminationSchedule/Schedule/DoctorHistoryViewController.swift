@@ -174,7 +174,7 @@ class DoctorHistoryViewController: UIViewController,UITableViewDataSource,UITabl
                             if ProjectCommon.isExpireDate(timeString: dateToCompare) {
                                 self.bookEndedArray.append(newsObject)
                             }else{
-                                if newsObject.status == "Đóng" {
+                                if newsObject.status == "OK" {
                                     self.bookedArray.append(newsObject)
                                 }else {
                                     self.bookCanceledArray.append(newsObject)

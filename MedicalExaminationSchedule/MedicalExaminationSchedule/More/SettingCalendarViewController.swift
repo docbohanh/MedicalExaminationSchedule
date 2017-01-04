@@ -78,6 +78,13 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         if date != nil {
             selectedDate = date
         }
+        if !ProjectCommon.dateIsExpireDate(myDate: selectedDate!){
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể chọn ngày trong quá khứ", buttonArray: ["OK"], onCompletion: { (index) in
+                
+            })
+            return
+        }
+        
         if !isBookFlow {
             self.performSegue(withIdentifier: "PushToSetupTime", sender: self)
         } else {
@@ -104,6 +111,38 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
             vc.selectedDate = selectedDate
             vc.service_id = userProfile?.service_id
         }
+    }
+
+    func getFreetimeInday(date:Date) -> Void {
+        var dictParam = [String : String]()
+        dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
+        dictParam["service_id"] = serviceObject?.service_id
+        dictParam["date"] = ProjectCommon.convertDateToString(date: date)
+        
+        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        APIManager.sharedInstance.getDataToURL(url: CALENDAR_TIME, parameters: dictParam, onCompletion: {(response) in
+            print(response)
+            Lib.removeLoadingView(on: self.view)
+            if (response.result.error != nil) {
+            }else {
+                let resultDictionary = response.result.value as! [String:AnyObject]
+                if (resultDictionary["status"] as! NSNumber) == 1 {
+                    // reload data
+                    let resultData = resultDictionary["result"] as! [String:AnyObject]
+                    let listItem = resultData["items"] as! [AnyObject]
+                    var tempArray = [CalendarTimeObject]()
+                    if listItem.count > 0 {
+                        for i in 0..<listItem.count {
+                            let item = listItem[i] as! [String:AnyObject]
+                            let newsObject = CalendarTimeObject.init(dict: item)
+                            tempArray += [newsObject]
+                        }
+                    }
+                    
+                }else {
+                }
+            }
+        })
     }
 
 

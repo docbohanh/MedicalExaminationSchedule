@@ -63,6 +63,7 @@ typedef enum {
 - (void)selectDate:(NSDate *)date makeVisible:(BOOL)visible;
 - (void)reloadData;
 - (void)reloadDates:(NSArray *)dates;
+- (void)setFullDate:(NSDate *)date;
 
 // Helper methods for delegates, etc.
 - (BOOL)date:(NSDate *)date1 isSameDayAsDate:(NSDate *)date2;
@@ -83,5 +84,4 @@ typedef enum {
 - (void)calendar:(CKCalendarView *)calendar didChangeToMonth:(NSDate *)date;
 
 - (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame;
-- (void)calendar:(CKCalendarView *)calendar didOK:(id) sender;
 @end
