@@ -325,7 +325,14 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
-            return filterArray.count
+            let serviceKeysArray = serviceFilterDictionary.keys.sorted()
+            if serviceKeysArray.count > section {
+                let keyString = serviceKeysArray[section] 
+                let serviceArray = serviceFilterDictionary[keyString]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
+            } else {
+                return 0
+            }
         }else {
             switch selectedTab {
             case 0:
@@ -385,16 +392,26 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         }else {
             switch selectedTab {
             case 0:
-                object = serviceHospitalArray[indexPath.row]
+                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+                if serviceKeyArray.count > indexPath.section {
+                    let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+                    object = serviceArray?[indexPath.row]
+                }
                 break
             case 1:
-                object = serviceClinicArray[indexPath.row]
+                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
                 break
             case 2:
-                object = serviceDrugStoreArray[indexPath.row]
+                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
                 break
             default:
-                object = serviceDoctorArray[indexPath.row]
+                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
             }
         }
         cell.setupCell(object: object!)
@@ -443,7 +460,6 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
-                    
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -460,6 +476,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
+                            self.serviceHospitalDictionary.removeAll()
                             self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
 
 //                            self.pageIndexHospital = self.pageIndexHospital + 1
@@ -474,6 +491,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         case 1:
                     self.serviceClinicDictionary = self.groupService(originArray: tempArray)
 //                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
@@ -483,7 +502,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 2:
-                    self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
 
 //                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
@@ -495,7 +515,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
-                    self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
 
 //                            self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
@@ -551,6 +572,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
+                            self.serviceHospitalDictionary.removeAll()
+
+                            self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
                             self.initMapview(locations: self.serviceHospitalArray)
@@ -561,6 +585,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
@@ -571,6 +597,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 2:
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
                             self.initMapview(locations: self.serviceDrugStoreArray)
@@ -581,6 +609,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
+                            self.serviceDoctorDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
                             self.initMapview(locations: self.serviceDoctorArray)
@@ -656,21 +686,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if(filterArray.count == 0 && searchString == ""){
             searchActive = false;
         } else {
-            var keyDict = [String:String]()
-            
-            for serviceObject in filterArray {
-                if serviceObject.field != nil {
-                    if keyDict[serviceObject.field!] == nil {
-                        keyDict[serviceObject.field!] = serviceObject.field!
-                    }
-                }
-            }
-            numOfSectionFilter = keyDict.keys.count
-            
+            serviceFilterDictionary = self.groupService(originArray: filterArray)
+
+            numOfSectionFilter = serviceFilterDictionary.keys.count
             searchActive = true;
         }
         doctorAddressTableView.reloadData()
     }
-   
-
 }
