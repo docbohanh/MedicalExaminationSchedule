@@ -277,7 +277,7 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 break
             default:
                 // hướng dẫn
-                
+                self.performSegue(withIdentifier: "guidApp", sender: nil)
                 break
             }
         }

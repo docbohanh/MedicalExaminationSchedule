@@ -24,6 +24,7 @@ class DetailNewViewController: UIViewController {
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var imageViewHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var webview: UIWebView!
     
     var delegate : DetailNewControllerDelegate?
     
@@ -82,10 +83,10 @@ class DetailNewViewController: UIViewController {
                     let resultData = resultDictionary["result"]
                     self.likeButton.isSelected = resultData?["liked"] as! Bool
                     let likeContent = resultData?["content"] as! String
-                    self.content.text = likeContent.fromBase64()?.html2String
+                    self.webview.loadHTMLString(likeContent.fromBase64()!, baseURL: nil)
+//                    self.content.text = likeContent.fromBase64()?.html2String
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
                     })
                 }
             }

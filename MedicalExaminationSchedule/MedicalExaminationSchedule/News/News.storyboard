@@ -339,15 +339,22 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIw-fY-7Ar">
+                                                <rect key="frame" x="0.0" y="289" width="375" height="294"/>
+                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="TIw-fY-7Ar" secondAttribute="trailing" id="5PK-yf-XGp"/>
                                             <constraint firstItem="OsV-dW-aiH" firstAttribute="top" secondItem="Ke6-2p-mLE" secondAttribute="bottom" constant="10" id="6Mx-uX-Cbi"/>
                                             <constraint firstItem="Ke6-2p-mLE" firstAttribute="leading" secondItem="Dq7-Vg-Aj0" secondAttribute="leading" id="75M-T6-G3f"/>
+                                            <constraint firstItem="TIw-fY-7Ar" firstAttribute="leading" secondItem="rUb-4u-IoL" secondAttribute="leading" id="7kC-5v-lq1"/>
                                             <constraint firstItem="wW6-fJ-fzP" firstAttribute="leading" secondItem="Ke6-2p-mLE" secondAttribute="trailing" constant="23" id="9wx-v1-8du"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="top" secondItem="iwK-Bp-IUi" secondAttribute="top" id="BLx-bW-yJL"/>
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="top" secondItem="n5x-mF-C1J" secondAttribute="bottom" constant="5" id="Eh4-6W-2ii"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="leading" secondItem="iwK-Bp-IUi" secondAttribute="trailing" constant="15" id="K1G-fW-bhL"/>
+                                            <constraint firstItem="TIw-fY-7Ar" firstAttribute="top" secondItem="OsV-dW-aiH" secondAttribute="bottom" constant="10" id="Nuz-Y0-K5q"/>
                                             <constraint firstAttribute="trailing" secondItem="n5x-mF-C1J" secondAttribute="trailing" constant="15" id="O73-Fr-kFu"/>
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="leading" secondItem="cmY-pB-QmC" secondAttribute="leading" id="Of9-VT-zj1"/>
                                             <constraint firstItem="OsV-dW-aiH" firstAttribute="leading" secondItem="Dq7-Vg-Aj0" secondAttribute="leading" id="RDN-zm-4vA"/>
@@ -365,6 +372,7 @@
                                             <constraint firstItem="cmY-pB-QmC" firstAttribute="leading" secondItem="rUb-4u-IoL" secondAttribute="leading" id="mIu-5l-aeW"/>
                                             <constraint firstItem="wW6-fJ-fzP" firstAttribute="centerY" secondItem="Ke6-2p-mLE" secondAttribute="centerY" id="ogL-lq-0oz"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="top" secondItem="cmY-pB-QmC" secondAttribute="bottom" constant="10" id="ooc-vT-uKw"/>
+                                            <constraint firstAttribute="bottom" secondItem="TIw-fY-7Ar" secondAttribute="bottom" constant="20" id="q0x-6v-Z70"/>
                                             <constraint firstAttribute="bottom" secondItem="IFv-LZ-aZc" secondAttribute="bottom" constant="20" id="t1q-nW-s7Y"/>
                                             <constraint firstItem="IFv-LZ-aZc" firstAttribute="trailing" secondItem="OsV-dW-aiH" secondAttribute="trailing" id="twT-Es-yOz"/>
                                             <constraint firstAttribute="trailing" secondItem="cmY-pB-QmC" secondAttribute="trailing" id="yGF-h5-BXl"/>
@@ -408,6 +416,7 @@
                         <outlet property="timeLabel" destination="Ke6-2p-mLE" id="eLM-Fm-6B4"/>
                         <outlet property="titleLabel" destination="Dq7-Vg-Aj0" id="A2O-pO-0cU"/>
                         <outlet property="titleViewLabel" destination="bxn-Ym-qar" id="s89-ID-a3Q"/>
+                        <outlet property="webview" destination="TIw-fY-7Ar" id="JgR-8k-dV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYl-gO-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>

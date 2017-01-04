@@ -28,7 +28,7 @@ class DocumentViewController: UIViewController,UIWebViewDelegate {
     }
     
     @IBAction func tappedBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
