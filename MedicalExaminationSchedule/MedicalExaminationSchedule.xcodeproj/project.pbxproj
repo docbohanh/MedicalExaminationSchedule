@@ -40,6 +40,7 @@
 		84CB42F21DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42F11DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift */; };
 		84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43001DE19A3C0059B057 /* SignInViewController.swift */; };
 		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
+		8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */; };
 		8B47A89F1DF79FF1001868EE /* BottomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B47A89E1DF79FF1001868EE /* BottomButtonTableViewCell.xib */; };
 		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
 		8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */; };
@@ -192,6 +193,7 @@
 		84CB42F31DE16FE10059B057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CB43001DE19A3C0059B057 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Account/SignInViewController.swift; sourceTree = "<group>"; };
 		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
+		8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControlViewController.swift; sourceTree = "<group>"; };
 		8B47A89E1DF79FF1001868EE /* BottomButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
 		8B47A8A21DF7A50B001868EE /* UpdateProfileDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileDoctorViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				843292CA1DFF3778004C44A3 /* CustomUITextField.swift */,
 				D2A42A4C1E04F8D500B7E19C /* LoadingOverlay.swift */,
 				D21863611E13FEDB002C04C3 /* ImageViewExtension.swift */,
+				8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -990,6 +993,7 @@
 				D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */,
 				D2F4A9FC1E17ABAD00EE737B /* CalendarBookModel.swift in Sources */,
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
+				8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
 				D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,

@@ -37,7 +37,11 @@ extension String {
 }
 
 typealias AlertHandler = (Int) -> Void
+typealias pullRefreshHandler = () -> Void
+
 class ProjectCommon: NSObject {
+    static var mRefreshControl : UIRefreshControl?
+    static var mRefreshHandler : pullRefreshHandler?
     static func boundView(button:UIView) -> Void {
         button.clipsToBounds = true
         button.layer.cornerRadius = button.frame.size.height/2;
@@ -144,6 +148,26 @@ class ProjectCommon: NSObject {
         }
         
     }
+    
+    static func dateIsExpireDate(myDate:Date) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let myDateString = dateFormatter.string(from: myDate) as String
+        let currentDate = Date()
+        let currentDateString = dateFormatter.string(from: currentDate) as String
+        if myDateString == currentDateString {
+            return true
+        }
+        
+        let result = currentDate.compare(myDate)
+        if result == ComparisonResult.orderedAscending {
+            return true
+        }else {
+            return false
+        }
+        
+    }
+    
     static func convertDateFromServer(string:String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
@@ -168,15 +192,25 @@ class ProjectCommon: NSObject {
         }
     }
     
-//    static func addPullRefreshControl(_ view: UIScrollView, actionHandler: pullRefreshHandler) -> UIRefreshControl {
-//        if !mRefreshControl {
-//            mRefreshHandler = actionHandler
-//            mRefreshControl = UIRefreshControl()
+    static func addPullRefreshControl(_ view: UIScrollView, actionHandler: @escaping pullRefreshHandler) -> UIRefreshControl {
+//        if (mRefreshControl != nil) {
+        mRefreshControl?.removeFromSuperview()
+            mRefreshHandler = actionHandler
+            mRefreshControl = UIRefreshControl()
 //            mRefreshControl.tintColor = kPinkColor
-//            mRefreshControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-//            mRefreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
-//            view.addSubview(mRefreshControl)
+            mRefreshControl?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            mRefreshControl?.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+            view.addSubview(mRefreshControl!)
 //        }
-//        return mRefreshControl
-//    }
+        return mRefreshControl!
+    }
+    
+    static func refresh() {
+        mRefreshHandler!()
+    }
+    
+    static func stopAnimationRefresh() {
+        mRefreshControl?.perform(#selector(mRefreshControl?.endRefreshing), with: nil, afterDelay: 0.5)
+    }
+    
 }

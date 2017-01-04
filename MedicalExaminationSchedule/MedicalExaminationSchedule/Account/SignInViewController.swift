@@ -208,7 +208,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể kết nối để đăng nhập,vui lòng kiểm tra lại kết nối", buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể kết nối để đăng nhập,vui lòng kiểm tra lại", buttonArray: ["Đóng"], onCompletion: { (index) in
                 })
             } else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -226,7 +226,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
                             return
                         }
                     }
-                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể kết nối để đăng nhập,vui lòng kiểm tra lại kết nối", buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể kết nối để đăng nhập,vui lòng kiểm tra lại", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
