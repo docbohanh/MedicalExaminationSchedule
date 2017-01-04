@@ -419,24 +419,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchActive {
-            currentService = filterArray[indexPath.row]
-        }else {
-            switch selectedTab {
-            case 0:
-                currentService = serviceHospitalArray[indexPath.row]
-                break
-            case 1:
-                currentService = serviceClinicArray[indexPath.row]
-                break
-            case 2:
-                currentService = serviceDrugStoreArray[indexPath.row]
-                break
-            default:
-                currentService = serviceDoctorArray[indexPath.row]
-            }
-        }
-        
+        let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
+        currentService = cell.serviceDetail
         self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     override func didReceiveMemoryWarning() {
