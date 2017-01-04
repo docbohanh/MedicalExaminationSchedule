@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        GMSServices.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
-        GMSPlacesClient.provideAPIKey("AIzaSyBDDZ_L9mBeSxL1A0ZZbG8Oc1_yVT_9V9s")
+        GMSServices.provideAPIKey("AIzaSyBp2X7nVjzbEFxy1gVQxdJPBvB2BeBpTC")
+        GMSPlacesClient.provideAPIKey("AIzaSyBp2X7nVjzbEFxy1gVQxdJPBvB2BeBpTC")
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         if (UserDefaults.standard.object(forKey:"token_id") == nil) {
             let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
