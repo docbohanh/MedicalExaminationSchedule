@@ -308,7 +308,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if searchActive {
-            return numOfSectionFilter
+            return serviceFilterDictionary.keys.count
         }else {
             switch selectedTab {
             case 0:
@@ -345,11 +345,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                 return serviceArray != nil ? (serviceArray?.count)! : 0
             case 2:
                 let keysArray = serviceDrugStoreDictionary.keys.sorted()
-                let serviceArray = serviceHospitalDictionary[keysArray[section]]
+                let serviceArray = serviceDrugStoreDictionary[keysArray[section]]
                 return serviceArray != nil ? (serviceArray?.count)! : 0
             default:
                 let keysArray = serviceDoctorDictionary.keys.sorted()
-                let serviceArray = serviceHospitalDictionary[keysArray[section]]
+                let serviceArray = serviceDoctorDictionary[keysArray[section]]
                 return serviceArray != nil ? (serviceArray?.count)! : 0
             }
         }
@@ -424,16 +424,24 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         }else {
             switch selectedTab {
             case 0:
-                currentService = serviceHospitalArray[indexPath.row]
+                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+                currentService = serviceArray?[indexPath.row]
                 break
             case 1:
-                currentService = serviceClinicArray[indexPath.row]
+                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
+                currentService = serviceArray?[indexPath.row]
                 break
             case 2:
-                currentService = serviceDrugStoreArray[indexPath.row]
+                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+                currentService = serviceArray?[indexPath.row]
                 break
             default:
-                currentService = serviceDoctorArray[indexPath.row]
+                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+                currentService = serviceArray?[indexPath.row]
             }
         }
         
@@ -514,7 +522,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
-                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDoctorDictionary.removeAll()
                             self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
 
                             self.pageIndexDoctor = self.pageIndexDoctor + 1
@@ -678,6 +686,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             array = self.serviceDoctorArray
             break
         }
+        filterArray.removeAll()
         filterArray = array.filter({ (object : ServiceModel) -> Bool in
             let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
             return categoryMatch
@@ -685,6 +694,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if(filterArray.count == 0 && searchString == ""){
             searchActive = false;
         } else {
+            serviceFilterDictionary.removeAll()
             serviceFilterDictionary = self.groupService(originArray: filterArray)
 
             numOfSectionFilter = serviceFilterDictionary.keys.count
