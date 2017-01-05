@@ -198,6 +198,7 @@ class ListPhotoViewController: UIViewController, UICollectionViewDelegate, UICol
             }
         })
     }
+    
     func deleteImageObject(object:ImageModel) -> Void {
         var dictParam = [String:String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as? String

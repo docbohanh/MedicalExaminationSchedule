@@ -614,7 +614,7 @@
                         <segue destination="Ld6-qt-dph" kind="push" identifier="PushToSetupIntroduce" id="Pvh-Q0-ziL"/>
                         <segue destination="eDy-wo-TDI" kind="push" identifier="PushToInviteDoctor" id="fcF-0g-iAK"/>
                         <segue destination="fhA-X0-WGi" kind="push" identifier="PushToSetupCalendar" id="nRr-q6-ea2"/>
-                        <segue destination="ies-OO-Atn" kind="push" identifier="PushToAbout" id="wZV-Gt-pNV"/>
+                        <segue destination="ies-OO-Atn" kind="push" identifier="guidApp" id="wZV-Gt-pNV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNB-Qs-an3" userLabel="First Responder" sceneMemberID="firstResponder"/>

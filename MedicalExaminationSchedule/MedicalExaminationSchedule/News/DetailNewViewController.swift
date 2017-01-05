@@ -13,6 +13,7 @@ protocol DetailNewControllerDelegate {
 }
 
 class DetailNewViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
     @IBOutlet weak var shareButton: UIButton!
@@ -24,6 +25,7 @@ class DetailNewViewController: UIViewController {
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var imageViewHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var webview: UIWebView!
     
     var delegate : DetailNewControllerDelegate?
     
@@ -51,7 +53,10 @@ class DetailNewViewController: UIViewController {
             imageViewHeightConstant.constant = 0
         }
     }
-    
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
+        scrollView.layoutIfNeeded()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,10 +87,10 @@ class DetailNewViewController: UIViewController {
                     let resultData = resultDictionary["result"]
                     self.likeButton.isSelected = resultData?["liked"] as! Bool
                     let likeContent = resultData?["content"] as! String
-                    self.content.text = likeContent.fromBase64()?.html2String
+                    self.webview.loadHTMLString(likeContent, baseURL: nil)
+//                    self.content.text = likeContent.fromBase64()?.html2String
                 }else {
                     ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
-                        
                     })
                 }
             }

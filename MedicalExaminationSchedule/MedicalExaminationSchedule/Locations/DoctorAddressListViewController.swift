@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+
 class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
     @IBOutlet weak var searchView: UIView!
@@ -27,12 +28,19 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var currentLocation = CLLocation()
     var searchMapView = UIView()
     
+    var serviceHospitalDictionary = [String : [ServiceModel]]()
+    var serviceClinicDictionary = [String : [ServiceModel]]()
+    var serviceDrugStoreDictionary = [String : [ServiceModel]]()
+    var serviceDoctorDictionary = [String : [ServiceModel]]()
+    
     var serviceHospitalArray = [ServiceModel]()
     var serviceClinicArray = [ServiceModel]()
     var serviceDrugStoreArray = [ServiceModel]()
     var serviceDoctorArray = [ServiceModel]()
     var currentArray = [ServiceModel]()
     var filterArray = [ServiceModel]()
+    var numOfSectionFilter: Int = 0
+    var serviceFilterDictionary = [String : [ServiceModel]]()
     
     var pageIndexHospital = 0
     var pageIndexClinic = 0
@@ -43,7 +51,6 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var currentService : ServiceModel?
     var searchActive : Bool = false
     var mapView : GMSMapView?
-    
     var refreshControl : UIRefreshControl?
 
     override func viewDidLoad() {
@@ -61,18 +68,34 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             switch self.selectedTab {
             case 0:
                 self.pageIndexHospital = 0
+                if self.serviceHospitalArray.count > 0 {
+                    self.serviceHospitalArray.removeAll()
+                }
+                self.doctorAddressTableView.reloadData()
                 self.getServiceHospital(page_index: self.pageIndexHospital, type: "bv")
                 break
             case 1:
                 self.pageIndexClinic = 0
+                if self.serviceClinicArray.count > 0 {
+                    self.serviceClinicArray.removeAll()
+                }
+                self.doctorAddressTableView.reloadData()
                 self.getServiceHospital(page_index: self.pageIndexClinic, type: "pk")
                 break
             case 2:
                 self.pageIndexDrugStore = 0
+                if self.serviceDrugStoreArray.count > 0 {
+                    self.serviceDrugStoreArray.removeAll()
+                }
+                self.doctorAddressTableView.reloadData()
                 self.getServiceHospital(page_index: self.pageIndexDrugStore, type: "nt")
                 break
             case 3:
                 self.pageIndexDoctor = 0
+                if self.serviceDoctorArray.count > 0 {
+                    self.serviceDoctorArray.removeAll()
+                }
+                self.doctorAddressTableView.reloadData()
                 self.getServiceHospital(page_index: self.pageIndexDoctor, type: "bs")
                 break
             default:
@@ -105,21 +128,20 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         //Update location to server
         //make new map after updated location
         if mapView == nil {
-            let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 14)
+            let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude, zoom: 12)
 
             mapView = GMSMapView.map(withFrame:CGRect.init(x: 0, y: segmentView.frame.origin.y + segmentView.frame.height, width: doctorAddressTableView.frame.size.width, height:view.frame.size.height - segmentView.frame.origin.y - segmentView.frame.height), camera: camera)
             mapView?.delegate = self
             mapView?.isMyLocationEnabled = true
-            let getPositionButton = UIButton.init(type: UIButtonType.custom)
-            getPositionButton.frame = CGRect.init(x: 30, y: (mapView?.frame.size.height)! - 100, width: self.view.frame.size.width - 60, height: 40)
-            getPositionButton.layer.cornerRadius = getPositionButton.frame.height/2
-            getPositionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-            getPositionButton.setTitle("LẤY PHƯƠNG HƯỚNG", for:  UIControlState.normal)
-            getPositionButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
-            mapView?.addSubview(getPositionButton)
+//            let getPositionButton = UIButton.init(type: UIButtonType.custom)
+//            getPositionButton.frame = CGRect.init(x: 30, y: (mapView?.frame.size.height)! - 100, width: self.view.frame.size.width - 60, height: 40)
+//            getPositionButton.layer.cornerRadius = getPositionButton.frame.height/2
+//            getPositionButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+//            getPositionButton.setTitle("LẤY PHƯƠNG HƯỚNG", for:  UIControlState.normal)
+//            getPositionButton.backgroundColor = UIColor(red: 24/255, green: 230/255, blue: 226/255, alpha: 1.0)
+//            mapView?.addSubview(getPositionButton)
             
             // Creates a marker in the center of the map.
-
         }
         locationManager.stopUpdatingLocation()
     }
@@ -149,15 +171,19 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        mapView.clear()
+        
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        locationManager.startUpdatingLocation()
         if currentArray.count > 0 {
             self.initMapview(locations: currentArray)
         }
         let path = GMSMutablePath()
         path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
-//        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+        //        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
         
-        APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(coordinate.latitude), destinationLng: String(coordinate.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
+        APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(marker.position.latitude), destinationLng: String(marker.position.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
             if response.result.error == nil && response.result.isSuccess {
                 let results = response.result
                 if results != nil {
@@ -176,7 +202,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                                     path.add(CLLocationCoordinate2DMake(lat,lng))
                                 }
                             }
-                                path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
+                            path.add(CLLocationCoordinate2DMake(marker.position.latitude, marker.position.longitude))
                             let rectangle = GMSPolyline(path: path)
                             rectangle.strokeWidth = 4.0
                             rectangle.strokeColor = UIColor.init(red: 25/255, green: 114/255, blue: 196/266, alpha: 1)
@@ -185,12 +211,6 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                     }
                 }
             }
-            print(response)
-        })
-    }
-    
-    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(marker.position.longitude), destinationLng: String(marker.position.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
             print(response)
         })
         
@@ -303,22 +323,50 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if searchActive {
+            return serviceFilterDictionary.keys.count
+        }else {
+            switch selectedTab {
+            case 0:
+                return serviceHospitalDictionary.keys.count
+            case 1:
+                return serviceClinicDictionary.keys.count
+            case 2:
+                return serviceDrugStoreDictionary.keys.count
+            default:
+                return serviceDoctorDictionary.keys.count
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchActive {
-            return filterArray.count
+            let serviceKeysArray = serviceFilterDictionary.keys.sorted()
+            if serviceKeysArray.count > section {
+                let keyString = serviceKeysArray[section] 
+                let serviceArray = serviceFilterDictionary[keyString]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
+            } else {
+                return 0
+            }
         }else {
             switch selectedTab {
             case 0:
-                return serviceHospitalArray.count
+                let keysArray = serviceHospitalDictionary.keys.sorted()
+                let serviceArray = serviceHospitalDictionary[keysArray[section]]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
             case 1:
-                return serviceClinicArray.count
+                let keysArray = serviceClinicDictionary.keys.sorted()
+                let serviceArray = serviceClinicDictionary[keysArray[section]]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
             case 2:
-                return serviceDrugStoreArray.count
+                let keysArray = serviceDrugStoreDictionary.keys.sorted()
+                let serviceArray = serviceDrugStoreDictionary[keysArray[section]]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
             default:
-                return serviceDoctorArray.count
+                let keysArray = serviceDoctorDictionary.keys.sorted()
+                let serviceArray = serviceDoctorDictionary[keysArray[section]]
+                return serviceArray != nil ? (serviceArray?.count)! : 0
             }
         }
     }
@@ -328,32 +376,61 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 20
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let titleLabel = Bundle.main.loadNibNamed("headerView", owner: self, options: nil)?.first as! headerView
-        return titleLabel
+        let headerView = Bundle.main.loadNibNamed("headerView", owner: self, options: nil)?.first as! headerView
+        
+        switch selectedTab {
+        case 0:
+             let keysArray = serviceHospitalDictionary.keys.sorted()
+             headerView.headerLabel.text = keysArray[section]
+                break
+        case 1:
+            let keysArray = serviceClinicDictionary.keys.sorted()
+            headerView.headerLabel.text = keysArray[section]
+        case 2:
+            let keysArray = serviceDrugStoreDictionary.keys.sorted()
+            headerView.headerLabel.text = keysArray[section]
+        default:
+            let keysArray = serviceDoctorDictionary.keys.sorted()
+            headerView.headerLabel.text = keysArray[section]
+        }
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorAddressTableViewCell", for: indexPath) as! DoctorAddressTableViewCell
         var object : ServiceModel?
         if searchActive {
-            object = filterArray[indexPath.row]
+            let serviceKeyArray = serviceFilterDictionary.keys.sorted()
+            let serviceArray = serviceFilterDictionary[serviceKeyArray[indexPath.section]]
+            object = serviceArray?[indexPath.row]
+
         }else {
             switch selectedTab {
             case 0:
-                object = serviceHospitalArray[indexPath.row]
+                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+                if serviceKeyArray.count > indexPath.section {
+                    let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+                    object = serviceArray?[indexPath.row]
+                }
                 break
             case 1:
-                object = serviceClinicArray[indexPath.row]
+                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
                 break
             case 2:
-                object = serviceDrugStoreArray[indexPath.row]
+                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
                 break
             default:
-                object = serviceDoctorArray[indexPath.row]
+                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+                object = serviceArray?[indexPath.row]
             }
         }
         cell.setupCell(object: object!)
@@ -361,24 +438,34 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchActive {
-            currentService = filterArray[indexPath.row]
-        }else {
-            switch selectedTab {
-            case 0:
-                currentService = serviceHospitalArray[indexPath.row]
-                break
-            case 1:
-                currentService = serviceClinicArray[indexPath.row]
-                break
-            case 2:
-                currentService = serviceDrugStoreArray[indexPath.row]
-                break
-            default:
-                currentService = serviceDoctorArray[indexPath.row]
-            }
-        }
+//        if searchActive {
+//            currentService = filterArray[indexPath.row]
+//        }else {
+//            switch selectedTab {
+//            case 0:
+//                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+//                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            case 1:
+//                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+//                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            case 2:
+//                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+//                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//                break
+//            default:
+//                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+//                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+//                currentService = serviceArray?[indexPath.row]
+//            }
+//        }
         
+        let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
+        currentService = cell.serviceDetail
         self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     override func didReceiveMemoryWarning() {
@@ -389,20 +476,20 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func getServiceHospital(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index)
-        
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        DispatchQueue.main.async {
+            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
+        }
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             ProjectCommon.stopAnimationRefresh()
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
                 ProjectCommon.initAlertView(viewController: self, title: "", message: "Không tìm thấy  dịch vụ", buttonArray: ["Đóng"], onCompletion: { (index) in
-                    
                 })
             }else {
                 let resultDictionary = response.result.value as! [String:AnyObject]
@@ -419,7 +506,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
-                            self.pageIndexHospital = self.pageIndexHospital + 1
+                            self.serviceHospitalDictionary.removeAll()
+                            self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
+
+//                            self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
@@ -429,7 +519,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
-                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
@@ -439,7 +533,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 2:
-                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
+
+//                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
@@ -449,7 +546,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
-                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+                            self.serviceDoctorDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
+
+//                            self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray
@@ -474,13 +574,14 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func loadMoreService(page_index:Int, type:String) -> Void {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
-        dictParam["lat"] = "21.0133267"
-        dictParam["lng"] = "105.7809231"
+        dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
+        dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index+1)
-        
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        DispatchQueue.main.async {
+            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
+        }
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
             Lib.removeLoadingView(on: self.view)
@@ -503,7 +604,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
-                            self.pageIndexHospital = self.pageIndexHospital + 1
+                            self.serviceHospitalDictionary.removeAll()
+
+                            self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
@@ -513,7 +617,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
-                            self.pageIndexClinic = self.pageIndexClinic + 1
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicArray += tempArray
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
@@ -523,7 +629,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 2:
-                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
@@ -533,7 +641,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
-                            self.pageIndexDoctor = self.pageIndexDoctor + 1
+                            self.serviceDoctorDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
+//                            self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray
@@ -557,6 +667,21 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
 
 
+    func groupService(originArray:[ServiceModel]) -> [String:[ServiceModel]] {
+        var currentServiceDictionary = [String:[ServiceModel]]()
+        for object in originArray {
+            if object.field != nil {
+                if currentServiceDictionary[object.field!] != nil {
+                    var serviceArray:[ServiceModel] = currentServiceDictionary[object.field!]!
+                    serviceArray.append(object)
+                    currentServiceDictionary[object.field!] = serviceArray
+                } else {
+                    currentServiceDictionary[object.field!] = [object]
+                }
+            }
+        }
+        return currentServiceDictionary
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -586,17 +711,18 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
             array = self.serviceDoctorArray
             break
         }
+        filterArray.removeAll()
         filterArray = array.filter({ (object : ServiceModel) -> Bool in
             let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
             return categoryMatch
         })
-        if(filterArray.count == 0 && searchString == ""){
+        if(filterArray.count == 0 || searchString == ""){
             searchActive = false;
         } else {
+            serviceFilterDictionary.removeAll()
+            serviceFilterDictionary = self.groupService(originArray: filterArray)
             searchActive = true;
         }
         doctorAddressTableView.reloadData()
     }
-   
-
 }

@@ -27,13 +27,22 @@
 
 @end
 
+@interface DateButton : UIButton
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) CKDateItem *dateItem;
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic) BOOL isBookedFull;
+
+@end
+
 typedef enum {
     startSunday = 1,
     startMonday = 2,
 } CKCalendarStartDay;
 
 @interface CKCalendarView : UIView
-
+- (void)layoutSubviews;
 - (id)initWithStartDay:(CKCalendarStartDay)firstDay;
 - (id)initWithStartDay:(CKCalendarStartDay)firstDay frame:(CGRect)frame;
 
@@ -55,6 +64,7 @@ typedef enum {
 @property (nonatomic, strong) UIFont *dateOfWeekFont;
 @property (nonatomic, strong) UIColor *dayOfWeekTextColor;
 @property (nonatomic, strong) UIFont *dateFont;
+@property(nonatomic, strong) NSMutableArray *dateButtons;
 
 - (void)setMonthButtonColor:(UIColor *)color;
 - (void)setInnerBorderColor:(UIColor *)color;
@@ -63,7 +73,6 @@ typedef enum {
 - (void)selectDate:(NSDate *)date makeVisible:(BOOL)visible;
 - (void)reloadData;
 - (void)reloadDates:(NSArray *)dates;
-- (void)setFullDate:(NSDate *)date;
 
 // Helper methods for delegates, etc.
 - (BOOL)date:(NSDate *)date1 isSameDayAsDate:(NSDate *)date2;

@@ -10,6 +10,7 @@ import UIKit
 
 class headerView: UIView {
 
+    @IBOutlet weak var headerLabel: UILabel!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
