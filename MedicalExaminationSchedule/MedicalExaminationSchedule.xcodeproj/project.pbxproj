@@ -119,6 +119,7 @@
 		D2F4A9FA1E17A2EE00EE737B /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F4A9F91E17A2EE00EE737B /* HMSegmentedControl.m */; };
 		D2F4A9FC1E17ABAD00EE737B /* CalendarBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4A9FB1E17ABAD00EE737B /* CalendarBookModel.swift */; };
 		D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F778E51E01AE80007D63E4 /* UserModel.swift */; };
+		EA04BE681E1DFE02009C23A2 /* ServiceLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA04BE671E1DFE02009C23A2 /* ServiceLocationViewController.swift */; };
 		EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */; };
 		EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */; };
 		EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED191DF81058002DD339 /* SetupTimerTableViewCell.swift */; };
@@ -277,6 +278,7 @@
 		D2F4A9F91E17A2EE00EE737B /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		D2F4A9FB1E17ABAD00EE737B /* CalendarBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarBookModel.swift; sourceTree = "<group>"; };
 		D2F778E51E01AE80007D63E4 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EA04BE671E1DFE02009C23A2 /* ServiceLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocationViewController.swift; sourceTree = "<group>"; };
 		EA05ED151DF7C533002DD339 /* setupTimeScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setupTimeScheduleViewController.swift; sourceTree = "<group>"; };
 		EA05ED171DF7D9CF002DD339 /* TimerFreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFreeViewController.swift; sourceTree = "<group>"; };
 		EA05ED191DF81058002DD339 /* SetupTimerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupTimerTableViewCell.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				8426418C1DF2B1E500EAB5CE /* Locations.storyboard */,
 				845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */,
 				845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */,
+				EA04BE671E1DFE02009C23A2 /* ServiceLocationViewController.swift */,
 				845D5A271DF5EDA300BDA45C /* headerView.swift */,
 				845D5A291DF5EDAF00BDA45C /* headerView.xib */,
 			);
@@ -1002,6 +1005,7 @@
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
 				EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */,
 				D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */,
+				EA04BE681E1DFE02009C23A2 /* ServiceLocationViewController.swift in Sources */,
 				D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */,
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				8BD905A91E0AA3C900DBF1C3 /* CommentModel.swift in Sources */,

@@ -115,6 +115,10 @@ class DoctorManagementViewController: UIViewController,UITableViewDelegate,UITab
     }
     
     @IBAction func tappedSeeDoctorLocation(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "Locations", bundle: nil)
+        let scheduleVC = storyboard.instantiateViewController(withIdentifier: "ServiceLocationViewController") as! ServiceLocationViewController
+        scheduleVC.serviceObject = serviceObject
+        self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
     
     @IBAction func tappedDoctorInformation(_ sender: UIButton) {
