@@ -54,7 +54,7 @@ class NewsModel: NSObject {
         }else {
             self.news_tags = []
         }
-        if let v = dict["news_url"] {
+        if let v = dict["image_url"] {
             if v as! NSObject == NSNull() {
                 self.news_url = ""
             } else {

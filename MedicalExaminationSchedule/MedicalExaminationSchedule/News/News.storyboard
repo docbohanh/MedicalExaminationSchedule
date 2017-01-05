@@ -57,7 +57,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbB-nD-byn">
                                                     <rect key="frame" x="15" y="10" width="345" height="330"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_new_test.png" translatesAutoresizingMaskIntoConstraints="NO" id="pxX-85-4Ry">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxX-85-4Ry">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="150"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="750" constant="150" id="FTk-RE-0Su"/>
@@ -258,7 +258,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUb-4u-IoL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_new_test.png" translatesAutoresizingMaskIntoConstraints="NO" id="cmY-pB-QmC">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmY-pB-QmC">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="fuE-yp-naZ"/>
@@ -422,6 +422,5 @@
         <image name="ic_news" width="25" height="25"/>
         <image name="ic_share" width="15" height="15"/>
         <image name="ic_share_active" width="15" height="15"/>
-        <image name="image_new_test.png" width="277" height="134"/>
     </resources>
 </document>
