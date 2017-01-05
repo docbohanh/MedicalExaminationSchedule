@@ -12,7 +12,18 @@ protocol DetailNewControllerDelegate {
     func updateNews(newObject:NewsModel) -> Void
 }
 
-class DetailNewViewController: UIViewController {
+//extension ViewController: UIWebViewDelegate {
+//    func webViewDidFinishLoad(webView: UIWebView) {
+//        print(webView.request?.URL)
+//        webviewHeightConstraint.constant = webView.scrollView.contentSize.height
+//        if (!observing) {
+//            startObservingHeight()
+//        }
+//    }
+//}
+var MyObservationContext = 0
+
+class DetailNewViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var newsImageView: UIImageView!
@@ -23,12 +34,12 @@ class DetailNewViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var likeCountLabel: UILabel!
-    @IBOutlet weak var content: UITextView!
     @IBOutlet weak var imageViewHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var webview: UIWebView!
     
     var delegate : DetailNewControllerDelegate?
-    
+    @IBOutlet weak var webviewHeightConstraint: NSLayoutConstraint!
+    var observing = false
 
     var newsObject : NewsModel?
     
@@ -52,6 +63,8 @@ class DetailNewViewController: UIViewController {
             newsImageView.isHidden = true
             imageViewHeightConstant.constant = 0
         }
+        webview.scrollView.isScrollEnabled = false
+        webview.delegate = self
     }
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
@@ -62,11 +75,46 @@ class DetailNewViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
     }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        webView.frame.size.height = 1
+        webView.frame.size = webView.sizeThatFits(CGSize.zero)
+        scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
+        scrollView.layoutIfNeeded()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    deinit {
+//        stopObservingHeight()
+//    }
+//    
+//    func startObservingHeight() {
+//        let options = NSKeyValueObservingOptions([.new])
+//        webview.scrollView.addObserver(self, forKeyPath: "contentSize", options: options, context: &MyObservationContext)
+//        observing = true;
+//    }
+//    
+//    func stopObservingHeight() {
+//        webview.scrollView.removeObserver(self, forKeyPath: "contentSize", context: &MyObservationContext)
+//        observing = false
+//    }
+//    
+//    func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutableRawPointer) {
+//        guard let keyPath = keyPath else {
+//            super.observeValueForKeyPath(nil, ofObject: object, change: change as! [NSKeyValueChangeKey : Any]?, context: context)
+//            return
+//        }
+//        switch (keyPath, context) {
+//        case("contentSize", &MyObservationContext):
+//            webviewHeightConstraint.constant = webview.scrollView.contentSize.height
+//        default:
+//            super.observeValueForKeyPath(keyPath, ofObject: object, change: change as! [NSKeyValueChangeKey : Any]?, context: context)
+//        }
+//    }
     
     func getLikeContent() -> Void {
         var dictParam = [String : String]()
