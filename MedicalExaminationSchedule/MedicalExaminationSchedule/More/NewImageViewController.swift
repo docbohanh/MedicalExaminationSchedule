@@ -249,7 +249,7 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
             if self.selectedImageArray.count > 0 {
                 self.updateAvatarUser(imagePost: self.selectedImageArray[0])
             }else {
-                ProjectCommon.initAlertView(viewController: self, title: "", message: "Thêm ảnh thành công", buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message: "Thêm ảnh thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
                     self.delegate?.updateListImage()
                     _ = self.navigationController?.popViewController(animated: true)
                 })

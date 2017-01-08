@@ -57,8 +57,11 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
         // fake test
         if newsObject?.news_url != "" {
             newsImageView.isHidden = false
-            imageViewHeightConstant.constant = 150
+//            imageViewHeightConstant.constant = 150
+            
             newsImageView.loadImage(url: (newsObject?.news_url)!)
+
+            
         }else {
             newsImageView.isHidden = true
             imageViewHeightConstant.constant = 0
@@ -69,15 +72,20 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
         scrollView.layoutIfNeeded()
+        if newsImageView.image != nil {
+            let rate = (newsImageView.image?.size.height)!/(newsImageView.image?.size.width)!
+            imageViewHeightConstant.constant = self.view.frame.size.width * rate
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        webView.frame.size.height = 1
+        webView.frame.size.height = 2
         webView.frame.size = webView.sizeThatFits(CGSize.zero)
         scrollView.contentSize = CGSize.init(width: scrollView.frame.size.width, height: webview.frame.size.height + webview.frame.origin.y)
         scrollView.layoutIfNeeded()
@@ -125,7 +133,7 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
             print(response)
             Lib.removeLoadingView(on: self.view)
             if (response.result.error != nil) {
-                ProjectCommon.initAlertView(viewController: self, title: "Đả xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "Đả xảy ra lỗi", message: (response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             }else {
@@ -138,7 +146,7 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
                     self.webview.loadHTMLString(likeContent, baseURL: nil)
 //                    self.content.text = likeContent.fromBase64()?.html2String
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
@@ -158,12 +166,12 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["news_id"] = newsObject?.news_id
-        Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
+        Lib.showLoadingViewOn2(view, withAlert: "Đang tải ...")
         APIManager.sharedInstance.postDataToURL(url: NEWS_LIKE, parameters: dictParam, onCompletion: {(response) in
             Lib.removeLoadingView(on: self.view)
             print(response)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "", message:(response.result.error?.localizedDescription)!, buttonArray: ["OK"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể thích bài viết lúc này, vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
@@ -179,7 +187,7 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
                     self.newsObject?.like_count = numberLike
                     self.likeCountLabel.text = String(format: "%d", (self.newsObject?.like_count)!)
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["OK"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể thích bài viết lúc này, vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }
@@ -187,14 +195,5 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
         })
 
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

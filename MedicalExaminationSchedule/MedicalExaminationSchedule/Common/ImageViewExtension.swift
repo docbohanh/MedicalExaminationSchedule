@@ -25,6 +25,7 @@ extension UIImageView {
                         // Finally convert that Data into an image and do what you wish with it.
                         DispatchQueue.main.async {
                             self.image = UIImage(data: imageData)!
+                            let rate = (self.image?.size.height)!/(self.image?.size.width)!
                         }
                     } else {
                         print("Couldn't get image: Image is nil")

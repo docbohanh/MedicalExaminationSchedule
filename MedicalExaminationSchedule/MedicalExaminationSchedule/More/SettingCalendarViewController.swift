@@ -81,7 +81,7 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
             selectedDate = date
         }
         if !ProjectCommon.dateIsExpireDate(myDate: selectedDate!){
-            ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể chọn ngày trong quá khứ", buttonArray: ["OK"], onCompletion: { (index) in
+            ProjectCommon.initAlertView(viewController: self, title: "", message: "Không thể chọn ngày trong quá khứ", buttonArray: ["Đóng"], onCompletion: { (index) in
                 
             })
             return
