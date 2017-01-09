@@ -53,9 +53,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     var selectedTab = 0
     var currentService : ServiceModel?
     var mapView : GMSMapView?
+    var rectangle = GMSPolyline()
     var refreshControl : UIRefreshControl?
     var queryString = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -160,17 +161,21 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         marker.position = center
         marker.map = mapView
         marker.icon = UIImage(named: "ic_location_active")
-        for location : ServiceModel in locations {
+        for index in 0..<locations.count {
+            let location : ServiceModel = locations[index]
+            
             let lat = Double(location.latitude!)! as CLLocationDegrees
             let lng = Double(location.longitude!)! as CLLocationDegrees
             let marker = GMSMarker()
+            
             let center = CLLocationCoordinate2D(latitude:lat, longitude:lng)
             marker.position = center
             marker.icon = UIImage(named: "ic_location")
 //            if marker.position.latitude == currentMarker.position.latitude && marker.position.longitude == currentMarker.position.longitude {
-                mapView?.selectedMarker = marker
+//                mapView?.selectedMarker = marker
                 marker.appearAnimation = kGMSMarkerAnimationPop
                 marker.isFlat = true
+                marker.zIndex = Int32(index)
                 marker.title = location.name
                 marker.snippet = location.address
                 
@@ -195,13 +200,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         currentMarker = marker
-        locationManager.startUpdatingLocation()
-        if currentArray.count > 0 {
-            self.initMapview(locations: currentArray)
-        }
+
+        rectangle.map = nil
         let path = GMSMutablePath()
         path.add(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude,currentLocation.coordinate.longitude))
-        //        path.add(CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude))
         
         APIManager.sharedInstance.getDirectionUrl(url: "https://maps.googleapis.com/maps/api/directions/json", originLat: String(currentLocation.coordinate.latitude), originLng: String(currentLocation.coordinate.longitude), destinationLat: String(marker.position.latitude), destinationLng: String(marker.position.longitude), key: "AIzaSyBixzG1uPZdLzZO9WoH2_3w-V7lVSeXBRE", onCompletion:{ response in
             if response.result.error == nil && response.result.isSuccess {
@@ -223,10 +225,10 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                                 }
                             }
                             path.add(CLLocationCoordinate2DMake(marker.position.latitude, marker.position.longitude))
-                            let rectangle = GMSPolyline(path: path)
-                            rectangle.strokeWidth = 4.0
-                            rectangle.strokeColor = UIColor.init(red: 25/255, green: 114/255, blue: 196/266, alpha: 1)
-                            rectangle.map = self.mapView
+                            self.rectangle = GMSPolyline(path: path)
+                            self.rectangle.strokeWidth = 4.0
+                            self.rectangle.strokeColor = UIColor.init(red: 25/255, green: 114/255, blue: 196/266, alpha: 1)
+                            self.rectangle.map = self.mapView
                         }
                     }
                 }
@@ -237,7 +239,8 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-    
+        currentService = currentArray[Int(marker.zIndex)]
+        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
     }
     
     func getPosition() {

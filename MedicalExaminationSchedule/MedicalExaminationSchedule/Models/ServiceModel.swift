@@ -16,6 +16,7 @@ class ServiceModel: NSObject {
     var address : String?
     var corporation : String?
     var field : String?
+    var tag: Int?
     
     init(dict:[String:AnyObject]) {
         if let v = dict["id"] {

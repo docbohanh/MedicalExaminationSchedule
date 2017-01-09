@@ -187,7 +187,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "729"
             endingLineNumber = "729"
-            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkName = "tapped_searchButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
