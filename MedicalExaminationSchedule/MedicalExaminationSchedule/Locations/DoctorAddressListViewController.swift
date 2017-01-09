@@ -275,55 +275,69 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     @IBAction func tappedHospitalSearch(_ sender: UIButton) {
-        selectedTab = 0
-        self.reloadSelectedButton()
-        tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
-        if serviceHospitalArray.count == 0 {
-            self.getServiceHospital(page_index: 0, type: "bv")
-        } else {
-            self.initMapview(locations: serviceHospitalArray)
+        if selectedTab != 0 {
+            selectedTab = 0
+            self.reloadSelectedButton()
+            tabLineView.center = CGPoint.init(x: hospitalButton.center.x, y: tabLineView.center.y)
         }
-        self.resetSearchBar()
+//        if serviceHospitalArray.count == 0 {
+//            self.getServiceHospital(page_index: 0, type: "bv")
+//        } else {
+//            self.initMapview(locations: serviceHospitalArray)
+//        }
+//        self.resetSearchBar()
     }
     
     @IBAction func tappedClinicSearch(_ sender: UIButton) {
-        selectedTab = 1
-        self.reloadSelectedButton()
-        tabLineView.center = CGPoint.init(x: clinicButton.center.x, y: tabLineView.center.y)
-        if serviceClinicArray.count == 0 {
-            self.getServiceHospital(page_index: 0, type: "pk")
-        } else {
-            self.initMapview(locations: serviceClinicArray)
+        if selectedTab != 1 {
+            selectedTab = 1
+            tabLineView.center = CGPoint.init(x: clinicButton.center.x, y: tabLineView.center.y)
+            self.reloadSelectedButton()
         }
-        self.resetSearchBar()
+        
+//        if serviceClinicArray.count == 0 {
+//            self.getServiceHospital(page_index: 0, type: "pk")
+//        } else {
+//            self.initMapview(locations: serviceClinicArray)
+//        }
+        
+//        self.resetSearchBar()
     }
     
     @IBAction func tappedDrugStoreSearch(_ sender: UIButton) {
-        selectedTab = 2
-        self.reloadSelectedButton()
-        tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
-        if serviceDrugStoreArray.count == 0 {
-            self.getServiceHospital(page_index: 0, type: "nt")
-        } else {
-            self.initMapview(locations: serviceDrugStoreArray)
+        if selectedTab != 2 {
+            selectedTab = 2
+            tabLineView.center = CGPoint.init(x: drugStore.center.x, y: tabLineView.center.y)
+            self.reloadSelectedButton()
         }
-        self.resetSearchBar()
+        
+//        if serviceDrugStoreArray.count == 0 {
+//            self.getServiceHospital(page_index: 0, type: "nt")
+//        } else {
+//            self.initMapview(locations: serviceDrugStoreArray)
+//        }
+        
+//        self.resetSearchBar()
     }
     
     @IBAction func tappedDoctorSearch(_ sender: UIButton) {
-        selectedTab = 3
-        self.reloadSelectedButton()
-        tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
-        if serviceDoctorArray.count == 0 {
-            self.getServiceHospital(page_index: 0, type: "bs")
-        } else {
-            self.initMapview(locations: serviceDoctorArray)
+        if selectedTab != 3 {
+            selectedTab = 3
+            tabLineView.center = CGPoint.init(x: doctorButton.center.x, y: tabLineView.center.y)
+            self.reloadSelectedButton()
         }
-        self.resetSearchBar()
+        
+//        if serviceDoctorArray.count == 0 {
+//            self.getServiceHospital(page_index: 0, type: "bs")
+//        } else {
+//            self.initMapview(locations: serviceDoctorArray)
+//        }
+        
+//        self.resetSearchBar()
     }
     
     func reloadSelectedButton() -> Void {
-        
+        self.pullToRefresh()
         hospitalButton.isSelected = false
         clinicButton.isSelected = false
         drugStore.isSelected = false
