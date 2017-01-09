@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vjA-MS-1k9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vjA-MS-1k9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,7 +57,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbB-nD-byn">
                                                     <rect key="frame" x="10" y="10" width="355" height="331"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxX-85-4Ry">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pxX-85-4Ry">
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="150"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="FTk-RE-0Su"/>
@@ -260,7 +260,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUb-4u-IoL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmY-pB-QmC">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cmY-pB-QmC">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="fuE-yp-naZ"/>
@@ -312,13 +312,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 tháng 10 lúc 11h20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ke6-2p-mLE">
-                                                <rect key="frame" x="10" y="302.5" width="115" height="13.5"/>
+                                                <rect key="frame" x="10" y="302.5" width="115" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wW6-fJ-fzP">
-                                                <rect key="frame" x="148" y="302.5" width="28.5" height="13.5"/>
+                                                <rect key="frame" x="148" y="302.5" width="29" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -330,13 +330,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsV-dW-aiH">
-                                                <rect key="frame" x="10" y="326" width="360" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="10" y="326.5" width="360" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIw-fY-7Ar">
-                                                <rect key="frame" x="0.0" y="336" width="375" height="1000"/>
+                                                <rect key="frame" x="0.0" y="336.5" width="375" height="1000"/>
                                                 <color key="backgroundColor" red="0.095801092680000005" green="0.90391701459999996" blue="0.88607388730000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1000" id="l1C-h3-0vp"/>
@@ -352,6 +352,7 @@
                                             <constraint firstItem="wW6-fJ-fzP" firstAttribute="leading" secondItem="Ke6-2p-mLE" secondAttribute="trailing" constant="23" id="9wx-v1-8du"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="top" secondItem="iwK-Bp-IUi" secondAttribute="top" id="BLx-bW-yJL"/>
                                             <constraint firstItem="3Ft-JX-lTT" firstAttribute="top" secondItem="n5x-mF-C1J" secondAttribute="bottom" constant="5" id="Eh4-6W-2ii"/>
+                                            <constraint firstItem="cmY-pB-QmC" firstAttribute="width" secondItem="rUb-4u-IoL" secondAttribute="width" id="GFp-bL-yKy"/>
                                             <constraint firstItem="n5x-mF-C1J" firstAttribute="leading" secondItem="iwK-Bp-IUi" secondAttribute="trailing" constant="15" id="K1G-fW-bhL"/>
                                             <constraint firstItem="TIw-fY-7Ar" firstAttribute="top" secondItem="OsV-dW-aiH" secondAttribute="bottom" constant="10" id="Nuz-Y0-K5q"/>
                                             <constraint firstAttribute="trailing" secondItem="n5x-mF-C1J" secondAttribute="trailing" constant="15" id="O73-Fr-kFu"/>

@@ -17,6 +17,8 @@ class NewsModel: NSObject {
     var like_count : Int?
     var news_tags : Array<Any>?
     var news_url : String?
+    var news_image : UIImage!
+    
     
     init(dict:[String:AnyObject]) {
         if let v = dict["news_id"] {
