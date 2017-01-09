@@ -284,6 +284,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     @IBAction func tappedSearchFollowMap(_ sender: UIButton) {
         if sender.isSelected {
+            
             mapView?.removeFromSuperview()
             self.tabBarController?.tabBar.isHidden = false
         } else {
@@ -432,15 +433,20 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         switch selectedTab {
         case 0:
              let keysArray = serviceHospitalDictionary.keys.sorted()
-             headerView.headerLabel.text = keysArray[section]
+             if keysArray.count > section {
+                headerView.headerLabel.text = keysArray[section]
+             }
                 break
         case 1:
             let keysArray = serviceClinicDictionary.keys.sorted()
-            headerView.headerLabel.text = keysArray[section]
+            if keysArray.count > section {
+                headerView.headerLabel.text = keysArray[section]
+            }
         case 2:
             let keysArray = serviceDrugStoreDictionary.keys.sorted()
-            headerView.headerLabel.text = keysArray[section]
-        default:
+            if keysArray.count > section {
+                headerView.headerLabel.text = keysArray[section]
+            }        default:
             let keysArray = serviceDoctorDictionary.keys.sorted()
             headerView.headerLabel.text = keysArray[section]
         }
@@ -453,7 +459,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         if searchActive {
             let serviceKeyArray = serviceFilterDictionary.keys.sorted()
             let serviceArray = serviceFilterDictionary[serviceKeyArray[indexPath.section]]
-            object = serviceArray?[indexPath.row]
+            if (serviceArray?.count)! > indexPath.row {
+                object = serviceArray?[indexPath.row]
+            }
 
         }else {
             switch selectedTab {
@@ -461,26 +469,36 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                 let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
                 if serviceKeyArray.count > indexPath.section {
                     let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
-                    object = serviceArray?[indexPath.row]
+                    if (serviceArray?.count)! > indexPath.row {
+                        object = serviceArray?[indexPath.row]
+                    }
                 }
                 break
             case 1:
                 let serviceKeyArray = serviceClinicDictionary.keys.sorted()
                 let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
-                object = serviceArray?[indexPath.row]
+                if (serviceArray?.count)! > indexPath.row {
+                    object = serviceArray?[indexPath.row]
+                }
                 break
             case 2:
                 let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
                 let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
-                object = serviceArray?[indexPath.row]
+                if (serviceArray?.count)! > indexPath.row {
+                    object = serviceArray?[indexPath.row]
+                }
                 break
             default:
                 let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
                 let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
-                object = serviceArray?[indexPath.row]
+                if (serviceArray?.count)! > indexPath.row {
+                    object = serviceArray?[indexPath.row]
+                }
             }
         }
-        cell.setupCell(object: object!)
+        if object != nil {
+            cell.setupCell(object: object!)
+        }
         return cell
     }
     
@@ -627,7 +645,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         dictParam["query"] = ""
         dictParam["page_index"] = String.init(format: "%d", page_index+1)
         DispatchQueue.main.async {
-            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
+//            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
         }
         APIManager.sharedInstance.getDataToURL(url: SERVICE, parameters: dictParam, onCompletion: {(response) in
             print(response)
