@@ -211,6 +211,17 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             object = newsArray[indexPath.row]
         }
         cell.setupCell(object: object!)
+        if object?.news_url != "" {
+            if object?.news_image == nil {
+                self.loadImage(url: (object?.news_url)!, indexPath: indexPath)
+            }else {
+                cell.newImageView.image = object?.news_image
+            }
+            if cell.newImageView.image != nil {
+                let rate = (cell.newImageView.image?.size.height)!/(cell.newImageView.image?.size.width)!
+                cell.imageViewHeightConstraint.constant = cell.newImageView.frame.size.width * rate
+            }
+        }
         return cell
     }
     
@@ -224,6 +235,39 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         currentIndexPath = indexPath
         self.performSegue(withIdentifier: "pushToNewDetail", sender: self)
     }
+    
+    func loadImage(url:String, indexPath:IndexPath) -> Void {
+        let catPictureURL = URL(string: url)!
+        let session = URLSession(configuration: .default)
+        let downloadPicTask = session.dataTask(with: catPictureURL) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading cat picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded cat picture with response code \(res.statusCode)")
+                    if let imageData = data {
+                        // Finally convert that Data into an image and do what you wish with it.
+                        DispatchQueue.main.async {
+                            let object = self.newsArray[indexPath.row] as NewsModel
+                            object.news_image = UIImage(data: imageData)!
+                            self.newTableView.beginUpdates()
+                            self.newTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
+                            self.newTableView.endUpdates()
+                        }
+                    } else {
+                        print("Couldn't get image: Image is nil")
+                    }
+                } else {
+                    print("Couldn't get response code for some reason")
+                }
+            }
+        }
+        downloadPicTask.resume()
+    }
+
     
     func likeAction(button:NewTableViewCell) {
         let indexPath = newTableView.indexPath(for: button)

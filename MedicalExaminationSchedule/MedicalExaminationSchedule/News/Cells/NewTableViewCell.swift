@@ -43,9 +43,15 @@ class NewTableViewCell: UITableViewCell {
         
         if object.news_url != "" {
             newImageView.isHidden = false
-            imageViewHeightConstraint.constant = 150
+//            imageViewHeightConstraint.constant = 150
 //            self.loadImage(url: object.news_url!)
-            newImageView.loadImage(url: (object.news_url)!)
+//            if self.newImageView.image != nil {
+//                let rate = (self.newImageView.image?.size.height)!/(self.newImageView.image?.size.width)!
+//                self.imageViewHeightConstraint.constant = self.newImageView.frame.size.width * rate
+//                self.setNeedsLayout()
+//                self.layoutSubviews()
+//            }
+//            newImageView.loadImage(url: (object.news_url)!)
         }else {
             newImageView.isHidden = true
             imageViewHeightConstraint.constant = 0
