@@ -33,6 +33,7 @@
                                             <constraint firstAttribute="width" constant="30" id="dUP-LU-AU1"/>
                                         </constraints>
                                         <state key="normal" image="ic_map"/>
+                                        <state key="selected" image="ic_list"/>
                                         <connections>
                                             <action selector="tappedSearchFollowMap:" destination="XNy-0N-Ea6" eventType="touchUpInside" id="Fhg-EE-yqy"/>
                                         </connections>
@@ -158,7 +159,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6hz-9O-lTl" id="Tjy-qX-Mu2">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="109.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-5O-kqd">
@@ -524,7 +525,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ONX-4M-Kfv" id="ZaA-9A-9Hy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Từ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-mb-wAb">
@@ -1905,6 +1906,7 @@
         <image name="ic_calendar" width="60" height="60"/>
         <image name="ic_call" width="60" height="60"/>
         <image name="ic_delete_avar" width="17" height="17"/>
+        <image name="ic_list" width="22" height="22"/>
         <image name="ic_location" width="20" height="20"/>
         <image name="ic_location_map" width="25" height="25"/>
         <image name="ic_map" width="22" height="22"/>
