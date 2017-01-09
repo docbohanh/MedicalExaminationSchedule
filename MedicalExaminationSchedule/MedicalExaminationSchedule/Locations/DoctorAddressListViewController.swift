@@ -322,7 +322,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         self.resetSearchBar()
     }
     
-    func reloadSelectedButton() -> Void {
+    func reloadSelectedButton() {
         
         hospitalButton.isSelected = false
         clinicButton.isSelected = false
@@ -344,7 +344,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         }
     }
     
-    func resetSearchBar() -> Void {
+    func resetSearchBar() {
         doctorAddressTableView.reloadData()
     }
     
