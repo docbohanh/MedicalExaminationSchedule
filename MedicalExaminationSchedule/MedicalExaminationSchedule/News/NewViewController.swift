@@ -10,11 +10,11 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NewTableViewCellDelegate, DetailNewControllerDelegate,CLLocationManagerDelegate {
+class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewTableViewCellDelegate, DetailNewControllerDelegate,CLLocationManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var searchView: UIView!
-//    @IBOutlet weak var searchTextField: UITextField!
-//    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var newTableView: UITableView!
     var newsArray = [NewsModel]()
     var filterArray = [NewsModel]()
@@ -22,10 +22,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var page_max = 1
     var currentNewsObject : NewsModel?
     var currentIndexPath : IndexPath?
-    var searchActive : Bool = false
     var refreshControl : UIRefreshControl?
     var pageIndex = 0
     var locationManager = CLLocationManager()
+    var queryString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         // PullToRefresh
         refreshControl = ProjectCommon.addPullRefreshControl(newTableView, actionHandler: {
-            self.searchActive = false
             weakSelf?.pageIndex = 0
             if self.newsArray.count > 0 {
                 self.newsArray.removeAll()
@@ -113,7 +112,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["page_index"] = String(pageIndex)
-        dictParam["query"] = ""
+        dictParam["query"] = queryString
         Lib.showLoadingViewOn2(view, withAlert: "Loading ...")
         APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
@@ -154,7 +153,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         var dictParam = [String : String]()
         dictParam["token_id"] = UserDefaults.standard.object(forKey: "token_id") as! String?
         dictParam["page_index"] = String(pageIndex + 1)
-        dictParam["query"] = ""
+        dictParam["query"] = queryString
         APIManager.sharedInstance.getDataToURL(url: NEWS, parameters: dictParam, onCompletion: {(response) in
             print(response)
             if (response.result.error != nil) {
@@ -183,9 +182,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         })
     }
-    @IBAction func tappedSearchButton(_ sender: Any) {
-    }
-    
     /*
      =================== TABLEVIEW DATA SOURCE, DELEGATE =================
      */
@@ -194,9 +190,6 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-            return filterArray.count
-        }
         return newsArray.count
     }
     
@@ -205,11 +198,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: strIdentifer, for: indexPath) as! NewTableViewCell
         cell.delegate = self
         let object : NewsModel?
-        if searchActive {
-            object = filterArray[indexPath.row]
-        }else {
-            object = newsArray[indexPath.row]
-        }
+        object = newsArray[indexPath.row]
         cell.setupCell(object: object!)
         if object?.news_url != "" {
             if object?.news_image == nil {
@@ -226,12 +215,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchActive {
-            currentNewsObject = filterArray[indexPath.row]
-        }else {
-            currentNewsObject = newsArray[indexPath.row]
-        }
-        
+        currentNewsObject = newsArray[indexPath.row]
         currentIndexPath = indexPath
         self.performSegue(withIdentifier: "pushToNewDetail", sender: self)
     }
@@ -305,19 +289,19 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         newTableView.reloadData()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let searchString = searchText.lowercased()
-        filterArray = newsArray.filter({ (object : NewsModel) -> Bool in
-            let categoryMatch = (object.description.lowercased().contains(searchString)) || (object.news_title?.lowercased().contains(searchString))!
-            return categoryMatch
-        })
-        if(filterArray.count == 0 && searchString == ""){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
-        newTableView.reloadData()
-    }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        let searchString = searchText.lowercased()
+//        filterArray = newsArray.filter({ (object : NewsModel) -> Bool in
+//            let categoryMatch = (object.description.lowercased().contains(searchString)) || (object.news_title?.lowercased().contains(searchString))!
+//            return categoryMatch
+//        })
+//        if(filterArray.count == 0 && searchString == ""){
+//            searchActive = false;
+//        } else {
+//            searchActive = true;
+//        }
+//        newTableView.reloadData()
+//    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         var currentLocation = CLLocation()
@@ -344,4 +328,26 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         locationManager.startUpdatingLocation()
     }
 
+    @IBAction func tapped_searchButton(_ sender: Any) {
+        if self.newsArray.count > 0 {
+            self.newsArray.removeAll()
+        }
+        pageIndex = 0
+        queryString = searchTextField.text!
+        self.getListNew(page_index: pageIndex)
+    }
+    /* --------- TEXT FIELD DELEGATE --------------*/
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if self.newsArray.count > 0 {
+            self.newsArray.removeAll()
+        }
+        pageIndex = 0
+        queryString = textField.text!
+        self.getListNew(page_index: pageIndex)
+    }
 }
