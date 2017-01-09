@@ -13,6 +13,8 @@ import GooglePlaces
 
 class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var segmentView: UIView!
@@ -22,7 +24,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     @IBOutlet weak var clinicButton: UIButton!
     @IBOutlet weak var tabLineView: UIView!
     @IBOutlet weak var doctorAddressTableView: UITableView!
-    @IBOutlet weak var locationSearchBar: UISearchBar!
+//    @IBOutlet weak var locationSearchBar: UISearchBar!
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -50,9 +52,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     
     var selectedTab = 0
     var currentService : ServiceModel?
-    var searchActive : Bool = false
     var mapView : GMSMapView?
     var refreshControl : UIRefreshControl?
+    var queryString = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,43 +68,47 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         // PullToRefresh
         weak var weakSelf = self
         refreshControl = ProjectCommon.addPullRefreshControl(doctorAddressTableView, actionHandler: {
-            switch self.selectedTab {
-            case 0:
-                self.pageIndexHospital = 0
-                if self.serviceHospitalArray.count > 0 {
-                    self.serviceHospitalArray.removeAll()
-                }
-                self.doctorAddressTableView.reloadData()
-                self.getServiceHospital(page_index: self.pageIndexHospital, type: "bv")
-                break
-            case 1:
-                self.pageIndexClinic = 0
-                if self.serviceClinicArray.count > 0 {
-                    self.serviceClinicArray.removeAll()
-                }
-                self.doctorAddressTableView.reloadData()
-                self.getServiceHospital(page_index: self.pageIndexClinic, type: "pk")
-                break
-            case 2:
-                self.pageIndexDrugStore = 0
-                if self.serviceDrugStoreArray.count > 0 {
-                    self.serviceDrugStoreArray.removeAll()
-                }
-                self.doctorAddressTableView.reloadData()
-                self.getServiceHospital(page_index: self.pageIndexDrugStore, type: "nt")
-                break
-            case 3:
-                self.pageIndexDoctor = 0
-                if self.serviceDoctorArray.count > 0 {
-                    self.serviceDoctorArray.removeAll()
-                }
-                self.doctorAddressTableView.reloadData()
-                self.getServiceHospital(page_index: self.pageIndexDoctor, type: "bs")
-                break
-            default:
-                break
-            }
+            self.pullToRefresh()
         })
+    }
+    
+    func pullToRefresh() -> Void {
+        switch self.selectedTab {
+        case 0:
+            self.pageIndexHospital = 0
+            if self.serviceHospitalArray.count > 0 {
+                self.serviceHospitalArray.removeAll()
+            }
+            self.doctorAddressTableView.reloadData()
+            self.getServiceHospital(page_index: self.pageIndexHospital, type: "bv")
+            break
+        case 1:
+            self.pageIndexClinic = 0
+            if self.serviceClinicArray.count > 0 {
+                self.serviceClinicArray.removeAll()
+            }
+            self.doctorAddressTableView.reloadData()
+            self.getServiceHospital(page_index: self.pageIndexClinic, type: "pk")
+            break
+        case 2:
+            self.pageIndexDrugStore = 0
+            if self.serviceDrugStoreArray.count > 0 {
+                self.serviceDrugStoreArray.removeAll()
+            }
+            self.doctorAddressTableView.reloadData()
+            self.getServiceHospital(page_index: self.pageIndexDrugStore, type: "nt")
+            break
+        case 3:
+            self.pageIndexDoctor = 0
+            if self.serviceDoctorArray.count > 0 {
+                self.serviceDoctorArray.removeAll()
+            }
+            self.doctorAddressTableView.reloadData()
+            self.getServiceHospital(page_index: self.pageIndexDoctor, type: "bs")
+            break
+        default:
+            break
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -336,57 +342,40 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func resetSearchBar() -> Void {
-        locationSearchBar.text = ""
-        searchActive = false
         doctorAddressTableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if searchActive {
-            return serviceFilterDictionary.keys.count
-        }else {
-            switch selectedTab {
-            case 0:
-                return serviceHospitalDictionary.keys.count
-            case 1:
-                return serviceClinicDictionary.keys.count
-            case 2:
-                return serviceDrugStoreDictionary.keys.count
-            default:
-                return serviceDoctorDictionary.keys.count
-            }
+        switch selectedTab {
+        case 0:
+            return serviceHospitalDictionary.keys.count
+        case 1:
+            return serviceClinicDictionary.keys.count
+        case 2:
+            return serviceDrugStoreDictionary.keys.count
+        default:
+            return serviceDoctorDictionary.keys.count
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-            let serviceKeysArray = serviceFilterDictionary.keys.sorted()
-            if serviceKeysArray.count > section {
-                let keyString = serviceKeysArray[section] 
-                let serviceArray = serviceFilterDictionary[keyString]
-                return serviceArray != nil ? (serviceArray?.count)! : 0
-            } else {
-                return 0
-            }
-        }else {
-            switch selectedTab {
-            case 0:
-                let keysArray = serviceHospitalDictionary.keys.sorted()
-                let serviceArray = serviceHospitalDictionary[keysArray[section]]
-                return serviceArray != nil ? (serviceArray?.count)! : 0
-            case 1:
-                let keysArray = serviceClinicDictionary.keys.sorted()
-                let serviceArray = serviceClinicDictionary[keysArray[section]]
-                return serviceArray != nil ? (serviceArray?.count)! : 0
-            case 2:
-                let keysArray = serviceDrugStoreDictionary.keys.sorted()
-                let serviceArray = serviceDrugStoreDictionary[keysArray[section]]
-                return serviceArray != nil ? (serviceArray?.count)! : 0
-            default:
-                let keysArray = serviceDoctorDictionary.keys.sorted()
-                let serviceArray = serviceDoctorDictionary[keysArray[section]]
-                return serviceArray != nil ? (serviceArray?.count)! : 0
-            }
+        switch selectedTab {
+        case 0:
+            let keysArray = serviceHospitalDictionary.keys.sorted()
+            let serviceArray = serviceHospitalDictionary[keysArray[section]]
+            return serviceArray != nil ? (serviceArray?.count)! : 0
+        case 1:
+            let keysArray = serviceClinicDictionary.keys.sorted()
+            let serviceArray = serviceClinicDictionary[keysArray[section]]
+            return serviceArray != nil ? (serviceArray?.count)! : 0
+        case 2:
+            let keysArray = serviceDrugStoreDictionary.keys.sorted()
+            let serviceArray = serviceDrugStoreDictionary[keysArray[section]]
+            return serviceArray != nil ? (serviceArray?.count)! : 0
+        default:
+            let keysArray = serviceDoctorDictionary.keys.sorted()
+            let serviceArray = serviceDoctorDictionary[keysArray[section]]
+            return serviceArray != nil ? (serviceArray?.count)! : 0
         }
     }
     
@@ -427,44 +416,35 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DoctorAddressTableViewCell", for: indexPath) as! DoctorAddressTableViewCell
         var object : ServiceModel?
-        if searchActive {
-            let serviceKeyArray = serviceFilterDictionary.keys.sorted()
-            let serviceArray = serviceFilterDictionary[serviceKeyArray[indexPath.section]]
+        switch selectedTab {
+        case 0:
+            let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
+            if serviceKeyArray.count > indexPath.section {
+                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
+                if (serviceArray?.count)! > indexPath.row {
+                    object = serviceArray?[indexPath.row]
+                }
+            }
+            break
+        case 1:
+            let serviceKeyArray = serviceClinicDictionary.keys.sorted()
+            let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
             if (serviceArray?.count)! > indexPath.row {
                 object = serviceArray?[indexPath.row]
             }
-
-        }else {
-            switch selectedTab {
-            case 0:
-                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
-                if serviceKeyArray.count > indexPath.section {
-                    let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
-                    if (serviceArray?.count)! > indexPath.row {
-                        object = serviceArray?[indexPath.row]
-                    }
-                }
-                break
-            case 1:
-                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
-                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
-                if (serviceArray?.count)! > indexPath.row {
-                    object = serviceArray?[indexPath.row]
-                }
-                break
-            case 2:
-                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
-                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
-                if (serviceArray?.count)! > indexPath.row {
-                    object = serviceArray?[indexPath.row]
-                }
-                break
-            default:
-                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
-                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
-                if (serviceArray?.count)! > indexPath.row {
-                    object = serviceArray?[indexPath.row]
-                }
+            break
+        case 2:
+            let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
+            let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
+            if (serviceArray?.count)! > indexPath.row {
+                object = serviceArray?[indexPath.row]
+            }
+            break
+        default:
+            let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
+            let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
+            if (serviceArray?.count)! > indexPath.row {
+                object = serviceArray?[indexPath.row]
             }
         }
         if object != nil {
@@ -474,32 +454,6 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if searchActive {
-//            currentService = filterArray[indexPath.row]
-//        }else {
-//            switch selectedTab {
-//            case 0:
-//                let serviceKeyArray = serviceHospitalDictionary.keys.sorted()
-//                let serviceArray = serviceHospitalDictionary[serviceKeyArray[indexPath.section]]
-//                currentService = serviceArray?[indexPath.row]
-//                break
-//            case 1:
-//                let serviceKeyArray = serviceClinicDictionary.keys.sorted()
-//                let serviceArray = serviceClinicDictionary[serviceKeyArray[indexPath.section]]
-//                currentService = serviceArray?[indexPath.row]
-//                break
-//            case 2:
-//                let serviceKeyArray = serviceDrugStoreDictionary.keys.sorted()
-//                let serviceArray = serviceDrugStoreDictionary[serviceKeyArray[indexPath.section]]
-//                currentService = serviceArray?[indexPath.row]
-//                break
-//            default:
-//                let serviceKeyArray = serviceDoctorDictionary.keys.sorted()
-//                let serviceArray = serviceDoctorDictionary[serviceKeyArray[indexPath.section]]
-//                currentService = serviceArray?[indexPath.row]
-//            }
-//        }
-        
         let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
         currentService = cell.serviceDetail
         self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
@@ -515,7 +469,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
         dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
-        dictParam["query"] = ""
+        dictParam["query"] = queryString
         dictParam["page_index"] = String.init(format: "%d", page_index)
         DispatchQueue.main.async {
             Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
@@ -613,7 +567,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         dictParam["lat"] = UserDefaults.standard.object(forKey: "latitude") as? String ?? "21.0133267"
         dictParam["lng"] = UserDefaults.standard.object(forKey: "longitude") as? String ?? "105.7809231"
         dictParam["type"] = type
-        dictParam["query"] = ""
+        dictParam["query"] = queryString
         dictParam["page_index"] = String.init(format: "%d", page_index+1)
         DispatchQueue.main.async {
 //            Lib.showLoadingViewOn2(self.view, withAlert: "Loading ...")
@@ -730,35 +684,50 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let searchString = searchText.lowercased()
-        var array = [ServiceModel]()
-        switch self.selectedTab {
-        case 0:
-            array = self.serviceHospitalArray
-            break
-        case 1:
-            array = self.serviceClinicArray
-            break
-        case 2:
-            array = self.serviceDrugStoreArray
-            break
-        default:
-            array = self.serviceDoctorArray
-            break
-        }
-        filterArray.removeAll()
-        filterArray = array.filter({ (object : ServiceModel) -> Bool in
-            let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
-            return categoryMatch
-        })
-        if(filterArray.count == 0 || searchString == ""){
-            searchActive = false;
-        } else {
-            serviceFilterDictionary.removeAll()
-            serviceFilterDictionary = self.groupService(originArray: filterArray)
-            searchActive = true;
-        }
-        doctorAddressTableView.reloadData()
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        let searchString = searchText.lowercased()
+//        var array = [ServiceModel]()
+//        switch self.selectedTab {
+//        case 0:
+//            array = self.serviceHospitalArray
+//            break
+//        case 1:
+//            array = self.serviceClinicArray
+//            break
+//        case 2:
+//            array = self.serviceDrugStoreArray
+//            break
+//        default:
+//            array = self.serviceDoctorArray
+//            break
+//        }
+//        filterArray.removeAll()
+//        filterArray = array.filter({ (object : ServiceModel) -> Bool in
+//            let categoryMatch = (object.name?.lowercased().contains(searchString))! || (object.address?.lowercased().contains(searchString))!
+//            return categoryMatch
+//        })
+//        if(filterArray.count == 0 || searchString == ""){
+//            searchActive = false;
+//        } else {
+//            serviceFilterDictionary.removeAll()
+//            serviceFilterDictionary = self.groupService(originArray: filterArray)
+//            searchActive = true;
+//        }
+//        doctorAddressTableView.reloadData()
+//    }
+    
+    @IBAction func tapped_searchButton(_ sender: Any) {
+        queryString = searchTextField.text!
+        self.pullToRefresh()
+    }
+    /* --------- TEXT FIELD DELEGATE --------------*/
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        queryString = textField.text!
+        self.pullToRefresh()
     }
 }

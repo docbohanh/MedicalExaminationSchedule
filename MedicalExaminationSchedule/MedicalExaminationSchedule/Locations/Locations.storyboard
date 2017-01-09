@@ -33,6 +33,9 @@
                                             <constraint firstAttribute="width" constant="44" id="qWv-9Y-aEX"/>
                                         </constraints>
                                         <state key="normal" image="ic_search"/>
+                                        <connections>
+                                            <action selector="tapped_searchButton:" destination="XNy-0N-Ea6" eventType="touchUpInside" id="nBS-YV-TFy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-RF-GSU">
                                         <rect key="frame" x="374" y="27" width="30" height="30"/>
@@ -51,6 +54,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="XNy-0N-Ea6" id="Rc5-YX-cA2"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.098894216120000003" green="0.4475263357" blue="0.76723611349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -164,7 +170,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6hz-9O-lTl" id="Tjy-qX-Mu2">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="109.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_avar" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-5O-kqd">
@@ -252,6 +258,8 @@
                         <outlet property="drugStore" destination="lbi-Ew-pCb" id="ABD-Ga-RlZ"/>
                         <outlet property="hospitalButton" destination="Lqx-aI-1Ie" id="LnX-Og-xoh"/>
                         <outlet property="mapButton" destination="cbb-RF-GSU" id="1GY-RL-t5Y"/>
+                        <outlet property="searchButton" destination="dM2-SC-hQJ" id="JdD-5C-9Pi"/>
+                        <outlet property="searchTextField" destination="Btw-gp-A7q" id="9Cv-u6-X7U"/>
                         <outlet property="searchView" destination="d1X-yP-MUR" id="dCm-qs-GwO"/>
                         <outlet property="segmentView" destination="gYS-pa-NzJ" id="CIs-9S-mLU"/>
                         <outlet property="tabLineView" destination="5uE-33-X2r" id="0bp-oA-5CU"/>
@@ -529,7 +537,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ONX-4M-Kfv" id="ZaA-9A-9Hy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Từ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-mb-wAb">
