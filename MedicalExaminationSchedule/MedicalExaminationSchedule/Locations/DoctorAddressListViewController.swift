@@ -513,9 +513,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
-                            self.serviceHospitalDictionary.removeAll()
-                            self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
                             self.serviceHospitalArray += tempArray
+                            self.serviceHospitalDictionary.removeAll()
+                            self.serviceHospitalDictionary = self.groupService(originArray: self.serviceHospitalArray)
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
                             self.locationManager.startUpdatingLocation()
@@ -524,11 +524,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 1:
-                            self.serviceClinicDictionary.removeAll()
-                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
-                            self.serviceClinicDictionary.removeAll()
-                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
                             self.serviceClinicArray += tempArray
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: self.serviceClinicArray)
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
                             self.locationManager.startUpdatingLocation()
@@ -537,9 +535,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         case 2:
-                            self.serviceDrugStoreDictionary.removeAll()
-                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
                             self.serviceDrugStoreArray += tempArray
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: self.serviceDrugStoreArray)
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
                             self.locationManager.startUpdatingLocation()
@@ -548,9 +546,9 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                             }
                             break
                         default:
-                            self.serviceDoctorDictionary.removeAll()
-                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
                             self.serviceDoctorArray += tempArray
+                            self.serviceDoctorDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: self.serviceDoctorArray)
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray
                             DispatchQueue.global().async {
@@ -604,53 +602,63 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
                         }
                         switch self.selectedTab {
                         case 0:
-                            self.serviceHospitalDictionary.removeAll()
-
-                            self.serviceHospitalDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexHospital = self.pageIndexHospital + 1
                             self.serviceHospitalArray += tempArray
+                            self.serviceHospitalDictionary.removeAll()
+                            self.serviceHospitalDictionary = self.groupService(originArray: self.serviceHospitalArray)
                             self.initMapview(locations: self.serviceHospitalArray)
                             self.currentArray = self.serviceHospitalArray
                             self.locationManager.startUpdatingLocation()
-                            DispatchQueue.global().async {
-                                self.loadMoreService(page_index: self.pageIndexHospital, type: "bv")
+                            if self.queryString == "" {
+                                DispatchQueue.global().async {
+                                    self.loadMoreService(page_index: self.pageIndexHospital, type: "bv")
+                                }
                             }
                             break
                         case 1:
-                            self.serviceClinicDictionary.removeAll()
-                            self.serviceClinicDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexClinic = self.pageIndexClinic + 1
                             self.serviceClinicArray += tempArray
+                            self.serviceClinicDictionary.removeAll()
+                            self.serviceClinicDictionary = self.groupService(originArray: self.serviceClinicArray)
                             self.initMapview(locations: self.serviceClinicArray)
                             self.currentArray = self.serviceClinicArray
                             self.locationManager.startUpdatingLocation()
-                            DispatchQueue.global().async {
-                                self.loadMoreService(page_index: self.pageIndexClinic, type: "pk")
+                            if self.queryString == "" {
+                                DispatchQueue.global().async {
+                                    self.loadMoreService(page_index: self.pageIndexClinic, type: "pk")
+                                }
                             }
+                            
                             break
                         case 2:
-                            self.serviceDrugStoreDictionary.removeAll()
-                            self.serviceDrugStoreDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexDrugStore = self.pageIndexDrugStore + 1
                             self.serviceDrugStoreArray += tempArray
+                            self.serviceDrugStoreDictionary.removeAll()
+                            self.serviceDrugStoreDictionary = self.groupService(originArray: self.serviceDrugStoreArray)
                             self.initMapview(locations: self.serviceDrugStoreArray)
                             self.currentArray = self.serviceDrugStoreArray
                             self.locationManager.startUpdatingLocation()
-                            DispatchQueue.global().async {
-                                self.loadMoreService(page_index: self.pageIndexDrugStore, type: "nt")
+                            if self.queryString == "" {
+                                DispatchQueue.global().async {
+                                    self.loadMoreService(page_index: self.pageIndexDrugStore, type: "nt")
+                                }
                             }
+                            
                             break
                         default:
-                            self.serviceDoctorDictionary.removeAll()
-                            self.serviceDoctorDictionary = self.groupService(originArray: tempArray)
                             self.pageIndexDoctor = self.pageIndexDoctor + 1
                             self.serviceDoctorArray += tempArray
+                            self.serviceDoctorDictionary.removeAll()
+                            self.serviceDoctorDictionary = self.groupService(originArray: self.serviceDoctorArray)
                             self.initMapview(locations: self.serviceDoctorArray)
                             self.currentArray = self.serviceDoctorArray
                             self.locationManager.startUpdatingLocation()
-                            DispatchQueue.global().async {
-                                self.loadMoreService(page_index: self.pageIndexDoctor, type: "bs")
+                            if self.queryString == "" {
+                                DispatchQueue.global().async {
+                                    self.loadMoreService(page_index: self.pageIndexDoctor, type: "bs")
+                                }
                             }
+                            
                             break
                         }
                     }else {

@@ -240,6 +240,8 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                             self.newTableView.beginUpdates()
                             self.newTableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
                             self.newTableView.endUpdates()
+                            self.view.layoutSubviews()
+                            self.view.layoutIfNeeded()
                         }
                     } else {
                         print("Couldn't get image: Image is nil")
