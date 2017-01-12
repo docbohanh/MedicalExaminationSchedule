@@ -49,7 +49,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
         if configureError != nil {
             print(configureError ?? "")
         }
-        GIDSignIn.sharedInstance().clientID = "236770973454-ubijs6cfiepiu84vr0den9kh475gl2dk.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "423417535450-5nn97mj5ol8f9qg5c4vdci71b58gc741.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
     }
