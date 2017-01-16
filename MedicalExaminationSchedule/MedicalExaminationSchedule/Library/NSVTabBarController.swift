@@ -30,7 +30,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         
         //location
         let locationStoryboard = UIStoryboard.init(name: "Locations", bundle: nil)
-        let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "DoctorAddressListViewController") as! DoctorAddressListViewController
+        let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "ServiceViewController") as! ServiceViewController
         doctorAdrressVC.tabBarItem = UITabBarItem.init(title: "Dịch vụ", image: UIImage.init(named: ""), tag: 2)
         
         

@@ -30,6 +30,11 @@
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
 		845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D5A291DF5EDAF00BDA45C /* headerView.xib */; };
+		84ADD8C51E2D3126007BBE68 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */; };
+		84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */; };
+		84ADD8CA1E2D43DD007BBE68 /* HospitalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */; };
+		84ADD8CC1E2D4409007BBE68 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8CB1E2D4409007BBE68 /* ClinicViewController.swift */; };
+		84ADD8CE1E2D443A007BBE68 /* DrugStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8CD1E2D443A007BBE68 /* DrugStoreViewController.swift */; };
 		84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42CE1DE16FE10059B057 /* AppDelegate.swift */; };
 		84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D01DE16FE10059B057 /* ViewController.swift */; };
 		84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D21DE16FE10059B057 /* Main.storyboard */; };
@@ -175,9 +180,14 @@
 		844520B71E18E55800444AA1 /* AddressMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressMapView.xib; sourceTree = "<group>"; };
 		844520B91E19808D00444AA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
-		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
-		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
-		845D5A291DF5EDAF00BDA45C /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = headerView.xib; sourceTree = "<group>"; };
+		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoctorAddressTableViewCell.swift; path = ../DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
+		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = headerView.swift; path = ../headerView.swift; sourceTree = "<group>"; };
+		845D5A291DF5EDAF00BDA45C /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = headerView.xib; path = ../headerView.xib; sourceTree = "<group>"; };
+		84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
+		84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
+		84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListViewController.swift; sourceTree = "<group>"; };
+		84ADD8CB1E2D4409007BBE68 /* ClinicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
+		84ADD8CD1E2D443A007BBE68 /* DrugStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugStoreViewController.swift; sourceTree = "<group>"; };
 		84CB42CB1DE16FE10059B057 /* MedicalExaminationSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicalExaminationSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB42CE1DE16FE10059B057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CB42D01DE16FE10059B057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -372,19 +382,23 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		842641891DF2B0A000EAB5CE /* Locations */ = {
+		842641891DF2B0A000EAB5CE /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				84321D551DF6DDFC00CCA4D4 /* Information */,
 				84321D521DF6C36300CCA4D4 /* DoctorManagement */,
 				EA05ED121DF7AA0A002DD339 /* Schedule */,
+				84ADD8C61E2D4376007BBE68 /* Cell */,
 				8426418C1DF2B1E500EAB5CE /* Locations.storyboard */,
+				84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */,
 				845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */,
-				845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */,
 				EA04BE671E1DFE02009C23A2 /* ServiceLocationViewController.swift */,
-				845D5A271DF5EDA300BDA45C /* headerView.swift */,
-				845D5A291DF5EDAF00BDA45C /* headerView.xib */,
+				84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */,
+				84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */,
+				84ADD8CB1E2D4409007BBE68 /* ClinicViewController.swift */,
+				84ADD8CD1E2D443A007BBE68 /* DrugStoreViewController.swift */,
 			);
+			name = Service;
 			path = Locations;
 			sourceTree = "<group>";
 		};
@@ -439,6 +453,16 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		84ADD8C61E2D4376007BBE68 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */,
+				845D5A271DF5EDA300BDA45C /* headerView.swift */,
+				845D5A291DF5EDAF00BDA45C /* headerView.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		84CB42C21DE16FE00059B057 = {
 			isa = PBXGroup;
 			children = (
@@ -475,7 +499,7 @@
 				84321D961DF752D000CCA4D4 /* Common */,
 				84321D641DF7469100CCA4D4 /* Library */,
 				842641871DF2B08800EAB5CE /* News */,
-				842641891DF2B0A000EAB5CE /* Locations */,
+				842641891DF2B0A000EAB5CE /* Service */,
 				842641881DF2B09400EAB5CE /* Schedule */,
 				842641861DF2B07E00EAB5CE /* More */,
 				84CB42FF1DE199A10059B057 /* Account */,
@@ -988,12 +1012,14 @@
 				84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */,
 				D22D4A621E044814007A76B9 /* ChooseBirthdayView.swift in Sources */,
 				EA968B2D1E1B542B0067352E /* DocumentViewController.swift in Sources */,
+				84ADD8CA1E2D43DD007BBE68 /* HospitalListViewController.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
 				D2E89B811E19006200DDA4A3 /* AssetViewController.swift in Sources */,
 				D2F4A9F11E17589100EE737B /* THBReachability.m in Sources */,
+				84ADD8CE1E2D443A007BBE68 /* DrugStoreViewController.swift in Sources */,
 				D2F4A9FC1E17ABAD00EE737B /* CalendarBookModel.swift in Sources */,
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
 				8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */,
@@ -1042,6 +1068,7 @@
 				D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */,
 				D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */,
 				844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */,
+				84ADD8C51E2D3126007BBE68 /* ServiceViewController.swift in Sources */,
 				D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */,
 				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
 				D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */,
@@ -1058,8 +1085,10 @@
 				EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */,
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				D21A80201E16D3DB00DF6077 /* SettingTimeViewController.swift in Sources */,
+				84ADD8CC1E2D4409007BBE68 /* ClinicViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
 				D21A80241E16F42C00DF6077 /* SelectTimeView.swift in Sources */,
+				84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */,
 				D2E69D7E1E1A1DE900469584 /* CustomCollectionViewLayout.swift in Sources */,
