@@ -78,6 +78,9 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
         
     }
     
+    @IBAction func tappedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func hideKeyboard() {
         view.endEditing(true)
     }
@@ -185,7 +188,7 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         currentService = currentArray[Int(marker.zIndex)]
-        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
+        self.performSegue(withIdentifier: "PushToDrugStoreDetail", sender: self)
     }
     
     func getPosition() {
@@ -409,7 +412,7 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "PushToServiceDetail" {
+        if segue.identifier == "PushToDrugStoreDetail" {
             let detailVC = segue.destination as! DoctorManagementViewController
             detailVC.serviceObject = currentService
         }

@@ -16,34 +16,37 @@ class ServiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize.init(width: 4 * scrollView.frame.width, height: scrollView.frame.height)
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize.init(width: 4 * scrollView.frame.width, height: scrollView.frame.height)
+        
         self.initScrollView()
 
     }
     func initScrollView() {
+        scrollView.isPagingEnabled = true
+        scrollView.isDirectionalLockEnabled = true
         for index in 0...3 {
-            let backgroundButton = UIButton.init(type: UIButtonType.custom)
-            backgroundButton.frame = CGRect.init(x: 0, y: 0, width: scrollView.frame.width, height: scrollView.frame.height)
+            let logoImageView = UIImageView.init(frame: CGRect.init(x: CGFloat(index) * scrollView.frame.width, y:0, width: scrollView.frame.width, height: scrollView.frame.height))
             let image:String = modelImageArray[index]
-            backgroundButton.setBackgroundImage(UIImage.init(named: image), for: UIControlState.normal)
+            logoImageView.image = UIImage.init(named: image)
+            scrollView.addSubview(logoImageView)
+            
+            let backgroundButton = UIButton.init(type: UIButtonType.custom)
+            backgroundButton.frame = CGRect.init(x: CGFloat(index) * scrollView.frame.width, y: (logoImageView.frame.height - 100)/2, width: scrollView.frame.width, height: 100)
+            backgroundButton.backgroundColor = UIColor.clear
             backgroundButton.tag = 480 + index
             backgroundButton.addTarget(self, action: #selector(gotoServices(sender:)), for: UIControlEvents.touchUpInside)
             scrollView.addSubview(backgroundButton)
             
-            let logoImageView = UIImageView.init(frame: CGRect.init(x: 0, y:(scrollView.frame.height/2 - 70)/2, width: 280, height: 70))
-            logoImageView.image = UIImage.init(named: "ic_logo_nav")
-            scrollView.addSubview(logoImageView)
-            
-            let modelNameLabel = UILabel.init(frame: CGRect.init(x: 0, y: (scrollView.frame.height/2 - 30)/2   , width: scrollView.frame.width, height: 30))
+            let modelNameLabel = UILabel.init(frame: CGRect.init(x: 0, y: logoImageView.frame.height - 150, width: scrollView.frame.width, height: 30))
             modelNameLabel.textColor = UIColor.white
             modelNameLabel.font = UIFont.systemFont(ofSize: 16)
             modelNameLabel.text = modelNameArray[index]
             modelNameLabel.textAlignment = .center
-            scrollView.addSubview(modelNameLabel)
+            logoImageView.addSubview(modelNameLabel)
         }
     }
     

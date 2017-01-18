@@ -78,6 +78,9 @@ class DoctorListViewController: UIViewController,UITableViewDataSource,UITableVi
         
     }
     
+    @IBAction func tapppedBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func hideKeyboard() {
         view.endEditing(true)
     }
@@ -185,7 +188,7 @@ class DoctorListViewController: UIViewController,UITableViewDataSource,UITableVi
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         currentService = currentArray[Int(marker.zIndex)]
-        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
+        self.performSegue(withIdentifier: "PushToDoctorDetail", sender: self)
     }
     
     func getPosition() {
@@ -270,7 +273,7 @@ class DoctorListViewController: UIViewController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
         currentService = cell.serviceDetail
-        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
+        self.performSegue(withIdentifier: "PushToDoctorDetail", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -409,7 +412,7 @@ class DoctorListViewController: UIViewController,UITableViewDataSource,UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "PushToServiceDetail" {
+        if segue.identifier == "PushToDoctorDetail" {
             let detailVC = segue.destination as! DoctorManagementViewController
             detailVC.serviceObject = currentService
         }

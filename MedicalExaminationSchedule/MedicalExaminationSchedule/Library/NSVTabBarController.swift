@@ -15,6 +15,10 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let revealController = self.revealViewController()
+        revealController?.panGestureRecognizer()
+        revealController?.tapGestureRecognizer()
+        
         if self.navigationController?.viewControllers.count == 1 {
             var navigationViewControllers = self.navigationController?.viewControllers
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)

@@ -26,9 +26,15 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var pageIndex = 0
     var locationManager = CLLocationManager()
     var queryString = ""
+    var revealController : SWRevealViewController?
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        revealController = self.revealViewController()
+        revealController?.panGestureRecognizer()
+        revealController?.tapGestureRecognizer()
+        
         // Do any additional setup after loading the view.
         self.getCurrentLocation()
         newTableView.rowHeight = UITableViewAutomaticDimension;
@@ -49,6 +55,10 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             self.newTableView.reloadData()
             weakSelf?.getListNew(page_index: (weakSelf?.pageIndex)!)
         })
+    }
+    
+    @IBAction func tappedRevealToggle(_ sender: UIButton) {
+        revealController?.revealToggle(sender)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,19 +208,22 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: strIdentifer, for: indexPath) as! NewTableViewCell
         cell.delegate = self
         let object : NewsModel?
-        object = newsArray[indexPath.row]
-        cell.setupCell(object: object!)
-        if object?.news_url != "" {
-            if object?.news_image == nil {
-                self.loadImage(url: (object?.news_url)!, indexPath: indexPath)
-            }else {
-                cell.newImageView.image = object?.news_image
-            }
-            if cell.newImageView.image != nil {
-                let rate = (cell.newImageView.image?.size.height)!/(cell.newImageView.image?.size.width)!
-                cell.imageViewHeightConstraint.constant = cell.newImageView.frame.size.width * rate
+        if newsArray.count > indexPath.row {
+            object = newsArray[indexPath.row]
+            cell.setupCell(object: object!)
+            if object?.news_url != "" {
+                if object?.news_image == nil {
+                    self.loadImage(url: (object?.news_url)!, indexPath: indexPath)
+                }else {
+                    cell.newImageView.image = object?.news_image
+                }
+                if cell.newImageView.image != nil {
+                    let rate = (cell.newImageView.image?.size.height)!/(cell.newImageView.image?.size.width)!
+                    cell.imageViewHeightConstraint.constant = cell.newImageView.frame.size.width * rate
+                }
             }
         }
+
         return cell
     }
     
