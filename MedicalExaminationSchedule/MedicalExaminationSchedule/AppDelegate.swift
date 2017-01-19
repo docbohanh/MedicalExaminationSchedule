@@ -17,7 +17,7 @@ import FacebookShare
 import Google
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,SWRevealViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     var window: UIWindow?

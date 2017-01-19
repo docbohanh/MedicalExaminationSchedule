@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicalExaminationSchedule/News/NewViewController.swift"
-            timestampString = "506464890.368067"
+            filePath = "MedicalExaminationSchedule/Library/SWReveal/SWRevealViewController.m"
+            timestampString = "506544173.977367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "tappedRevealToggle(_:)"
+            startingLineNumber = "948"
+            endingLineNumber = "948"
+            landmarkName = "-revealToggle:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

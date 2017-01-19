@@ -30,6 +30,9 @@
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
 		845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D5A291DF5EDAF00BDA45C /* headerView.xib */; };
+		8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA921E314C630052E201 /* KYDrawerController.swift */; };
+		8476CA961E314C630052E201 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */; };
+		8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */; };
 		84ADD8C51E2D3126007BBE68 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */; };
 		84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */; };
 		84ADD8CA1E2D43DD007BBE68 /* HospitalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */; };
@@ -45,19 +48,8 @@
 		84CB42F21DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42F11DE16FE10059B057 /* MedicalExaminationScheduleUITests.swift */; };
 		84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43001DE19A3C0059B057 /* SignInViewController.swift */; };
 		84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB43021DE1B4270059B057 /* SignUpViewController.swift */; };
-		84F88A301E2FEB690053ABB2 /* CenterContainmentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A261E2FEB690053ABB2 /* CenterContainmentSegue.swift */; };
-		84F88A311E2FEB690053ABB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F88A271E2FEB690053ABB2 /* Info.plist */; };
-		84F88A321E2FEB690053ABB2 /* SideContainmentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A281E2FEB690053ABB2 /* SideContainmentSegue.swift */; };
-		84F88A331E2FEB690053ABB2 /* SideMenuController+CustomTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A291E2FEB690053ABB2 /* SideMenuController+CustomTypes.swift */; };
-		84F88A341E2FEB690053ABB2 /* SideMenuController+SideOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A2A1E2FEB690053ABB2 /* SideMenuController+SideOver.swift */; };
-		84F88A351E2FEB690053ABB2 /* SideMenuController+SideUnder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A2B1E2FEB690053ABB2 /* SideMenuController+SideUnder.swift */; };
-		84F88A361E2FEB690053ABB2 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A2D1E2FEB690053ABB2 /* SideMenuController.swift */; };
-		84F88A371E2FEB690053ABB2 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A2E1E2FEB690053ABB2 /* TransitionAnimator.swift */; };
-		84F88A381E2FEB690053ABB2 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A2F1E2FEB690053ABB2 /* UIKitExtensions.swift */; };
 		84F88A3E1E2FEE870053ABB2 /* NewsTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A3D1E2FEE870053ABB2 /* NewsTagTableViewCell.swift */; };
-		84F88A401E2FEF140053ABB2 /* CustomSlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A3F1E2FEF140053ABB2 /* CustomSlideMenu.swift */; };
 		84F88A421E2FEF2F0053ABB2 /* NewsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A411E2FEF2F0053ABB2 /* NewsMenuViewController.swift */; };
-		84F88A461E2FFC3A0053ABB2 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F88A451E2FFC3A0053ABB2 /* SWRevealViewController.m */; };
 		84F88A4B1E3000FC0053ABB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4A1E3000FB0053ABB2 /* UIKit.framework */; };
 		84F88A4D1E3001E30053ABB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4C1E3001E30053ABB2 /* Foundation.framework */; };
 		84F88A4F1E3001EA0053ABB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4E1E3001EA0053ABB2 /* CoreGraphics.framework */; };
@@ -199,6 +191,9 @@
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoctorAddressTableViewCell.swift; path = ../DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = headerView.swift; path = ../headerView.swift; sourceTree = "<group>"; };
 		845D5A291DF5EDAF00BDA45C /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = headerView.xib; path = ../headerView.xib; sourceTree = "<group>"; };
+		8476CA921E314C630052E201 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
+		8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
+		8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
 		84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
 		84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListViewController.swift; sourceTree = "<group>"; };
@@ -220,21 +215,8 @@
 		84CB42F31DE16FE10059B057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CB43001DE19A3C0059B057 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Account/SignInViewController.swift; sourceTree = "<group>"; };
 		84CB43021DE1B4270059B057 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Account/SignUpViewController.swift; sourceTree = "<group>"; };
-		84F88A261E2FEB690053ABB2 /* CenterContainmentSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterContainmentSegue.swift; sourceTree = "<group>"; };
-		84F88A271E2FEB690053ABB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84F88A281E2FEB690053ABB2 /* SideContainmentSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideContainmentSegue.swift; sourceTree = "<group>"; };
-		84F88A291E2FEB690053ABB2 /* SideMenuController+CustomTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SideMenuController+CustomTypes.swift"; sourceTree = "<group>"; };
-		84F88A2A1E2FEB690053ABB2 /* SideMenuController+SideOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SideMenuController+SideOver.swift"; sourceTree = "<group>"; };
-		84F88A2B1E2FEB690053ABB2 /* SideMenuController+SideUnder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SideMenuController+SideUnder.swift"; sourceTree = "<group>"; };
-		84F88A2C1E2FEB690053ABB2 /* SideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuController.h; sourceTree = "<group>"; };
-		84F88A2D1E2FEB690053ABB2 /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
-		84F88A2E1E2FEB690053ABB2 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
-		84F88A2F1E2FEB690053ABB2 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		84F88A3D1E2FEE870053ABB2 /* NewsTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTagTableViewCell.swift; sourceTree = "<group>"; };
-		84F88A3F1E2FEF140053ABB2 /* CustomSlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlideMenu.swift; sourceTree = "<group>"; };
 		84F88A411E2FEF2F0053ABB2 /* NewsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsMenuViewController.swift; sourceTree = "<group>"; };
-		84F88A441E2FFC3A0053ABB2 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		84F88A451E2FFC3A0053ABB2 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		84F88A4A1E3000FB0053ABB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84F88A4C1E3001E30053ABB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84F88A4E1E3001EA0053ABB2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -404,7 +386,6 @@
 				D2DE92611DF2D92B000C9BC7 /* Cells */,
 				8426418A1DF2B16B00EAB5CE /* News.storyboard */,
 				84F88A411E2FEF2F0053ABB2 /* NewsMenuViewController.swift */,
-				84F88A3F1E2FEF140053ABB2 /* CustomSlideMenu.swift */,
 				D2DE92641DF2DA59000C9BC7 /* NewViewController.swift */,
 				D29E8C321DF71C1E0000815B /* DetailNewViewController.swift */,
 			);
@@ -465,8 +446,7 @@
 		84321D641DF7469100CCA4D4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				84F88A251E2FEB690053ABB2 /* SlideMenu */,
-				84F88A431E2FFC3A0053ABB2 /* SWReveal */,
+				8476CA911E314C630052E201 /* Reveal */,
 				D2E69D7F1E1A88D300469584 /* FooterCell.swift */,
 				D2E69D801E1A88D300469584 /* FooterCell.xib */,
 				D2F4A9F71E17A2EE00EE737B /* HMSegment */,
@@ -492,6 +472,16 @@
 				8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8476CA911E314C630052E201 /* Reveal */ = {
+			isa = PBXGroup;
+			children = (
+				8476CA921E314C630052E201 /* KYDrawerController.swift */,
+				8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */,
+				8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */,
+			);
+			path = Reveal;
 			sourceTree = "<group>";
 		};
 		84ADD8C61E2D4376007BBE68 /* Cell */ = {
@@ -585,32 +575,6 @@
 				D2E69D7B1E1A0DC900469584 /* SelectBirthdayView.xib */,
 			);
 			name = Account;
-			sourceTree = "<group>";
-		};
-		84F88A251E2FEB690053ABB2 /* SlideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				84F88A261E2FEB690053ABB2 /* CenterContainmentSegue.swift */,
-				84F88A271E2FEB690053ABB2 /* Info.plist */,
-				84F88A281E2FEB690053ABB2 /* SideContainmentSegue.swift */,
-				84F88A291E2FEB690053ABB2 /* SideMenuController+CustomTypes.swift */,
-				84F88A2A1E2FEB690053ABB2 /* SideMenuController+SideOver.swift */,
-				84F88A2B1E2FEB690053ABB2 /* SideMenuController+SideUnder.swift */,
-				84F88A2C1E2FEB690053ABB2 /* SideMenuController.h */,
-				84F88A2D1E2FEB690053ABB2 /* SideMenuController.swift */,
-				84F88A2E1E2FEB690053ABB2 /* TransitionAnimator.swift */,
-				84F88A2F1E2FEB690053ABB2 /* UIKitExtensions.swift */,
-			);
-			path = SlideMenu;
-			sourceTree = "<group>";
-		};
-		84F88A431E2FFC3A0053ABB2 /* SWReveal */ = {
-			isa = PBXGroup;
-			children = (
-				84F88A441E2FFC3A0053ABB2 /* SWRevealViewController.h */,
-				84F88A451E2FFC3A0053ABB2 /* SWRevealViewController.m */,
-			);
-			path = SWReveal;
 			sourceTree = "<group>";
 		};
 		B3971111236E98E8993F5BFC /* Pods */ = {
@@ -915,7 +879,6 @@
 				D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */,
 				844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */,
 				EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */,
-				84F88A311E2FEB690053ABB2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1041,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8476CA961E314C630052E201 /* KYEmbedDrawerControllerSegue.swift in Sources */,
 				8B47A8A31DF7A50B001868EE /* UpdateProfileDoctorViewController.swift in Sources */,
 				8BF746D01DF83CC8006C9B48 /* PhotoCollectionViewCell.swift in Sources */,
 				84321D9A1DF752D000CCA4D4 /* ProjectCommon.swift in Sources */,
@@ -1087,7 +1051,6 @@
 				84ADD8CA1E2D43DD007BBE68 /* HospitalListViewController.swift in Sources */,
 				84321D991DF752D000CCA4D4 /* AppTheme.swift in Sources */,
 				D2DE92631DF2D93E000C9BC7 /* NewTableViewCell.swift in Sources */,
-				84F88A381E2FEB690053ABB2 /* UIKitExtensions.swift in Sources */,
 				8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */,
 				8BF746CB1DF83672006C9B48 /* KMPlaceholderTextView.swift in Sources */,
 				D2E89B811E19006200DDA4A3 /* AssetViewController.swift in Sources */,
@@ -1097,7 +1060,6 @@
 				84321D631DF723C700CCA4D4 /* DoctorHistoryViewController.swift in Sources */,
 				8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
-				84F88A321E2FEB690053ABB2 /* SideContainmentSegue.swift in Sources */,
 				D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
 				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
@@ -1119,7 +1081,6 @@
 				D26F57761E194B4A009E8FB8 /* ImageModel.swift in Sources */,
 				D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */,
 				D2A349411E15679D000B7F48 /* UserSearchModel.swift in Sources */,
-				84F88A461E2FFC3A0053ABB2 /* SWRevealViewController.m in Sources */,
 				84F88A421E2FEF2F0053ABB2 /* NewsMenuViewController.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
@@ -1134,14 +1095,11 @@
 				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */,
 				84F88A3E1E2FEE870053ABB2 /* NewsTagTableViewCell.swift in Sources */,
-				84F88A401E2FEF140053ABB2 /* CustomSlideMenu.swift in Sources */,
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
-				84F88A341E2FEB690053ABB2 /* SideMenuController+SideOver.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				D21A80221E16DA6C00DF6077 /* CalendarTimeObject.swift in Sources */,
 				D2F4A9F41E17589100EE737B /* UIView+Toast.m in Sources */,
-				84F88A361E2FEB690053ABB2 /* SideMenuController.swift in Sources */,
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
@@ -1153,29 +1111,27 @@
 				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
 				D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */,
 				D2F4A9FA1E17A2EE00EE737B /* HMSegmentedControl.m in Sources */,
-				84F88A351E2FEB690053ABB2 /* SideMenuController+SideUnder.swift in Sources */,
+				8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */,
 				D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */,
 				D27DE7481E16BE8500169D4E /* SettingCalendarViewController.swift in Sources */,
 				D2F4A9E41E1757F500EE737B /* Lib.mm in Sources */,
 				EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */,
-				84F88A371E2FEB690053ABB2 /* TransitionAnimator.swift in Sources */,
 				843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */,
 				EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
 				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
+				8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */,
 				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
 				EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */,
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				D21A80201E16D3DB00DF6077 /* SettingTimeViewController.swift in Sources */,
 				84ADD8CC1E2D4409007BBE68 /* ClinicViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
-				84F88A301E2FEB690053ABB2 /* CenterContainmentSegue.swift in Sources */,
 				D21A80241E16F42C00DF6077 /* SelectTimeView.swift in Sources */,
 				84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
 				D27DE7401E16B7B800169D4E /* CKCalendarView.m in Sources */,
 				D2E69D7E1E1A1DE900469584 /* CustomCollectionViewLayout.swift in Sources */,
-				84F88A331E2FEB690053ABB2 /* SideMenuController+CustomTypes.swift in Sources */,
 				84CB43031DE1B4270059B057 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

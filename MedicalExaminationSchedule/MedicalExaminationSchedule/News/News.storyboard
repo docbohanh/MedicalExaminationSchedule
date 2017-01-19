@@ -231,6 +231,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="menuButton" destination="Oaa-4b-kOk" id="76x-Y0-DfT"/>
                         <outlet property="newTableView" destination="o8q-db-LCC" id="PoC-rK-mih"/>
                         <outlet property="searchButton" destination="KLo-Sw-Fae" id="X5X-7u-b5r"/>
                         <outlet property="searchTextField" destination="cKX-e0-64v" id="tcX-Jx-khw"/>
@@ -451,6 +452,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYl-gO-CfP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="620" y="-273"/>
+        </scene>
+        <!--News Menu View Controller-->
+        <scene sceneID="nV3-D5-6r8">
+            <objects>
+                <viewController storyboardIdentifier="NewsMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xOd-U5-rJX" customClass="NewsMenuViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NQ2-bH-bQs"/>
+                        <viewControllerLayoutGuide type="bottom" id="WG8-a2-npU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="siG-GZ-VHT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bkl-qI-UWI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTagTableViewCell" rowHeight="50" id="1jY-hX-4qg" customClass="NewsTagTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jY-hX-4qg" id="MFb-HF-vR8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vitamin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34W-Bb-Oid">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="34W-Bb-Oid" firstAttribute="top" secondItem="MFb-HF-vR8" secondAttribute="top" id="0Je-N7-8eb"/>
+                                                <constraint firstItem="34W-Bb-Oid" firstAttribute="leading" secondItem="MFb-HF-vR8" secondAttribute="leading" constant="16" id="TAf-O2-HMZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="34W-Bb-Oid" secondAttribute="trailing" constant="16" id="ebk-sF-T5x"/>
+                                                <constraint firstAttribute="bottom" secondItem="34W-Bb-Oid" secondAttribute="bottom" id="fkE-ju-1nV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WG8-a2-npU" firstAttribute="top" secondItem="Bkl-qI-UWI" secondAttribute="bottom" id="7oU-Tt-U2F"/>
+                            <constraint firstItem="Bkl-qI-UWI" firstAttribute="leading" secondItem="siG-GZ-VHT" secondAttribute="leading" id="gO3-rN-uH9"/>
+                            <constraint firstItem="Bkl-qI-UWI" firstAttribute="top" secondItem="siG-GZ-VHT" secondAttribute="top" id="qFM-Ea-a8k"/>
+                            <constraint firstAttribute="trailing" secondItem="Bkl-qI-UWI" secondAttribute="trailing" id="zda-zs-BHe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qhh-kV-gXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1196" y="-273"/>
         </scene>
     </scenes>
     <resources>

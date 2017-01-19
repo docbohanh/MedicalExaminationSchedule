@@ -16,6 +16,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var newTableView: UITableView!
+    @IBOutlet weak var menuButton: UIButton!
     var newsArray = [NewsModel]()
     var filterArray = [NewsModel]()
     
@@ -26,16 +27,11 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var pageIndex = 0
     var locationManager = CLLocationManager()
     var queryString = ""
-    var revealController : SWRevealViewController?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        revealController = self.revealViewController()
-        revealController?.panGestureRecognizer()
-        revealController?.tapGestureRecognizer()
-        
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
         self.getCurrentLocation()
         newTableView.rowHeight = UITableViewAutomaticDimension;
         newTableView.estimatedRowHeight = 400.0;
@@ -58,7 +54,9 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     @IBAction func tappedRevealToggle(_ sender: UIButton) {
-        revealController?.revealToggle(sender)
+        if let drawerController = self.parent as? KYDrawerController {
+            drawerController.setDrawerState(.opened, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
