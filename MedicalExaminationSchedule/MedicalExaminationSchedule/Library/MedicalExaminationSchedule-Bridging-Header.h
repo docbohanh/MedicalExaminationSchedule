@@ -17,4 +17,5 @@
 #import "THBReachability.h"
 #import "UIView+Toast.h"
 #import "HMSegmentedControl.h"
+#import "SWRevealViewController.h"
 #endif

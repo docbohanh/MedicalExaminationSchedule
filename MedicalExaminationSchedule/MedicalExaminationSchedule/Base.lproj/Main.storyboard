@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Trf-25-esx">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -245,7 +245,7 @@
                         <outlet property="signInButton" destination="6Tj-Rg-SBW" id="LKd-2N-jDy"/>
                         <outlet property="userNameTextField" destination="913-dd-lPz" id="tdN-JY-apz"/>
                         <outlet property="userNameView" destination="9uq-7x-1Pv" id="a9V-MB-tZD"/>
-                        <segue destination="kTt-Tc-OOq" kind="show" identifier="ShowTabBar" id="ZQ9-kM-U1S"/>
+                        <segue destination="kTt-Tc-OOq" kind="show" identifier="ShowTabBar" id="XCU-ha-M2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-jo-XjS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -884,6 +884,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93W-Li-Xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-345" y="-844"/>
+        </scene>
+        <!--News Menu View Controller-->
+        <scene sceneID="7lK-MD-tHQ">
+            <objects>
+                <viewController storyboardIdentifier="NewsMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EVp-ZE-AaD" customClass="NewsMenuViewController" customModule="MedicalExaminationSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NRa-1d-1vA"/>
+                        <viewControllerLayoutGuide type="bottom" id="YhX-lj-N3W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kDW-MW-T6t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DIz-jv-Saj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTagTableViewCell" rowHeight="50" id="6MM-zF-zV0" customClass="NewsTagTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6MM-zF-zV0" id="PoT-p0-Rij">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vitamin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUJ-pn-456">
+                                                    <rect key="frame" x="16" y="0.0" width="382" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rUJ-pn-456" firstAttribute="top" secondItem="PoT-p0-Rij" secondAttribute="top" id="1n1-EW-HeI"/>
+                                                <constraint firstAttribute="trailing" secondItem="rUJ-pn-456" secondAttribute="trailing" constant="16" id="70c-jh-fQj"/>
+                                                <constraint firstItem="rUJ-pn-456" firstAttribute="leading" secondItem="PoT-p0-Rij" secondAttribute="leading" constant="16" id="Rcb-UO-vXO"/>
+                                                <constraint firstAttribute="bottom" secondItem="rUJ-pn-456" secondAttribute="bottom" id="ZQM-LG-kv4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YhX-lj-N3W" firstAttribute="top" secondItem="DIz-jv-Saj" secondAttribute="bottom" id="DsN-Kb-wRC"/>
+                            <constraint firstAttribute="trailing" secondItem="DIz-jv-Saj" secondAttribute="trailing" id="M1r-re-eVv"/>
+                            <constraint firstItem="DIz-jv-Saj" firstAttribute="leading" secondItem="kDW-MW-T6t" secondAttribute="leading" id="QAL-7l-WfZ"/>
+                            <constraint firstItem="DIz-jv-Saj" firstAttribute="top" secondItem="kDW-MW-T6t" secondAttribute="top" id="fyR-yz-2uA"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWa-2R-3ky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1903" y="581"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="A5C-SN-QOS">

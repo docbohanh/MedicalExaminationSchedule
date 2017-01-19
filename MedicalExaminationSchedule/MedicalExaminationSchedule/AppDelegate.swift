@@ -17,7 +17,7 @@ import FacebookShare
 import Google
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,SWRevealViewControllerDelegate {
 
     
     var window: UIWindow?
@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         GMSServices.provideAPIKey("AIzaSyADBdp9CDPnMRv3O9VTIt2As2kTOv4yEFY")
         GMSPlacesClient.provideAPIKey("AIzaSyADBdp9CDPnMRv3O9VTIt2As2kTOv4yEFY")
+//        GMSServices.provideAPIKey("AIzaSyChOnJLUwPBEYI5IVmg7wXpfJSBaFcYIR4")
+//        GMSPlacesClient.provideAPIKey("AIzaSyChOnJLUwPBEYI5IVmg7wXpfJSBaFcYIR4")
+
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         if (UserDefaults.standard.object(forKey:"token_id") == nil) {
             let loginViewController = mainStoryBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController

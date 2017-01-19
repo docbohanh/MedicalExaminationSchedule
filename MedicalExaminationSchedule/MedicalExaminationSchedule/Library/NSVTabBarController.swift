@@ -15,6 +15,10 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let revealController = self.revealViewController()
+        revealController?.panGestureRecognizer()
+        revealController?.tapGestureRecognizer()
+        
         if self.navigationController?.viewControllers.count == 1 {
             var navigationViewControllers = self.navigationController?.viewControllers
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -30,7 +34,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         
         //location
         let locationStoryboard = UIStoryboard.init(name: "Locations", bundle: nil)
-        let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "DoctorAddressListViewController") as! DoctorAddressListViewController
+        let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "ServiceViewController") as! ServiceViewController
         doctorAdrressVC.tabBarItem = UITabBarItem.init(title: "Dịch vụ", image: UIImage.init(named: ""), tag: 2)
         
         
