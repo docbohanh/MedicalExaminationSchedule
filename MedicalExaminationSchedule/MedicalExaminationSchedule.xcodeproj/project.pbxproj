@@ -25,7 +25,6 @@
 		843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843292CA1DFF3778004C44A3 /* CustomUITextField.swift */; };
 		844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844520B51E18E53C00444AA1 /* AddressMapView.swift */; };
 		844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844520B71E18E55800444AA1 /* AddressMapView.xib */; };
-		844520BA1E19808D00444AA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844520B91E19808D00444AA1 /* GoogleService-Info.plist */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
@@ -129,6 +128,7 @@
 		EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */; };
 		EA05ED2E1DFACE29002DD339 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ED2D1DFACE29002DD339 /* StringExtension.swift */; };
 		EA968B2D1E1B542B0067352E /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA968B2C1E1B542B0067352E /* DocumentViewController.swift */; };
+		EAA6D3091E2736790017900F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAA6D3081E2736790017900F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,7 +173,6 @@
 		843292CA1DFF3778004C44A3 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		844520B51E18E53C00444AA1 /* AddressMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapView.swift; sourceTree = "<group>"; };
 		844520B71E18E55800444AA1 /* AddressMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressMapView.xib; sourceTree = "<group>"; };
-		844520B91E19808D00444AA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
@@ -288,6 +287,7 @@
 		EA05ED221DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupIntroduceTableViewCell.swift; sourceTree = "<group>"; };
 		EA05ED2D1DFACE29002DD339 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		EA968B2C1E1B542B0067352E /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		EAA6D3081E2736790017900F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6046C89BE7A5BD971C6098B /* Pods-MedicalExaminationScheduleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -483,7 +483,7 @@
 				84CB42D01DE16FE10059B057 /* ViewController.swift */,
 				84CB42D21DE16FE10059B057 /* Main.storyboard */,
 				84CB42D81DE16FE10059B057 /* Assets.xcassets */,
-				844520B91E19808D00444AA1 /* GoogleService-Info.plist */,
+				EAA6D3081E2736790017900F /* GoogleService-Info.plist */,
 				84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */,
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
 				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
@@ -803,13 +803,13 @@
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */,
 				8B7DD3B71E166B280080A814 /* GoogleSignIn.bundle in Resources */,
-				844520BA1E19808D00444AA1 /* GoogleService-Info.plist in Resources */,
 				D29E8C3D1DF7241E0000815B /* SelectGenderTableViewCell.xib in Resources */,
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				84321D5F1DF6DFF100CCA4D4 /* RateHeaderView.xib in Resources */,
 				D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */,
 				84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */,
+				EAA6D3091E2736790017900F /* GoogleService-Info.plist in Resources */,
 				8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */,
 				D21A80261E16F43900DF6077 /* SelectTimeView.xib in Resources */,
 				8BF746D31DF84352006C9B48 /* TestPhoto@2x.png in Resources */,
