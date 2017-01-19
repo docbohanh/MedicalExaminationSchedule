@@ -47,6 +47,10 @@ let TAG = "tag"
 let UPDATE_PROFILE_SUCCESS = "UpdateProfileSuccessNotification"
 let UPDATE_AVATAR_SUCCESS = "UpdateAvatarSuccessNotification"
 
+let screenWidth = UIScreen.main.bounds.width
+let screenHeight = UIScreen.main.bounds.height
+
+
 
 // define enum key
 

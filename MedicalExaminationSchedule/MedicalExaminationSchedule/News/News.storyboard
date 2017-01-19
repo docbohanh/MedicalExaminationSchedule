@@ -51,10 +51,10 @@
                                             <constraint firstAttribute="height" constant="24" id="RvB-Du-8aP"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-4b-kOk">
-                                        <rect key="frame" x="8" y="14" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-4b-kOk">
+                                        <rect key="frame" x="20" y="18" width="22" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="ic_list"/>
                                         <connections>
                                             <action selector="tappedRevealToggle:" destination="vjA-MS-1k9" eventType="touchUpInside" id="mmR-po-t1I"/>
                                         </connections>
@@ -469,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTagTableViewCell" rowHeight="50" id="1jY-hX-4qg" customClass="NewsTagTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NewsTagTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTagTableViewCell" rowHeight="50" id="1jY-hX-4qg" customClass="NewsTagTableViewCell" customModule="MedicalExaminationSchedule" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1jY-hX-4qg" id="MFb-HF-vR8">
@@ -490,8 +490,15 @@
                                                 <constraint firstAttribute="bottom" secondItem="34W-Bb-Oid" secondAttribute="bottom" id="fkE-ju-1nV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="tagLabel" destination="34W-Bb-Oid" id="Kh9-fU-w9S"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="xOd-U5-rJX" id="POo-uS-afR"/>
+                                    <outlet property="delegate" destination="xOd-U5-rJX" id="dsI-46-tZJ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -502,6 +509,9 @@
                             <constraint firstAttribute="trailing" secondItem="Bkl-qI-UWI" secondAttribute="trailing" id="zda-zs-BHe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableview" destination="Bkl-qI-UWI" id="DOC-S6-RVX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhh-kV-gXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -512,6 +522,7 @@
         <image name="ic_back" width="22" height="22"/>
         <image name="ic_like" width="15" height="15"/>
         <image name="ic_like_active" width="15" height="15"/>
+        <image name="ic_list" width="22" height="22"/>
         <image name="ic_logo_nav" width="94" height="24"/>
         <image name="ic_news" width="25" height="25"/>
         <image name="ic_search" width="22" height="22"/>

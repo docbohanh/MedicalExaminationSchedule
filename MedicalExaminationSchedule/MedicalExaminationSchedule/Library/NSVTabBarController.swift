@@ -31,7 +31,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         
         let menuViewController = newsStoryboard.instantiateViewController(withIdentifier: "NewsMenuViewController") as! NewsMenuViewController
         
-        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 300)
+        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: screenWidth - 80)
         drawerController.mainViewController = newsVC
         drawerController.drawerViewController = menuViewController
         

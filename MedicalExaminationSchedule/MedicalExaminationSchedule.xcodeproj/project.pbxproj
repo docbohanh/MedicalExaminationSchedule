@@ -33,6 +33,8 @@
 		8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA921E314C630052E201 /* KYDrawerController.swift */; };
 		8476CA961E314C630052E201 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */; };
 		8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */; };
+		8476CA991E3156760052E201 /* TagHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA981E3156760052E201 /* TagHeaderView.swift */; };
+		8476CA9B1E3156860052E201 /* TagHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8476CA9A1E3156860052E201 /* TagHeaderView.xib */; };
 		84ADD8C51E2D3126007BBE68 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */; };
 		84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */; };
 		84ADD8CA1E2D43DD007BBE68 /* HospitalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */; };
@@ -194,6 +196,8 @@
 		8476CA921E314C630052E201 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
+		8476CA981E3156760052E201 /* TagHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagHeaderView.swift; sourceTree = "<group>"; };
+		8476CA9A1E3156860052E201 /* TagHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagHeaderView.xib; sourceTree = "<group>"; };
 		84ADD8C41E2D3126007BBE68 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		84ADD8C71E2D43C9007BBE68 /* DoctorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorListViewController.swift; sourceTree = "<group>"; };
 		84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListViewController.swift; sourceTree = "<group>"; };
@@ -658,6 +662,8 @@
 			children = (
 				D2DE92621DF2D93E000C9BC7 /* NewTableViewCell.swift */,
 				84F88A3D1E2FEE870053ABB2 /* NewsTagTableViewCell.swift */,
+				8476CA981E3156760052E201 /* TagHeaderView.swift */,
+				8476CA9A1E3156860052E201 /* TagHeaderView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -859,6 +865,7 @@
 				D29E8C481DF738660000815B /* CreateCommentView.xib in Resources */,
 				8BE7476A1E13B57500519416 /* github.com.cer in Resources */,
 				8B47A89F1DF79FF1001868EE /* BottomButtonTableViewCell.xib in Resources */,
+				8476CA9B1E3156860052E201 /* TagHeaderView.xib in Resources */,
 				D212650E1DF39F7B00C70F83 /* NormalTableViewCell.xib in Resources */,
 				D22D4A641E04484F007A76B9 /* ChooseBirthdayView.xib in Resources */,
 				8B7DD3B71E166B280080A814 /* GoogleSignIn.bundle in Resources */,
@@ -1098,6 +1105,7 @@
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
+				8476CA991E3156760052E201 /* TagHeaderView.swift in Sources */,
 				D21A80221E16DA6C00DF6077 /* CalendarTimeObject.swift in Sources */,
 				D2F4A9F41E17589100EE737B /* UIView+Toast.m in Sources */,
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
