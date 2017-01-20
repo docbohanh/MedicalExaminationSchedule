@@ -15,9 +15,6 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let revealController = self.revealViewController()
-        revealController?.panGestureRecognizer()
-        revealController?.tapGestureRecognizer()
         
         if self.navigationController?.viewControllers.count == 1 {
             var navigationViewControllers = self.navigationController?.viewControllers
@@ -31,6 +28,12 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         let newsStoryboard = UIStoryboard.init(name: "News", bundle: nil)
         let newsVC = newsStoryboard.instantiateViewController(withIdentifier: "NewViewController") as! NewViewController
         newsVC.tabBarItem = UITabBarItem.init(title: "Tin tức", image: UIImage.init(named: ""), tag: 0)
+        
+        let menuViewController = newsStoryboard.instantiateViewController(withIdentifier: "NewsMenuViewController") as! NewsMenuViewController
+        
+        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: screenWidth - 80)
+        drawerController.mainViewController = newsVC
+        drawerController.drawerViewController = menuViewController
         
         //location
         let locationStoryboard = UIStoryboard.init(name: "Locations", bundle: nil)
@@ -48,7 +51,7 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         let moreVC = moreStoryboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
         moreVC.tabBarItem = UITabBarItem.init(title: "Thêm", image: UIImage.init(named: ""), tag: 4)
         self.tabBar.backgroundImage = UIImage(named: "tab_bar_background")
-        self.viewControllers = [newsVC,doctorAdrressVC, doctorHistoryVC, moreVC]
+        self.viewControllers = [drawerController,doctorAdrressVC, doctorHistoryVC, moreVC]
     }
     
     override func viewDidLayoutSubviews() {
