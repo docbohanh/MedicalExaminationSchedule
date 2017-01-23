@@ -11,31 +11,42 @@ import UIKit
 class ServiceViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
-    let modelNameArray:[String] = ["Bệnh viện","Nhà thuốc","Phòng khám","Bác sĩ"]
-    let modelImageArray:[String] = ["ic_hospital","ic_pharmacy","ic_clinic","ic_doctor"]
+    let modelNameArray:[String] = ["Bệnh viện","Nhà thuốc","Phòng khám","Bác sĩ","Comming soon"]
+    let modelImageArray:[String] = ["ic_hospital","ic_pharmacy","ic_clinic","ic_doctor", "ic_comingsoon"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        scrollView.contentSize = CGSize.init(width: 4 * scrollView.frame.width, height: scrollView.frame.height)
-        
-        self.initScrollView()
-
+    override func viewDidLayoutSubviews() {
+        scrollView.contentSize = CGSize.init(width: 5 * scrollView.frame.width, height: scrollView.frame.height)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.initScrollView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollView.contentSize = CGSize.init(width: 5 * scrollView.frame.width, height: scrollView.frame.height)
+    }
+    
     func initScrollView() {
+        scrollView.contentSize = CGSize.init(width: 5 * scrollView.frame.width, height: scrollView.frame.height)
         scrollView.isPagingEnabled = true
-        scrollView.isDirectionalLockEnabled = true
-        for index in 0...3 {
+        scrollView.isScrollEnabled = true
+        for index in 0...4 {
             let logoImageView = UIImageView.init(frame: CGRect.init(x: CGFloat(index) * scrollView.frame.width, y:0, width: scrollView.frame.width, height: scrollView.frame.height))
             let image:String = modelImageArray[index]
             logoImageView.image = UIImage.init(named: image)
             scrollView.addSubview(logoImageView)
             
+            let iconImageView = UIImageView.init(frame: CGRect.init(x: (logoImageView.frame.width - 125)/2, y:40, width: 125, height: 32))
+            iconImageView.image = UIImage.init(named: "ic_logo_nav")
+            logoImageView.addSubview(iconImageView)
+            
             let backgroundButton = UIButton.init(type: UIButtonType.custom)
-            backgroundButton.frame = CGRect.init(x: CGFloat(index) * scrollView.frame.width, y: (logoImageView.frame.height - 100)/2, width: scrollView.frame.width, height: 100)
+            backgroundButton.frame = CGRect.init(x: CGFloat(index) * scrollView.frame.width, y: (logoImageView.frame.height - 160)/2, width: scrollView.frame.width, height: 160)
             backgroundButton.backgroundColor = UIColor.clear
             backgroundButton.tag = 480 + index
             backgroundButton.addTarget(self, action: #selector(gotoServices(sender:)), for: UIControlEvents.touchUpInside)
@@ -47,6 +58,18 @@ class ServiceViewController: UIViewController {
             modelNameLabel.text = modelNameArray[index]
             modelNameLabel.textAlignment = .center
             logoImageView.addSubview(modelNameLabel)
+            
+            for i in 0...4 {
+                let circleImageView = UIImageView.init(frame: CGRect.init(x:Int(logoImageView.frame.width/2 - CGFloat(35) + CGFloat(i) * 14), y: Int(logoImageView.frame.height - 90), width: 8, height: 8))
+                if i > index {
+                circleImageView.frame = CGRect.init(x:Int(logoImageView.frame.width/2 - CGFloat(35) + CGFloat(i) * 14), y: Int(logoImageView.frame.height - 90), width: 8, height: 8)
+                    circleImageView.image = UIImage.init(named: "ic_ellipse_small")
+                } else {
+                circleImageView.frame = CGRect.init(x:Int(logoImageView.frame.width/2 - CGFloat(35) + CGFloat(i) * 14), y: Int(logoImageView.frame.height - 90), width: 10, height:10)
+                    circleImageView.image = UIImage.init(named: "ic_ellipse")
+                }
+                logoImageView.addSubview(circleImageView)
+            }
         }
     }
     
@@ -69,6 +92,9 @@ class ServiceViewController: UIViewController {
         case 3:
             let doctorViewController = storyboard.instantiateViewController(withIdentifier: "DoctorListViewController") as! DoctorListViewController
             self.navigationController?.pushViewController(doctorViewController, animated: true)
+            break
+        case 4:
+            //Comming soon
             break
         default:
             break

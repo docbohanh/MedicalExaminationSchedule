@@ -354,7 +354,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
             print(response)
             Lib.removeLoadingView(on: self.view)
             if response.result.error != nil {
-                ProjectCommon.initAlertView(viewController: self, title: "", message:(response.result.error?.localizedDescription)!, buttonArray: ["Đóng"], onCompletion: { (index) in
+                ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể cập nhật ảnh đại diện ở thời điểm này,vui lòng quay lại sau!", buttonArray: ["Đóng"], onCompletion: { (index) in
                     
                 })
             } else {
@@ -363,7 +363,7 @@ class UpdateUserViewController: UIViewController, UITableViewDelegate, UITableVi
                     NotificationCenter.default.post(name: Notification.Name(UPDATE_AVATAR_SUCCESS), object: nil)
                     let resultData = resultDictionary["result"] as! [String:AnyObject]
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể cập nhật ảnh đại diện ở thời điểm này,vui lòng quay lại sau!", buttonArray: ["Đóng"], onCompletion: { (index) in
                         
                     })
                 }

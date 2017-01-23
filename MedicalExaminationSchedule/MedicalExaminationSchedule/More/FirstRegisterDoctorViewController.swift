@@ -299,15 +299,15 @@ class FirstRegisterDoctorViewController: UIViewController, UITableViewDelegate, 
                         })
                         return
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Vui lòng kiểm tra lại thông tin đã điền", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 } else {
                     if resultDictionary["message"] != nil {
-                        ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Vui lòng kiểm tra lại thông tin đã điền", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }else {
-                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Something went error!", buttonArray: ["Đóng"], onCompletion: { (index) in
+                        ProjectCommon.initAlertView(viewController: self, title: "", message: "Vui lòng kiểm tra lại thông tin đã nhập", buttonArray: ["Đóng"], onCompletion: { (index) in
                         })
                     }
                 }

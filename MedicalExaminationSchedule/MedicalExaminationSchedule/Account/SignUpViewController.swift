@@ -125,8 +125,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
                 let resultDictionary = response.result.value as! [String:AnyObject]
                 if let status = resultDictionary["status"] {
                     if (status as! NSNumber) == 1 {
+                        if let result = resultDictionary["result"] as? [String:AnyObject] {
+                            if result["token_id"] != nil {
+                                UserDefaults.standard.set(result["token_id"], forKey: "token_id")
+                            }
+                        }
                         ProjectCommon.initAlertView(viewController: self, title: "", message: "Đăng kí thành công", buttonArray: ["Đóng"], onCompletion: { (index) in
-                            _ = self.navigationController?.popViewController(animated: true)
+                            self.dismiss(animated: true, completion: nil)
+                            //_ = self.navigationController?.popViewController(animated: true)
                         })
                         return
                     }else {
@@ -148,7 +154,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate,UIScrollViewDel
     }
     
     @IBAction func tappedSignIn(_ sender: Any) {
-        _ =  navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+//        _ =  navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedChooseMale(_ sender: Any) {

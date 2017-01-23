@@ -39,7 +39,10 @@ class TimerFreeViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     }
     
     @IBAction func tappedSetupTimer(_ sender: UIButton) {
-        self.bookCalendar(object: timeArray[timePickerView.selectedRow(inComponent: 0)])
+
+        if timeArray.count > 0 {
+            self.bookCalendar(object: timeArray[timePickerView.selectedRow(inComponent: 0)])
+        }
     }
     
     @IBAction func tappedBack(_ sender: Any) {

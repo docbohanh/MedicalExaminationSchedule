@@ -273,7 +273,7 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
         currentService = cell.serviceDetail
-        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
+        self.performSegue(withIdentifier: "PushToDrugStoreDetail", sender: self)
     }
     
     override func didReceiveMemoryWarning() {

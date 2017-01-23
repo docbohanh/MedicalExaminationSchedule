@@ -63,6 +63,7 @@ class NewViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         view.backgroundColor = UIColor.blue
+        newTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

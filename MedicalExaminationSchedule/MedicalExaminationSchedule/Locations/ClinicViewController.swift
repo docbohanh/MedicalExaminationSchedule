@@ -62,8 +62,9 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
         if self.serviceHospitalArray.count > 0 {
             self.serviceHospitalArray.removeAll()
         }
-        self.tableView.reloadData()
         self.getServiceHospital(page_index: self.pageIndexHospital, type: "pk")
+        self.tableView.reloadData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -273,7 +274,7 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DoctorAddressTableViewCell
         currentService = cell.serviceDetail
-        self.performSegue(withIdentifier: "PushToServiceDetail", sender: self)
+        self.performSegue(withIdentifier: "PushToClinicDetail", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -420,6 +421,7 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func tapped_searchButton(_ sender: Any) {
         queryString = searchTextField.text!
+        currentArray.removeAll()
         self.pullToRefresh()
     }
     /* --------- TEXT FIELD DELEGATE --------------*/

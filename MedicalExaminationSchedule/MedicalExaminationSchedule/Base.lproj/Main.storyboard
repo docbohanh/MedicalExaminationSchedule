@@ -101,7 +101,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedRegisterAccount:" destination="Trf-25-esx" eventType="touchUpInside" id="Dfh-mN-Y05"/>
-                                    <segue destination="BGM-Og-W8G" kind="show" id="yrc-Lx-Vuf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rvo-ct-ich">
@@ -246,6 +245,7 @@
                         <outlet property="userNameTextField" destination="913-dd-lPz" id="tdN-JY-apz"/>
                         <outlet property="userNameView" destination="9uq-7x-1Pv" id="a9V-MB-tZD"/>
                         <segue destination="kTt-Tc-OOq" kind="show" identifier="ShowTabBar" id="XCU-ha-M2j"/>
+                        <segue destination="BGM-Og-W8G" kind="show" identifier="signUp" id="cPj-Ud-AoT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-jo-XjS" userLabel="First Responder" sceneMemberID="firstResponder"/>

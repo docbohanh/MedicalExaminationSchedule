@@ -12,7 +12,7 @@ import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate, FirstRegisterDoctorVCDelegate {
+class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CreateCommentViewDelegate, FirstRegisterDoctorVCDelegate,UITextFieldDelegate,UITextViewDelegate {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -39,6 +39,10 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(returnKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+ 
         // Do any additional setup after loading the view.
         ProjectCommon.boundView(button: avatarImageView, cornerRadius: avatarImageView.frame.size.height/2, color: UIColor.white, borderWith: 0)
         appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -69,12 +73,18 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
 
+    func returnKeyboard() {
+        view.endEditing(true)
+    }
+    
     func createPopup() -> Void {
         let popupView = UINib(nibName: "CreateCommentView", bundle: Bundle.main).instantiate(withOwner: nil, options: nil)[0] as! CreateCommentView
         popupView.clipsToBounds = true
         popupView.layer.cornerRadius = 5.0
         popupView.translatesAutoresizingMaskIntoConstraints = false
         popupView.delegate = self
+        popupView.commentTextView.delegate = self
+        popupView.suggestionTitleTextField.delegate = self
         backgroundPopupView.addSubview(popupView)
         
         let views = ["popupView": popupView,
@@ -248,7 +258,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // tôi là bác sỹ
                 self.performSegue(withIdentifier: "PushToFirstRegisterDoctor", sender: self)
             } else if indexPath.row == 1 {
-                // ý kiến
+                //Đóng góp ý kiến
+                backgroundPopupView.isHidden = false
             } else {
                 self.performSegue(withIdentifier: "guidApp", sender: nil)
                 // hướng dẫn
@@ -319,6 +330,11 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         userModel?.user_type_id = true
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

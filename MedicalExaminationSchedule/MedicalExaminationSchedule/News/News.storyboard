@@ -51,10 +51,13 @@
                                             <constraint firstAttribute="height" constant="24" id="RvB-Du-8aP"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-4b-kOk">
-                                        <rect key="frame" x="20" y="18" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="ic_list"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaa-4b-kOk">
+                                        <rect key="frame" x="16" y="19" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="V7o-gb-dzI"/>
+                                            <constraint firstAttribute="width" constant="26" id="puk-df-0P9"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_menu"/>
                                         <connections>
                                             <action selector="tappedRevealToggle:" destination="vjA-MS-1k9" eventType="touchUpInside" id="mmR-po-t1I"/>
                                         </connections>
@@ -67,7 +70,9 @@
                                     <constraint firstAttribute="height" constant="110" id="4iM-pH-26w"/>
                                     <constraint firstItem="KLo-Sw-Fae" firstAttribute="centerY" secondItem="qME-aq-xFh" secondAttribute="centerY" constant="22" id="7iW-0Q-5aU"/>
                                     <constraint firstItem="cKX-e0-64v" firstAttribute="leading" secondItem="qME-aq-xFh" secondAttribute="leading" constant="15" id="Jgw-B4-BH4"/>
+                                    <constraint firstItem="Oaa-4b-kOk" firstAttribute="leading" secondItem="qME-aq-xFh" secondAttribute="leading" constant="16" id="WHu-aq-o7A"/>
                                     <constraint firstItem="KLo-Sw-Fae" firstAttribute="leading" secondItem="cKX-e0-64v" secondAttribute="trailing" id="Ze5-KA-ubB"/>
+                                    <constraint firstItem="Smh-Oh-k7M" firstAttribute="centerY" secondItem="Oaa-4b-kOk" secondAttribute="centerY" id="qRC-oR-tyU"/>
                                     <constraint firstItem="Smh-Oh-k7M" firstAttribute="top" secondItem="qME-aq-xFh" secondAttribute="top" constant="20" id="sbm-nD-gaK"/>
                                     <constraint firstAttribute="trailing" secondItem="KLo-Sw-Fae" secondAttribute="trailing" constant="15" id="wJv-JP-Wiu"/>
                                 </constraints>
@@ -515,15 +520,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhh-kV-gXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1196" y="-273"/>
+            <point key="canvasLocation" x="-1767" y="-250"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_back" width="22" height="22"/>
         <image name="ic_like" width="15" height="15"/>
         <image name="ic_like_active" width="15" height="15"/>
-        <image name="ic_list" width="22" height="22"/>
         <image name="ic_logo_nav" width="94" height="24"/>
+        <image name="ic_menu" width="22" height="22"/>
         <image name="ic_news" width="25" height="25"/>
         <image name="ic_search" width="22" height="22"/>
         <image name="ic_share" width="15" height="15"/>

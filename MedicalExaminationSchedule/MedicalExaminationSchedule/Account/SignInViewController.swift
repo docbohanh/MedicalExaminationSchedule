@@ -73,10 +73,12 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LoadingOverlay.shared.showOverlay(view: view)
         self.initializeFirstView()
         if (UserDefaults.standard.object(forKey: "token_id") != nil) {
             self.performSegue(withIdentifier: "ShowTabBar", sender: self)
         }
+        LoadingOverlay.shared.hideOverlayView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,7 +104,10 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
     }
 
     @IBAction func tappedRegisterAccount(_ sender: Any) {
-        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController")
+        self.present(signUpViewController, animated: true, completion: nil)
+//        self.performSegue(withIdentifier: "signUp", sender: nil)
     }
     
     @IBAction func tappedSignInWithGoogle(_ sender: Any) {

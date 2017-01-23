@@ -146,7 +146,7 @@ class DetailNewViewController: UIViewController, UIWebViewDelegate {
                     self.webview.loadHTMLString(likeContent, baseURL: nil)
 //                    self.content.text = likeContent.fromBase64()?.html2String
                 }else {
-                    ProjectCommon.initAlertView(viewController: self, title: "", message: resultDictionary["message"] as! String, buttonArray: ["Đóng"], onCompletion: { (index) in
+                    ProjectCommon.initAlertView(viewController: self, title: "", message:"Không thể xác định trạng thái Like ở thời điểm này,vui lòng quay lại sau", buttonArray: ["Đóng"], onCompletion: { (index) in
                     })
                 }
             }
