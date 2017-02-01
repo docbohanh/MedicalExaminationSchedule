@@ -29,6 +29,10 @@
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
 		845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D5A291DF5EDAF00BDA45C /* headerView.xib */; };
+		8471F6181E42858800327706 /* RecurringScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */; };
+		8471F61A1E4285A100327706 /* DrugScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */; };
+		8471F61C1E428C7D00327706 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F61B1E428C7D00327706 /* AlarmListViewController.swift */; };
+		8471F61E1E428EF800327706 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F61D1E428EF800327706 /* ScheduleModel.swift */; };
 		8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA921E314C630052E201 /* KYDrawerController.swift */; };
 		8476CA961E314C630052E201 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */; };
 		8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */; };
@@ -192,6 +196,10 @@
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoctorAddressTableViewCell.swift; path = ../DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = headerView.swift; path = ../headerView.swift; sourceTree = "<group>"; };
 		845D5A291DF5EDAF00BDA45C /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = headerView.xib; path = ../headerView.xib; sourceTree = "<group>"; };
+		8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurringScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		8471F61B1E428C7D00327706 /* AlarmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		8471F61D1E428EF800327706 /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		8476CA921E314C630052E201 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
@@ -399,7 +407,9 @@
 		842641881DF2B09400EAB5CE /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				8471F6161E42830000327706 /* Cell */,
 				8426418E1DF2B24600EAB5CE /* Schedule.storyboard */,
+				8471F61B1E428C7D00327706 /* AlarmListViewController.swift */,
 				84321D601DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift */,
 				84321D621DF723C700CCA4D4 /* DoctorHistoryViewController.swift */,
 			);
@@ -476,6 +486,15 @@
 				8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8471F6161E42830000327706 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */,
+				8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8476CA911E314C630052E201 /* Reveal */ = {
@@ -710,6 +729,7 @@
 				D21A80211E16DA6C00DF6077 /* CalendarTimeObject.swift */,
 				D2F4A9FB1E17ABAD00EE737B /* CalendarBookModel.swift */,
 				D26F57751E194B4A009E8FB8 /* ImageModel.swift */,
+				8471F61D1E428EF800327706 /* ScheduleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1068,6 +1088,7 @@
 				8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */,
 				84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */,
 				D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */,
+				8471F6181E42858800327706 /* RecurringScheduleTableViewCell.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
 				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
@@ -1091,6 +1112,7 @@
 				84F88A421E2FEF2F0053ABB2 /* NewsMenuViewController.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
+				8471F61E1E428EF800327706 /* ScheduleModel.swift in Sources */,
 				D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */,
 				D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */,
 				D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */,
@@ -1111,6 +1133,7 @@
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
+				8471F61C1E428C7D00327706 /* AlarmListViewController.swift in Sources */,
 				D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */,
 				D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */,
 				844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */,
@@ -1126,6 +1149,7 @@
 				EA05ED231DF81DF9002DD339 /* SetupIntroduceTableViewCell.swift in Sources */,
 				843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */,
 				EA05ED1A1DF81058002DD339 /* SetupTimerTableViewCell.swift in Sources */,
+				8471F61A1E4285A100327706 /* DrugScheduleTableViewCell.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
 				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
 				8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */,
