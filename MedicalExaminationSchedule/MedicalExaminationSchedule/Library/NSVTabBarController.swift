@@ -40,10 +40,9 @@ class NSVTabBarController: UITabBarController , UITabBarControllerDelegate{
         let doctorAdrressVC = locationStoryboard.instantiateViewController(withIdentifier: "ServiceViewController") as! ServiceViewController
         doctorAdrressVC.tabBarItem = UITabBarItem.init(title: "Dịch vụ", image: UIImage.init(named: ""), tag: 2)
         
-        
         //Schedule
-        let scheduleStoryBoard = UIStoryboard.init(name: "Schedule", bundle: nil)
-        let doctorHistoryVC = scheduleStoryBoard.instantiateViewController(withIdentifier: "DoctorHistoryViewController") as! DoctorHistoryViewController
+        let scheduleStoryBoard = UIStoryboard.init(name: "Alarm", bundle: nil)
+        let doctorHistoryVC = scheduleStoryBoard.instantiateViewController(withIdentifier: "MainAlarmListViewController") as! MainAlarmListViewController
         doctorHistoryVC.tabBarItem = UITabBarItem.init(title: "Lịch hẹn", image: UIImage.init(named: ""), tag: 3)
         
         // More

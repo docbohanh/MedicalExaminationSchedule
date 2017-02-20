@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol RecurringScheduleAlarmDelegate {
+    func changeRecurringScheduleAlarmStatus(sender:UIButton, at indexPath:IndexPath)
+}
 class RecurringScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,11 +17,20 @@ class RecurringScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var alarmButton: UIButton!
     @IBOutlet weak var amLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    var indexPath = IndexPath()
+    
+    var delegate:RecurringScheduleAlarmDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBAction func changeCurrentAlarmStatus(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        delegate?.changeRecurringScheduleAlarmStatus(sender: sender, at: indexPath)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

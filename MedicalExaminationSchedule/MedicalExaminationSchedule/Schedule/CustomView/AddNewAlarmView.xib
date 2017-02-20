@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="AddNewAlarmView" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-p0-oZw" customClass="AddNewAlarmView" customModule="MedicalExaminationSchedule" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ry0-uu-PRh">
+                    <rect key="frame" x="67" y="253.5" width="240" height="160"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lịch uống thuốc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOj-QQ-0Sj">
+                            <rect key="frame" x="16" y="0.0" width="208" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="9Au-jy-PhS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm_activel" translatesAutoresizingMaskIntoConstraints="NO" id="RGw-49-mlI">
+                            <rect key="frame" x="16" y="60" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="HJW-0U-xXh"/>
+                                <constraint firstAttribute="width" constant="25" id="aOT-ZI-k70"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0e-ri-dge">
+                            <rect key="frame" x="51" y="97" width="173" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="lPl-YA-6nw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Lịch hàng tuần">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alarm_activel" translatesAutoresizingMaskIntoConstraints="NO" id="xJe-vd-mGA">
+                            <rect key="frame" x="16" y="105" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="VHN-n3-n8K"/>
+                                <constraint firstAttribute="width" constant="25" id="bG0-Bt-cP9"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ciC-fM-Bdf">
+                            <rect key="frame" x="51" y="52" width="173" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="5wh-5j-9Wd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Lịch định kỳ">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jB6-DP-bNL">
+                            <rect key="frame" x="16" y="92" width="224" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="zL7-qT-CwB"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="c0e-ri-dge" firstAttribute="centerY" secondItem="xJe-vd-mGA" secondAttribute="centerY" id="8QP-YQ-kii"/>
+                        <constraint firstItem="TOj-QQ-0Sj" firstAttribute="top" secondItem="ry0-uu-PRh" secondAttribute="top" id="8kw-9j-ELN"/>
+                        <constraint firstItem="ciC-fM-Bdf" firstAttribute="centerY" secondItem="RGw-49-mlI" secondAttribute="centerY" id="E12-8e-mL1"/>
+                        <constraint firstAttribute="width" constant="240" id="FBK-7S-nrB"/>
+                        <constraint firstItem="jB6-DP-bNL" firstAttribute="leading" secondItem="ry0-uu-PRh" secondAttribute="leading" constant="16" id="JA2-zW-ynu"/>
+                        <constraint firstAttribute="trailing" secondItem="jB6-DP-bNL" secondAttribute="trailing" id="LeB-M3-DCi"/>
+                        <constraint firstAttribute="height" constant="160" id="QX5-eI-P2P"/>
+                        <constraint firstItem="TOj-QQ-0Sj" firstAttribute="leading" secondItem="ry0-uu-PRh" secondAttribute="leading" constant="16" id="Qjl-uP-Ee5"/>
+                        <constraint firstItem="RGw-49-mlI" firstAttribute="top" secondItem="TOj-QQ-0Sj" secondAttribute="bottom" constant="20" id="ReN-nj-NXC"/>
+                        <constraint firstItem="ciC-fM-Bdf" firstAttribute="leading" secondItem="RGw-49-mlI" secondAttribute="trailing" constant="10" id="cd1-95-KEN"/>
+                        <constraint firstItem="jB6-DP-bNL" firstAttribute="top" secondItem="ciC-fM-Bdf" secondAttribute="bottom" id="d29-2T-8xq"/>
+                        <constraint firstAttribute="trailing" secondItem="ciC-fM-Bdf" secondAttribute="trailing" constant="16" id="fL8-1T-zPG"/>
+                        <constraint firstItem="RGw-49-mlI" firstAttribute="leading" secondItem="ry0-uu-PRh" secondAttribute="leading" constant="16" id="gcO-hC-3iE"/>
+                        <constraint firstItem="xJe-vd-mGA" firstAttribute="leading" secondItem="ry0-uu-PRh" secondAttribute="leading" constant="16" id="hhp-60-iqJ"/>
+                        <constraint firstItem="c0e-ri-dge" firstAttribute="leading" secondItem="RGw-49-mlI" secondAttribute="trailing" constant="10" id="kaY-2y-TQa"/>
+                        <constraint firstAttribute="trailing" secondItem="TOj-QQ-0Sj" secondAttribute="trailing" constant="16" id="oKe-uN-Ju7"/>
+                        <constraint firstItem="xJe-vd-mGA" firstAttribute="top" secondItem="RGw-49-mlI" secondAttribute="bottom" constant="20" id="rAR-1P-7mc"/>
+                        <constraint firstAttribute="trailing" secondItem="c0e-ri-dge" secondAttribute="trailing" constant="16" id="vBW-PD-yWe"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.095801092680000005" green="0.90391701459999996" blue="0.88607388730000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ry0-uu-PRh" firstAttribute="centerX" secondItem="Xb8-p0-oZw" secondAttribute="centerX" id="E90-n0-cs1"/>
+                <constraint firstItem="ry0-uu-PRh" firstAttribute="centerY" secondItem="Xb8-p0-oZw" secondAttribute="centerY" id="Grs-51-YLL"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="4"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                    <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="34.5" y="118.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_alarm_activel" width="22" height="22"/>
+    </resources>
+</document>

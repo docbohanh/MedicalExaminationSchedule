@@ -70,8 +70,20 @@ enum USER_SEX:String {
     userSexFemale = "FEMALE"
 };
 
-
-
+enum EDIT_ALARM: Int {
+    case
+    edit = 0
+    case
+    delete = 1
+    case
+    hideView = 2
+}
+enum ALARM_TYPE: Int {
+    case
+    recurring = 0
+    case
+    week = 1
+}
 
 
 

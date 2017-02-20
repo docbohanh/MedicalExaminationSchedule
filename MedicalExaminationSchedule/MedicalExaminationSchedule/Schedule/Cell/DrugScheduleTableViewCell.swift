@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol DrugScheduleAlarmDelegate {
+    func changeDrugScheduleAlarmStatus(sender:UIButton, at indexPath:IndexPath)
+}
 class DrugScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mondayLabel: UILabel!
@@ -20,12 +22,19 @@ class DrugScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var alarmButton: UIButton!
     @IBOutlet weak var amLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-
+    var delegate: DrugScheduleAlarmDelegate?
+    var indexPath = IndexPath()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBAction func changeCurrentAlarmStatus(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        delegate?.changeDrugScheduleAlarmStatus(sender: sender, at: indexPath)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

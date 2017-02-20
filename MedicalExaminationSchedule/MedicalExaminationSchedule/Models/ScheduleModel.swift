@@ -15,6 +15,5 @@ class ScheduleModel: NSObject {
     var time : String?
     
     init(dict:[String:AnyObject]){
-    
     }
 }

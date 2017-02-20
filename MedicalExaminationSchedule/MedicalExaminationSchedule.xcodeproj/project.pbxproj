@@ -8,10 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */; };
+		840E961A1E48E54900BE8EFB /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E96191E48E54900BE8EFB /* UIView+Extension.m */; };
+		840E961D1E48E5BC00BE8EFB /* CALayer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E961C1E48E5BC00BE8EFB /* CALayer+Extension.m */; };
+		840E961F1E48FADE00BE8EFB /* ScheduleWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E961E1E48FADE00BE8EFB /* ScheduleWeekViewController.swift */; };
+		840E96211E48FAF500BE8EFB /* ScheduleRecurringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840E96201E48FAF500BE8EFB /* ScheduleRecurringViewController.swift */; };
 		8426418B1DF2B16B00EAB5CE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418A1DF2B16B00EAB5CE /* News.storyboard */; };
 		8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418C1DF2B1E500EAB5CE /* Locations.storyboard */; };
 		8426418F1DF2B24600EAB5CE /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8426418E1DF2B24600EAB5CE /* Schedule.storyboard */; };
 		842641911DF2B25A00EAB5CE /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842641901DF2B25A00EAB5CE /* More.storyboard */; };
+		84267E981E57974D00DD29DD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267E971E57974D00DD29DD /* Alarm.swift */; };
+		84267E9D1E579B5E00DD29DD /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267E991E579B5E00DD29DD /* GlobalParams.swift */; };
+		84267E9E1E579B5E00DD29DD /* LabelEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267E9A1E579B5E00DD29DD /* LabelEditViewController.swift */; };
+		84267E9F1E579B5E00DD29DD /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267E9B1E579B5E00DD29DD /* Scheduler.swift */; };
+		84267EA01E579B5E00DD29DD /* WeekdaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267E9C1E579B5E00DD29DD /* WeekdaysViewController.swift */; };
+		84267EA21E579B6A00DD29DD /* AlarmAddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84267EA11E579B6A00DD29DD /* AlarmAddEditViewController.swift */; };
+		8426C7591E4A1EB6006D1095 /* AddNewAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8426C7581E4A1EB6006D1095 /* AddNewAlarmView.swift */; };
 		84321D541DF6C3B100CCA4D4 /* DoctorManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */; };
 		84321D571DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D561DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift */; };
 		84321D591DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84321D581DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift */; };
@@ -25,14 +36,21 @@
 		843292CB1DFF3778004C44A3 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843292CA1DFF3778004C44A3 /* CustomUITextField.swift */; };
 		844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844520B51E18E53C00444AA1 /* AddressMapView.swift */; };
 		844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844520B71E18E55800444AA1 /* AddressMapView.xib */; };
+		844C9FF11E5A02E0000DBC51 /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844C9FF01E5A02E0000DBC51 /* Alarm.storyboard */; };
+		844C9FF31E5A032E000DBC51 /* MainAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C9FF21E5A032E000DBC51 /* MainAlarmViewController.swift */; };
+		844C9FF51E5A0CEE000DBC51 /* bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 844C9FF41E5A0CEE000DBC51 /* bell.mp3 */; };
+		844C9FF71E5A0F18000DBC51 /* CustomAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C9FF61E5A0F18000DBC51 /* CustomAlarmViewController.swift */; };
+		844C9FF91E5A16BB000DBC51 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C9FF81E5A16BB000DBC51 /* AlarmTableViewCell.swift */; };
+		844C9FFB1E5A1947000DBC51 /* MainAlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C9FFA1E5A1947000DBC51 /* MainAlarmListViewController.swift */; };
 		845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */; };
 		845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */; };
 		845D5A281DF5EDA300BDA45C /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D5A271DF5EDA300BDA45C /* headerView.swift */; };
 		845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D5A291DF5EDAF00BDA45C /* headerView.xib */; };
 		8471F6181E42858800327706 /* RecurringScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */; };
 		8471F61A1E4285A100327706 /* DrugScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */; };
-		8471F61C1E428C7D00327706 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F61B1E428C7D00327706 /* AlarmListViewController.swift */; };
 		8471F61E1E428EF800327706 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471F61D1E428EF800327706 /* ScheduleModel.swift */; };
+		847524361E47146E000E3185 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847524351E47146E000E3185 /* CustomAlertView.swift */; };
+		847524381E47147A000E3185 /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847524371E47147A000E3185 /* CustomAlertView.xib */; };
 		8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA921E314C630052E201 /* KYDrawerController.swift */; };
 		8476CA961E314C630052E201 /* KYEmbedDrawerControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */; };
 		8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */; };
@@ -46,7 +64,6 @@
 		84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42CE1DE16FE10059B057 /* AppDelegate.swift */; };
 		84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D01DE16FE10059B057 /* ViewController.swift */; };
 		84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D21DE16FE10059B057 /* Main.storyboard */; };
-		84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */; };
 		84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42D81DE16FE10059B057 /* Assets.xcassets */; };
 		84CB42DC1DE16FE10059B057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */; };
 		84CB42E71DE16FE10059B057 /* MedicalExaminationScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB42E61DE16FE10059B057 /* MedicalExaminationScheduleTests.swift */; };
@@ -58,6 +75,7 @@
 		84F88A4B1E3000FC0053ABB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4A1E3000FB0053ABB2 /* UIKit.framework */; };
 		84F88A4D1E3001E30053ABB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4C1E3001E30053ABB2 /* Foundation.framework */; };
 		84F88A4F1E3001EA0053ABB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F88A4E1E3001EA0053ABB2 /* CoreGraphics.framework */; };
+		84F8EF6E1E501A59004A8C8D /* AddNewAlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F8EF6D1E501A59004A8C8D /* AddNewAlarmView.xib */; };
 		8B3855801E1C93A500894684 /* RefreshControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */; };
 		8B47A89F1DF79FF1001868EE /* BottomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B47A89E1DF79FF1001868EE /* BottomButtonTableViewCell.xib */; };
 		8B47A8A11DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */; };
@@ -174,10 +192,23 @@
 		581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6894E3A1073F7D6578130B8F /* Pods-MedicalExaminationScheduleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleUITests/Pods-MedicalExaminationScheduleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8075232E2212CC7B148C5FBC /* Pods-MedicalExaminationScheduleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.release.xcconfig"; sourceTree = "<group>"; };
+		840E96181E48E54900BE8EFB /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		840E96191E48E54900BE8EFB /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		840E961B1E48E5BC00BE8EFB /* CALayer+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Extension.h"; sourceTree = "<group>"; };
+		840E961C1E48E5BC00BE8EFB /* CALayer+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Extension.m"; sourceTree = "<group>"; };
+		840E961E1E48FADE00BE8EFB /* ScheduleWeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWeekViewController.swift; sourceTree = "<group>"; };
+		840E96201E48FAF500BE8EFB /* ScheduleRecurringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRecurringViewController.swift; sourceTree = "<group>"; };
 		8426418A1DF2B16B00EAB5CE /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		8426418C1DF2B1E500EAB5CE /* Locations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Locations.storyboard; sourceTree = "<group>"; };
 		8426418E1DF2B24600EAB5CE /* Schedule.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Schedule.storyboard; sourceTree = "<group>"; };
 		842641901DF2B25A00EAB5CE /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		84267E971E57974D00DD29DD /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		84267E991E579B5E00DD29DD /* GlobalParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalParams.swift; sourceTree = "<group>"; };
+		84267E9A1E579B5E00DD29DD /* LabelEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelEditViewController.swift; sourceTree = "<group>"; };
+		84267E9B1E579B5E00DD29DD /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		84267E9C1E579B5E00DD29DD /* WeekdaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdaysViewController.swift; sourceTree = "<group>"; };
+		84267EA11E579B6A00DD29DD /* AlarmAddEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmAddEditViewController.swift; sourceTree = "<group>"; };
+		8426C7581E4A1EB6006D1095 /* AddNewAlarmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewAlarmView.swift; sourceTree = "<group>"; };
 		84321D531DF6C3B100CCA4D4 /* DoctorManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorManagementViewController.swift; sourceTree = "<group>"; };
 		84321D561DF6DF4C00CCA4D4 /* InformationDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationDoctorViewController.swift; sourceTree = "<group>"; };
 		84321D581DF6DF6900CCA4D4 /* DoctorProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,14 +223,21 @@
 		843292CA1DFF3778004C44A3 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		844520B51E18E53C00444AA1 /* AddressMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressMapView.swift; sourceTree = "<group>"; };
 		844520B71E18E55800444AA1 /* AddressMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressMapView.xib; sourceTree = "<group>"; };
+		844C9FF01E5A02E0000DBC51 /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
+		844C9FF21E5A032E000DBC51 /* MainAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAlarmViewController.swift; sourceTree = "<group>"; };
+		844C9FF41E5A0CEE000DBC51 /* bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bell.mp3; sourceTree = "<group>"; };
+		844C9FF61E5A0F18000DBC51 /* CustomAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlarmViewController.swift; sourceTree = "<group>"; };
+		844C9FF81E5A16BB000DBC51 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		844C9FFA1E5A1947000DBC51 /* MainAlarmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAlarmListViewController.swift; sourceTree = "<group>"; };
 		845D5A231DF5E42B00BDA45C /* DoctorAddressListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorAddressListViewController.swift; sourceTree = "<group>"; };
 		845D5A251DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoctorAddressTableViewCell.swift; path = ../DoctorAddressTableViewCell.swift; sourceTree = "<group>"; };
 		845D5A271DF5EDA300BDA45C /* headerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = headerView.swift; path = ../headerView.swift; sourceTree = "<group>"; };
 		845D5A291DF5EDAF00BDA45C /* headerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = headerView.xib; path = ../headerView.xib; sourceTree = "<group>"; };
 		8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurringScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugScheduleTableViewCell.swift; sourceTree = "<group>"; };
-		8471F61B1E428C7D00327706 /* AlarmListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
 		8471F61D1E428EF800327706 /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		847524351E47146E000E3185 /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		847524371E47147A000E3185 /* CustomAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		8476CA921E314C630052E201 /* KYDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYDrawerController.swift; sourceTree = "<group>"; };
 		8476CA931E314C630052E201 /* KYEmbedDrawerControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedDrawerControllerSegue.swift; sourceTree = "<group>"; };
 		8476CA941E314C630052E201 /* KYEmbedMainControllerSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KYEmbedMainControllerSegue.swift; sourceTree = "<group>"; };
@@ -214,7 +252,6 @@
 		84CB42CE1DE16FE10059B057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CB42D01DE16FE10059B057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84CB42D31DE16FE10059B057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84CB42D61DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MedicalExaminationSchedule.xcdatamodel; sourceTree = "<group>"; };
 		84CB42D81DE16FE10059B057 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84CB42DB1DE16FE10059B057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84CB42DD1DE16FE10059B057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,6 +268,7 @@
 		84F88A4A1E3000FB0053ABB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		84F88A4C1E3001E30053ABB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84F88A4E1E3001EA0053ABB2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84F8EF6D1E501A59004A8C8D /* AddNewAlarmView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewAlarmView.xib; sourceTree = "<group>"; };
 		8B38557F1E1C93A500894684 /* RefreshControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshControlViewController.swift; sourceTree = "<group>"; };
 		8B47A89E1DF79FF1001868EE /* BottomButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		8B47A8A01DF7A4F7001868EE /* FirstRegisterDoctorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstRegisterDoctorViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +403,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840E96171E48E52000BE8EFB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				840E96181E48E54900BE8EFB /* UIView+Extension.h */,
+				840E96191E48E54900BE8EFB /* UIView+Extension.m */,
+				840E961B1E48E5BC00BE8EFB /* CALayer+Extension.h */,
+				840E961C1E48E5BC00BE8EFB /* CALayer+Extension.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		842641861DF2B07E00EAB5CE /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,10 +457,23 @@
 			isa = PBXGroup;
 			children = (
 				8471F6161E42830000327706 /* Cell */,
+				847524321E471432000E3185 /* CustomView */,
 				8426418E1DF2B24600EAB5CE /* Schedule.storyboard */,
-				8471F61B1E428C7D00327706 /* AlarmListViewController.swift */,
+				84267E971E57974D00DD29DD /* Alarm.swift */,
+				84267E991E579B5E00DD29DD /* GlobalParams.swift */,
+				84267E9A1E579B5E00DD29DD /* LabelEditViewController.swift */,
+				84267E9B1E579B5E00DD29DD /* Scheduler.swift */,
+				84267E9C1E579B5E00DD29DD /* WeekdaysViewController.swift */,
+				84267EA11E579B6A00DD29DD /* AlarmAddEditViewController.swift */,
 				84321D601DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift */,
 				84321D621DF723C700CCA4D4 /* DoctorHistoryViewController.swift */,
+				840E961E1E48FADE00BE8EFB /* ScheduleWeekViewController.swift */,
+				840E96201E48FAF500BE8EFB /* ScheduleRecurringViewController.swift */,
+				844C9FF21E5A032E000DBC51 /* MainAlarmViewController.swift */,
+				844C9FFA1E5A1947000DBC51 /* MainAlarmListViewController.swift */,
+				844C9FF61E5A0F18000DBC51 /* CustomAlarmViewController.swift */,
+				844C9FF01E5A02E0000DBC51 /* Alarm.storyboard */,
+				844C9FF41E5A0CEE000DBC51 /* bell.mp3 */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -460,6 +522,7 @@
 		84321D641DF7469100CCA4D4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				840E96171E48E52000BE8EFB /* Extension */,
 				8476CA911E314C630052E201 /* Reveal */,
 				D2E69D7F1E1A88D300469584 /* FooterCell.swift */,
 				D2E69D801E1A88D300469584 /* FooterCell.xib */,
@@ -493,8 +556,27 @@
 			children = (
 				8471F6171E42858800327706 /* RecurringScheduleTableViewCell.swift */,
 				8471F6191E4285A100327706 /* DrugScheduleTableViewCell.swift */,
+				844C9FF81E5A16BB000DBC51 /* AlarmTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8475242F1E470DA9000E3185 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		847524321E471432000E3185 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				847524351E47146E000E3185 /* CustomAlertView.swift */,
+				847524371E47147A000E3185 /* CustomAlertView.xib */,
+				8426C7581E4A1EB6006D1095 /* AddNewAlarmView.swift */,
+				84F8EF6D1E501A59004A8C8D /* AddNewAlarmView.xib */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		8476CA911E314C630052E201 /* Reveal */ = {
@@ -545,6 +627,7 @@
 				D22EE6421E1ABEBB00933D83 /* Default-568h@2x.png */,
 				8B7DD3B61E166B280080A814 /* GoogleSignIn.bundle */,
 				8BE747691E13B57500519416 /* github.com.cer */,
+				8475242F1E470DA9000E3185 /* Database */,
 				D2F778E41E01AE6E007D63E4 /* Models */,
 				D2EF30501DFD52AF00287924 /* APIManager */,
 				D2DE92571DF2A46B000C9BC7 /* logo_test@2x.png */,
@@ -564,7 +647,6 @@
 				EAA6D3081E2736790017900F /* GoogleService-Info.plist */,
 				84CB42DA1DE16FE10059B057 /* LaunchScreen.storyboard */,
 				84CB42DD1DE16FE10059B057 /* Info.plist */,
-				84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */,
 				D2DE92591DF2A84D000C9BC7 /* Define.swift */,
 			);
 			path = MedicalExaminationSchedule;
@@ -893,6 +975,9 @@
 				8426418D1DF2B1E500EAB5CE /* Locations.storyboard in Resources */,
 				84CB42D91DE16FE10059B057 /* Assets.xcassets in Resources */,
 				84321D5F1DF6DFF100CCA4D4 /* RateHeaderView.xib in Resources */,
+				847524381E47147A000E3185 /* CustomAlertView.xib in Resources */,
+				84F8EF6E1E501A59004A8C8D /* AddNewAlarmView.xib in Resources */,
+				844C9FF11E5A02E0000DBC51 /* Alarm.storyboard in Resources */,
 				D2DE92601DF2D45A000C9BC7 /* image_new_test@2x.png in Resources */,
 				84CB42D41DE16FE10059B057 /* Main.storyboard in Resources */,
 				EAA6D3091E2736790017900F /* GoogleService-Info.plist in Resources */,
@@ -903,6 +988,7 @@
 				D29E8C391DF723920000815B /* TextFieldNormalTableViewCell.xib in Resources */,
 				8BF746D11DF83CC8006C9B48 /* PhotoCollectionViewCell.xib in Resources */,
 				845D5A2A1DF5EDAF00BDA45C /* headerView.xib in Resources */,
+				844C9FF51E5A0CEE000DBC51 /* bell.mp3 in Resources */,
 				D29E8C411DF7260A0000815B /* ProfileTableViewCell.xib in Resources */,
 				844520B81E18E55800444AA1 /* AddressMapView.xib in Resources */,
 				EA05ED1E1DF815C2002DD339 /* SetupTimerHeaderView.xib in Resources */,
@@ -1090,6 +1176,8 @@
 				D22859BA1E081A2E00570A8F /* NewsModel.swift in Sources */,
 				8471F6181E42858800327706 /* RecurringScheduleTableViewCell.swift in Sources */,
 				84321D5D1DF6DFD700CCA4D4 /* RateHeaderView.swift in Sources */,
+				84267E9D1E579B5E00DD29DD /* GlobalParams.swift in Sources */,
+				84267EA01E579B5E00DD29DD /* WeekdaysViewController.swift in Sources */,
 				8BF746D71DF85644006C9B48 /* InviteDoctorViewController.swift in Sources */,
 				8BF746CD1DF83BB4006C9B48 /* ListPhotoViewController.swift in Sources */,
 				845D5A241DF5E42B00BDA45C /* DoctorAddressListViewController.swift in Sources */,
@@ -1097,6 +1185,7 @@
 				D2F778E61E01AE80007D63E4 /* UserModel.swift in Sources */,
 				EA04BE681E1DFE02009C23A2 /* ServiceLocationViewController.swift in Sources */,
 				D29E8C431DF729860000815B /* UpdateUserViewController.swift in Sources */,
+				844C9FF71E5A0F18000DBC51 /* CustomAlarmViewController.swift in Sources */,
 				D2DE925A1DF2A84D000C9BC7 /* Define.swift in Sources */,
 				8BD905A91E0AA3C900DBF1C3 /* CommentModel.swift in Sources */,
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
@@ -1109,22 +1198,28 @@
 				D26F57761E194B4A009E8FB8 /* ImageModel.swift in Sources */,
 				D2E89B7E1E18FFBC00DDA4A3 /* AssetGridViewController.swift in Sources */,
 				D2A349411E15679D000B7F48 /* UserSearchModel.swift in Sources */,
+				840E961D1E48E5BC00BE8EFB /* CALayer+Extension.m in Sources */,
 				84F88A421E2FEF2F0053ABB2 /* NewsMenuViewController.swift in Sources */,
 				D2EF30561DFD96DF00287924 /* NSVTabBarController.swift in Sources */,
 				84CB43011DE19A3C0059B057 /* SignInViewController.swift in Sources */,
 				8471F61E1E428EF800327706 /* ScheduleModel.swift in Sources */,
 				D242084F1E12D7B100C7760A /* IntroduceModel.swift in Sources */,
+				84267E981E57974D00DD29DD /* Alarm.swift in Sources */,
 				D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */,
 				D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
 				D26F57741E193099009E8FB8 /* NewImageViewController.swift in Sources */,
 				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,
+				844C9FFB1E5A1947000DBC51 /* MainAlarmListViewController.swift in Sources */,
 				D21A801E1E16D20100DF6077 /* SetupTimeTableViewCell.swift in Sources */,
 				D2E69D811E1A88D300469584 /* FooterCell.swift in Sources */,
-				84CB42D71DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld in Sources */,
 				EA05ED161DF7C533002DD339 /* setupTimeScheduleViewController.swift in Sources */,
 				84F88A3E1E2FEE870053ABB2 /* NewsTagTableViewCell.swift in Sources */,
+				847524361E47146E000E3185 /* CustomAlertView.swift in Sources */,
+				8426C7591E4A1EB6006D1095 /* AddNewAlarmView.swift in Sources */,
 				D2A42A4D1E04F8D500B7E19C /* LoadingOverlay.swift in Sources */,
+				840E961F1E48FADE00BE8EFB /* ScheduleWeekViewController.swift in Sources */,
+				84267EA21E579B6A00DD29DD /* AlarmAddEditViewController.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				8476CA991E3156760052E201 /* TagHeaderView.swift in Sources */,
@@ -1133,15 +1228,18 @@
 				D29E8C3C1DF7241E0000815B /* SelectGenderTableViewCell.swift in Sources */,
 				D29E8C401DF7260A0000815B /* ProfileTableViewCell.swift in Sources */,
 				D212650D1DF39F7B00C70F83 /* NormalTableViewCell.swift in Sources */,
-				8471F61C1E428C7D00327706 /* AlarmListViewController.swift in Sources */,
 				D21863621E13FEDB002C04C3 /* ImageViewExtension.swift in Sources */,
 				D2E69D7A1E1A0DB800469584 /* SelectBirthdayView.swift in Sources */,
+				840E961A1E48E54900BE8EFB /* UIView+Extension.m in Sources */,
 				844520B61E18E53C00444AA1 /* AddressMapView.swift in Sources */,
 				84ADD8C51E2D3126007BBE68 /* ServiceViewController.swift in Sources */,
+				844C9FF31E5A032E000DBC51 /* MainAlarmViewController.swift in Sources */,
+				840E96211E48FAF500BE8EFB /* ScheduleRecurringViewController.swift in Sources */,
 				D2E89B7B1E18D9C300DDA4A3 /* BottomButtonTableViewCell.swift in Sources */,
 				EA05ED1C1DF815B2002DD339 /* SetupTimerHeaderView.swift in Sources */,
 				D2EF30521DFD52BC00287924 /* APIManager.swift in Sources */,
 				D2F4A9FA1E17A2EE00EE737B /* HMSegmentedControl.m in Sources */,
+				84267E9F1E579B5E00DD29DD /* Scheduler.swift in Sources */,
 				8476CA971E314C630052E201 /* KYEmbedMainControllerSegue.swift in Sources */,
 				D2E89B7F1E18FFBC00DDA4A3 /* GridViewCell.swift in Sources */,
 				D27DE7481E16BE8500169D4E /* SettingCalendarViewController.swift in Sources */,
@@ -1152,6 +1250,7 @@
 				8471F61A1E4285A100327706 /* DrugScheduleTableViewCell.swift in Sources */,
 				D2DE92651DF2DA59000C9BC7 /* NewViewController.swift in Sources */,
 				D29E8C4C1DF743430000815B /* CreateCommentView.swift in Sources */,
+				844C9FF91E5A16BB000DBC51 /* AlarmTableViewCell.swift in Sources */,
 				8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */,
 				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
 				EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */,
@@ -1159,6 +1258,7 @@
 				D21A80201E16D3DB00DF6077 /* SettingTimeViewController.swift in Sources */,
 				84ADD8CC1E2D4409007BBE68 /* ClinicViewController.swift in Sources */,
 				84321D5B1DF6DFB300CCA4D4 /* CommentTableViewCell.swift in Sources */,
+				84267E9E1E579B5E00DD29DD /* LabelEditViewController.swift in Sources */,
 				D21A80241E16F42C00DF6077 /* SelectTimeView.swift in Sources */,
 				84ADD8C81E2D43C9007BBE68 /* DoctorListViewController.swift in Sources */,
 				84CB42CF1DE16FE10059B057 /* AppDelegate.swift in Sources */,
@@ -1470,19 +1570,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		84CB42D51DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				84CB42D61DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodel */,
-			);
-			currentVersion = 84CB42D61DE16FE10059B057 /* MedicalExaminationSchedule.xcdatamodel */;
-			path = MedicalExaminationSchedule.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 84CB42C31DE16FE00059B057 /* Project object */;
 }
