@@ -8,15 +8,32 @@
 
 import UIKit
 
-class ScheduleRecurringViewController: UIViewController {
+class ScheduleRecurringViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,CKCalendarDelegate {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loopPickerView: UIPickerView!
 
+    @IBOutlet weak var startDateButton: UIButton!
+    @IBOutlet weak var loopButton: UIButton!
+    @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var minuteLabel: UILabel!
+    @IBOutlet weak var backgoundButton: UIButton!
     
+    @IBOutlet weak var calendarView: CKCalendarView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendarView.delegate = self;
+        calendarView.layer.cornerRadius = 5.0;
+        calendarView.layer.borderColor = UIColor.lightGray.cgColor
+        calendarView.layer.borderWidth = 1.0
+        calendarView.select(Date(), makeVisible: true)
+        calendarView.onlyShowCurrentMonth = true;
+        calendarView.adaptHeightToNumberOfWeeksInMonth = true;
         // Do any additional setup after loading the view.
+    }
+    @IBAction func tappedBackground(_ sender: UIButton) {
+        sender.isHidden = true
+        calendarView.isHidden = true
     }
     @IBAction func tappedUpHour(_ sender: UIButton) {
         var hour = Int(hourLabel.text!)
@@ -41,7 +58,7 @@ class ScheduleRecurringViewController: UIViewController {
     }
     
     @IBAction func tappedUpMinute(_ sender: Any) {
-        var minute:Int = Int(hourLabel.text!)!
+        var minute:Int = Int(minuteLabel.text!)!
         if minute < 59 {
             minute += 1
         } else {
@@ -55,7 +72,7 @@ class ScheduleRecurringViewController: UIViewController {
     }
     
     @IBAction func tappedDownMinute(_ sender: UIButton) {
-        var minute:Int = Int(hourLabel.text!)!
+        var minute:Int = Int(minuteLabel.text!)!
         if minute > 0 {
             minute -= 1
         } else {
@@ -87,18 +104,51 @@ class ScheduleRecurringViewController: UIViewController {
     @IBAction func tappedSave(_ sender: UIButton) {
     }
     
+    @IBAction func chooseStartDate(_ sender: UIButton) {
+        calendarView.isHidden = false
+        backgoundButton.isHidden = false
+        loopPickerView.isHidden = true
+    }
     @IBAction func tappedChooseDay(_ sender: UIButton) {
+        loopPickerView.isHidden = !loopPickerView.isHidden
     }
     
     @IBAction func tappedRecurringWeek(_ sender: UIButton) {
     }
     
     @IBAction func setImageNotification(_ sender: UIButton) {
+        
     }
     
     @IBAction func tappedSetupDate(_ sender: UIButton) {
+        
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1;
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 100;
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        loopButton.setTitle(String(row), for: UIControlState.normal)
+    }
+    
+    func calendar(_ calendar: CKCalendarView!, didChangeToMonth date: Date!) {
+    }
+    
+    func calendar(_ calendar: CKCalendarView!, didSelect date: Date!) {
+        // your code here
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        startDateButton.setTitle(dateFormatter.string(from: date), for: UIControlState.normal)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

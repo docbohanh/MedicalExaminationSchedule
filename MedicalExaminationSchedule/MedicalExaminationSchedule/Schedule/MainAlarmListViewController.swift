@@ -21,14 +21,14 @@ class MainAlarmListViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsSelectionDuringEditing = true
-        
+        backgroundButton.alpha = 0.5
         // Do any additional setup after loading the view.
     }
 
     @IBAction func tappedBackground(_ sender: UIButton) {
         backgroundButton.isHidden = true
         addNewAlarmView.isHidden = true
-        noAlarmView.isHidden = true
+        noAlarmView.isHidden = false
     }
     @IBAction func tappedAddNewLoop(_ sender: UIButton) {
         backgroundButton.isHidden = true

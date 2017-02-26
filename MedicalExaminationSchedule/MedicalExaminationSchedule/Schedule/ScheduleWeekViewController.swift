@@ -36,6 +36,12 @@ class ScheduleWeekViewController: UIViewController {
     }
     
     @IBAction func tappedSave(_ sender: UIButton) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeStr = dateFormatter.string(from: date)
+        
+        Alarms.sharedInstance.append( Alarm(label: Global.label, timeStr: timeStr, date: date,  enabled: false, snoozeEnabled: Global.snoozeEnabled, UUID: UUID().uuidString, mediaID: "", mediaLabel: "bell", repeatWeekdays: Global.weekdays))
+        scheduler.reSchedule()
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {
@@ -65,7 +71,7 @@ class ScheduleWeekViewController: UIViewController {
     }
     
     @IBAction func tappedUpMinute(_ sender: UIButton) {
-        var minute:Int = Int(hourLabel.text!)!
+        var minute:Int = Int(minuteLabel.text!)!
         if minute < 59 {
             minute += 1
         } else {
@@ -79,7 +85,7 @@ class ScheduleWeekViewController: UIViewController {
     }
     
     @IBAction func tappedDownMinute(_ sender: UIButton) {
-        var minute:Int = Int(hourLabel.text!)!
+        var minute:Int = Int(minuteLabel.text!)!
         if minute > 0 {
             minute -= 1
         } else {
