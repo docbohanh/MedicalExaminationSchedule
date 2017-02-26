@@ -15,7 +15,7 @@
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
 	<false/>
 	<key>IS_GCM_ENABLED</key>
@@ -24,5 +24,7 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:423417535450:ios:e2fdad111052c749</string>
+	<key>TRACKING_ID</key>
+	<string>UA-90141347-1</string>
 </dict>
 </plist>

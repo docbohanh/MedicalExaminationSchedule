@@ -21,6 +21,7 @@ class DoctorHistoryTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    
     func initCell(object:CalendarBookModel) -> Void {
         doctorNameLabel.text = object.user_name
 //        specialLabel.text = String.init(format: "Chuyên ngành:%@", object.)

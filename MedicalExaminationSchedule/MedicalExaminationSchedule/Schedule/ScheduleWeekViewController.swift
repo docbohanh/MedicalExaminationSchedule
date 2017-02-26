@@ -25,10 +25,22 @@ class ScheduleWeekViewController: UIViewController {
     @IBOutlet weak var timeButton: UIButton!
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var hourLabel: UILabel!
+    var scheduler: AlarmSchedulerDelegate = Scheduler()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
 
     @IBAction func tappedExit(_ sender: UIButton) {
@@ -38,9 +50,9 @@ class ScheduleWeekViewController: UIViewController {
     @IBAction func tappedSave(_ sender: UIButton) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let timeStr = dateFormatter.string(from: date)
+        let timeStr = dateFormatter.string(from: Date())
         
-        Alarms.sharedInstance.append( Alarm(label: Global.label, timeStr: timeStr, date: date,  enabled: false, snoozeEnabled: Global.snoozeEnabled, UUID: UUID().uuidString, mediaID: "", mediaLabel: "bell", repeatWeekdays: Global.weekdays))
+        Alarms.sharedInstance.append( Alarm(label: Global.label, timeStr: timeStr, date: Date(),  enabled: false, snoozeEnabled: Global.snoozeEnabled, UUID: UUID().uuidString, mediaID: "", mediaLabel: "bell", repeatWeekdays: Global.weekdays))
         scheduler.reSchedule()
     }
     

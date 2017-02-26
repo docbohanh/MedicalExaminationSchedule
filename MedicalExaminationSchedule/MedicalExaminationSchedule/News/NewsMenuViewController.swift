@@ -22,13 +22,20 @@ class NewsMenuViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 
     override func viewWillAppear(_ animated: Bool) {
-            let headerView = Bundle.main.loadNibNamed("TagHeaderView", owner: self, options: nil)?.first as! TagHeaderView
-            tableview.tableHeaderView = headerView
+        let headerView = Bundle.main.loadNibNamed("TagHeaderView", owner: self, options: nil)?.first as! TagHeaderView
+        tableview.tableHeaderView = headerView
         if tagArray.count == 0 {
             DispatchQueue.global().async {
                 self.getNewsTagList(page_index: 0)
             }
         }
+        
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     func getNewsTagList(page_index:Int) {

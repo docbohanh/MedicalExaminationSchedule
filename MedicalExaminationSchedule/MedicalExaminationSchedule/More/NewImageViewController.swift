@@ -65,6 +65,13 @@ class NewImageViewController: UIViewController, UICollectionViewDelegate, UIColl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         thumbnailSize = CGSize(width: 100, height: 100)
+        
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "Screen NewImage ~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
     override func didReceiveMemoryWarning() {

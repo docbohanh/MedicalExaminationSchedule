@@ -38,11 +38,15 @@ PODS:
   - FirebaseInstanceID (1.0.8)
   - Google (3.0.3):
     - Google/Core (= 3.0.3)
+  - Google/Analytics (3.0.3):
+    - Google/Core
+    - GoogleAnalytics (~> 3.12)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
   - Google/SignIn (3.0.3):
     - Google/Core
     - GoogleSignIn (~> 4.0)
+  - GoogleAnalytics (3.17.0)
   - GoogleAppUtilities (1.1.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleAuthUtilities (2.0.2):
@@ -80,6 +84,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - Google
+  - Google/Analytics
   - Google/SignIn
   - GoogleMaps
   - GooglePlaces
@@ -99,6 +104,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleAuthUtilities: ccad2e0a9284699973ff57c0dd24c3893657fda4
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
@@ -111,6 +117,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
-PODFILE CHECKSUM: a52a5df37461bd4180e1153d0d883c3a813da791
+PODFILE CHECKSUM: 835975e7f1e23d835690b7e63599e6d94df6bc74
 
 COCOAPODS: 1.1.1

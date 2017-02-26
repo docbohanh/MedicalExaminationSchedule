@@ -39,6 +39,16 @@ class SettingTimeViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     func initPopupView() -> Void {
         selectTimePopup = UINib(nibName: "SelectTimeView", bundle: Bundle.main).instantiate(withOwner: self, options: nil)[0] as? SelectTimeView
         selectTimePopup?.frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height)

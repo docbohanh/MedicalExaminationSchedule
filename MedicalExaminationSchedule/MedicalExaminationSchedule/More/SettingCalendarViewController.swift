@@ -41,6 +41,16 @@ class SettingCalendarViewController: UIViewController, CKCalendarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     func setupView() -> Void {
         ProjectCommon.boundView(button: avatarImageView, cornerRadius: avatarImageView.frame.width/2, color: UIColor.white, borderWith: 1.0)
         ProjectCommon.boundViewWithColor(button: freeView, color: UIColor.clear)
