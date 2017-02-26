@@ -66,6 +66,13 @@ class AssetGridViewController: UICollectionViewController {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
+        
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
 
     override func viewDidAppear(_ animated: Bool) {

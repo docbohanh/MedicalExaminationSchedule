@@ -79,6 +79,14 @@ class SignInViewController: UIViewController,UITextFieldDelegate, GIDSignInUIDel
             self.performSegue(withIdentifier: "ShowTabBar", sender: self)
         }
         LoadingOverlay.shared.hideOverlayView()
+        
+        ///
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIScreenName, value: "Screen SignIn ~ \(type(of: self))")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(builder.build() as [NSObject : AnyObject])
+        
     }
     
     override func didReceiveMemoryWarning() {

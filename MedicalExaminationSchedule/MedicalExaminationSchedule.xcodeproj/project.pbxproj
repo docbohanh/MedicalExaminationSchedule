@@ -915,8 +915,7 @@
 				TargetAttributes = {
 					84CB42CA1DE16FE00059B057 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = Q38789M8SL;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					84CB42E11DE16FE10059B057 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1420,7 +1419,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q38789M8SL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1448,7 +1447,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = Q38789M8SL;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
