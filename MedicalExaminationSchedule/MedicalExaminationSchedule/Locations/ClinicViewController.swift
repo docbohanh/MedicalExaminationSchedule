@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import SwiftyUserDefaults
 
 class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
@@ -18,6 +19,8 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     //    @IBOutlet weak var locationSearchBar: UISearchBar!
+    
+    fileprivate var guideView: GuideView!
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -55,6 +58,8 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
         refreshControl = ProjectCommon.addPullRefreshControl(tableView, actionHandler: {
             self.pullToRefresh()
         })
+        
+        setupAllSubviews()
     }
     
     func pullToRefresh() -> Void {
@@ -86,8 +91,13 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupAllConstraint()
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     func hideKeyboard() {
         view.endEditing(true)
@@ -442,3 +452,34 @@ class ClinicViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.pullToRefresh()
     }
 }
+
+
+//MARK: SELECTOR
+extension ClinicViewController {
+    func didTapGuideView(_ sender: UITapGestureRecognizer) {
+        guard let view = guideView else { return }
+        view.setVisibilityOf(view, to: false)
+        Defaults[.isShowGuideClinic] = true
+    }
+}
+
+//MARK: SETUP VIEW
+extension ClinicViewController {
+    func setupAllSubviews() {
+        guideView = setupGuideView()
+        guideView.isUserInteractionEnabled = true
+        guideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapGuideView(_:))))
+        guideView.alpha = Defaults[.isShowGuideClinic] ? 0 : 1
+        view.addSubview(guideView)
+    }
+    
+    fileprivate func setupGuideView() -> GuideView {
+        let view = GuideView()
+        return view
+    }
+    
+    func setupAllConstraint() {
+        guideView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+    }
+}
+

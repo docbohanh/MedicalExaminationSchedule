@@ -10,7 +10,6 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-
 class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
     @IBOutlet weak var searchTextField: UITextField!
@@ -71,6 +70,7 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         refreshControl = ProjectCommon.addPullRefreshControl(doctorAddressTableView, actionHandler: {
             self.pullToRefresh()
         })
+        
     }
     
     func pullToRefresh() -> Void {
@@ -128,6 +128,11 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
 
     }
     override func viewDidLayoutSubviews() {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
     }
     
@@ -756,3 +761,4 @@ class DoctorAddressListViewController: UIViewController,UITableViewDataSource,UI
         self.pullToRefresh()
     }
 }
+

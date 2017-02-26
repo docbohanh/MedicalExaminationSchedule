@@ -9,6 +9,7 @@
 import UIKit
 import GooglePlaces
 import GoogleMaps
+import SwiftyUserDefaults
 
 class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,GMSMapViewDelegate {
     
@@ -18,6 +19,8 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     //    @IBOutlet weak var locationSearchBar: UISearchBar!
+    
+    fileprivate var guideView: GuideView!
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -55,6 +58,8 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
         refreshControl = ProjectCommon.addPullRefreshControl(tableView, actionHandler: {
             self.pullToRefresh()
         })
+        
+        setupAllSubviews()
     }
     
     func pullToRefresh() -> Void {
@@ -86,8 +91,13 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupAllConstraint()
+    }
+    
     @IBAction func tappedBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     func hideKeyboard() {
         view.endEditing(true)
@@ -441,3 +451,34 @@ class DrugStoreViewController: UIViewController,UITableViewDataSource,UITableVie
         self.pullToRefresh()
     }
 }
+
+
+//MARK: SELECTOR
+extension DrugStoreViewController {
+    func didTapGuideView(_ sender: UITapGestureRecognizer) {
+        guard let view = guideView else { return }
+        view.setVisibilityOf(view, to: false)
+        Defaults[.isShowGuideDrugStore] = true
+    }
+}
+
+//MARK: SETUP VIEW
+extension DrugStoreViewController {
+    func setupAllSubviews() {
+        guideView = setupGuideView()
+        guideView.isUserInteractionEnabled = true
+        guideView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.didTapGuideView(_:))))
+        guideView.alpha = Defaults[.isShowGuideDrugStore] ? 0 : 1
+        view.addSubview(guideView)
+    }
+    
+    fileprivate func setupGuideView() -> GuideView {
+        let view = GuideView()
+        return view
+    }
+    
+    func setupAllConstraint() {
+        guideView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+    }
+}
+

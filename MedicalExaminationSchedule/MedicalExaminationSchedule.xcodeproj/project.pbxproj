@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13A399D31E62D93F00DD4D17 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A399D21E62D93F00DD4D17 /* GuideView.swift */; };
+		13A399D51E62DF1E00DD4D17 /* ColorSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A399D41E62DF1E00DD4D17 /* ColorSupport.swift */; };
+		13A399D71E62DFA600DD4D17 /* ImageSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A399D61E62DFA600DD4D17 /* ImageSupport.swift */; };
+		13A399DB1E62E90900DD4D17 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13A399DA1E62E90900DD4D17 /* SwiftyUserDefaults.framework */; };
+		13A399DC1E62E90900DD4D17 /* SwiftyUserDefaults.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 13A399DA1E62E90900DD4D17 /* SwiftyUserDefaults.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		13A399DF1E62ECEA00DD4D17 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A399DE1E62ECEA00DD4D17 /* Constant.swift */; };
 		65863F21ABD0DDE2312AB843 /* Pods_MedicalExaminationSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BC263B775CC324843AC451 /* Pods_MedicalExaminationSchedule.framework */; };
 		840E961A1E48E54900BE8EFB /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E96191E48E54900BE8EFB /* UIView+Extension.m */; };
 		840E961D1E48E5BC00BE8EFB /* CALayer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E961C1E48E5BC00BE8EFB /* CALayer+Extension.m */; };
@@ -185,8 +191,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		13A399DD1E62E90900DD4D17 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				13A399DC1E62E90900DD4D17 /* SwiftyUserDefaults.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0F17756C69AD54587B1DA0BE /* Pods-MedicalExaminationSchedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationSchedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationSchedule/Pods-MedicalExaminationSchedule.release.xcconfig"; sourceTree = "<group>"; };
+		13A399D21E62D93F00DD4D17 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		13A399D41E62DF1E00DD4D17 /* ColorSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSupport.swift; sourceTree = "<group>"; };
+		13A399D61E62DFA600DD4D17 /* ImageSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSupport.swift; sourceTree = "<group>"; };
+		13A399DA1E62E90900DD4D17 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = MedicalExaminationSchedule/Framework/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
+		13A399DE1E62ECEA00DD4D17 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1F92D85D573E257A972657C5 /* Pods-MedicalExaminationScheduleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicalExaminationScheduleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MedicalExaminationScheduleTests/Pods-MedicalExaminationScheduleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		35CB514918835835536E7F45 /* Pods_MedicalExaminationScheduleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		581952139BA14BDC2364DEF3 /* Pods_MedicalExaminationScheduleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicalExaminationScheduleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,6 +400,7 @@
 				84F88A4F1E3001EA0053ABB2 /* CoreGraphics.framework in Frameworks */,
 				84F88A4D1E3001E30053ABB2 /* Foundation.framework in Frameworks */,
 				84F88A4B1E3000FC0053ABB2 /* UIKit.framework in Frameworks */,
+				13A399DB1E62E90900DD4D17 /* SwiftyUserDefaults.framework in Frameworks */,
 				D2F4A9F61E17598100EE737B /* AssetsLibrary.framework in Frameworks */,
 				8B7DD3C11E166B7F0080A814 /* AddressBook.framework in Frameworks */,
 				8B7DD3BD1E166B600080A814 /* StoreKit.framework in Frameworks */,
@@ -493,6 +519,10 @@
 				84ADD8C91E2D43DD007BBE68 /* HospitalListViewController.swift */,
 				84ADD8CB1E2D4409007BBE68 /* ClinicViewController.swift */,
 				84ADD8CD1E2D443A007BBE68 /* DrugStoreViewController.swift */,
+				13A399D21E62D93F00DD4D17 /* GuideView.swift */,
+				13A399D41E62DF1E00DD4D17 /* ColorSupport.swift */,
+				13A399D61E62DFA600DD4D17 /* ImageSupport.swift */,
+				13A399DE1E62ECEA00DD4D17 /* Constant.swift */,
 			);
 			name = Service;
 			path = Locations;
@@ -698,6 +728,7 @@
 		D00E98537ADEDF5A31AAFA5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13A399DA1E62E90900DD4D17 /* SwiftyUserDefaults.framework */,
 				84F88A4E1E3001EA0053ABB2 /* CoreGraphics.framework */,
 				84F88A4C1E3001E30053ABB2 /* Foundation.framework */,
 				84F88A4A1E3000FB0053ABB2 /* UIKit.framework */,
@@ -851,6 +882,7 @@
 				84CB42C91DE16FE00059B057 /* Resources */,
 				6B9D21389B0D0433D0555EE2 /* [CP] Embed Pods Frameworks */,
 				EC17B60808F2E8D32BC0C4DF /* [CP] Copy Pods Resources */,
+				13A399DD1E62E90900DD4D17 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -915,7 +947,8 @@
 				TargetAttributes = {
 					84CB42CA1DE16FE00059B057 = {
 						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = AQ4F7PFFSM;
+						ProvisioningStyle = Automatic;
 					};
 					84CB42E11DE16FE10059B057 = {
 						CreatedOnToolsVersion = 8.1;
@@ -1189,6 +1222,7 @@
 				8BD905A91E0AA3C900DBF1C3 /* CommentModel.swift in Sources */,
 				84321D611DF7190E00CCA4D4 /* DoctorHistoryTableViewCell.swift in Sources */,
 				D2DE925E1DF2AD61000C9BC7 /* UpdateProfileWithFacebookViewController.swift in Sources */,
+				13A399D51E62DF1E00DD4D17 /* ColorSupport.swift in Sources */,
 				845D5A261DF5E44C00BDA45C /* DoctorAddressTableViewCell.swift in Sources */,
 				8BF746D61DF85644006C9B48 /* InviteDoctorTableViewCell.swift in Sources */,
 				D21863641E143BEA002C04C3 /* DetailTableViewCell.swift in Sources */,
@@ -1207,6 +1241,7 @@
 				D22859BC1E08506500570A8F /* ServiceModel.swift in Sources */,
 				D2EF30551DFD96DF00287924 /* NSVBarController.swift in Sources */,
 				84CB42D11DE16FE10059B057 /* ViewController.swift in Sources */,
+				13A399D71E62DFA600DD4D17 /* ImageSupport.swift in Sources */,
 				D26F57741E193099009E8FB8 /* NewImageViewController.swift in Sources */,
 				EA05ED211DF81DD6002DD339 /* SetupIntroduceViewController.swift in Sources */,
 				844C9FFB1E5A1947000DBC51 /* MainAlarmListViewController.swift in Sources */,
@@ -1220,6 +1255,7 @@
 				840E961F1E48FADE00BE8EFB /* ScheduleWeekViewController.swift in Sources */,
 				84267EA21E579B6A00DD29DD /* AlarmAddEditViewController.swift in Sources */,
 				D29E8C331DF71C1E0000815B /* DetailNewViewController.swift in Sources */,
+				13A399D31E62D93F00DD4D17 /* GuideView.swift in Sources */,
 				D29E8C381DF723920000815B /* TextFieldNormalTableViewCell.swift in Sources */,
 				8476CA991E3156760052E201 /* TagHeaderView.swift in Sources */,
 				D21A80221E16DA6C00DF6077 /* CalendarTimeObject.swift in Sources */,
@@ -1252,6 +1288,7 @@
 				844C9FF91E5A16BB000DBC51 /* AlarmTableViewCell.swift in Sources */,
 				8476CA951E314C630052E201 /* KYDrawerController.swift in Sources */,
 				D29E8C461DF738570000815B /* ChangeAvatarView.swift in Sources */,
+				13A399DF1E62ECEA00DD4D17 /* Constant.swift in Sources */,
 				EA05ED181DF7D9CF002DD339 /* TimerFreeViewController.swift in Sources */,
 				D21265101DF3A06300C70F83 /* MoreViewController.swift in Sources */,
 				D21A80201E16D3DB00DF6077 /* SettingTimeViewController.swift in Sources */,
@@ -1419,16 +1456,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MedicalExaminationSchedule/Framework",
 				);
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.beacon.medhub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.binhanh.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1447,16 +1485,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AQ4F7PFFSM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MedicalExaminationSchedule/Framework",
 				);
 				INFOPLIST_FILE = MedicalExaminationSchedule/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.beacon.medhub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.binhanh.medhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
