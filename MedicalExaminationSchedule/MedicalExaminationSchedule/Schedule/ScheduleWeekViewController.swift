@@ -54,6 +54,8 @@ class ScheduleWeekViewController: UIViewController {
         
         Alarms.sharedInstance.append( Alarm(label: Global.label, timeStr: timeStr, date: Date(),  enabled: false, snoozeEnabled: Global.snoozeEnabled, UUID: UUID().uuidString, mediaID: "", mediaLabel: "bell", repeatWeekdays: Global.weekdays))
         scheduler.reSchedule()
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func tappedBack(_ sender: UIButton) {

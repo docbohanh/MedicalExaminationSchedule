@@ -22,9 +22,7 @@ import MagicalRecord
 
 protocol AlarmApplicationDelegate
 {
-    
     func playAlarmSound(_ soundName: String)
-    
 }
 
 @UIApplicationMain
